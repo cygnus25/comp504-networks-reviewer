@@ -1,0 +1,604 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#102b3b"><title>Lecture Slide Questions — COMP504 Study Kit</title><link rel="stylesheet" href="styles.css"></head>
+<body class="utility-page" data-page="slide-questions"><div class="site-shell"><aside class="sidebar" aria-label="Study navigation"><a class="brand" href="index.html"><span class="brand-mark">N<span>↗</span></span><span>Networks<br><small>and Internet</small></span></a><div class="sidebar-intro">COMP504 · OFFLINE STUDY KIT</div><nav class="tool-nav"><a href="index.html">01 · Beginner lessons</a><a href="practice.html">02 · Practice</a><a class="active" href="slide-questions.html">03 · Lecture slide questions</a><a href="labs.html">04 · Hands-on labs</a><a href="plan.html">05 · Study plan & backup</a><a href="glossary.html">06 · Glossary</a><a href="coverage.html">07 · Coverage & sources</a></nav><p class="sidebar-note">Questions and answer keys are taken from the supplied slide decks. Use them for retrieval practice after reading each topic.</p></aside>
+<main class="main"><header class="topbar"><span>TEACHER-SUPPLIED SLIDE QUESTIONS</span><a href="practice.html">Original practice ↗</a></header><div class="utility-hero"><div class="eyebrow">03 / LECTURE QUESTIONS</div><h1>Practise the questions in the slides.</h1><p>85 numbered quiz slides from the course chapter decks, linked back to their source slide. Reveal each printed answer after you try it.</p></div>
+<div class="content-wrap utility-content"><div class="howto"><span class="kicker">HOW TO USE THESE</span><p>Try the question before revealing its answer. Some slide wording and keys are course-specific or dated. The final exam may use similar concepts, but these are not confirmed exam questions. The beginner lessons explain the foundations; the extra notes below cover smaller quiz topics.</p></div>
+<details class="notes-box"><summary>Read extra notes on topics tested by these slides</summary><div class="notes-content"><h1>Extra concepts tested by the lecture slide quizzes</h1>
+<p>The beginner reviewer teaches the main network story. These shorter points fill details that appear in the lecture's numbered quiz slides. Read them before using the <a href="../SLIDE_QUESTIONS.md">slide question bank</a>. The bank reports the answers printed on the slides; it is a study aid, not a promise that the final exam repeats those questions.</p>
+<h2>Application layer and HTTP</h2>
+<p><strong>Application architecture</strong> describes how application functions are divided among clients and servers. It is not automatically “all on the client.” In a three-tier design, presentation runs on the client, application logic on an application server, and data access/storage on a database server. Middleware helps separate components communicate. An n-tier design may split work into even more tiers, often improving scalability.</p>
+<p>An HTTP <strong>request line</strong> contains a method such as <code>GET</code>, a target, and an HTTP version. <strong>Headers</strong> are separate lines of metadata after that line. A <strong>body</strong> is optional; a simple <code>GET</code> request can have no body. The slide quizzes deliberately test the difference between request line, headers, and body. “Web protocol” is not the protocol's name: it is <strong>HTTP</strong> (or HTTPS when protected by TLS).</p>
+<h2>Physical and data link detail</h2>
+<p><strong>Guided media</strong> carry signals in a physical path such as copper or fiber; <strong>radiated/unguided media</strong> use wireless transmission such as radio or microwave. A shared circuit is a multipoint arrangement. Fiber resists electromagnetic noise because it carries light.</p>
+<p>The data link layer sits between <strong>physical</strong> and <strong>network</strong> layers in the five-layer model. In IEEE LANs, it has two named sublayers: <strong>MAC</strong> (media access control) and <strong>LLC</strong> (logical link control). MAC decides how devices access a shared medium; LLC provides a logical interface upward. Controlled access schemes coordinate who may transmit and can be more efficient under heavy contention; contention-based schemes let devices compete for access.</p>
+<p><strong>Error causes:</strong> attenuation is weakening over distance; cross-talk is unwanted coupling from a nearby circuit; impulse noise is a short spike that may damage a burst of bits. Shielding can reduce interference; repeaters or amplifiers address attenuation. These names are easy to mix up in multiple-choice questions, so match each to its physical cause.</p>
+<p><strong>Asynchronous transmission</strong> sends characters independently, with per-character framing. <strong>Synchronous transmission</strong> sends a coordinated stream or block. SDLC and HDLC are examples of bit-oriented data-link protocols. A flag pattern marks frame boundaries. Ethernet and PPP also have frame formats with an error-checking field. <strong>MAC address spoofing</strong> changes the MAC address a system presents in software; MAC filtering alone is therefore a weak access control.</p>
+<h2>Transport details beyond TCP versus UDP</h2>
+<p>The transport layer is between application and network in the course's five-layer model. It handles end-to-end transport; routing is a network-layer job. <strong>ARQ</strong> (automatic repeat request) uses acknowledgements and retransmission for error recovery. The lecture distinguishes <strong>stop-and-wait</strong> (send one unit, then wait for an acknowledgement) and <strong>continuous</strong> approaches (allow more than one unit to be in flight).</p>
+<p>One slide quiz keys a “typical TCP segment” header as <strong>192 bits (24 bytes)</strong>. The same deck also states that a TCP header <strong>without options is 20 bytes</strong>. Keep these two statements separate: 20 bytes is the base TCP header; its options can make it longer. If your exam uses the exact slide wording “typical,” the slide's printed key is 192 bits. If asked for the <em>minimum/base</em> header, use 20 bytes.</p>
+<h2>Design, backbones, and Internet access</h2>
+<p>A <strong>building-block design</strong> starts with needs analysis (users, applications, locations, traffic, growth), then technology design, then cost assessment. A <strong>campus backbone/core</strong> connects networks or buildings; it is not the end-user access LAN. A <strong>routed backbone</strong> forwards using network-layer IP addresses; a switched backbone forwards using Layer 2 MAC addresses. A Layer 3 switch can make IP-based forwarding decisions.</p>
+<p>Chapter 9 has no numbered quiz slides, but its WAN material still matters. A dedicated circuit reserves a site-to-site connection. Packet-switched services share a provider network; the slides compare older frame relay, MPLS, and Ethernet services. A star topology depends on its central site, while a full mesh connects every pair and costs more. Intranet VPNs connect an organization's sites, extranet VPNs extend access to partners, and remote-access VPNs connect an individual user. SD-WAN uses software control to manage and choose WAN paths.</p>
+<p>The Internet is hierarchical rather than flat. Large <strong>tier 1 ISPs</strong> exchange traffic at interconnection points. A <strong>point of presence (PoP)</strong> is a provider location where customers connect. <strong>Broadband</strong> is a general label for access faster than old dial-up modems. For DSL, a <strong>DSLAM</strong> combines subscriber lines at the provider end. Fiber access can use <strong>wavelength division multiplexing</strong>, putting multiple wavelengths of light on one fiber. In Internet governance, the <strong>Internet Architecture Board (IAB)</strong> provides architectural oversight; the slide quiz contrasts it with the Internet Engineering Steering Group.</p>
+<h2>Security and management detail</h2>
+<p>Security includes prevention <strong>and recovery</strong>. Confidentiality, integrity, and availability are core goals; business continuity focuses especially on keeping services available. <strong>Redundancy</strong> means spare capacity or alternate components so one failure does not stop the service. An <strong>intrusion</strong> is unauthorized access, distinct from accidental disruption or a natural disaster.</p>
+<p><strong>Configuration management</strong> records and controls device/software configurations and changes. <strong>Performance management</strong> checks that the network runs efficiently. <strong>Fault management</strong> finds and repairs failures. Management reports and monitoring tools help measure availability. The lecture quizzes use these job names precisely.</p>
+</div></details>
+<div class="question-filter"><label>Find text<input id="slide-search" type="search" placeholder="e.g. attenuation, HTTP, VLAN" autocomplete="off"></label><label>Chapter<select id="slide-chapter"><option value="all">All chapters · 85 questions</option><option value="ch02">Chapter 2 · 9 questions</option><option value="ch03">Chapter 3 · 5 questions</option><option value="ch04">Chapter 4 · 17 questions</option><option value="ch05">Chapter 5 · 13 questions</option><option value="ch06">Chapter 6 · 8 questions</option><option value="ch07">Chapter 7 · 6 questions</option><option value="ch08">Chapter 8 · 6 questions</option><option value="ch10">Chapter 10 · 7 questions</option><option value="ch11">Chapter 11 · 7 questions</option><option value="ch12">Chapter 12 · 7 questions</option></select></label></div><p id="slide-count" class="small-note" role="status"></p><div id="slide-list"><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 1 · slide 24</span></div>
+          <pre>An application architecture is the way in which the functions of the application layer are performed solely by the clients in the network. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 2 · slide 25</span></div>
+          <pre>Host-based and client-based networks are similar in that the client computer performs most of the work. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 3 · slide 26</span></div>
+          <pre>Your typical web browsing scenario where a person using a web browser accesses a web page from a server on the Internet is a good example of a client-server application architecture. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 4 · slide 27</span></div>
+          <pre>Middleware is the software that sits between the application software on the client and the application software on the server. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 5 · slide 28</span></div>
+          <pre>In the three-tier architecture, the software on the client computer is responsible for the presentation logic, an application server is responsible for the application logic and a separate database server is responsible for the data access logic and data storage. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 6 · slide 29</span></div>
+          <pre>An n-tier architecture:
+is generally more “scalable” than a three-tiered architecture.
+is generally less “scalable” than a three-tiered architecture.
+uses only two sets of computers in which the clients are responsible for the application and presentation logic, and the servers are responsible for the data.
+uses exactly three sets of computers in which the client is responsible for presentation, one set of servers is responsible for data access logic and data storage, and application logic is spread across two or more different sets of servers.
+puts less load on a network than a two-tiered architecture because there tends to be less communication among the servers.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. is generally more “scalable” than a three-tiered architecture.</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 7 · slide 37</span></div>
+          <pre>The standard protocol for communication between a Web browser and a Web server is the web protocol.(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 8 · slide 38</span></div>
+          <pre>A request header for an HTTP request starts with a command, such as GET, and ends with the HTTP version number that the browser understands. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch02">
+          <div class="slide-question-meta"><span>Week 10 · Chapter 2</span><span>QUIZ 9 · slide 39</span></div>
+          <pre>All three parts (request line, request header, request body) of an HTTP request from a web browser to a web server are required when a request is made. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch02%20Application%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch03">
+          <div class="slide-question-meta"><span>Week 2 · Chapter 3</span><span>QUIZ 1 · slide 7</span></div>
+          <pre>Data is physically transmitted from one computer or terminal to another in the ________ layer.
+
+a.	physical
+b.	transport
+c.	application
+d.	terminal
+e.	data link</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. physical</p></details><a href="../../course-materials/sources/slides/chapters/ch03%20Physical%20layer-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch03">
+          <div class="slide-question-meta"><span>Week 2 · Chapter 3</span><span>QUIZ 2 · slide 16</span></div>
+          <pre>A(n) __________ circuit is another name for a multipoint configuration.
+a.	analog
+b.	dedicated
+c.	point-to-point
+d.	shared
+e.	simplex</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. shared</p></details><a href="../../course-materials/sources/slides/chapters/ch03%20Physical%20layer-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch03">
+          <div class="slide-question-meta"><span>Week 2 · Chapter 3</span><span>QUIZ 3 · slide 27</span></div>
+          <pre>The two basic types of media are:
+a.	statistical and frequency
+b.	guided and wireless (radiated)
+c.	local and wide area
+d.	attenuator and Gaussian
+e.	duplexed and non-duplexed</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>b. guided and wireless (radiated)</p></details><a href="../../course-materials/sources/slides/chapters/ch03%20Physical%20layer-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch03">
+          <div class="slide-question-meta"><span>Week 2 · Chapter 3</span><span>QUIZ 4 · slide 28</span></div>
+          <pre>Which of the following would be considered a type of wireless media?
+a.	unshielded twisted pair
+b.	shielded twisted pair
+c.	coaxial cable
+d.	microwave
+e.	fiber optics</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d.	microwave</p></details><a href="../../course-materials/sources/slides/chapters/ch03%20Physical%20layer-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch03">
+          <div class="slide-question-meta"><span>Week 2 · Chapter 3</span><span>QUIZ 5 · slide 29</span></div>
+          <pre>Which of the following media can best withstand harsh environmental conditions?
+a.	shielded twisted pair
+b.	unshielded twisted pair
+c.	Cat 5 twisted pair
+d.	coaxial cable
+e.	fiber optic cable</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>e. fiber optic cable</p></details><a href="../../course-materials/sources/slides/chapters/ch03%20Physical%20layer-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 1 · slide 15</span></div>
+          <pre>As part of the five-layer network model used in this textbook, the data link layer sits directly between:
+a.	the physical and the application layers
+b.	the network and the application layers
+c.	the network and transport layers
+d.	the physical and the application layers
+e.	the physical and the network layers.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>e. the physical and the network layers</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 2 · slide 16</span></div>
+          <pre>Which of the following is true with respect to the data link layer?
+a.	It accepts streams of bits from the application layer.
+b.	It is responsible for encoding the bit-stream as a series of electronic voltages.
+c.	It performs error detection.
+d.	It performs routing functions.
+e.	It organizes data from the physical layer and passes these coherent messages directly to the application layer.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. It performs error detection.</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 3 · slide 17</span></div>
+          <pre>____________ is not a function of a data link protocol.
+a.	Media access control
+b.	Message delineation
+c.	Amplitude shift keying
+d.	Indicating when a message starts and stops
+e.	Error control</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. Amplitude shift keying</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 4 · slide 18</span></div>
+          <pre>In general, controlled approaches:
+a.	work better than contention approaches for small networks that have low usage.
+b.	work better than contention approaches for large networks that have high usage.
+c.	work better than contention approaches for all sizes of networks.
+d.	do not require a host, server, or active monitor to assign media access control.
+e.	have many collisions.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>b. work better than contention approaches for large networks that have high usage.</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 5 · slide 19</span></div>
+          <pre>The two sublayers of the data link layer consist of the media access control sublayer and the________.
+a.	logical link control sublayer
+b.	network control sublayer
+c.	session sublayer
+d.	physical sublayer
+e.	transport sublayer</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. logical link control sublayer</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 6 · slide 27</span></div>
+          <pre>Which of the following media is least susceptible to noise?
+
+a.    fiber optic cable
+b.	coaxial cable
+c.	twisted pair
+d.	unshielded twisted pair
+e.	shielded twisted pair</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. fiber optic cable</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 7 · slide 28</span></div>
+          <pre>The primary source of error in data communications is:
+echoes.
+intermodulation noise.
+spikes.
+attenuation.
+cross-talk.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. spikes.</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 8 · slide 29</span></div>
+          <pre>__________can obliterate a group of bits, causing a burst error.
+a.	Cross-talk
+b.	Attenuation
+c.	Impulse noise
+d.	Intermodulation noise
+e.	Gray noise</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. Impulse noise</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 9 · slide 30</span></div>
+          <pre>Cross-talk:
+a.	occurs when one circuit picks up signals in another.
+b.	is always bothersome because it has a high signal strength.
+c.	decreases with increased proximity of two wires.
+d.	decreases during wet or damp weather.
+e.	increases with lower frequency signals.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. occurs when one circuit picks up signals in another.</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 10 · slide 31</span></div>
+          <pre>The loss of power a signal suffers as it travels from the transmitting computer to a receiving computer is _____.
+a.	white noise
+b.	spiking
+c.	attenuation
+d.	intermodulation noise
+e.	echo</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. attenuation</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 11 · slide 32</span></div>
+          <pre>_____________ is an effective way to prevent impulse noise, cross talk, and intermodulation noise.
+a.	Shielding wires
+b.	Adding fluorescent lights
+c.	Adding repeaters to a circuit
+d.	Adding amplifiers to a circuit
+e.	Shorting a circuit</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. Shielding wires</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 12 · slide 33</span></div>
+          <pre>_____________ is an effective way to prevent attenuation.
+a.	Shielding wires
+b.	Adding fluorescent lights
+c.	Adding repeaters or amplifiers to a circuit
+d.	Changing multiplexing techniques
+e.	Shorting a circuit</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. Adding repeaters or amplifiers to a circuit</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 13 · slide 49</span></div>
+          <pre>Asynchronous transmission:
+a.	is used to transmit each character simultaneously with all other characters
+b.	has a pre-determined, fixed time between sending characters
+c.	is typically used on multipoint half duplex circuits
+d.	uses a continuous series of start bits as an idle signal
+e.	each character is transmitted independently of all other characters</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>e. each character is transmitted independently of all other characters</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 14 · slide 50</span></div>
+          <pre>Which of the following is not a type of synchronous protocol?
+a.	SDLC
+b.	VT100
+c.	HDLC
+d.	Ethernet
+e.	PPP</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>b. VT100</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 15 · slide 51</span></div>
+          <pre>Which of the following is true about the data link protocol, SDLC:
+a.	It is a client-server protocol developed by Compaq in 1996.
+b.	It transmits each character independently of one another and includes start and stop bits for each character sent.
+c.	It uses a special bit pattern called a flag at the beginning and end of every frame (or packet).
+d.	It uses a contention media access control protocol and is used in most LANs today.
+e.	It does not have any error detection capabilities.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. It uses a special bit pattern called a flag at the beginning and end of every frame (or packet).</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 16 · slide 52</span></div>
+          <pre>Which of the following is true about the data link protocol, Ethernet (IEEE 802.3)?
+a.	It is not very popular.
+b.	It is a bit-oriented protocol.
+c.	it uses block check characters for error detection.
+d.	Newer version permits jumbo frames.
+e.	It uses parity bits for error detection.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. Newer version permits jumbo frames.</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch04">
+          <div class="slide-question-meta"><span>Week 3 · Chapter 4</span><span>QUIZ 17 · slide 56</span></div>
+          <pre>__________ is a software-enabled technique that can change the hardcoded MAC address to any MAC address and thus overcome MAC address filtering.
+a.	MAC address spoofing
+b.	MAC address engaging
+c.	Ethernet address regeneration
+d.	Address regeneration
+e.	MAC address cheesing</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. MAC address spoofing</p></details><a href="../../course-materials/sources/slides/chapters/ch04%20Link%20layer-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 1 · slide 5</span></div>
+          <pre>The network layer sits directly between the application layer and the data link layer in the Internet five-layer network model. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 2 · slide 6</span></div>
+          <pre>TCP/IP is a data link protocol that is used on the Internet. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 3 · slide 7</span></div>
+          <pre>The network layer provides guaranteed end-to-end delivery of the message (TRUE/FALSE)?.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 4 · slide 17</span></div>
+          <pre>The ____________ layer links the application layer with the network layer is responsible for end-to-end delivery of messages.
+a.	physical
+b.	transport
+c.	session
+d.	presentation
+e.	data link</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>b. transport</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 5 · slide 18</span></div>
+          <pre>__________ is not an important function of the transport layer.
+a.	End-to-end delivery of the message
+b.	Taking messages from the application layer
+c.	Routing
+d.	Breaking long messages into smaller segments
+e.	Interfacing with the network layer</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. Routing</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 6 · slide 19</span></div>
+          <pre>Transmission Control Protocol/Internet Protocol was developed for ________ in 1974.
+a.	ARPANET
+b.	IBM
+c.	Hewlett-Packard
+d.	Kennesaw State University
+e.	Xerox</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. ARPANET</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 7 · slide 20</span></div>
+          <pre>A typical TCP segment has a _______ header of control information.
+a.	32-bit
+b.	64-bit
+c.	120-byte
+d.	192-bit
+e.	32-byte</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. 192-bit</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 8 · slide 31</span></div>
+          <pre>Stop-and-wait ARQ uses ___________ type of data flow.
+full simplex
+half complex
+full duplex
+half duplex
+full complex</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. half duplex</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 9 · slide 32</span></div>
+          <pre>What are the two types of ARQ?
+Stop-and-wait and continuous
+Half and full duplex
+Continuous and intermittent
+Selective and continuous
+Stop-and-wait and selective</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. Stop-and-wait and continuous</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%201-2-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 1 · slide 34</span></div>
+          <pre>The network layer provides guaranteed end-to-end delivery of the message.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%202-4-1%20%281%29.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 2 · slide 35</span></div>
+          <pre>A subnet mask of 255.255.255.0 means that all computers with only the same first two bytes in their IPv4 addresses are on the same subnet (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%202-4-1%20%281%29.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 3 · slide 36</span></div>
+          <pre>A subnet mask of 255.255.0.0, the first two bytes indicate the same subnet.(TRUE/FALSE)</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%202-4-1%20%281%29.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch05">
+          <div class="slide-question-meta"><span>Weeks 4–5 / missing Week 9 material · Chapter 5</span><span>QUIZ 4 · slide 37</span></div>
+          <pre>UDP is not commonly used for:
+a.	network management control messages
+b.	RIP messages
+c.	DHCP addressing messages
+d.	HTTP requests
+e.	DNS requests</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. HTTP requests</p></details><a href="../../course-materials/sources/slides/chapters/ch05%20Transport-Network%20Part%202-4-1%20%281%29.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 1 · slide 14</span></div>
+          <pre>The campus backbone (or core layer) is the network architecture component responsible for providing end user access to the network. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 2 · slide 15</span></div>
+          <pre>Today, many organizations design networks using the building-block approach (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 3 · slide 16</span></div>
+          <pre>Nowadays, most organizations use a simpler approach to network design called the ___________ approach.
+a.	building-block
+b.	frame definition
+c.	prototype
+d.	systems development life cycle
+e.	guided network</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. building-block</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 4 · slide 24</span></div>
+          <pre>Which of the following is not a current trend that is making the traditional design approach less appropriate for today’s networks?
+a.	The underlying technology of networking devices is changing very rapidly
+b.	The underlying technology of client and server devices is changing very rapidly
+c.	The underlying technology of circuits is changing very rapidly
+d.	Growth in network traffic is very high
+e.	The most expensive part of any network is the hardware</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>e. The most expensive part of any network is the hardware</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 5 · slide 25</span></div>
+          <pre>In needs analysis:
+a.	the costs of different physical network design alternatives are assessed
+b.	the goal is to understand what users and applications the network will support
+c.	the geographic scope is not an important consideration
+d.	a baseline of current operations is not important
+e.	the rate of growth of network traffic is not an issue</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>b. the goal is to understand what users and applications the network will support</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 6 · slide 31</span></div>
+          <pre>In the __________ step of the building-block process to network design, the network designer attempts to understand the fundamental current and future network needs of the various users, departments, and applications.
+a.	technology design
+b.	needs analysis
+c.	narrow and deep analysis
+d.	cost assessment
+e.	distribution layering</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>b. needs analysis</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 7 · slide 32</span></div>
+          <pre>In the __________ step of the building-block process to network design, the network designer examines the available technologies and assesses which options will meet the users’ needs.
+a.	technology design
+b.	needs analysis
+c.	narrow and deep analysis
+d.	cost assessment
+e.	distribution layering</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. technology design</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch06">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 6</span><span>QUIZ 8 · slide 39</span></div>
+          <pre>In the __________ step of the building-block process to network design, the network designer considers the relative cost of the technologies.
+a.	technology design
+b.	needs analysis
+c.	narrow and deep analysis
+d.	cost assessment
+e.	distribution layering</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. cost assessment</p></details><a href="../../course-materials/sources/slides/chapters/ch06%20Network%20design-5.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch07">
+          <div class="slide-question-meta"><span>Week 6 · Chapter 7</span><span>QUIZ 1 · slide 11</span></div>
+          <pre>The Network Interface Card (NIC) permits a computer to be physically connected to a network’s cable. (TRUE/FALSE)?.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>TRUE</p></details><a href="../../course-materials/sources/slides/chapters/ch07%20Wired%20and%20Wireless%20LANs-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch07">
+          <div class="slide-question-meta"><span>Week 6 · Chapter 7</span><span>QUIZ 2 · slide 12</span></div>
+          <pre>Many network hubs and switches incorporate repeaters to regenerate signals so that attenuation of the signal does not occur. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>TRUE</p></details><a href="../../course-materials/sources/slides/chapters/ch07%20Wired%20and%20Wireless%20LANs-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch07">
+          <div class="slide-question-meta"><span>Week 6 · Chapter 7</span><span>QUIZ 3 · slide 18</span></div>
+          <pre>The NOS software for the server computer provides the physical, data link, and network layer functions. (TRUE/FALSE)?.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>FALSE</p></details><a href="../../course-materials/sources/slides/chapters/ch07%20Wired%20and%20Wireless%20LANs-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch07">
+          <div class="slide-question-meta"><span>Week 6 · Chapter 7</span><span>QUIZ 4 · slide 19</span></div>
+          <pre>Network profile refers to what resources on each server are available on the network for use by other computers and which devices or people are allowed access on the network. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>TRUE</p></details><a href="../../course-materials/sources/slides/chapters/ch07%20Wired%20and%20Wireless%20LANs-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch07">
+          <div class="slide-question-meta"><span>Week 6 · Chapter 7</span><span>QUIZ 5 · slide 27</span></div>
+          <pre>A switch always broadcasts all the packets it receives to all the computers that are connected to the switch. (TRUE/FALSE)?.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>FALSE</p></details><a href="../../course-materials/sources/slides/chapters/ch07%20Wired%20and%20Wireless%20LANs-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch07">
+          <div class="slide-question-meta"><span>Week 6 · Chapter 7</span><span>QUIZ 6 · slide 28</span></div>
+          <pre>A forwarding table tells a switch which port it should send out a packet to get to the destination computer. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>TRUE</p></details><a href="../../course-materials/sources/slides/chapters/ch07%20Wired%20and%20Wireless%20LANs-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch08">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 8</span><span>QUIZ 1 · slide 22</span></div>
+          <pre>A backbone network is a high-speed network that connects many networks.
+(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch08%20Backbone%20network-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch08">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 8</span><span>QUIZ 2 · slide 23</span></div>
+          <pre>A backbone network that connects many backbone networks spanning several buildings at a single location is often called an Internet backbone.
+(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch08%20Backbone%20network-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch08">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 8</span><span>QUIZ 3 · slide 24</span></div>
+          <pre>One basic component of a backbone network is the hardware device that connects other networks to the backbone. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch08%20Backbone%20network-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch08">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 8</span><span>QUIZ 4 · slide 25</span></div>
+          <pre>Routers use network layer address to forward packets between network segments. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch08%20Backbone%20network-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch08">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 8</span><span>QUIZ 5 · slide 26</span></div>
+          <pre>Routed backbones use switches that move packets based on data link layer addresses. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch08%20Backbone%20network-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch08">
+          <div class="slide-question-meta"><span>Week 7 · Chapter 8</span><span>QUIZ 6 · slide 27</span></div>
+          <pre>Which of the following is not true about Layer-3 switches?
+a.	They switch messages based on their IP address.
+b.	They can be used in place of routers.
+c.	They function faster than routers.
+d.	They have more simultaneously active ports than routers.
+e.	They can only switch messages based on their data link layer addresses.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>e.They can only switch messages based on their data link layer addresses</p></details><a href="../../course-materials/sources/slides/chapters/ch08%20Backbone%20network-1-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch10">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 10</span><span>QUIZ 1 · slide 21</span></div>
+          <pre>The Internet is flat in structure.(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch10%20Internet-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch10">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 10</span><span>QUIZ 2 · slide 22</span></div>
+          <pre>Tier 1 service providers connect together and exchange data at IXPs.. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch10%20Internet-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch10">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 10</span><span>QUIZ 3 · slide 23</span></div>
+          <pre>A point of presence is the place at which the ISP provides services to its customers.(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch10%20Internet-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch10">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 10</span><span>QUIZ 4 · slide 24</span></div>
+          <pre>Technologies that provide higher-speed communications than traditional modems (e.g., DSL) are known as ______________ technologies.
+
+middleband
+narrowband
+rubberband
+metalband
+broadband</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>e. broadband</p></details><a href="../../course-materials/sources/slides/chapters/ch10%20Internet-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch10">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 10</span><span>QUIZ 5 · slide 25</span></div>
+          <pre>At the DSL local carrier’s office, the __________ demultiplexes the data streams and converts them into digital data.
+DSLAM
+GrandSlam
+WAP
+line splitter
+X.25 PAD</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. DSLAM</p></details><a href="../../course-materials/sources/slides/chapters/ch10%20Internet-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch10">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 10</span><span>QUIZ 6 · slide 26</span></div>
+          <pre>Fiber to the Home uses _____.
+
+a.	frequency division multiplexing
+b.	wavelength division multiplexing
+c.	time division multiplexing
+d.	statistical time division multiplexing
+e.	all of the above.</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>b. wavelength division multiplexing</p></details><a href="../../course-materials/sources/slides/chapters/ch10%20Internet-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch10">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 10</span><span>QUIZ 7 · slide 31</span></div>
+          <pre>The Internet Engineering Steering Group provides strategic architectural oversight for the Internet.. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch10%20Internet-2.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch11">
+          <div class="slide-question-meta"><span>Week 11 · Chapter 11</span><span>QUIZ 1 · slide 8</span></div>
+          <pre>Security on a network not only means being able to prevent a hacker from breaking into your computer but also includes being able to recover from temporary service problems or from natural disasters. TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch11%20Network%20security-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch11">
+          <div class="slide-question-meta"><span>Week 11 · Chapter 11</span><span>QUIZ 2 · slide 9</span></div>
+          <pre>The rise of the Internet has increased significantly the potential vulnerability of an organization’s assets. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch11%20Network%20security-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch11">
+          <div class="slide-question-meta"><span>Week 11 · Chapter 11</span><span>QUIZ 3 · slide 10</span></div>
+          <pre>Maintaining data integrity is not a primary goal of security (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>False</p></details><a href="../../course-materials/sources/slides/chapters/ch11%20Network%20security-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch11">
+          <div class="slide-question-meta"><span>Week 11 · Chapter 11</span><span>QUIZ 4 · slide 11</span></div>
+          <pre>Business continuity planning refers primarily to ensuring availability, with some aspects of data integrity. (TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch11%20Network%20security-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch11">
+          <div class="slide-question-meta"><span>Week 11 · Chapter 11</span><span>QUIZ 5 · slide 12</span></div>
+          <pre>Which of the following is not one of the major categories (or sub-categories) into which network security threats can be placed?
+disruption
+destruction
+controlled chaos
+intrusion
+disaster</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>c. Controlled chaos</p></details><a href="../../course-materials/sources/slides/chapters/ch11%20Network%20security-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch11">
+          <div class="slide-question-meta"><span>Week 11 · Chapter 11</span><span>QUIZ 6 · slide 30</span></div>
+          <pre>The key principle in preventing disruption, destruction and disaster is ___________.
+
+redundancy
+control spreadsheet
+prevention controls
+anti-virus software</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. redundancy</p></details><a href="../../course-materials/sources/slides/chapters/ch11%20Network%20security-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch11">
+          <div class="slide-question-meta"><span>Week 11 · Chapter 11</span><span>QUIZ 7 · slide 31</span></div>
+          <pre>A hacker gaining access to organizational data files and resources is an example of a(n) ____________ threat.
+disruptive
+controlled chaos
+destruction
+intrusion
+disaster</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. intrusion</p></details><a href="../../course-materials/sources/slides/chapters/ch11%20Network%20security-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch12">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 12</span><span>QUIZ 1 · slide 14</span></div>
+          <pre>Network management is the process of operating, monitoring, and controlling the network to ensure it works as intended and provides value to its users.(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch12%20Network%20management-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch12">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 12</span><span>QUIZ 2 · slide 15</span></div>
+          <pre>One common configuration activity is updating the software on the client computers in the network.(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch12%20Network%20management-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch12">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 12</span><span>QUIZ 3 · slide 16</span></div>
+          <pre>Management reports can be helpful in determining network availability statistics.(TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch12%20Network%20management-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch12">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 12</span><span>QUIZ 4 · slide 17</span></div>
+          <pre>Which of the following is not a basic function of a network manager?
+Web surfing to shop on eBay
+cost management
+performance and fault management
+configuration management
+end user support</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. Web surfing to shop on eBay</p></details><a href="../../course-materials/sources/slides/chapters/ch12%20Network%20management-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch12">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 12</span><span>QUIZ 5 · slide 32</span></div>
+          <pre>Performance management means ensuring the network is operating as efficiently as possible. TRUE/FALSE)?</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>True</p></details><a href="../../course-materials/sources/slides/chapters/ch12%20Network%20management-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch12">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 12</span><span>QUIZ 6 · slide 33</span></div>
+          <pre>___________ refers to managing and documenting the network’s hardware and software configuration. 
+Visioning
+Troubleshooting
+Firefighting
+Configuration management
+Implementation</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>d. Configuration management</p></details><a href="../../course-materials/sources/slides/chapters/ch12%20Network%20management-1.pptx">Open original deck ↗</a></div>
+        </section><section class="slide-question" data-deck="ch12">
+          <div class="slide-question-meta"><span>Week 8 · Chapter 12</span><span>QUIZ 7 · slide 34</span></div>
+          <pre>_____________ are used by many large and small organizations to monitor and control their networks today.
+
+Network management software packages
+Firefighter packages
+Fault creating packages
+Fault toleraters
+NICs</pre>
+          <div class="slide-question-bottom"><details><summary>Show slide answer</summary><p>a. Network management software packages</p></details><a href="../../course-materials/sources/slides/chapters/ch12%20Network%20management-1.pptx">Open original deck ↗</a></div>
+        </section></div>
+<div class="support-note"><h2>What these questions do not cover</h2><p>The supplied Chapters 1 and 9 decks have no numbered QUIZ slides. The <a href="../BEGINNER_REVIEWER.md">beginner reviewer</a>, <a href="practice.html">original practice questions</a>, and chapter decks still cover those areas. The supplied Week 12 recording is revision, and no Week 9 recording is present.</p></div></div></main></div><script src="slide-questions.js" defer></script></body></html>

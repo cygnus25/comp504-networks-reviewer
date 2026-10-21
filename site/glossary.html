@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#102b3b"><title>Plain-language glossary — COMP504 Study Kit</title><link rel="stylesheet" href="styles.css"></head>
+<body class="utility-page" data-page="glossary"><div class="read-progress" id="read-progress" aria-hidden="true"></div><div class="site-shell">
+<aside class="sidebar" aria-label="Study navigation"><a class="brand" href="index.html"><span class="brand-mark">N<span>↗</span></span><span>Networks<br><small>and Internet</small></span></a><div class="sidebar-intro">COMP504 · OFFLINE STUDY KIT</div><nav class="tool-nav"><a href="index.html">01 · Beginner lessons</a><a href="practice.html">02 · Practice</a><a href="slide-questions.html">03 · Lecture slide questions</a><a href="labs.html">04 · Hands-on labs</a><a href="plan.html">05 · Study plan &amp; backup</a><a href="glossary.html" class="active">06 · Glossary</a><a href="coverage.html">07 · Coverage &amp; sources</a></nav><nav class="toc" aria-label="Page sections"><a class="toc-link" href="#devices-and-scope" data-target="devices-and-scope"><span class="toc-number">01</span><span>Devices and scope</span><span class="toc-check" aria-hidden="true"></span></a><a class="toc-link" href="#layers-and-data-units" data-target="layers-and-data-units"><span class="toc-number">02</span><span>Layers and data units</span><span class="toc-check" aria-hidden="true"></span></a><a class="toc-link" href="#local-delivery" data-target="local-delivery"><span class="toc-number">03</span><span>Local delivery</span><span class="toc-check" aria-hidden="true"></span></a><a class="toc-link" href="#ip-and-routing" data-target="ip-and-routing"><span class="toc-number">04</span><span>IP and routing</span><span class="toc-check" aria-hidden="true"></span></a><a class="toc-link" href="#services-design-and-operations" data-target="services-design-and-operations"><span class="toc-number">05</span><span>Services, design, and operations</span><span class="toc-check" aria-hidden="true"></span></a></nav></aside>
+<main class="main"><header class="topbar"><span>LEARN THE IDEA, THEN PRACTISE IT</span><a href="plan.html">Study plan & backup ↗</a></header><div class="utility-hero"><div class="eyebrow">05 / LOOK UP A TERM</div><h1>Plain-language glossary</h1><p>Find a term while you read. Each definition is short enough to use as a memory cue, with the lessons providing the full explanation.</p></div><div class="content-wrap utility-content"><label class="glossary-search">Find a term <input id="glossary-search" type="search" placeholder="Try: gateway, TCP, VLAN…" autocomplete="off"></label><p id="glossary-count" class="small-note" role="status"></p><article><h1 id="networking-glossary">Networking glossary</h1>
+<p>Use this as a lookup while reading the beginner lessons. Try explaining a term in your own words before reading its definition.</p>
+<h2 id="devices-and-scope">Devices and scope</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>End device</td>
+<td>A device that creates or uses data, such as a PC, phone, printer, or server.</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>A program or device that requests a service.</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>A program or device that provides a service or resource.</td>
+</tr>
+<tr>
+<td>NIC</td>
+<td>Network interface card; the hardware that connects a device to a network medium.</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>Forwards frames within a local Layer 2 network using MAC addresses.</td>
+</tr>
+<tr>
+<td>Router</td>
+<td>Forwards packets between IP networks using a routing table.</td>
+</tr>
+<tr>
+<td>Access point (AP)</td>
+<td>Connects Wi-Fi stations to a local network.</td>
+</tr>
+<tr>
+<td>Hub</td>
+<td>Repeats incoming bits to all ports; unlike a switch, it does not choose a destination port.</td>
+</tr>
+<tr>
+<td>LAN</td>
+<td>Local area network, such as a home, office, or building network.</td>
+</tr>
+<tr>
+<td>WAN</td>
+<td>Wide area network joining distant sites.</td>
+</tr>
+<tr>
+<td>Backbone</td>
+<td>Higher-capacity network that joins multiple LANs.</td>
+</tr>
+<tr>
+<td>ISP</td>
+<td>Internet service provider; connects customers to its network and other networks.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="layers-and-data-units">Layers and data units</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocol</td>
+<td>Agreed rules for exchanging information.</td>
+</tr>
+<tr>
+<td>OSI model</td>
+<td>Seven-layer reference model for describing network functions.</td>
+</tr>
+<tr>
+<td>Internet model</td>
+<td>The course's five-layer model: application, transport, network, data link, physical.</td>
+</tr>
+<tr>
+<td>Encapsulation</td>
+<td>Adding layer information as data moves down the stack before transmission.</td>
+</tr>
+<tr>
+<td>Decapsulation</td>
+<td>Removing layer information as data moves up the stack at a receiver.</td>
+</tr>
+<tr>
+<td>Segment</td>
+<td>TCP's transport-layer data unit.</td>
+</tr>
+<tr>
+<td>Datagram</td>
+<td>UDP's transport-layer data unit.</td>
+</tr>
+<tr>
+<td>Packet</td>
+<td>Network-layer data unit, such as an IP packet.</td>
+</tr>
+<tr>
+<td>Frame</td>
+<td>Data-link-layer data unit, such as an Ethernet frame.</td>
+</tr>
+<tr>
+<td>Bit</td>
+<td>A binary 0 or 1 carried by the physical medium.</td>
+</tr>
+<tr>
+<td>Port number</td>
+<td>Transport-layer number that identifies an application process or service.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="local-delivery">Local delivery</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAC address</td>
+<td>Link-layer address of a network interface on a local network.</td>
+</tr>
+<tr>
+<td>Forwarding table</td>
+<td>A switch's learned map of MAC addresses to ports.</td>
+</tr>
+<tr>
+<td>Unknown unicast</td>
+<td>A frame for one MAC address whose switch port has not been learned yet.</td>
+</tr>
+<tr>
+<td>Broadcast</td>
+<td>A message intended for all devices in a local broadcast domain.</td>
+</tr>
+<tr>
+<td>ARP</td>
+<td>IPv4 protocol for finding the MAC address associated with a local next-hop IP.</td>
+</tr>
+<tr>
+<td>CRC/FCS</td>
+<td>Error-checking calculation/value used to detect a damaged Ethernet frame.</td>
+</tr>
+<tr>
+<td>VLAN</td>
+<td>Logical Layer 2 network that separates broadcast domains on shared switches.</td>
+</tr>
+<tr>
+<td>Access port</td>
+<td>Switch port assigned to one VLAN for an end device.</td>
+</tr>
+<tr>
+<td>Trunk</td>
+<td>Link that carries multiple VLANs, commonly with 802.1Q tags.</td>
+</tr>
+<tr>
+<td>Collision domain</td>
+<td>Set of interfaces that could contend for the same shared Ethernet medium.</td>
+</tr>
+<tr>
+<td>CSMA/CD</td>
+<td>Historical shared/half-duplex Ethernet method for detecting collisions.</td>
+</tr>
+<tr>
+<td>CSMA/CA</td>
+<td>Wi-Fi method that tries to avoid collisions on shared radio channels.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ip-and-routing">IP and routing</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP address</td>
+<td>Network-layer address used to identify a host/interface across networks.</td>
+</tr>
+<tr>
+<td>Subnet mask/prefix</td>
+<td>Bits that separate network and host portions of an IP address.</td>
+</tr>
+<tr>
+<td>Network address</td>
+<td>First address identifying an IPv4 subnet.</td>
+</tr>
+<tr>
+<td>Broadcast address</td>
+<td>Last address used for local broadcast in an ordinary IPv4 subnet.</td>
+</tr>
+<tr>
+<td>Default gateway</td>
+<td>Local router address a host uses for destinations outside its subnet.</td>
+</tr>
+<tr>
+<td>Routing table</td>
+<td>Router's list of known destination networks and how to reach them.</td>
+</tr>
+<tr>
+<td>Default route</td>
+<td>Fallback route used when no more specific route matches.</td>
+</tr>
+<tr>
+<td>VLSM</td>
+<td>Using different subnet sizes to fit different host requirements.</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>Protocol that can automatically supply host IP settings.</td>
+</tr>
+<tr>
+<td>NAT</td>
+<td>Translation between address spaces, often private and public IPv4.</td>
+</tr>
+<tr>
+<td>ICMP</td>
+<td>IP control/error messages; <code>ping</code> uses ICMP Echo messages.</td>
+</tr>
+<tr>
+<td>IPv6</td>
+<td>128-bit IP addressing protocol using hexadecimal notation.</td>
+</tr>
+<tr>
+<td>Neighbor Discovery</td>
+<td>IPv6 process for discovering neighbors and local routers; replaces ARP's role.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="services-design-and-operations">Services, design, and operations</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP</td>
+<td>Reliable, ordered transport with acknowledgements and retransmission.</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>Connectionless datagram transport without built-in delivery guarantees.</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Service that resolves names to IP addresses.</td>
+</tr>
+<tr>
+<td>HTTP/HTTPS</td>
+<td>Web request/response protocol; HTTPS protects it with TLS.</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>Protocol commonly used to send email.</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>Encrypted remote terminal protocol.</td>
+</tr>
+<tr>
+<td>Middleware</td>
+<td>Software that helps client and server components communicate.</td>
+</tr>
+<tr>
+<td>Load balancer</td>
+<td>Distributes requests across servers.</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>Logical, commonly encrypted tunnel over another network.</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>Device or software enforcing traffic-filtering rules.</td>
+</tr>
+<tr>
+<td>SNMP</td>
+<td>Protocol that lets network management software monitor devices.</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>Measurement of normal network behavior used for comparison.</td>
+</tr>
+<tr>
+<td>Threat</td>
+<td>Possible source or event of harm.</td>
+</tr>
+<tr>
+<td>Vulnerability</td>
+<td>Weakness that a threat could exploit.</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Likelihood and impact of harm to an asset or service.</td>
+</tr>
+</tbody>
+</table>
+</article></div></main></div><script src="glossary.js" defer></script></body></html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3b">
+  <meta name="description" content="Beginner-first COMP504 Networks and Internet reviewer with worked examples and self-checks.">
+  <title>Networks and Internet — Begin Here</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="lessons">
+  <div class="read-progress" id="read-progress" aria-hidden="true"></div>
+  <div class="site-shell" id="top">
+    <aside class="sidebar" aria-label="Study navigation">
+      <a class="brand" href="#top"><span class="brand-mark">N<span>↗</span></span><span>Networks<br><small>and Internet</small></span></a>
+      <div class="sidebar-intro">COMP504 · BEGINNER REVIEWER</div>
+      <div class="progress-card"><strong id="progress-count">0 of 12 lessons done</strong><div class="meter"><span id="progress-fill"></span></div><small>Your progress stays in this browser.</small></div>
+      <nav class="toc" aria-label="Lessons"><a class="toc-link" href="#1-what-is-a-network" data-target="1-what-is-a-network"><span class="toc-number">01</span><span>What is a network?</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#2-how-one-webpage-travels" data-target="2-how-one-webpage-travels"><span class="toc-number">02</span><span>How one webpage travels</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#3-signals-cables-and-binary" data-target="3-signals-cables-and-binary"><span class="toc-number">03</span><span>Signals, cables, and binary</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#4-local-delivery-frames-mac-addresses-and-switches" data-target="4-local-delivery-frames-mac-addresses-and-switches"><span class="toc-number">04</span><span>Local delivery: frames, MAC addresses, and switches</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#5-ip-addresses-subnets-and-the-default-gateway" data-target="5-ip-addresses-subnets-and-the-default-gateway"><span class="toc-number">05</span><span>IP addresses, subnets, and the default gateway</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#6-subnetting-without-magic" data-target="6-subnetting-without-magic"><span class="toc-number">06</span><span>Subnetting without magic</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#7-routing-ping-and-ipv6" data-target="7-routing-ping-and-ipv6"><span class="toc-number">07</span><span>Routing, ping, and IPv6</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#8-tcp-udp-dns-and-application-design" data-target="8-tcp-udp-dns-and-application-design"><span class="toc-number">08</span><span>TCP, UDP, DNS, and application design</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#9-wired-lans-wi-fi-and-vlans" data-target="9-wired-lans-wi-fi-and-vlans"><span class="toc-number">09</span><span>Wired LANs, Wi-Fi, and VLANs</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#10-designing-networks-backbones-wans-and-internet-access" data-target="10-designing-networks-backbones-wans-and-internet-access"><span class="toc-number">10</span><span>Designing networks, backbones, WANs, and Internet access</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#11-security-management-and-troubleshooting" data-target="11-security-management-and-troubleshooting"><span class="toc-number">11</span><span>Security, management, and troubleshooting</span><span class="toc-check" aria-hidden="true"></span></a>
+<a class="toc-link" href="#12-how-to-use-this-for-your-exam" data-target="12-how-to-use-this-for-your-exam"><span class="toc-number">12</span><span>How to use this for your exam</span><span class="toc-check" aria-hidden="true"></span></a></nav>
+      <div class="sidebar-links"><a href="practice.html">Interactive practice ↗</a><a href="slide-questions.html">Lecture slide questions ↗</a><a href="labs.html">Hands-on labs ↗</a><a href="plan.html">Study plan & backup ↗</a><a href="glossary.html">Glossary ↗</a><a href="coverage.html">Coverage & sources ↗</a><a href="../REVIEWER.md">Compact review notes ↗</a></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><span>LEARN THE IDEA, THEN PRACTICE IT</span><a href="plan.html">Study plan & backup ↗</a></header>
+      <div class="hero"><div class="eyebrow">START FROM ZERO · READ OFFLINE</div><h1>Networks finally make sense when you follow one message.</h1><p>Begin with a PC sending a request. Each lesson adds one piece: links, switches, routers, addresses, protocols, and the networks they form.</p><div class="hero-actions"><a class="primary" href="#1-what-is-a-network">Start lesson 1 <span>→</span></a><a class="secondary" href="#how-to-use">How to study this</a></div><div class="journey" aria-label="Example packet path"><div><b>01</b><span>YOUR PC</span></div><i>→</i><div><b>02</b><span>SWITCH</span></div><i>→</i><div><b>03</b><span>ROUTER</span></div><i>→</i><div><b>04</b><span>SERVER</span></div></div></div>
+      <div class="content-wrap"><section class="howto" id="how-to-use"><span class="kicker">HOW TO USE THIS</span><p>Read one or two lessons at a time. Reveal the check-yourself answer after trying it. Mark a lesson complete when you can explain its main idea in your own words. You can return to the <a href="../KNOWLEDGE_BASE.md">source map</a> whenever you want the original slides.</p></section>
+      <article id="reviewer"><h1 id="networks-and-internet-from-the-beginning">Networks and Internet from the beginning</h1>
+<p>This guide assumes you remember almost nothing from the lectures. Read the sections in order. You do not have to memorize every term on the first pass: your first goal is to understand what problem each piece of a network solves. The <a href="../REVIEWER.md">compact reviewer</a> is for later recall, and the <a href="../LABS.md">lab path</a> lets you see these ideas in Packet Tracer.</p>
+<h2 id="1-what-is-a-network">1. What is a network?</h2>
+<p>A network lets devices exchange information. Imagine you open a website. Your computer needs a way to send a request to the website's computer and receive a response. The network is the combination of devices, links, rules, and addresses that makes that exchange possible.</p>
+<p>Start with four objects:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Everyday job</th>
+<th>Network job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>End device</td>
+<td>Person sending or receiving a parcel</td>
+<td>PC, phone, printer, or server that creates or uses data</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>Road</td>
+<td>Copper cable, fiber, or radio path that carries signals</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>Local mailroom</td>
+<td>Connects devices inside one local network and forwards frames using MAC addresses</td>
+</tr>
+<tr>
+<td>Router</td>
+<td>Road junction between towns</td>
+<td>Connects different IP networks and chooses where packets go next</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>server</strong> provides something, such as a webpage or stored file; a <strong>client</strong> requests it. A <strong>LAN</strong> (local area network) covers a home, room, building, or similar local area. A <strong>WAN</strong> (wide area network) connects distant LANs, often using a service provider. The <strong>Internet</strong> is a large network of networks, not one giant switch.</p>
+<p>Picture a PC in a university lab opening a site: <code>PC → lab switch → campus router → ISP/Internet → website server</code>. The PC and website server are end devices. The switch helps within the lab LAN; the routers move traffic across networks.</p>
+<p><strong>Do not try to remember commands yet.</strong> If you can explain why a switch and router have different jobs, you have the foundation for the rest of the course.</p>
+<details><summary>Check yourself: Does a switch normally choose the route across the Internet?</summary><p>No. A switch forwards within a local Layer 2 network. A router chooses a path between IP networks.</p></details>
+<h2 id="2-how-one-webpage-travels">2. How one webpage travels</h2>
+<p>Networking becomes easier when you follow one request. Suppose your browser asks for a page from a remote web server.</p>
+<ol>
+<li><strong>Application:</strong> The browser creates an HTTP request. A name such as <code>example.com</code> must be resolved to an IP address using DNS.</li>
+<li><strong>Transport:</strong> TCP normally sets up a connection, splits the data as needed, and tracks delivery. HTTPS also uses TLS to protect the exchange.</li>
+<li><strong>Network:</strong> IP puts the server's destination IP address on the packet. Your computer decides whether that IP is local or must go to its default gateway.</li>
+<li><strong>Data link:</strong> Ethernet or Wi-Fi wraps the packet in a frame addressed to the next device on the local link.</li>
+<li><strong>Physical:</strong> The frame becomes electrical, optical, or radio signals: bits sent over the medium.</li>
+</ol>
+<p>The receiving computer reverses this process. Adding each layer's information on the way down is <strong>encapsulation</strong>; removing it on the way up is <strong>decapsulation</strong>. A useful nesting image is <code>frame [ IP packet [ TCP segment [ HTTP request ] ] ]</code>.</p>
+<p>Why so many layers? Each solves a different problem. An application developer can ask for a connection without designing copper signals. An Ethernet switch can forward a frame without understanding the webpage inside it. The boundaries let technologies change independently, though real systems still have interactions between layers.</p>
+<p>The course teaches two models. The <strong>OSI model</strong> has seven layers: Application, Presentation, Session, Transport, Network, Data Link, Physical (top to bottom). The course's <strong>five-layer Internet model</strong> groups the top three into Application, then has Transport, Network, Data Link, Physical. The models describe jobs; they are not seven separate boxes sitting on your desk.</p>
+<table>
+<thead>
+<tr>
+<th>Layer to recognize</th>
+<th>Main question it answers</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>What service does the user program need?</td>
+<td>HTTP, DNS, SMTP</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>Which program gets the data, and how is delivery handled?</td>
+<td>TCP or UDP; port number</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Which host/network is the destination?</td>
+<td>IPv4/IPv6; router</td>
+</tr>
+<tr>
+<td>Data link</td>
+<td>Which device receives this frame on this link?</td>
+<td>Ethernet/Wi-Fi; MAC address</td>
+</tr>
+<tr>
+<td>Physical</td>
+<td>How do the bits cross this medium?</td>
+<td>Copper, fiber, radio</td>
+</tr>
+</tbody>
+</table>
+<p>The names of the data units help: application <strong>data</strong>, TCP <strong>segment</strong> or UDP <strong>datagram</strong>, IP <strong>packet</strong>, Ethernet <strong>frame</strong>, physical <strong>bits</strong>. On an exam, you may be asked to match a layer to a protocol, address, or unit.</p>
+<details><summary>Check yourself: What does a router replace when it forwards a packet onto a new Ethernet link?</summary><p>It removes the incoming link-layer frame and creates a new one for the outgoing link. Without NAT, the packet's final destination IP remains the same.</p></details>
+<h2 id="3-signals-cables-and-binary">3. Signals, cables, and binary</h2>
+<p>The physical layer has one immediate job: carry 0s and 1s. It does this with electrical changes in copper, light pulses in fiber, or radio signals in Wi-Fi. The device at the other end must understand the timing and meaning of those signals.</p>
+<p><strong>Point-to-point</strong> means two endpoints share a link. <strong>Multipoint</strong> means several devices share a circuit. <strong>Simplex</strong> is one-way only, like a traditional broadcast; <strong>half-duplex</strong> is both directions but one at a time, like a walkie-talkie; <strong>full-duplex</strong> is both directions at once, like a normal switched Ethernet port. When a signal weakens over distance, that is <strong>attenuation</strong>. Interference or noise can make it harder to tell a 0 from a 1.</p>
+<p>Most local wired networks use twisted-pair copper. Shielded twisted pair is useful where electrical interference is high. Fiber carries light, reaches longer distances, and is immune to electromagnetic interference. Wireless avoids a cable to the device but shares radio space and can suffer from interference. The best medium depends on distance, cost, speed, and environment.</p>
+<p>The supplied lab notes show <strong>straight-through</strong> and <strong>crossover</strong> Ethernet cables. Traditionally, straight-through connected unlike device types (PC to switch) and crossover connected like types (switch to switch). Many newer interfaces automatically detect the wiring, but the distinction can still appear in course questions.</p>
+<p>IPv4 addresses are numbers, so binary matters. One byte, or <strong>octet</strong>, has eight bit positions worth <code>128 64 32 16 8 4 2 1</code>. For example, <code>192 = 128 + 64</code>, so its bits are <code>11000000</code>. <code>255</code> uses all eight positions: <code>11111111</code>. You will use this to understand subnet masks rather than blindly memorizing them.</p>
+<details><summary>Check yourself: Is fiber affected by electromagnetic interference from nearby electrical equipment?</summary><p>No. Fiber carries light rather than electrical signals, so this kind of interference does not affect it.</p></details>
+<h2 id="4-local-delivery-frames-mac-addresses-and-switches">4. Local delivery: frames, MAC addresses, and switches</h2>
+<p>Each network interface has a <strong>MAC address</strong>, a link-layer identifier. An Ethernet frame includes a source MAC, destination MAC, and an error-checking value called the <strong>frame check sequence</strong> (FCS). The receiver checks the FCS using a CRC calculation. A corrupted frame is normally discarded. Error detection does not guarantee that the missing data will be resent; a higher layer such as TCP may handle recovery.</p>
+<p>A switch learns by watching <strong>source</strong> MAC addresses. If a frame arrives on port 3 with source <code>AA</code>, the switch records <code>AA → port 3</code>. When it later sees a frame for <code>AA</code>, it sends it only to port 3. If it does not know the destination yet, it <strong>floods</strong> the frame out other ports in the same VLAN. Broadcast frames are also flooded within that VLAN. This is why the first few frames in Packet Tracer may look noisier than later ones.</p>
+<p>A hub is different: it repeats traffic to all its ports and creates a shared collision domain. A switch gives each port a separate collision domain. Modern switched full-duplex links do not normally have collisions. Older shared/half-duplex Ethernet used <strong>CSMA/CD</strong>: listen before sending and detect a collision if two stations transmit together.</p>
+<p>Imagine two PCs on the same LAN. PC A knows PC B's IP but needs its MAC. A sends an <strong>ARP Request</strong> asking “who has this IPv4 address?” That request is broadcast locally. B replies with its MAC, and A can send an Ethernet frame directly to B. If B is on a different IP network, A instead uses ARP to learn the <strong>default gateway's</strong> MAC and sends the first frame to the router.</p>
+<p>Three switch forwarding modes may appear in the course: <strong>store-and-forward</strong> waits for the whole frame and checks it; <strong>cut-through</strong> starts forwarding after reading enough to know the destination, lowering delay; <strong>fragment-free</strong> checks the first 64 bytes before forwarding. The trade-off is checking versus delay.</p>
+<details><summary>Check yourself: A switch has never seen destination MAC BB. What does it do with a frame for BB?</summary><p>It floods the frame out other ports in the same VLAN, while learning the source MAC and incoming port.</p></details>
+<h2 id="5-ip-addresses-subnets-and-the-default-gateway">5. IP addresses, subnets, and the default gateway</h2>
+<p>An <strong>IP address</strong> identifies a device's position in a network. IPv4 has 32 bits, usually written as four decimal octets, such as <code>192.168.10.20</code>. A <strong>subnet mask</strong> divides those bits into a network part and a host part. Devices compare the destination IP with their own network to decide whether to send directly or through a router.</p>
+<p>Think of <code>192.168.10.20/24</code> as “network <code>192.168.10</code>, host <code>.20</code>” for this simple case. The <code>/24</code> means 24 network bits; the mask is <code>255.255.255.0</code>. Another device at <code>192.168.10.30/24</code> is local. <code>192.168.11.30/24</code> is in another network. To reach that second network, the PC sends to its <strong>default gateway</strong>, which is normally its local router interface, perhaps <code>192.168.10.1</code>.</p>
+<p>The PC uses <strong>IP</strong> to say who the ultimate destination is, and a <strong>MAC address</strong> to say who receives the frame <em>on this hop</em>. For a remote destination, the first frame's destination MAC belongs to the gateway. The router then creates a fresh frame for the next link. This is the central connection between switching and routing.</p>
+<p>Public IPv4 addresses can be routed on the Internet when allocated. Private ranges are <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, and <code>192.168.0.0/16</code>; homes and organizations commonly use them internally. <strong>NAT</strong> translates addresses at a boundary, often letting many private devices use one public-facing address. <strong>DHCP</strong> can automatically supply a host's address, mask, gateway, and DNS server.</p>
+<p><strong>What to memorize here:</strong> IP finds the destination network, MAC finds the next device on one link, and the default gateway handles off-network destinations. Subnet calculations come in the next section.</p>
+<details><summary>Check yourself: Can a host use a gateway IP that is outside its own local subnet?</summary><p>Normally no. It needs to reach the gateway directly on its local link, so the gateway interface must have an address in that subnet.</p></details>
+<h2 id="6-subnetting-without-magic">6. Subnetting without magic</h2>
+<p>Subnetting cuts an address block into smaller networks. A <code>/26</code> prefix means 26 of the 32 IPv4 bits identify the network, leaving <code>32 − 26 = 6</code> host bits. Six host bits create <code>2^6 = 64</code> addresses per block. In the ordinary IPv4 exercises here, two are reserved: the <strong>network address</strong> (first) and <strong>broadcast address</strong> (last). That leaves <code>64 − 2 = 62</code> usable host addresses.</p>
+<p>For prefixes within the final octet, the block sizes are easy to recognize:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Mask</th>
+<th style="text-align:right">Addresses per block</th>
+<th style="text-align:right">Usable in these exercises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/25</td>
+<td>255.255.255.128</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">126</td>
+</tr>
+<tr>
+<td>/26</td>
+<td>255.255.255.192</td>
+<td style="text-align:right">64</td>
+<td style="text-align:right">62</td>
+</tr>
+<tr>
+<td>/27</td>
+<td>255.255.255.224</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">30</td>
+</tr>
+<tr>
+<td>/28</td>
+<td>255.255.255.240</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">14</td>
+</tr>
+<tr>
+<td>/29</td>
+<td>255.255.255.248</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>/30</td>
+<td>255.255.255.252</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Worked example:</strong> Find the subnet of <code>192.168.14.77/26</code>. A <code>/26</code> block is 64 addresses. The boundaries in the last octet are <code>0, 64, 128, 192</code>. The number 77 is between 64 and 127. Therefore the <strong>network</strong> is <code>192.168.14.64</code>, the <strong>broadcast</strong> is <code>192.168.14.127</code>, and usable hosts are <code>.65</code> through <code>.126</code>. You can check by subtracting the mask's interesting octet from 256: <code>256 − 192 = 64</code>.</p>
+<div class="subnet-tool" id="subnet-tool"><h3>Try a subnet yourself</h3><p>Enter an IPv4 address and a prefix. Predict the network address before pressing Calculate.</p><form id="subnet-form"><label>IPv4 address <input id="ip-input" inputmode="decimal" value="192.168.14.77" aria-label="IPv4 address"></label><label>Prefix <input id="prefix-input" type="number" min="8" max="30" value="26" aria-label="Prefix length"></label><button type="submit">Calculate</button></form><div id="subnet-result" role="status" aria-live="polite"></div></div>
+<p><strong>VLSM</strong> means giving different LANs different sized subnets so addresses are not wasted. Suppose <code>10.1.1.0/24</code> must hold networks with 47, 28, 11, and 5 hosts, plus a two-host link. Allocate the largest requirement first: 47 needs <code>/26</code> (62 usable), then 28 needs <code>/27</code> (30), then 11 needs <code>/28</code> (14), then 5 needs <code>/29</code> (6), then 2 needs <code>/30</code> (2). Place each at the next valid boundary: <code>.0/26</code>, <code>.64/27</code>, <code>.96/28</code>, <code>.112/29</code>, <code>.120/30</code>. These match the supplied worked VLSM example.</p>
+<p>Always write a table with <code>network | mask/prefix | first usable | last usable | broadcast</code> <strong>before</strong> configuring Packet Tracer. The most common errors are using a broadcast as a host, forgetting the gateway, or starting a subnet at an invalid boundary.</p>
+<details><summary>Check yourself: Does a requirement for 31 usable hosts fit in /27?</summary><p>No. A /27 has 32 total addresses but only 30 usable in these exercises. Use /26, which has 62 usable.</p></details>
+<h2 id="7-routing-ping-and-ipv6">7. Routing, ping, and IPv6</h2>
+<p>A router has interfaces in different networks. When it receives a packet, it reads the destination IP and searches its <strong>routing table</strong>. If several routes match, it chooses the most specific matching prefix. A <strong>default route</strong>, written <code>0.0.0.0/0</code> in IPv4, is the fallback when no more specific route matches. The router sends the packet toward the next hop and builds a new frame for the outgoing link.</p>
+<p>Suppose PC A is <code>192.168.10.20/24</code>, its gateway is <code>192.168.10.1</code>, and PC B is <code>192.168.11.20/24</code>. A sees that B is remote, sends the first frame to <code>.10.1</code>, and the router forwards to the <code>.11</code> network. B must also have a route back, usually its own default gateway. A one-way path is not enough for a successful conversation.</p>
+<p><code>ping</code> tests reachability using <strong>ICMP Echo Request</strong> and <strong>Echo Reply</strong>. ICMP also carries certain network error/control messages. It is <strong>not</strong> a routing protocol. A failed ping means no reply came back; possible causes include a disconnected link, wrong IP/mask/gateway, down interface, missing route, filtering, or an unresponsive target. <code>tracert</code>/<code>traceroute</code> can show intermediate hops by provoking hop-limit or TTL expiry.</p>
+<p>IPv4 uses 32-bit addresses, so address conservation matters. <strong>IPv6</strong> uses 128-bit addresses written in hexadecimal groups, for example <code>2001:db8::1</code>. Leading zeros can be removed from each group, and one continuous run of zero groups can be shortened with <code>::</code> once. IPv6 uses <strong>Neighbor Discovery</strong> rather than ARP and uses multicast rather than broadcast. A link-local IPv6 address starts in <code>fe80::/10</code> and works only on the local link.</p>
+<details><summary>Check yourself: A same-LAN ping works and the gateway ping works, but a remote IP ping fails. What should you check next?</summary><p>Check the router's route and outgoing interface, plus the return path and remote host's gateway. DNS is not the first suspect because you tested an IP address directly.</p></details>
+<h2 id="8-tcp-udp-dns-and-application-design">8. TCP, UDP, DNS, and application design</h2>
+<p>IP can deliver packets toward a host, but a host may run many programs. A <strong>port number</strong> identifies the program/service at the transport layer. For example, an HTTPS server commonly listens on port 443. The sender's and receiver's IP addresses identify hosts; the ports identify the relevant processes.</p>
+<p><strong>TCP</strong> begins with a three-way handshake (SYN, SYN-ACK, ACK), then uses sequence numbers, acknowledgements, and retransmission to deliver an ordered byte stream. If data is lost, it can send that data again. This is useful for a file or webpage where missing bytes would be a problem. <strong>UDP</strong> sends datagrams without a transport connection setup and without built-in acknowledgements or retransmission. It has less overhead and is often useful when low delay matters; an application can add its own reliability if needed. A live voice call may prefer a small gap over a delayed old packet.</p>
+<p><strong>DNS</strong> translates names to addresses. <strong>HTTP</strong> is used for web requests/responses; <strong>HTTPS</strong> is HTTP protected with TLS. <strong>SMTP</strong> transfers outgoing email; <strong>IMAP/POP3</strong> retrieve email. <strong>FTP</strong> transfers files. <strong>Telnet</strong> provides a remote terminal without encryption; <strong>SSH</strong> is the secure alternative. For the exam, first learn what each does, then common ports: DNS 53, HTTP 80, HTTPS 443, SMTP 25, FTP control 21, SSH 22.</p>
+<p>The course also asks where application work happens. In a <strong>host-based</strong> architecture, a central host does almost all processing. In a <strong>client-based</strong> one, clients do most of the application work. A <strong>client-server</strong> system divides work between them. A common <strong>two-tier</strong> system has client presentation/application logic and server data. A <strong>three-tier</strong> system separates presentation (client), application logic (application server), and data storage/access (database server). <strong>Middleware</strong> helps these parts communicate. A <strong>thick client</strong> runs much logic locally; a thin client runs little. A <strong>server farm</strong> groups servers, often behind a load balancer that spreads requests.</p>
+<details><summary>Check yourself: If you can ping a server's IP but cannot open it by name, which service should you investigate?</summary><p>DNS. IP reachability works, but the name may not be resolving to the right address.</p></details>
+<h2 id="9-wired-lans-wi-fi-and-vlans">9. Wired LANs, Wi-Fi, and VLANs</h2>
+<p>Ethernet, standardized as IEEE 802.3, is the usual wired LAN technology. A network interface card (NIC) connects a device to the medium. A switch joins wired devices. A wireless access point (AP) joins Wi-Fi stations to a LAN; a home “wireless router” often combines an AP, switch, router, DHCP, and NAT in one box.</p>
+<p>Wi-Fi belongs to the IEEE 802.11 family. A station finds and <strong>associates</strong> with an AP. It may actively send probes or passively listen for beacons. Since stations share radio space and cannot reliably detect collisions while transmitting, Wi-Fi uses <strong>CSMA/CA</strong>, which tries to avoid collisions. Signal strength, interference, walls, channels, and competing devices affect the result. The course compares 2.4 and 5 GHz bands and several 802.11 versions; understand the trade-offs rather than treating an old slide's “current” label as permanent.</p>
+<p>A <strong>VLAN</strong> splits a physical switch into separate logical Layer 2 networks. A broadcast in VLAN 10 stays in VLAN 10. An <strong>access port</strong> belongs to one VLAN. An <strong>802.1Q trunk</strong> carries frames from multiple VLANs between network devices, adding tags to identify the VLAN. Two PCs on different VLANs need a router or Layer 3 switch for inter-VLAN communication, plus suitable IP addressing and gateways.</p>
+<p>The course also names network operating systems (NOS), directory services, and domain controllers. A directory service tracks users and resources; a domain controller supports centralized identity and authentication in a Windows domain. For LAN performance, locate the bottleneck first: a server, uplink, or crowded Wi-Fi channel needs a different fix. A switch's <strong>forwarding table</strong> is about MAC-to-port locations, whereas a router's <strong>routing table</strong> is about destination IP networks.</p>
+<details><summary>Check yourself: Two PCs share a switch but are in different VLANs. Why can they not simply exchange local frames?</summary><p>Each VLAN is a separate Layer 2 broadcast domain. They need Layer 3 routing between the VLAN networks.</p></details>
+<h2 id="10-designing-networks-backbones-wans-and-internet-access">10. Designing networks, backbones, WANs, and Internet access</h2>
+<p>Network design begins with the people and applications to support, not with a shopping list. The course's building-block cycle is <strong>needs analysis → technology design → cost assessment</strong>, then repeat as constraints become clearer. Ask how many users and sites exist, which applications they run, how much traffic and growth to expect, and what availability/security they need. Draw a <strong>logical</strong> design showing relationships and traffic, then a <strong>physical</strong> design showing equipment, links, and locations.</p>
+<p>A <strong>backbone</strong> joins multiple LANs. A switched backbone uses switches, often converging in a main distribution facility (MDF). A routed backbone uses Layer 3 addressing between segments, such as buildings on a campus. A VLAN can group users logically even when their cables attach to different switches.</p>
+<p>A <strong>WAN</strong> joins distant sites over provider services. A dedicated circuit gives a reserved point-to-point link. Packet-switched provider networks share underlying infrastructure among customers. A <strong>star</strong> joins sites to a center but depends on that center; a <strong>full mesh</strong> has a direct connection between every pair and costs much more; a <strong>partial mesh</strong> connects selected pairs. The course surveys frame relay (legacy), MPLS, carrier Ethernet, VPNs, and SD-WAN. A <strong>VPN</strong> is a logical, often encrypted tunnel over another network, such as the public Internet. SD-WAN uses software control to select and manage WAN paths.</p>
+<p>An <strong>ISP</strong> connects customers to part of the Internet; ISPs exchange traffic through peering or transit. Your home access link might be DSL over a telephone line, cable modem over a shared cable segment, or fiber to the home. The access link gets you to the provider; the provider's backbone and other networks carry traffic farther. The Internet has no single owner or central switch.</p>
+<details><summary>Check yourself: Is a VPN itself a dedicated physical cable between two offices?</summary><p>No. It is a logical tunnel that can use an existing network, commonly the Internet.</p></details>
+<h2 id="11-security-management-and-troubleshooting">11. Security, management, and troubleshooting</h2>
+<p>Security protects <strong>confidentiality</strong> (only the right people see data), <strong>integrity</strong> (data is not changed improperly), and <strong>availability</strong> (the service works when needed). A <strong>threat</strong> is possible harm, a <strong>vulnerability</strong> is a weakness, and <strong>risk</strong> concerns how likely and damaging the harm would be. Controls include access rules, patching, strong authentication, encryption, firewalls, monitoring, backups, and recovery planning.</p>
+<p>A firewall filters traffic according to rules. NAT translates addresses but is not a complete firewall policy. <strong>Symmetric encryption</strong> uses a shared secret key; <strong>public-key cryptography</strong> uses a public/private pair and supports certificates and signatures. TLS protects many application connections; IPsec can secure IP traffic in VPNs. Social engineering attacks people rather than a cable or router; phishing is an example. Older slides mention WEP and SSL: know them as historical terms, but do not use WEP or old SSL as modern security choices.</p>
+<p><strong>Network management</strong> means keeping the network working: configuration, monitoring, performance, faults, user support, and costs. Managed devices can expose status and counters through <strong>SNMP</strong>. Documentation matters: record addressing, topology, configurations, changes, and failures. A performance <strong>baseline</strong> tells you what “normal” looks like so you can spot a problem.</p>
+<p>When something fails, test in layers rather than guessing. First check cable/Wi-Fi and interface state. Check the host's IP and mask. Ping a host on the same LAN. Ping the default gateway. Ping a remote <strong>IP</strong>. Finally test a <strong>name</strong> to check DNS. If a local ping succeeds but remote IP fails, look at gateway and routes. If remote IP succeeds but the name fails, look at DNS. Make one change, repeat the failed test, and record the result.</p>
+<details><summary>Check yourself: A website will not open. Why is “the Internet is down” a poor first diagnosis?</summary><p>Many different layers could fail: local link, IP settings, gateway, routes, DNS, the web service, or filtering. Test from local to remote to narrow it down.</p></details>
+<h2 id="12-how-to-use-this-for-your-exam">12. How to use this for your exam</h2>
+<p>The supplied <a href="../../course-materials/sources/exam/2026%20COMP504%20_FINAL%20EXAM%20Revision.pptx"><code>2026 COMP504 _FINAL EXAM Revision.pptx</code></a> gives most weight to wired/wireless LANs, network/transport, and application architecture. Study those especially carefully, but cover all chapters. The deck and some transcripts refer to different exam sittings, so check Canvas for your actual date, rules, and question format. No Week 9 recording is in the folder; the network-layer slides, Cisco modules, and VLSM activities cover that gap.</p>
+<p>Use three passes:</p>
+<ol>
+<li><strong>Understand:</strong> Read one or two sections here. Explain their example aloud in your own words. It is fine to look back.</li>
+<li><strong>Apply:</strong> Do the matching activity in <a href="../LABS.md">the lab path</a>. Predict what should happen before clicking or entering a command.</li>
+<li><strong>Recall:</strong> Try <a href="../PRACTICE.md">the practice questions</a> without notes. Keep an error log in <a href="../PROGRESS.md">the progress sheet</a>. Revisit misses after one and three days.</li>
+</ol>
+<p>The <a href="../site/slide-questions.html">lecture slide question bank</a> collects all 85 numbered QUIZ slides found in the chapter decks, with the answers printed there. Use it after the relevant lesson to become familiar with the teacher's wording. The <a href="../site/coverage.html">coverage map</a> shows what each week contributes and where the beginner guide is deliberately brief.</p>
+<p>If you can draw <code>PC → switch → router → server</code>, label MAC versus IP at each hop, compute a subnet, and diagnose a failed ping, many other topics will start to connect. The compact reviewer is useful <strong>after</strong> this first reading, not before it.</p>
+</article>
+      <footer><strong>You have a path forward.</strong><p>After this first reading, use the compact reviewer for recall, then the Packet Tracer labs for practice.</p><a href="#top">Back to top ↑</a></footer></div>
+    </main>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>
