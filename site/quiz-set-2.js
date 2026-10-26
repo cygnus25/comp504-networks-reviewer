@@ -1,0 +1,1379 @@
+window.COMP504_SET_2 = [
+  // ===== WIRED AND WIRELESS LANs (17 questions) =====
+  {
+    id: 2001,
+    topic: "Wired and Wireless LANs",
+    question: "In a busy office, two Ethernet stations transmit simultaneously and detect a collision. Under CSMA/CD, what is the FIRST thing each station does after detecting the collision?",
+    choices: [
+      "Immediately retransmit the frame",
+      "Send a jam signal to ensure all stations detect the collision",
+      "Wait for the access point to grant permission to retransmit",
+      "Discard the frame and inform the upper layer of failure"
+    ],
+    answer: 1,
+    why: "Under CSMA/CD, when a collision is detected, the transmitting station first sends a jam signal (32-bit pattern) to ensure all stations on the segment are aware of the collision before backing off and retransmitting."
+  },
+  {
+    id: 2002,
+    topic: "Wired and Wireless LANs",
+    question: "Why can't wireless LANs use collision detection (CD) the same way Ethernet does?",
+    choices: [
+      "Wireless signals travel too fast for CD to work",
+      "A wireless station cannot listen and transmit at the same time on the same frequency",
+      "Wireless LANs never experience collisions",
+      "The FCC prohibits collision detection in wireless networks"
+    ],
+    answer: 1,
+    why: "In wireless, a station's own transmitted signal is far stronger than any incoming signal, making it impossible to detect collisions while transmitting. This is why CSMA/CA (collision avoidance) is used instead of CSMA/CD."
+  },
+  {
+    id: 2003,
+    topic: "Wired and Wireless LANs",
+    question: "Station A wants to send data to Station C, but Station B is between them and can hear both A and C, while A and C cannot hear each other. What problem does this describe?",
+    choices: [
+      "The exposed node problem",
+      "The hidden node problem",
+      "A near-far interference issue",
+      "A multipath fading scenario"
+    ],
+    answer: 1,
+    why: "The hidden node problem occurs when two stations (A and C) cannot detect each other's transmissions but both communicate with a common station (B). They may transmit simultaneously and cause collisions at B."
+  },
+  {
+    id: 2004,
+    topic: "Wired and Wireless LANs",
+    question: "Which mechanism is specifically designed to mitigate the hidden node problem in 802.11 wireless LANs?",
+    choices: [
+      "Exponential backoff algorithm",
+      "Request to Send / Clear to Send (RTS/CTS) exchange",
+      "Point Coordination Function (PCF)",
+      "Wi-Fi Protected Access (WPA2)"
+    ],
+    answer: 1,
+    why: "RTS/CTS allows a station to reserve the medium before transmitting data. When Station A sends RTS and the AP responds with CTS, all stations—including hidden nodes—hear the CTS and defer transmission, preventing collisions."
+  },
+  {
+    id: 2005,
+    topic: "Wired and Wireless LANs",
+    question: "A university is deploying a large-scale WLAN with 200 access points across campus. Which architecture feature allows centralized management of all APs from a single interface?",
+    choices: [
+      "A Layer 3 routed backbone",
+      "A Wi-Fi controller (WLC)",
+      "A RADIUS authentication server",
+      "A network address translator"
+    ],
+    answer: 1,
+    why: "A Wi-Fi controller (wireless LAN controller) centrally manages configuration, firmware updates, channel assignment, power settings, and security policies for all access points across the deployment."
+  },
+  {
+    id: 2006,
+    topic: "Wired and Wireless LANs",
+    question: "Under the DCF (Distributed Coordination Function) in 802.11, which access method is used?",
+    choices: [
+      "Token passing among wireless stations",
+      "Polling by the access point",
+      "CSMA/CA with optional RTS/CTS",
+      "Time Division Multiple Access (TDMA)"
+    ],
+    answer: 2,
+    why: "DCF is the default contention-based access method in 802.11. It uses CSMA/CA where stations listen before transmitting, back off upon detecting a busy medium, and optionally use RTS/CTS to reserve the channel."
+  },
+  {
+    id: 2007,
+    topic: "Wired and Wireless LANs",
+    question: "How does the Point Coordination Function (PCF) differ from DCF?",
+    choices: [
+      "PCF uses CSMA/CA while DCF uses CSMA/CD",
+      "PCF is contention-free and uses a point coordinator to poll stations",
+      "PCF is mandatory in all 802.11 implementations",
+      "PCF allows higher encryption levels than DCF"
+    ],
+    answer: 1,
+    why: "PCF is an optional contention-free access method where the access point acts as a point coordinator, polling each station in turn and granting it permission to transmit. This contrasts with DCF's contention-based approach."
+  },
+  {
+    id: 2008,
+    topic: "Wired and Wireless LANs",
+    question: "A company's early WLAN security relied on allowing only pre-approved device hardware addresses. Which security mechanism is this?",
+    choices: [
+      "WEP encryption",
+      "MAC address filtering",
+      "WPA2-Enterprise with RADIUS",
+      "802.1X port-based authentication"
+    ],
+    answer: 1,
+    why: "MAC address filtering restricts network access to devices whose MAC addresses appear on an approved list. It is a weak security measure since MAC addresses can be easily spoofed."
+  },
+  {
+    id: 2009,
+    topic: "Wired and Wireless LANs",
+    question: "What is the correct chronological progression of WLAN security standards from weakest to strongest?",
+    choices: [
+      "WPA → WEP → WPA2/AES → MAC filtering",
+      "MAC filtering → WEP → WPA → WPA2/AES",
+      "WEP → MAC filtering → WPA2/AES → WPA",
+      "WPA2/AES → WPA → WEP → MAC filtering"
+    ],
+    answer: 1,
+    why: "WLAN security evolved from simple MAC address filtering, to WEP (easily cracked), to WPA (TKIP, interim fix), to WPA2 with AES encryption providing robust security."
+  },
+  {
+    id: 2010,
+    topic: "Wired and Wireless LANs",
+    question: "Which 802.11 standard introduced MIMO (Multiple Input Multiple Output) antenna technology and channel bonding to achieve speeds up to 600 Mbps?",
+    choices: [
+      "802.11a",
+      "802.11g",
+      "802.11n (Wi-Fi 4)",
+      "802.11b"
+    ],
+    answer: 2,
+    why: "802.11n (Wi-Fi 4) introduced MIMO with multiple spatial streams and 40 MHz channel bonding, achieving theoretical maximum throughput of 600 Mbps. It operates on both 2.4 GHz and 5 GHz bands."
+  },
+  {
+    id: 2011,
+    topic: "Wired and Wireless LANs",
+    question: "802.11ax (Wi-Fi 6) introduced a key technology borrowed from cellular networks that allows an access point to communicate with multiple clients simultaneously on both uplink and downlink. What is this technology?",
+    choices: [
+      "Beamforming",
+      "OFDMA (Orthogonal Frequency Division Multiple Access)",
+      "Channel bonding",
+      "Spatial multiplexing"
+    ],
+    answer: 1,
+    why: "OFDMA divides a channel into smaller sub-channels (resource units) that can be assigned to different clients simultaneously, improving efficiency in dense environments. This was a major innovation in Wi-Fi 6."
+  },
+  {
+    id: 2012,
+    topic: "Wired and Wireless LANs",
+    question: "A company wants to ensure that if one access point fails, neighboring APs automatically increase their power to cover the gap. This requires:",
+    choices: [
+      "A standalone (autonomous) AP architecture",
+      "Managed APs controlled by a wireless LAN controller",
+      "Manual reconfiguration of each AP's power settings",
+      "WPA2-Enterprise with certificate-based authentication"
+    ],
+    answer: 1,
+    why: "Managed APs connected to a wireless LAN controller support automatic radio resource management (RRM). The controller monitors coverage and can dynamically adjust AP power and channels to compensate for failures."
+  },
+  {
+    id: 2013,
+    topic: "Wired and Wireless LANs",
+    question: "What is an overlay network in the context of enterprise WLAN deployments?",
+    choices: [
+      "A physical network that replaces the wired backbone",
+      "A logical network built on top of an existing physical network, often using tunnels between APs and a controller",
+      "A backup network activated only during failures",
+      "A network that uses exclusively 5 GHz frequencies"
+    ],
+    answer: 1,
+    why: "An overlay network is a logical network layered on top of the physical infrastructure. In WLAN deployments, lightweight APs tunnel all traffic back to a centralized controller, creating an overlay that simplifies management."
+  },
+  {
+    id: 2014,
+    topic: "Wired and Wireless LANs",
+    question: "A data center uses a server farm with a front-end device that distributes incoming HTTP requests across 10 web servers based on current load. This device is called a:",
+    choices: [
+      "Content delivery network (CDN)",
+      "Load balancer",
+      "DNS round-robin server",
+      "Reverse proxy cache"
+    ],
+    answer: 1,
+    why: "A load balancer distributes incoming network traffic across multiple servers in a server farm to ensure no single server is overwhelmed, improving availability and response time."
+  },
+  {
+    id: 2015,
+    topic: "Wired and Wireless LANs",
+    question: "In CSMA/CD, the binary exponential backoff algorithm is used after a collision. After the third collision on the same frame, the station randomly chooses a slot from which range?",
+    choices: [
+      "0 to 1",
+      "0 to 3",
+      "0 to 7",
+      "0 to 15"
+    ],
+    answer: 2,
+    why: "After the nth collision, the station picks a random value from 0 to 2^n − 1. After the 3rd collision: 2^3 − 1 = 7, so the range is 0 to 7 slots."
+  },
+  {
+    id: 2016,
+    topic: "Wired and Wireless LANs",
+    question: "Which statement about CSMA/CA is TRUE?",
+    choices: [
+      "Collisions are detected during transmission and the frame is immediately aborted",
+      "An acknowledgment (ACK) from the receiver is required to confirm successful delivery",
+      "Stations do not need to listen to the medium before transmitting",
+      "CSMA/CA eliminates all possibility of collisions"
+    ],
+    answer: 1,
+    why: "Since wireless stations cannot detect collisions during transmission, CSMA/CA requires the receiver to send an ACK frame. If no ACK is received, the sender assumes a collision occurred and retransmits after a backoff."
+  },
+  {
+    id: 2017,
+    topic: "Wired and Wireless LANs",
+    question: "802.11ac (Wi-Fi 5) improved upon 802.11n primarily by:",
+    choices: [
+      "Operating on the 2.4 GHz band with wider channels",
+      "Using only the 5 GHz band with up to 160 MHz channel widths and MU-MIMO on downlink",
+      "Introducing OFDMA for uplink and downlink",
+      "Replacing CSMA/CA with a deterministic access method"
+    ],
+    answer: 1,
+    why: "802.11ac operates exclusively on the 5 GHz band and supports wider channel widths (up to 160 MHz), 256-QAM modulation, and multi-user MIMO (MU-MIMO) on the downlink, achieving multi-gigabit speeds."
+  },
+
+  // ===== NETWORK LAYER (12 questions) =====
+  {
+    id: 2018,
+    topic: "Network Layer",
+    question: "An IPv4 address is 32 bits long. How many unique addresses does this theoretically provide?",
+    choices: [
+      "Approximately 16.7 million (2^24)",
+      "Approximately 4.3 billion (2^32)",
+      "Approximately 3.4 × 10^38 (2^128)",
+      "Approximately 65,536 (2^16)"
+    ],
+    answer: 1,
+    why: "A 32-bit address space provides 2^32 = 4,294,967,296 (approximately 4.3 billion) unique addresses. While this seems large, it has proven insufficient for the modern Internet, driving the adoption of IPv6."
+  },
+  {
+    id: 2019,
+    topic: "Network Layer",
+    question: "IPv6 uses addresses that are how many bits long?",
+    choices: [
+      "32 bits",
+      "48 bits",
+      "64 bits",
+      "128 bits"
+    ],
+    answer: 3,
+    why: "IPv6 addresses are 128 bits long, providing approximately 3.4 × 10^38 unique addresses—vastly more than IPv4's 32-bit address space."
+  },
+  {
+    id: 2020,
+    topic: "Network Layer",
+    question: "A network administrator sees a destination IP address starting with 200 in the first octet. Under the original classful addressing scheme, which class is this?",
+    choices: [
+      "Class A (1–126)",
+      "Class B (128–191)",
+      "Class C (192–223)",
+      "Class D (224–239)"
+    ],
+    answer: 2,
+    why: "Class C addresses have first octet values from 192 to 223. Since 200 falls within this range, it is a Class C address with a default subnet mask of 255.255.255.0 (/24)."
+  },
+  {
+    id: 2021,
+    topic: "Network Layer",
+    question: "An organisation is assigned the network 172.16.0.0/16 and needs to create subnets supporting up to 500 hosts each. Using VLSM, what is the most efficient subnet mask?",
+    choices: [
+      "/22 (1022 usable hosts)",
+      "/23 (510 usable hosts)",
+      "/24 (254 usable hosts)",
+      "/25 (126 usable hosts)"
+    ],
+    answer: 1,
+    why: "A /23 subnet provides 2^9 − 2 = 510 usable host addresses, which is the smallest block that accommodates 500 hosts. A /24 (254 hosts) is too small, while /22 (1022 hosts) wastes addresses."
+  },
+  {
+    id: 2022,
+    topic: "Network Layer",
+    question: "When a computer sends a packet to a destination on a different subnet, it forwards the packet to its:",
+    choices: [
+      "DNS server",
+      "DHCP server",
+      "Default gateway (router)",
+      "ARP cache"
+    ],
+    answer: 2,
+    why: "The default gateway is the router interface on the local subnet. When a host determines the destination is on a remote network (by comparing with its own subnet), it forwards the packet to the default gateway for routing."
+  },
+  {
+    id: 2023,
+    topic: "Network Layer",
+    question: "A computer needs four things configured to communicate on a TCP/IP network. Which of the following is NOT one of them?",
+    choices: [
+      "IP address",
+      "Subnet mask",
+      "MAC address assigned by the administrator",
+      "Default gateway"
+    ],
+    answer: 2,
+    why: "The four essential items are: IP address, subnet mask, default gateway, and DNS server address. The MAC address is burned into the NIC by the manufacturer and is not manually configured by an administrator for TCP/IP communication."
+  },
+  {
+    id: 2024,
+    topic: "Network Layer",
+    question: "Host A (10.1.1.5/24) wants to send a packet to Host B (10.1.2.10/24). How does Host A decide whether the destination is local or remote?",
+    choices: [
+      "It queries DNS for the destination's location",
+      "It ANDs its own IP with its subnet mask and ANDs the destination IP with the same mask; if the results differ, the destination is remote",
+      "It broadcasts an ARP request; if no reply comes, the destination must be remote",
+      "It checks the TTL field of the IP header"
+    ],
+    answer: 1,
+    why: "A host performs a bitwise AND of its IP address with its subnet mask to find its network address, then does the same with the destination IP. If the network portions differ, the destination is on a different subnet (remote)."
+  },
+  {
+    id: 2025,
+    topic: "Network Layer",
+    question: "As a packet traverses three routers from source to destination, which statement is TRUE about the addresses in the frame and packet?",
+    choices: [
+      "Both the MAC addresses and IP addresses change at each hop",
+      "The source and destination MAC addresses change at each hop, but the source and destination IP addresses remain the same",
+      "The IP addresses change at each hop, but the MAC addresses stay the same",
+      "Neither the MAC addresses nor the IP addresses change during transit"
+    ],
+    answer: 1,
+    why: "At each router hop, the Layer 2 (MAC) addresses are rewritten to reflect the next-hop source and destination, while the Layer 3 (IP) addresses remain unchanged end-to-end (assuming no NAT)."
+  },
+  {
+    id: 2026,
+    topic: "Network Layer",
+    question: "Given the CIDR block 192.168.10.0/26, how many usable host addresses are available per subnet?",
+    choices: [
+      "30",
+      "62",
+      "64",
+      "126"
+    ],
+    answer: 1,
+    why: "A /26 mask leaves 6 host bits: 2^6 = 64 total addresses. Subtracting the network address and broadcast address gives 62 usable host addresses."
+  },
+  {
+    id: 2027,
+    topic: "Network Layer",
+    question: "In VLSM (Variable Length Subnet Masking) design, what is the recommended approach when allocating subnets?",
+    choices: [
+      "Start with the smallest subnets first to conserve address space",
+      "Allocate subnets for the largest host requirements first, then subdivide remaining space for smaller subnets",
+      "Use only classful subnet masks throughout the design",
+      "Assign every subnet the same mask size for simplicity"
+    ],
+    answer: 1,
+    why: "VLSM design starts by allocating address blocks for the largest subnets first, then uses remaining address space for progressively smaller subnets. This prevents fragmentation and ensures efficient utilization of the address space."
+  },
+  {
+    id: 2028,
+    topic: "Network Layer",
+    question: "Which first-octet range identifies a Class A IP address?",
+    choices: [
+      "0–127 (though 0 and 127 are reserved)",
+      "128–191",
+      "192–223",
+      "224–239"
+    ],
+    answer: 0,
+    why: "Class A addresses use first octet values 1–126 for assignable networks (0 is reserved for default routing and 127 for loopback). The full range starts at 0 and the first bit is always 0."
+  },
+  {
+    id: 2029,
+    topic: "Network Layer",
+    question: "A Class B network has a default subnet mask of:",
+    choices: [
+      "255.0.0.0 (/8)",
+      "255.255.0.0 (/16)",
+      "255.255.255.0 (/24)",
+      "255.255.255.128 (/25)"
+    ],
+    answer: 1,
+    why: "Class B addresses (128.0.0.0 to 191.255.0.0) use a default subnet mask of 255.255.0.0, or /16 in CIDR notation, giving 16 bits for the network and 16 bits for hosts."
+  },
+
+  // ===== TRANSPORT LAYER (12 questions) =====
+  {
+    id: 2030,
+    topic: "Transport Layer",
+    question: "A developer needs to stream live video where occasional packet loss is acceptable but low latency is critical. Which transport protocol should be used?",
+    choices: [
+      "TCP, because it guarantees delivery",
+      "UDP, because it is connectionless and has lower overhead",
+      "ICMP, because it handles real-time data",
+      "ARP, because it maps addresses efficiently"
+    ],
+    answer: 1,
+    why: "UDP is connectionless with minimal overhead (no handshake, no retransmission). For live video streaming, occasional lost packets are preferable to the delays caused by TCP's retransmission and flow control mechanisms."
+  },
+  {
+    id: 2031,
+    topic: "Transport Layer",
+    question: "During a TCP three-way handshake, what is the correct sequence of segments exchanged?",
+    choices: [
+      "ACK → SYN → SYN-ACK",
+      "SYN → SYN-ACK → ACK",
+      "SYN → ACK → SYN-ACK",
+      "SYN-ACK → SYN → ACK"
+    ],
+    answer: 1,
+    why: "The TCP three-way handshake proceeds: (1) Client sends SYN to server, (2) Server responds with SYN-ACK, (3) Client sends ACK. This establishes synchronised sequence numbers and a reliable connection."
+  },
+  {
+    id: 2032,
+    topic: "Transport Layer",
+    question: "What is the PDU (Protocol Data Unit) called at the Transport Layer for TCP vs UDP?",
+    choices: [
+      "TCP uses frames; UDP uses packets",
+      "TCP uses segments; UDP uses datagrams",
+      "TCP uses datagrams; UDP uses segments",
+      "Both use packets"
+    ],
+    answer: 1,
+    why: "TCP data units are called segments (because TCP segments the byte stream), while UDP data units are called datagrams (reflecting their independent, connectionless nature)."
+  },
+  {
+    id: 2033,
+    topic: "Transport Layer",
+    question: "A system administrator sees traffic on port 23. Which application layer protocol is likely using this port?",
+    choices: [
+      "SMTP",
+      "HTTP",
+      "Telnet",
+      "FTP data transfer"
+    ],
+    answer: 2,
+    why: "Well-known port 23 is assigned to Telnet, a protocol for remote terminal access. Other common ports include 21 (FTP control), 25 (SMTP), and 80 (HTTP)."
+  },
+  {
+    id: 2034,
+    topic: "Transport Layer",
+    question: "What is the purpose of TCP's window size field?",
+    choices: [
+      "It specifies the maximum segment size (MSS) for the connection",
+      "It indicates the number of bytes the sender can transmit before needing an acknowledgment",
+      "It defines the timeout period for retransmissions",
+      "It sets the priority level of the TCP connection"
+    ],
+    answer: 1,
+    why: "The TCP window size field implements flow control by telling the sender how many bytes the receiver is willing to accept before the sender must pause and wait for an acknowledgment. This prevents the receiver's buffer from overflowing."
+  },
+  {
+    id: 2035,
+    topic: "Transport Layer",
+    question: "How does TCP handle error control when a segment is lost in transit?",
+    choices: [
+      "The receiver sends a NAK (negative acknowledgment) requesting retransmission",
+      "The sender retransmits the segment after a timeout expires without receiving an ACK, or upon receiving duplicate ACKs",
+      "TCP drops the connection and the application must restart the transfer",
+      "TCP relies on the network layer to detect and fix errors"
+    ],
+    answer: 1,
+    why: "TCP uses a retransmission timer: if no ACK arrives before the timer expires, the segment is retransmitted. TCP also supports fast retransmit when three duplicate ACKs are received, indicating a lost segment."
+  },
+  {
+    id: 2036,
+    topic: "Transport Layer",
+    question: "The TCP header is a minimum of how many bytes?",
+    choices: [
+      "8 bytes",
+      "16 bytes",
+      "20 bytes",
+      "32 bytes"
+    ],
+    answer: 2,
+    why: "The minimum TCP header is 20 bytes (5 × 32-bit words), containing fields like source/destination port, sequence number, acknowledgment number, flags, window size, checksum, and urgent pointer. Options can extend it up to 60 bytes."
+  },
+  {
+    id: 2037,
+    topic: "Transport Layer",
+    question: "The UDP header contains exactly four fields and is how many bytes in total?",
+    choices: [
+      "4 bytes",
+      "8 bytes",
+      "12 bytes",
+      "20 bytes"
+    ],
+    answer: 1,
+    why: "The UDP header is 8 bytes (64 bits) and contains four fields: Source Port (2 bytes), Destination Port (2 bytes), Length (2 bytes), and Checksum (2 bytes). The checksum uses CRC-16."
+  },
+  {
+    id: 2038,
+    topic: "Transport Layer",
+    question: "Which well-known port number is used by the SMTP protocol?",
+    choices: [
+      "21",
+      "23",
+      "25",
+      "80"
+    ],
+    answer: 2,
+    why: "SMTP (Simple Mail Transfer Protocol) uses well-known port 25 for sending email between mail servers. Port 21 is FTP control, 23 is Telnet, and 80 is HTTP."
+  },
+  {
+    id: 2039,
+    topic: "Transport Layer",
+    question: "Which characteristic distinguishes TCP as 'connection-oriented'?",
+    choices: [
+      "TCP assigns a permanent virtual circuit through the network",
+      "TCP establishes a logical connection via a handshake before data transfer and maintains state throughout",
+      "TCP requires a physical dedicated link between sender and receiver",
+      "TCP sends data only when the receiver polls for it"
+    ],
+    answer: 1,
+    why: "TCP is connection-oriented because it establishes a logical connection via the three-way handshake, maintains state (sequence numbers, window sizes) during data transfer, and gracefully terminates the connection when done."
+  },
+  {
+    id: 2040,
+    topic: "Transport Layer",
+    question: "Which port number is used for HTTP traffic?",
+    choices: [
+      "20",
+      "25",
+      "53",
+      "80"
+    ],
+    answer: 3,
+    why: "HTTP (Hypertext Transfer Protocol) uses well-known port 80. Port 20 is FTP data, port 25 is SMTP, and port 53 is DNS."
+  },
+  {
+    id: 2041,
+    topic: "Transport Layer",
+    question: "The checksum field in the UDP header uses which error detection method?",
+    choices: [
+      "CRC-32",
+      "CRC-16",
+      "Parity check",
+      "MD5 hash"
+    ],
+    answer: 1,
+    why: "The UDP checksum uses CRC-16 (16-bit cyclic redundancy check) to detect errors in the header and data. Unlike TCP's more robust mechanisms, UDP only detects errors—it does not correct or retransmit."
+  },
+
+  // ===== APPLICATION LAYER (12 questions) =====
+  {
+    id: 2042,
+    topic: "Application Layer",
+    question: "A student claims that HTTP can run over either TCP or UDP depending on the situation. Is this correct for standard HTTP?",
+    choices: [
+      "Yes, HTTP uses UDP for small requests and TCP for large transfers",
+      "No, HTTP always uses TCP to ensure reliable delivery of web content",
+      "Yes, HTTP/3 uses UDP, so all versions can use UDP",
+      "No, HTTP uses neither TCP nor UDP; it has its own transport mechanism"
+    ],
+    answer: 1,
+    why: "Standard HTTP (HTTP/1.0, HTTP/1.1, HTTP/2) always uses TCP because web pages require reliable, ordered delivery. While HTTP/3 uses QUIC (over UDP), traditional HTTP is defined as always using TCP."
+  },
+  {
+    id: 2043,
+    topic: "Application Layer",
+    question: "Which protocol is used for sending email between mail servers and operates on port 25?",
+    choices: [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "HTTP"
+    ],
+    answer: 2,
+    why: "SMTP (Simple Mail Transfer Protocol) operates on port 25 and is used for sending and relaying email between mail servers. POP3 and IMAP are used by clients to retrieve email from servers."
+  },
+  {
+    id: 2044,
+    topic: "Application Layer",
+    question: "A user checks email from both a laptop and a phone and expects to see the same messages on both devices. Which retrieval protocol should be configured?",
+    choices: [
+      "POP3, because it synchronises across devices",
+      "IMAP, because it keeps messages on the server and synchronises state across clients",
+      "SMTP, because it delivers to multiple endpoints",
+      "FTP, because it transfers files reliably"
+    ],
+    answer: 1,
+    why: "IMAP keeps emails on the server and synchronises read/unread status, folders, and deletions across multiple clients. POP3 typically downloads and deletes messages from the server, making multi-device access problematic."
+  },
+  {
+    id: 2045,
+    topic: "Application Layer",
+    question: "FTP uses two separate connections during a file transfer. The control connection uses which well-known port?",
+    choices: [
+      "Port 20",
+      "Port 21",
+      "Port 25",
+      "Port 80"
+    ],
+    answer: 1,
+    why: "FTP uses port 21 for the control connection (commands and responses) and port 20 for the data connection (actual file transfer). This dual-connection design separates control signalling from data transfer."
+  },
+  {
+    id: 2046,
+    topic: "Application Layer",
+    question: "DNS typically uses which transport protocol for standard name resolution queries?",
+    choices: [
+      "TCP on port 53",
+      "UDP on port 53",
+      "TCP on port 80",
+      "UDP on port 67"
+    ],
+    answer: 1,
+    why: "DNS uses UDP on port 53 for standard queries because DNS messages are small and the overhead of TCP's three-way handshake is unnecessary. TCP on port 53 is used for zone transfers and large responses."
+  },
+  {
+    id: 2047,
+    topic: "Application Layer",
+    question: "In a three-tier architecture for web applications, what are the three tiers?",
+    choices: [
+      "Client, firewall, server",
+      "Presentation (client), application logic (server), data storage (database server)",
+      "Browser, ISP, web server",
+      "LAN, WAN, Internet"
+    ],
+    answer: 1,
+    why: "Three-tier architecture separates: (1) Presentation tier—the client/browser handling user interface, (2) Application/logic tier—the server processing business logic, and (3) Data tier—the database server storing and managing data."
+  },
+  {
+    id: 2048,
+    topic: "Application Layer",
+    question: "An organisation needs to add more application servers as user demand grows, without redesigning the entire system. Which architectural advantage does n-tier (multi-tier) provide over two-tier?",
+    choices: [
+      "Lower network latency",
+      "Better scalability because each tier can be independently scaled",
+      "Elimination of the need for a database",
+      "Reduced hardware costs"
+    ],
+    answer: 1,
+    why: "N-tier architecture provides scalability because each tier is independent. If the application logic tier is the bottleneck, more application servers can be added without modifying the database or client tiers."
+  },
+  {
+    id: 2049,
+    topic: "Application Layer",
+    question: "In a thick client (fat client) architecture, most of the processing is performed:",
+    choices: [
+      "On the server side",
+      "In the network switches",
+      "On the client machine itself",
+      "In the cloud exclusively"
+    ],
+    answer: 2,
+    why: "A thick (fat) client performs most application processing locally on the client machine. This contrasts with a thin client, which relies on the server for most processing and uses the client primarily for display."
+  },
+  {
+    id: 2050,
+    topic: "Application Layer",
+    question: "A thin client runs a web browser as its only local application and all processing occurs on remote servers. What is a major advantage of this approach?",
+    choices: [
+      "Better offline performance",
+      "Easier centralised management and lower client hardware costs",
+      "Faster local processing speed",
+      "No need for network connectivity"
+    ],
+    answer: 1,
+    why: "Thin clients are easier to manage centrally because software updates and patches only need to be applied on the server. Client hardware can be simpler and cheaper since minimal local processing is required."
+  },
+  {
+    id: 2051,
+    topic: "Application Layer",
+    question: "In a web-based system, what role does middleware play?",
+    choices: [
+      "It provides the physical network infrastructure",
+      "It acts as an intermediary software layer that connects the client-side application to back-end services and databases",
+      "It encrypts all HTTP traffic using SSL/TLS",
+      "It assigns IP addresses to web servers"
+    ],
+    answer: 1,
+    why: "Middleware is software that sits between the client application and the server/database, facilitating communication, data translation, and integration between different software components in a distributed system."
+  },
+  {
+    id: 2052,
+    topic: "Application Layer",
+    question: "When using POP3 to retrieve email, what typically happens to messages on the server after download?",
+    choices: [
+      "They remain on the server indefinitely",
+      "They are deleted from the server after being downloaded to the client",
+      "They are forwarded to a backup server",
+      "They are compressed and archived on the server"
+    ],
+    answer: 1,
+    why: "POP3 (Post Office Protocol version 3) typically downloads messages to the client and deletes them from the server. This is why POP3 is not ideal for users who access email from multiple devices."
+  },
+  {
+    id: 2053,
+    topic: "Application Layer",
+    question: "Which statement about client-server architecture is TRUE?",
+    choices: [
+      "The server always initiates communication with the client",
+      "The client sends requests and the server processes them and returns responses",
+      "Both client and server must run the same operating system",
+      "The client stores all shared data and the server only handles display"
+    ],
+    answer: 1,
+    why: "In client-server architecture, the client initiates communication by sending requests, and the server listens, processes the requests, and returns responses. The server does not initiate connections to clients."
+  },
+
+  // ===== NETWORK DESIGN (8 questions) =====
+  {
+    id: 2054,
+    topic: "Network Design",
+    question: "In a structured network design, the 'building-block' approach focuses on:",
+    choices: [
+      "Designing the entire network from scratch as one monolithic project",
+      "Designing small, standardised pieces (e.g., one LAN module) and replicating them across the organisation",
+      "Purchasing all equipment from a single vendor",
+      "Starting with the WAN and working inward to individual workstations"
+    ],
+    answer: 1,
+    why: "The building-block approach designs small, standardised, repeatable modules (like a standard office LAN) that can be replicated across buildings and sites, reducing design time and improving consistency."
+  },
+  {
+    id: 2055,
+    topic: "Network Design",
+    question: "The needs analysis phase of network design produces which key output?",
+    choices: [
+      "A physical network topology diagram with equipment specifications",
+      "A logical network design describing what the network must do",
+      "A request for proposal (RFP) sent to vendors",
+      "A cost-benefit analysis and budget projection"
+    ],
+    answer: 1,
+    why: "Needs analysis identifies the organisation's requirements and produces a logical network design—a description of what the network needs to accomplish in terms of capacity, services, and connectivity, without specifying physical equipment."
+  },
+  {
+    id: 2056,
+    topic: "Network Design",
+    question: "The technology design phase of network design produces:",
+    choices: [
+      "A logical network design",
+      "A physical network design specifying actual devices, media, and configurations",
+      "An organisational chart of network staff",
+      "A risk assessment report"
+    ],
+    answer: 1,
+    why: "Technology design translates the logical design into a physical design by selecting specific technologies, devices (routers, switches, APs), cable types, and configurations that will implement the required functionality."
+  },
+  {
+    id: 2057,
+    topic: "Network Design",
+    question: "Which deliverables are produced during the cost assessment phase?",
+    choices: [
+      "Logical design and traffic flow analysis",
+      "Request for Proposal (RFP) and a business case",
+      "Physical topology maps and IP addressing plans",
+      "Vendor evaluations and network monitoring tools"
+    ],
+    answer: 1,
+    why: "The cost assessment phase produces an RFP (sent to vendors requesting pricing and solutions) and a business case (justifying the investment to management by comparing costs against benefits)."
+  },
+  {
+    id: 2058,
+    topic: "Network Design",
+    question: "The 'turnpike effect' in network design refers to:",
+    choices: [
+      "Network traffic always takes the shortest physical path",
+      "Once a network or road is built, demand quickly grows to exceed its capacity",
+      "Older technologies are always replaced by faster ones",
+      "Network costs decrease linearly as capacity increases"
+    ],
+    answer: 1,
+    why: "The turnpike effect (named after highway construction patterns) states that once new network capacity is provided, usage rapidly grows to fill and often exceed that capacity—so designers should plan for growth beyond current needs."
+  },
+  {
+    id: 2059,
+    topic: "Network Design",
+    question: "In a typical network design project, which cost category usually represents the largest expense?",
+    choices: [
+      "Hardware and equipment purchases",
+      "Software licensing fees",
+      "Personnel time (design, installation, ongoing management)",
+      "Cable and physical infrastructure"
+    ],
+    answer: 2,
+    why: "Personnel time—including planning, design, installation, training, and ongoing management—typically represents the largest cost in a network design project, often exceeding the cost of hardware and software combined."
+  },
+  {
+    id: 2060,
+    topic: "Network Design",
+    question: "The building-block approach to network design is sometimes described as 'narrow and deep.' What does this mean?",
+    choices: [
+      "The design focuses on a narrow bandwidth allocation applied deeply throughout the network",
+      "A single standardised LAN design (narrow) is replicated many times across the organisation (deep)",
+      "The network has narrow backbones connecting deeply nested subnets",
+      "Only a narrow set of protocols is used across all layers"
+    ],
+    answer: 1,
+    why: "'Narrow and deep' means the designer focuses on perfecting one small building block (e.g., a single-floor LAN design) and then replicates it broadly throughout the organisation, rather than creating many unique designs."
+  },
+  {
+    id: 2061,
+    topic: "Network Design",
+    question: "The network design process typically identifies seven architecture components. Which of the following is an example of the three hierarchical layers commonly referenced?",
+    choices: [
+      "Physical, Data Link, Network",
+      "Access layer, Distribution layer, Core layer",
+      "Client, Middleware, Database",
+      "Internet, Intranet, Extranet"
+    ],
+    answer: 1,
+    why: "The three hierarchical layers in network architecture design are: Access layer (end-user connectivity), Distribution layer (policy enforcement, routing between VLANs), and Core layer (high-speed backbone interconnecting distribution layers)."
+  },
+
+  // ===== BACKBONE NETWORKS AND VLANs (8 questions) =====
+  {
+    id: 2062,
+    topic: "Backbone Networks and VLANs",
+    question: "A switched backbone typically uses which physical topology?",
+    choices: [
+      "Bus topology with a single shared backbone cable",
+      "Star topology with a central high-performance switch",
+      "Ring topology with token passing",
+      "Mesh topology with every switch connected to every other switch"
+    ],
+    answer: 1,
+    why: "A switched backbone uses a star topology where all network segments connect to a central high-performance switch (or chassis switch). This provides high throughput and centralised management."
+  },
+  {
+    id: 2063,
+    topic: "Backbone Networks and VLANs",
+    question: "What is the primary advantage of a routed backbone over a switched backbone?",
+    choices: [
+      "Lower cost due to fewer devices",
+      "It isolates broadcast traffic between network segments",
+      "It provides faster switching speeds",
+      "It eliminates the need for IP addressing"
+    ],
+    answer: 1,
+    why: "Routers operate at Layer 3 and do not forward broadcast frames between segments, creating separate broadcast domains. This prevents broadcast storms from propagating across the entire backbone."
+  },
+  {
+    id: 2064,
+    topic: "Backbone Networks and VLANs",
+    question: "Which of the following is NOT a typical benefit of VLANs?",
+    choices: [
+      "Improved security by isolating sensitive traffic",
+      "Reduced broadcast domains",
+      "Flexibility to group users logically regardless of physical location",
+      "Elimination of the need for any routers in the network"
+    ],
+    answer: 3,
+    why: "VLANs provide security isolation, smaller broadcast domains, easier management, flexibility, and performance improvement. However, routing between VLANs still requires a Layer 3 device (router or Layer 3 switch)."
+  },
+  {
+    id: 2065,
+    topic: "Backbone Networks and VLANs",
+    question: "The IEEE 802.1Q standard defines how VLANs are implemented. What does it add to an Ethernet frame?",
+    choices: [
+      "A new preamble field for synchronisation",
+      "A 4-byte VLAN tag inserted between the source MAC address and the EtherType field",
+      "A 32-bit CRC appended after the existing CRC",
+      "An additional destination MAC address for the VLAN"
+    ],
+    answer: 1,
+    why: "802.1Q inserts a 4-byte tag into the Ethernet frame between the source MAC address and the EtherType/Length field. This tag contains the VLAN ID (12 bits, supporting up to 4094 VLANs) and priority information."
+  },
+  {
+    id: 2066,
+    topic: "Backbone Networks and VLANs",
+    question: "Best practice dictates that each VLAN should be mapped to:",
+    choices: [
+      "A single physical switch",
+      "Its own IP subnet",
+      "A single physical port on the router",
+      "The same broadcast domain as other VLANs"
+    ],
+    answer: 1,
+    why: "Each VLAN should correspond to a unique IP subnet. This simplifies routing, troubleshooting, and security policy enforcement, and ensures that inter-VLAN traffic must pass through a router or Layer 3 switch."
+  },
+  {
+    id: 2067,
+    topic: "Backbone Networks and VLANs",
+    question: "A trunk link between two switches carries traffic for VLANs 10, 20, and 30 simultaneously. How does a receiving switch know which VLAN a frame belongs to?",
+    choices: [
+      "By the frame's source MAC address",
+      "By the VLAN tag (802.1Q) embedded in the frame",
+      "By the IP address in the packet header",
+      "By the physical port number on the switch"
+    ],
+    answer: 1,
+    why: "Trunk ports carry frames for multiple VLANs. Each frame is tagged with an 802.1Q VLAN ID so the receiving switch can identify which VLAN the frame belongs to and forward it to the correct ports."
+  },
+  {
+    id: 2068,
+    topic: "Backbone Networks and VLANs",
+    question: "A chassis switch differs from a fixed-configuration switch in that it:",
+    choices: [
+      "Can only be used in access layer deployments",
+      "Has a modular design allowing different interface cards to be inserted into a shared chassis",
+      "Does not support VLANs or 802.1Q tagging",
+      "Uses only fibre-optic connections"
+    ],
+    answer: 1,
+    why: "A chassis switch has a modular design with slots that accept different line cards (e.g., 10GbE, 40GbE, fibre, copper). This provides flexibility to mix port types and upgrade capacity without replacing the entire switch."
+  },
+  {
+    id: 2069,
+    topic: "Backbone Networks and VLANs",
+    question: "What is the recommended best practice for backbone network design?",
+    choices: [
+      "Use a single flat switched network throughout",
+      "Use a switched backbone at the distribution layer and a routed backbone at the core",
+      "Use only routed connections at every layer",
+      "Eliminate the backbone and use peer-to-peer connections"
+    ],
+    answer: 1,
+    why: "Best practice combines switched backbones at the distribution layer (for high-speed LAN switching within departments) with a routed backbone at the core (to isolate broadcast domains and provide scalable inter-VLAN routing)."
+  },
+
+  // ===== WANs (7 questions) =====
+  {
+    id: 2070,
+    topic: "WANs",
+    question: "A T1 line provides a data rate of:",
+    choices: [
+      "64 Kbps",
+      "1.544 Mbps",
+      "44.736 Mbps",
+      "155.52 Mbps"
+    ],
+    answer: 1,
+    why: "A T1 line uses 24 channels × 64 Kbps each plus 8 Kbps framing overhead = 1.544 Mbps. It is a standard dedicated circuit used for WAN connectivity in North America."
+  },
+  {
+    id: 2071,
+    topic: "WANs",
+    question: "Frame relay is considered an unreliable WAN technology because it:",
+    choices: [
+      "Uses expensive dedicated circuits that frequently fail",
+      "Does not perform error correction or retransmission—it simply discards errored frames",
+      "Cannot support speeds above 64 Kbps",
+      "Requires manual intervention to establish virtual circuits"
+    ],
+    answer: 1,
+    why: "Frame relay is a packet-switched technology that provides no error correction or flow control at the network level. If a frame has errors, it is simply discarded, relying on higher-layer protocols (like TCP) to handle retransmission."
+  },
+  {
+    id: 2072,
+    topic: "WANs",
+    question: "In a frame relay network, what do CIR and MAR represent?",
+    choices: [
+      "CIR = Committed Information Rate (guaranteed bandwidth), MAR = Maximum Allowed Rate (burst speed above CIR)",
+      "CIR = Central Internet Router, MAR = Main Access Router",
+      "CIR = Circuit Identification Register, MAR = Media Access Record",
+      "CIR = Customer Interface Rate, MAR = Maximum Attenuation Range"
+    ],
+    answer: 0,
+    why: "CIR is the guaranteed data rate the carrier commits to providing. MAR (or EIR) is the maximum burst rate allowed above the CIR—traffic above CIR may be marked discard-eligible and dropped during congestion."
+  },
+  {
+    id: 2073,
+    topic: "WANs",
+    question: "MPLS (Multiprotocol Label Switching) operates at which layer of the OSI model?",
+    choices: [
+      "Layer 1 (Physical)",
+      "Layer 2 (sometimes called Layer 2.5, between Data Link and Network)",
+      "Layer 3 (Network)",
+      "Layer 4 (Transport)"
+    ],
+    answer: 1,
+    why: "MPLS is often called a 'Layer 2.5' technology because it inserts labels between the Layer 2 (data link) and Layer 3 (network) headers. Routers forward packets based on labels rather than IP addresses, enabling faster switching."
+  },
+  {
+    id: 2074,
+    topic: "WANs",
+    question: "A company wants to securely connect its branch offices over the public Internet at lower cost than dedicated leased lines. Which technology is most appropriate?",
+    choices: [
+      "Frame relay PVCs",
+      "SONET/SDH rings",
+      "VPN (Virtual Private Network) tunnels over the Internet",
+      "Analog dial-up connections"
+    ],
+    answer: 2,
+    why: "VPNs create encrypted tunnels over the public Internet, providing secure communication between sites at much lower cost than dedicated leased lines or frame relay circuits."
+  },
+  {
+    id: 2075,
+    topic: "WANs",
+    question: "Which three types of VPN are commonly deployed in organisations?",
+    choices: [
+      "Public VPN, Private VPN, Hybrid VPN",
+      "Access VPN, Intranet VPN, Extranet VPN",
+      "Layer 2 VPN, Layer 3 VPN, Layer 4 VPN",
+      "Site VPN, User VPN, Cloud VPN"
+    ],
+    answer: 1,
+    why: "The three VPN types are: Access VPN (remote users connecting to the corporate network), Intranet VPN (connecting an organisation's own sites), and Extranet VPN (connecting with business partners or suppliers)."
+  },
+  {
+    id: 2076,
+    topic: "WANs",
+    question: "SD-WAN separates the network into three planes. Which are they?",
+    choices: [
+      "Physical plane, logical plane, virtual plane",
+      "Data plane, control plane, management plane",
+      "Access plane, distribution plane, core plane",
+      "User plane, server plane, storage plane"
+    ],
+    answer: 1,
+    why: "SD-WAN (Software-Defined WAN) separates: the data plane (forwarding traffic), the control plane (making routing decisions, centralised), and the management plane (configuration and monitoring). This separation enables centralised, software-based WAN management."
+  },
+
+  // ===== THE INTERNET (7 questions) =====
+  {
+    id: 2077,
+    topic: "The Internet",
+    question: "The Internet is organised hierarchically with ISPs at different tiers. Which statement correctly describes the tier structure?",
+    choices: [
+      "Tier 1 ISPs buy transit from Tier 2 ISPs",
+      "Tier 1 ISPs form the backbone, Tier 2 are regional, and Tier 3 are local ISPs that sell to end users",
+      "All ISPs are equal peers with no hierarchy",
+      "Tier 3 ISPs are the largest and connect directly to all other ISPs"
+    ],
+    answer: 1,
+    why: "The Internet hierarchy has Tier 1 ISPs (global backbone, peer with each other for free), Tier 2 ISPs (regional, buy transit from Tier 1 and peer with other Tier 2s), and Tier 3 ISPs (local, buy transit from Tier 2 and sell to end users)."
+  },
+  {
+    id: 2078,
+    topic: "The Internet",
+    question: "Two ISPs of the same tier exchange traffic directly without paying each other. This arrangement is called:",
+    choices: [
+      "Transit",
+      "Peering",
+      "Tunnelling",
+      "Multiplexing"
+    ],
+    answer: 1,
+    why: "Peering is a mutual agreement between ISPs of similar size/tier to exchange traffic directly and for free. This reduces costs compared to purchasing transit from a higher-tier ISP and improves performance."
+  },
+  {
+    id: 2079,
+    topic: "The Internet",
+    question: "An IXP (Internet Exchange Point) serves what purpose?",
+    choices: [
+      "It encrypts all traffic passing through it",
+      "It provides a physical location where multiple ISPs interconnect to exchange traffic",
+      "It assigns IP addresses to ISPs",
+      "It stores cached copies of popular websites"
+    ],
+    answer: 1,
+    why: "An IXP is a physical facility with network switches where multiple ISPs connect to exchange traffic (peer) efficiently. This keeps local traffic local and reduces the need to send traffic through upstream providers."
+  },
+  {
+    id: 2080,
+    topic: "The Internet",
+    question: "ADSL (Asymmetric Digital Subscriber Line) splits the telephone line into three channels using which technique?",
+    choices: [
+      "Time Division Multiplexing (TDM)",
+      "Frequency Division Multiplexing (FDM)",
+      "Code Division Multiplexing (CDM)",
+      "Wavelength Division Multiplexing (WDM)"
+    ],
+    answer: 1,
+    why: "ADSL uses FDM to divide the phone line bandwidth into three channels: voice (0–4 kHz), upstream data, and downstream data. The downstream channel is wider (hence 'asymmetric'), providing faster download than upload speeds."
+  },
+  {
+    id: 2081,
+    topic: "The Internet",
+    question: "Cable modem Internet access has a key disadvantage: bandwidth is shared among approximately how many customers per segment?",
+    choices: [
+      "10–50 customers",
+      "50–100 customers",
+      "300–1,000 customers",
+      "5,000–10,000 customers"
+    ],
+    answer: 2,
+    why: "Cable Internet uses shared coaxial segments serving 300 to 1,000 customers. Since bandwidth is shared, actual throughput decreases as more users in the segment are active simultaneously."
+  },
+  {
+    id: 2082,
+    topic: "The Internet",
+    question: "FTTH (Fibre To The Home) uses which multiplexing technique to carry multiple signals over a single fibre?",
+    choices: [
+      "FDM (Frequency Division Multiplexing)",
+      "TDM (Time Division Multiplexing)",
+      "WDM (Wavelength Division Multiplexing)",
+      "CDM (Code Division Multiplexing)"
+    ],
+    answer: 2,
+    why: "FTTH uses WDM (Wavelength Division Multiplexing) to transmit multiple signals at different wavelengths (colours of light) over a single optical fibre, efficiently utilising the fibre's enormous bandwidth capacity."
+  },
+  {
+    id: 2083,
+    topic: "The Internet",
+    question: "Which organisation is responsible for developing Internet standards through RFCs (Request for Comments)?",
+    choices: [
+      "IEEE (Institute of Electrical and Electronics Engineers)",
+      "IETF (Internet Engineering Task Force)",
+      "ISO (International Organization for Standardization)",
+      "ITU-T (International Telecommunication Union)"
+    ],
+    answer: 1,
+    why: "The IETF develops and promotes Internet standards through RFCs. It operates under the Internet Society (ISOC) and works alongside the IESG (steering), IAB (architecture), and IRTF (research)."
+  },
+
+  // ===== NETWORK SECURITY (7 questions) =====
+  {
+    id: 2084,
+    topic: "Network Security",
+    question: "The CIA triad in information security stands for:",
+    choices: [
+      "Certification, Identification, Authentication",
+      "Confidentiality, Integrity, Availability",
+      "Control, Inspection, Authorization",
+      "Compliance, Insurance, Accountability"
+    ],
+    answer: 1,
+    why: "The CIA triad represents the three core goals of information security: Confidentiality (preventing unauthorised disclosure), Integrity (preventing unauthorised modification), and Availability (ensuring authorised access when needed)."
+  },
+  {
+    id: 2085,
+    topic: "Network Security",
+    question: "An attacker compromises thousands of computers and uses them to simultaneously flood a target web server with traffic. This attack is called a:",
+    choices: [
+      "Man-in-the-middle attack",
+      "SQL injection attack",
+      "Distributed Denial of Service (DDoS) attack",
+      "Phishing attack"
+    ],
+    answer: 2,
+    why: "A DDoS attack uses a botnet (network of compromised computers called zombies or bots, controlled by a handler) to overwhelm a target with traffic, making it unavailable to legitimate users."
+  },
+  {
+    id: 2086,
+    topic: "Network Security",
+    question: "In the context of security controls, a firewall that blocks malicious traffic before it reaches the network is classified as:",
+    choices: [
+      "A detective control",
+      "A corrective control",
+      "A preventive control",
+      "A recovery control"
+    ],
+    answer: 2,
+    why: "Preventive controls stop threats before they cause damage. Firewalls are preventive because they block unauthorised traffic. Detective controls identify threats (e.g., IDS), and corrective controls fix damage after an incident."
+  },
+  {
+    id: 2087,
+    topic: "Network Security",
+    question: "During a risk assessment, an organisation identifies threats, estimates the likelihood and impact, and determines appropriate controls. How many steps are typically in the risk assessment process?",
+    choices: [
+      "3 steps",
+      "4 steps",
+      "5 steps",
+      "7 steps"
+    ],
+    answer: 2,
+    why: "Risk assessment typically involves 5 steps: (1) identify assets, (2) identify threats, (3) assess vulnerabilities, (4) estimate likelihood and impact, and (5) select controls and countermeasures."
+  },
+  {
+    id: 2088,
+    topic: "Network Security",
+    question: "AES (Advanced Encryption Standard) is an example of which type of encryption?",
+    choices: [
+      "Asymmetric (public key) encryption",
+      "Symmetric (shared secret key) encryption",
+      "One-way hash function",
+      "Digital signature algorithm"
+    ],
+    answer: 1,
+    why: "AES is a symmetric encryption algorithm where the same secret key is used for both encryption and decryption. It replaced DES and 3DES as the standard. Asymmetric encryption (e.g., RSA) uses separate public and private keys."
+  },
+  {
+    id: 2089,
+    topic: "Network Security",
+    question: "A network uses a firewall that inspects packet headers (source/destination IP and port) but does not examine the payload content. What type of firewall is this?",
+    choices: [
+      "Application-level (proxy) firewall",
+      "Packet-level (packet-filtering) firewall",
+      "Stateful inspection firewall",
+      "NAT firewall"
+    ],
+    answer: 1,
+    why: "A packet-level (packet-filtering) firewall examines IP and TCP/UDP header fields (addresses, ports, flags) to make allow/deny decisions. It does not inspect application-layer content, unlike an application-level proxy firewall."
+  },
+  {
+    id: 2090,
+    topic: "Network Security",
+    question: "An attacker sends an email pretending to be from a trusted bank, asking the victim to click a link and enter login credentials on a fake website. This attack is called:",
+    choices: [
+      "A denial of service attack",
+      "Social engineering via phishing",
+      "A brute-force password attack",
+      "A buffer overflow exploit"
+    ],
+    answer: 1,
+    why: "Phishing is a social engineering attack where the attacker impersonates a trusted entity to trick victims into revealing sensitive information. It exploits human psychology rather than technical vulnerabilities."
+  },
+
+  // ===== MODELS AND LAYERS (4 questions) =====
+  {
+    id: 2091,
+    topic: "Models and Layers",
+    question: "The OSI model has 7 layers while the TCP/IP model has 5 layers. Which two OSI layers are combined into the Application layer in the TCP/IP model?",
+    choices: [
+      "Transport and Session layers",
+      "Session and Presentation layers (along with Application)",
+      "Physical and Data Link layers",
+      "Network and Transport layers"
+    ],
+    answer: 1,
+    why: "The TCP/IP model combines the OSI Session, Presentation, and Application layers into a single Application layer. The TCP/IP model has: Physical, Data Link, Network, Transport, and Application."
+  },
+  {
+    id: 2092,
+    topic: "Models and Layers",
+    question: "During encapsulation, when the Transport layer receives data from the Application layer, it adds a header to create a:",
+    choices: [
+      "Frame",
+      "Packet",
+      "Segment (TCP) or Datagram (UDP)",
+      "Bit stream"
+    ],
+    answer: 2,
+    why: "Encapsulation at the Transport layer adds a TCP or UDP header to the data, creating a segment (TCP) or datagram (UDP). The Network layer then adds its header to create a packet, and the Data Link layer creates a frame."
+  },
+  {
+    id: 2093,
+    topic: "Models and Layers",
+    question: "A standard developed through a formal standards body like ISO or IEEE is called a:",
+    choices: [
+      "De facto standard",
+      "De jure standard",
+      "Proprietary standard",
+      "Open-source standard"
+    ],
+    answer: 1,
+    why: "De jure ('by law') standards are developed through formal standards organisations like ISO, IEEE, ITU-T, or IETF. De facto ('by practice') standards become widespread through market dominance rather than formal approval."
+  },
+  {
+    id: 2094,
+    topic: "Models and Layers",
+    question: "A LAN, a BN (backbone network), and a WAN differ primarily in their:",
+    choices: [
+      "Protocol stack used",
+      "Geographic scope and coverage area",
+      "Encryption capabilities",
+      "Number of users they can support simultaneously"
+    ],
+    answer: 1,
+    why: "LANs cover a small area (room, building), backbone networks interconnect multiple LANs within a campus or building complex, and WANs span large geographic areas (cities, countries, or globally)."
+  },
+
+  // ===== PHYSICAL LAYER (3 questions) =====
+  {
+    id: 2095,
+    topic: "Physical Layer",
+    question: "Which transmission medium is LEAST susceptible to electromagnetic interference (EMI) and eavesdropping?",
+    choices: [
+      "Unshielded twisted pair (UTP)",
+      "Coaxial cable",
+      "Fibre-optic cable",
+      "Wireless radio frequency"
+    ],
+    answer: 2,
+    why: "Fibre-optic cable transmits data as light pulses through glass or plastic fibres. Since it uses light rather than electrical signals, it is immune to EMI and extremely difficult to tap without detection."
+  },
+  {
+    id: 2096,
+    topic: "Physical Layer",
+    question: "In half-duplex communication, turnaround time refers to:",
+    choices: [
+      "The time it takes to encrypt a message",
+      "The time required to switch the direction of transmission between sender and receiver",
+      "The propagation delay from source to destination",
+      "The time to modulate a digital signal onto a carrier wave"
+    ],
+    answer: 1,
+    why: "In half-duplex mode, only one side can transmit at a time. Turnaround time is the delay required to switch the communication direction—from transmitting to receiving or vice versa."
+  },
+  {
+    id: 2097,
+    topic: "Physical Layer",
+    question: "Twisted pair cable reduces electromagnetic interference by:",
+    choices: [
+      "Using a thick metal shield around each wire",
+      "Twisting pairs of wires together so external interference affects both wires equally and can be cancelled out",
+      "Transmitting data as light pulses instead of electrical signals",
+      "Operating at frequencies below the EMI range"
+    ],
+    answer: 1,
+    why: "Twisting pairs of wires together ensures that external EMI affects both wires in the pair equally. The receiver measures the voltage difference between the two wires, effectively cancelling out the common-mode interference."
+  },
+
+  // ===== DATA LINK LAYER (3 questions) =====
+  {
+    id: 2098,
+    topic: "Data Link Layer",
+    question: "A switch operating in store-and-forward mode waits until it has received the entire frame before making a forwarding decision. What is the primary advantage of this approach?",
+    choices: [
+      "It provides the lowest possible latency",
+      "It can check the CRC to detect and discard corrupted frames before forwarding",
+      "It requires less buffer memory than cut-through switching",
+      "It forwards frames faster than any other switching mode"
+    ],
+    answer: 1,
+    why: "Store-and-forward switching buffers the entire frame and checks the CRC-32 before forwarding. This ensures that corrupted frames are discarded rather than wasted on the destination segment, though it introduces higher latency."
+  },
+  {
+    id: 2099,
+    topic: "Data Link Layer",
+    question: "The Data Link layer is divided into two sublayers. The upper sublayer (LLC) and the lower sublayer (MAC) serve different purposes. What is the primary role of the MAC sublayer?",
+    choices: [
+      "Error correction and flow control for upper layer protocols",
+      "Controlling access to the shared physical medium and addressing frames using hardware addresses",
+      "Establishing logical connections between network devices",
+      "Routing packets between different networks"
+    ],
+    answer: 1,
+    why: "The MAC (Media Access Control) sublayer is responsible for controlling when a device can transmit on the shared medium (access control) and for framing data with source and destination MAC (hardware) addresses."
+  },
+  {
+    id: 2100,
+    topic: "Data Link Layer",
+    question: "An Ethernet frame begins with a 7-byte preamble followed by a 1-byte Start Frame Delimiter (SFD). What purpose does the preamble serve?",
+    choices: [
+      "It carries the destination MAC address",
+      "It provides a pattern of alternating bits to synchronise the receiver's clock with the sender's signal",
+      "It encrypts the frame payload for security",
+      "It identifies the VLAN the frame belongs to"
+    ],
+    answer: 1,
+    why: "The preamble is a 7-byte pattern of alternating 1s and 0s (10101010...) that allows the receiving NIC to synchronise its clock with the incoming signal. The SFD (10101011) signals that the actual frame data follows."
+  },
+
+  // ===== NETWORK MANAGEMENT (4 questions) =====
+  {
+    id: 2101,
+    topic: "Network Management",
+    question: "In SNMP-based network management, what is the relationship between the SNMP agent and the MIB?",
+    choices: [
+      "The MIB is a protocol that the agent uses to encrypt data",
+      "The SNMP agent runs on a managed device and stores device information in the MIB (Management Information Base)",
+      "The MIB replaces the agent on modern network devices",
+      "The agent stores data on the management station, not in the MIB"
+    ],
+    answer: 1,
+    why: "Each managed device runs an SNMP agent—a software process that collects device data (interface status, traffic counters, errors) and stores it in the MIB. The SNMP manager queries the agent to retrieve data from the MIB."
+  },
+  {
+    id: 2102,
+    topic: "Network Management",
+    question: "A network has an MTBF of 4,000 hours and an MTTR of 1 hour. What is the network availability?",
+    choices: [
+      "99.900%",
+      "99.975%",
+      "99.999%",
+      "99.750%"
+    ],
+    answer: 1,
+    why: "Availability = MTBF / (MTBF + MTTR) = 4000 / (4000 + 1) = 4000/4001 ≈ 0.99975 = 99.975%. MTBF is Mean Time Between Failures and MTTR is Mean Time To Repair."
+  },
+  {
+    id: 2103,
+    topic: "Network Management",
+    question: "An organisation's help desk resolves approximately what percentage of network issues at the first level (without escalation)?",
+    choices: [
+      "25–40%",
+      "50–65%",
+      "75–85%",
+      "95–100%"
+    ],
+    answer: 2,
+    why: "Best-practice help desks resolve 75–85% of issues at the first level using knowledge bases, standard procedures, and trained staff. Only complex issues are escalated to second or third-level support."
+  },
+  {
+    id: 2104,
+    topic: "Network Management",
+    question: "The Total Cost of Ownership (TCO) of a networked desktop computer is typically around $7,000 per year. The Network Cost of Ownership (NCO) portion is usually:",
+    choices: [
+      "$100–$500 per year",
+      "$1,500–$3,500 per year",
+      "$5,000–$6,000 per year",
+      "$7,000–$10,000 per year"
+    ],
+    answer: 1,
+    why: "NCO (the network-related portion of TCO) typically ranges from $1,500 to $3,500 per year per desktop. This includes network infrastructure, management, support, and a share of server and WAN costs, while TCO includes all computing costs at about $7,000."
+  }
+];
