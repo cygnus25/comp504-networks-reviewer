@@ -13,6 +13,7 @@
       --canvas-blue: #0374B5; --canvas-hover: #025a8c;
       --correct: #2ea44f; --correct-soft: rgba(46, 164, 79, 0.15);
       --incorrect: #cf222e; --incorrect-soft: rgba(207, 34, 46, 0.15);
+      --unanswered: #e09a4e; --unanswered-soft: rgba(224, 154, 78, 0.15);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -90,10 +91,10 @@
       background: var(--canvas-blue); color: #fff; border-color: var(--canvas-blue);
     }
     .btn-next:hover:not(:disabled) { background: var(--canvas-hover); color: #fff; }
-    .btn-submit-exam {
+    .btn-finish-quiz {
       background: #2ea44f; color: #fff; border-color: #2ea44f;
     }
-    .btn-submit-exam:hover { background: #38b75c; }
+    .btn-finish-quiz:hover { background: #38b75c; }
 
     /* Main Canvas Exam Layout */
     .exam-grid {
@@ -101,6 +102,48 @@
     }
     @media (max-width: 820px) {
       .exam-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Comprehensive Results View (Replaces question when finished) */
+    .results-viewport {
+      display: none; background: var(--surface); border: 2px solid var(--accent);
+      border-radius: 8px; padding: 32px 24px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+    .results-viewport.visible { display: block; }
+    .results-header-tag {
+      font-family: 'Archivo', sans-serif; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+    .results-big-score {
+      font-family: 'Archivo', sans-serif; font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 12px;
+    }
+    .results-percentage {
+      font-size: 1.3rem; font-weight: 600; color: var(--accent); margin-bottom: 24px;
+    }
+    .score-breakdown-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px; max-width: 650px; margin: 0 auto 28px;
+    }
+    .score-stat-box {
+      background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+      padding: 14px 12px;
+    }
+    .stat-label {
+      font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--faint); font-weight: 700; margin-bottom: 4px;
+    }
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 800;
+    }
+    .stat-val.correct-val { color: #7ee787; }
+    .stat-val.incorrect-val { color: #ff7b72; }
+    .stat-val.unanswered-val { color: #e09a4e; }
+    .stat-val.total-val { color: var(--accent); }
+
+    .results-message {
+      color: var(--muted); font-size: 1.05rem; max-width: 620px;
+      margin: 0 auto 24px; line-height: 1.5;
     }
 
     /* Single Question Container (Canvas Style) */
@@ -183,7 +226,7 @@
     }
     .q-matrix {
       display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
-      max-height: 400px; overflow-y: auto; padding-right: 4px;
+      max-height: 380px; overflow-y: auto; padding-right: 4px;
     }
     .matrix-btn {
       padding: 7px 0; text-align: center; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;
@@ -204,20 +247,6 @@
     .matrix-btn.scored-incorrect {
       background: var(--incorrect); color: #fff; border-color: var(--incorrect);
     }
-
-    /* Review View at the end of Exam Mode */
-    .summary-view {
-      display: none; background: var(--surface); border: 2px solid var(--accent);
-      border-radius: 8px; padding: 28px; text-align: center; margin-bottom: 24px;
-    }
-    .summary-view.visible { display: block; }
-    .summary-score {
-      font-family: 'Archivo', sans-serif; font-size: 2.2rem; color: var(--accent);
-      margin-bottom: 8px; font-weight: 700;
-    }
-    .review-action-row {
-      display: flex; gap: 12px; justify-content: center; margin-top: 20px;
-    }
   </style>
 </head>
 <body>
@@ -234,7 +263,7 @@
     </nav>
   </header>
 
-  <!-- Feedback Mode Selector & Reset Controls -->
+  <!-- Feedback Mode Selector & Controls -->
   <div class="mode-banner">
     <div class="mode-left">
       <div style="font-weight:700; font-size:0.92rem;">Feedback Style:</div>
@@ -245,53 +274,78 @@
         <button class="mode-pill active" id="pill-instant" onclick="switchMode('instant')">⚡ Instant</button>
         <button class="mode-pill" id="pill-exam" onclick="switchMode('exam')">📝 Exam (Grade at End)</button>
       </div>
-      <button class="btn btn-reset" onclick="resetAnswers()" title="Clear all answers and start over with the current 100 questions">🔄 Reset Answers</button>
-      <button class="btn btn-shuffle" onclick="restartQuiz()" title="Reshuffle and load a new 100 questions set">🔀 Reshuffle</button>
+      <button class="btn btn-reset" onclick="resetAnswers()">🔄 Reset Answers</button>
+      <button class="btn btn-shuffle" onclick="restartQuiz()">🔀 Reshuffle</button>
     </div>
   </div>
 
-  <!-- End of Exam Summary Card -->
-  <div class="summary-view" id="summary-card">
-    <div style="text-transform:uppercase; font-size:0.85rem; letter-spacing:0.1em; color:var(--muted); font-weight:700;">Assessment Submitted</div>
-    <div class="summary-score" id="final-score-display">100 / 100 (100%)</div>
-    <p style="color:var(--muted); max-width:600px; margin:0 auto;" id="final-score-detail">
-      You have completed this test. Use the Question Palette on the right to jump to any question and inspect your answers and explanations.
-    </p>
-    <div class="review-action-row">
-      <button class="btn btn-next" onclick="jumpTo(0)">Review Questions from Q1</button>
-      <button class="btn btn-reset" onclick="resetAnswers()">🔄 Retake Same Questions</button>
-      <button class="btn btn-shuffle" onclick="restartQuiz()">🔀 Reshuffle New 100 Qs</button>
-    </div>
-  </div>
-
-  <!-- Main Canvas Test Interface -->
+  <!-- Main Canvas Test Layout -->
   <div class="exam-grid">
-    <!-- Single Question Container -->
-    <div class="question-viewport">
-      <div>
-        <div class="q-header">
-          <div class="q-number-title" id="q-header-title">Question 1</div>
-          <div class="q-pts">1 pt</div>
+    <!-- Center Column: Either Single Question OR Results Card -->
+    <div>
+      <!-- End of Quiz / Exam Results Card -->
+      <div class="results-viewport" id="results-screen">
+        <div class="results-header-tag">Assessment Finished</div>
+        <div class="results-big-score" id="res-score-number">88 / 100</div>
+        <div class="results-percentage" id="res-percentage">88% Final Score</div>
+
+        <div class="score-breakdown-grid">
+          <div class="score-stat-box">
+            <div class="stat-label">Correct</div>
+            <div class="stat-val correct-val" id="res-stat-correct">0</div>
+          </div>
+          <div class="score-stat-box">
+            <div class="stat-label">Incorrect</div>
+            <div class="stat-val incorrect-val" id="res-stat-incorrect">0</div>
+          </div>
+          <div class="score-stat-box">
+            <div class="stat-label">Unanswered</div>
+            <div class="stat-val unanswered-val" id="res-stat-unanswered">0</div>
+          </div>
+          <div class="score-stat-box">
+            <div class="stat-label">Total Qs</div>
+            <div class="stat-val total-val" id="res-stat-total">100</div>
+          </div>
         </div>
 
-        <div class="q-topic-badge" id="q-topic">Topic</div>
-        <div class="q-text" id="q-text">Loading question...</div>
+        <p class="results-message" id="res-commentary">
+          Great job! Review any missed questions by clicking the numbered buttons in the Questions palette on the right.
+        </p>
 
-        <div class="options-group" id="options-container"></div>
-
-        <div class="instant-feedback" id="feedback-box">
-          <div id="feedback-status" style="font-weight:700; font-size:1.05rem; margin-bottom:4px;"></div>
-          <div id="feedback-why"></div>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <button class="btn btn-next" onclick="reviewFromQuestion(0)">🔎 Review Answers from Q1</button>
+          <button class="btn btn-reset" onclick="resetAnswers()">🔄 Retake Same 100 Qs</button>
+          <button class="btn btn-shuffle" onclick="restartQuiz()">🔀 Reshuffle New 100 Qs</button>
         </div>
       </div>
 
-      <!-- Canvas Navigation Bar -->
-      <div class="nav-actions">
-        <button class="btn" id="btn-prev" onclick="navigate(-1)">← Previous</button>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:0.88rem; color:var(--muted);" id="q-indicator">1 of 100</span>
-        <div style="display:flex; gap:10px;">
-          <button class="btn btn-submit-exam" id="btn-submit" style="display:none;" onclick="submitExam()">Submit Exam</button>
-          <button class="btn btn-next" id="btn-next" onclick="navigate(1)">Next →</button>
+      <!-- Single Question Container -->
+      <div class="question-viewport" id="question-card">
+        <div>
+          <div class="q-header">
+            <div class="q-number-title" id="q-header-title">Question 1</div>
+            <div class="q-pts">1 pt</div>
+          </div>
+
+          <div class="q-topic-badge" id="q-topic">Topic</div>
+          <div class="q-text" id="q-text">Loading question...</div>
+
+          <div class="options-group" id="options-container"></div>
+
+          <div class="instant-feedback" id="feedback-box">
+            <div id="feedback-status" style="font-weight:700; font-size:1.05rem; margin-bottom:4px;"></div>
+            <div id="feedback-why"></div>
+          </div>
+        </div>
+
+        <!-- Canvas Navigation Bar -->
+        <div class="nav-actions">
+          <button class="btn" id="btn-prev" onclick="navigate(-1)">← Previous</button>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.88rem; color:var(--muted);" id="q-indicator">1 of 100</span>
+          <div style="display:flex; gap:10px;">
+            <button class="btn btn-finish-quiz" id="btn-finish" onclick="finishAndShowResults()">Check Results 🏁</button>
+            <button class="btn btn-next" id="btn-next" onclick="navigate(1)">Next →</button>
+          </div>
         </div>
       </div>
     </div>
@@ -304,6 +358,7 @@
       </div>
       <div class="q-matrix" id="question-matrix"></div>
       <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:12px; display:flex; flex-direction:column; gap:8px;">
+        <button class="btn btn-finish-quiz" style="width:100%; justify-content:center;" onclick="finishAndShowResults()">Check Results 🏁</button>
         <button class="btn btn-reset" style="width:100%; justify-content:center;" onclick="resetAnswers()">🔄 Reset Answers</button>
         <button class="btn btn-shuffle" style="width:100%; justify-content:center;" onclick="restartQuiz()">🔀 Reshuffle 100 Qs</button>
       </div>
@@ -317,7 +372,7 @@
   let currentIndex = 0;
   let userAnswers = {};
   let feedbackMode = 'instant'; // 'instant' or 'exam'
-  let isSubmitted = false;
+  let isFinished = false;
 
   function shuffle(arr) {
     const a = [...arr];
@@ -334,21 +389,20 @@
     document.getElementById('pill-exam').classList.toggle('active', mode === 'exam');
     document.getElementById('mode-desc').textContent = mode === 'instant' 
       ? 'Instant mode: See answer and explanation immediately after choosing.'
-      : 'Exam mode: Answer all questions with Next, then click Submit at the end to check everything.';
+      : 'Exam mode: Answer questions with Next, then see your final score at the end.';
     resetAnswers();
   }
 
-  // Clears user answers without reshuffling the question order
   function resetAnswers() {
     userAnswers = {};
     currentIndex = 0;
-    isSubmitted = false;
-    document.getElementById('summary-card').classList.remove('visible');
+    isFinished = false;
+    document.getElementById('results-screen').classList.remove('visible');
+    document.getElementById('question-card').style.display = 'flex';
     renderMatrix();
     renderCurrentQuestion();
   }
 
-  // Reshuffles a fresh 100 questions
   function restartQuiz() {
     currentQuestions = shuffle(ALL_QUESTIONS).slice(0, 100);
     resetAnswers();
@@ -379,14 +433,14 @@
       const selected = userAnswers[q.id];
       if (selected !== undefined) {
         answeredCount++;
-        if (isSubmitted || feedbackMode === 'instant') {
+        if (isFinished || feedbackMode === 'instant') {
           btn.classList.add(selected === q.answer ? 'scored-correct' : 'scored-incorrect');
         } else {
           btn.classList.add('answered');
         }
       }
     });
-    document.getElementById('answered-counter').textContent = `${answeredCount}/100`;
+    document.getElementById('answered-counter').textContent = `${answeredCount}/${currentQuestions.length}`;
   }
 
   function renderCurrentQuestion() {
@@ -394,16 +448,12 @@
     document.getElementById('q-header-title').textContent = `Question ${currentIndex + 1}`;
     document.getElementById('q-topic').textContent = q.topic;
     document.getElementById('q-text').textContent = q.question;
-    document.getElementById('q-indicator').textContent = `${currentIndex + 1} of 100`;
+    document.getElementById('q-indicator').textContent = `${currentIndex + 1} of ${currentQuestions.length}`;
 
-    // Prev / Next button states
+    // Navigation buttons
     document.getElementById('btn-prev').disabled = currentIndex === 0;
     const isLast = currentIndex === currentQuestions.length - 1;
-    document.getElementById('btn-next').textContent = isLast ? 'Finish →' : 'Next →';
-    
-    // Show submit button in exam mode on last question or anytime
-    const submitBtn = document.getElementById('btn-submit');
-    submitBtn.style.display = (feedbackMode === 'exam' && !isSubmitted) ? 'inline-block' : 'none';
+    document.getElementById('btn-next').textContent = isLast ? 'Finish 🏁' : 'Next →';
 
     // Render options
     const container = document.getElementById('options-container');
@@ -411,7 +461,7 @@
 
     const selectedChoice = userAnswers[q.id];
     const isAnswered = selectedChoice !== undefined;
-    const showFeedback = (feedbackMode === 'instant' && isAnswered) || isSubmitted;
+    const showFeedback = (feedbackMode === 'instant' && isAnswered) || isFinished;
 
     q.choices.forEach((choice, cIdx) => {
       const letter = String.fromCharCode(65 + cIdx);
@@ -445,7 +495,7 @@
     if (showFeedback) {
       const isCorrect = selectedChoice === q.answer;
       feedbackBox.className = 'instant-feedback ' + (isCorrect ? 'show-correct' : 'show-incorrect');
-      document.getElementById('feedback-status').innerHTML = isCorrect ? '✓ Correct!' : '✕ Incorrect';
+      document.getElementById('feedback-status').innerHTML = isCorrect ? '✓ Correct!' : (selectedChoice === undefined ? '✕ Unanswered' : '✕ Incorrect');
       document.getElementById('feedback-why').innerHTML = `<strong>Official Rule:</strong> ${escapeHtml(q.why)}`;
     } else {
       feedbackBox.className = 'instant-feedback';
@@ -462,34 +512,66 @@
   function navigate(delta) {
     if (currentIndex + delta >= 0 && currentIndex + delta < currentQuestions.length) {
       currentIndex += delta;
+      document.getElementById('results-screen').classList.remove('visible');
+      document.getElementById('question-card').style.display = 'flex';
       renderCurrentQuestion();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (currentIndex + delta >= currentQuestions.length) {
-      if (feedbackMode === 'exam' && !isSubmitted) {
-        submitExam();
-      }
+      finishAndShowResults();
     }
   }
 
   function jumpTo(idx) {
     currentIndex = idx;
+    document.getElementById('results-screen').classList.remove('visible');
+    document.getElementById('question-card').style.display = 'flex';
     renderCurrentQuestion();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function submitExam() {
-    isSubmitted = true;
+  function reviewFromQuestion(idx) {
+    jumpTo(idx);
+  }
+
+  // Calculates and displays the end score screen
+  function finishAndShowResults() {
+    isFinished = true;
     let correct = 0;
+    let answered = 0;
+    const total = currentQuestions.length;
+
     currentQuestions.forEach(q => {
-      if (userAnswers[q.id] === q.answer) correct++;
+      const sel = userAnswers[q.id];
+      if (sel !== undefined) answered++;
+      if (sel === q.answer) correct++;
     });
 
-    const pct = Math.round((correct / currentQuestions.length) * 100);
-    const summaryCard = document.getElementById('summary-card');
-    document.getElementById('final-score-display').textContent = `${correct} / ${currentQuestions.length} (${pct}%)`;
-    summaryCard.classList.add('visible');
-    
-    renderCurrentQuestion();
+    const incorrect = answered - correct;
+    const unanswered = total - answered;
+    const pct = Math.round((correct / total) * 100);
+
+    // Update results screen numbers
+    document.getElementById('res-score-number').textContent = `${correct} / ${total}`;
+    document.getElementById('res-percentage').textContent = `${pct}% Final Score (${correct} Points)`;
+    document.getElementById('res-stat-correct').textContent = correct;
+    document.getElementById('res-stat-incorrect').textContent = incorrect;
+    document.getElementById('res-stat-unanswered').textContent = unanswered;
+    document.getElementById('res-stat-total').textContent = total;
+
+    let commentary = '';
+    if (pct >= 80) {
+      commentary = '🌟 Outstanding! You have solid mastery of these networking concepts. Ready for the exam!';
+    } else if (pct >= 60) {
+      commentary = '👍 Good effort! Review your missed questions below to cement your understanding.';
+    } else {
+      commentary = '📚 Keep practicing! Focus on the red-marked questions to master the key rules before exam day.';
+    }
+    document.getElementById('res-commentary').textContent = commentary;
+
+    // Show results screen and hide question card
+    document.getElementById('question-card').style.display = 'none';
+    document.getElementById('results-screen').classList.add('visible');
+    updateMatrixStatus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
