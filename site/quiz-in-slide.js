@@ -1,7 +1,4 @@
 // Comprehensive COMP504 Question Bank (140 Questions):
-// Questions 1-85: Official Lecture In-Slide Quizzes
-// Questions 86-126: Final Exam Revision Focus (100% of revision bullet points covered)
-// Questions 127-140: Final Practical Lab Cisco CLI Commands & Verification
 const ALL_QUESTIONS = [
   {
     "id": "ch02-s24",
@@ -17,12 +14,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 24) records this statement as: False.",
+    "explanation": "An application architecture divides the four application functions (presentation, application logic, data access, data storage) between clients and servers. It is not performed solely by clients.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 24) records this statement as: False."
+    "why": "An application architecture divides the four application functions (presentation, application logic, data access, data storage) between clients and servers. It is not performed solely by clients."
   },
   {
     "id": "ch02-s25",
@@ -38,12 +35,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 25) records this statement as: False.",
+    "explanation": "In host-based networks, the server (host) does virtually all the work, while the client is just a dumb terminal. In client-based networks, the client does the work. Thus they are opposite, not similar.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 25) records this statement as: False."
+    "why": "In host-based networks, the server (host) does virtually all the work, while the client is just a dumb terminal. In client-based networks, the client does the work. Thus they are opposite, not similar."
   },
   {
     "id": "ch02-s26",
@@ -59,12 +56,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 26) records this statement as: True.",
+    "explanation": "Web browsing is the classic example of client-server architecture: the browser (client) handles presentation and requests pages, while the web server stores and serves the web pages.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 26) records this statement as: True."
+    "why": "Web browsing is the classic example of client-server architecture: the browser (client) handles presentation and requests pages, while the web server stores and serves the web pages."
   },
   {
     "id": "ch02-s27",
@@ -80,12 +77,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 27) records this statement as: True.",
+    "explanation": "Middleware acts as an intermediary translation layer, allowing software applications on different client and server platforms to communicate and exchange data seamlessly.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 27) records this statement as: True."
+    "why": "Middleware acts as an intermediary translation layer, allowing software applications on different client and server platforms to communicate and exchange data seamlessly."
   },
   {
     "id": "ch02-s28",
@@ -101,12 +98,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 28) records this statement as: True.",
+    "explanation": "In a 3-tier architecture, presentation logic sits on the client, application/business logic sits on the application server, and data access logic/storage sits on the database server.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 28) records this statement as: True."
+    "why": "In a 3-tier architecture, presentation logic sits on the client, application/business logic sits on the application server, and data access logic/storage sits on the database server."
   },
   {
     "id": "ch02-s29",
@@ -125,7 +122,7 @@ const ALL_QUESTIONS = [
       "puts less load on a network than a two-tiered architecture because there tends to be less communication among the servers."
     ],
     "answer": 0,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 29) records option A: \"is generally more “scalable” than a three-tiered architecture.\" as the correct answer.",
+    "explanation": "n-tier architectures spread application logic across multiple specialized servers, which allows individual bottlenecks to be scaled independently, making them more scalable than 3-tier.",
     "choices": [
       "is generally more “scalable” than a three-tiered architecture.",
       "is generally less “scalable” than a three-tiered architecture.",
@@ -133,7 +130,7 @@ const ALL_QUESTIONS = [
       "uses exactly three sets of computers in which the client is responsible for presentation, one set of servers is responsible for data access logic and data storage, and application logic is spread across two or more different sets of servers.",
       "puts less load on a network than a two-tiered architecture because there tends to be less communication among the servers."
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 29) records option A: \"is generally more “scalable” than a three-tiered architecture.\" as the correct answer."
+    "why": "n-tier architectures spread application logic across multiple specialized servers, which allows individual bottlenecks to be scaled independently, making them more scalable than 3-tier."
   },
   {
     "id": "ch02-s37",
@@ -149,12 +146,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 37) records this statement as: False.",
+    "explanation": "The standard protocol between web browsers and web servers is HTTP (Hypertext Transfer Protocol), not 'web protocol'.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 37) records this statement as: False."
+    "why": "The standard protocol between web browsers and web servers is HTTP (Hypertext Transfer Protocol), not 'web protocol'."
   },
   {
     "id": "ch02-s38",
@@ -170,12 +167,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 38) records this statement as: False.",
+    "explanation": "The first line of an HTTP request is called the 'Request Line' (which contains the method like GET, URL, and HTTP version), whereas the 'Request Header' contains optional metadata like user-agent and accept types.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 38) records this statement as: False."
+    "why": "The first line of an HTTP request is called the 'Request Line' (which contains the method like GET, URL, and HTTP version), whereas the 'Request Header' contains optional metadata like user-agent and accept types."
   },
   {
     "id": "ch02-s39",
@@ -191,12 +188,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 39) records this statement as: False.",
+    "explanation": "Only the request line is strictly required in a basic HTTP GET request. The request header and request body are optional (GET requests typically have no request body).",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch02 Application layer-2.pptx, slide 39) records this statement as: False."
+    "why": "Only the request line is strictly required in a basic HTTP GET request. The request header and request body are optional (GET requests typically have no request body)."
   },
   {
     "id": "ch03-s7",
@@ -215,7 +212,7 @@ const ALL_QUESTIONS = [
       "data link"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 7) records option A: \"physical\" as the correct answer.",
+    "explanation": "The physical layer (Layer 1) is responsible for transmitting raw binary data (bits) across physical media using voltages, radio waves, or light pulses.",
     "choices": [
       "physical",
       "transport",
@@ -223,7 +220,7 @@ const ALL_QUESTIONS = [
       "terminal",
       "data link"
     ],
-    "why": "Source slide (ch03 Physical layer-1.pptx, slide 7) records option A: \"physical\" as the correct answer."
+    "why": "The physical layer (Layer 1) is responsible for transmitting raw binary data (bits) across physical media using voltages, radio waves, or light pulses."
   },
   {
     "id": "ch03-s16",
@@ -242,7 +239,7 @@ const ALL_QUESTIONS = [
       "simplex"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 16) records option D: \"shared\" as the correct answer.",
+    "explanation": "A multipoint circuit connects multiple computers to the same physical circuit, which means the communication medium is shared among all connected devices.",
     "choices": [
       "analog",
       "dedicated",
@@ -250,7 +247,7 @@ const ALL_QUESTIONS = [
       "shared",
       "simplex"
     ],
-    "why": "Source slide (ch03 Physical layer-1.pptx, slide 16) records option D: \"shared\" as the correct answer."
+    "why": "A multipoint circuit connects multiple computers to the same physical circuit, which means the communication medium is shared among all connected devices."
   },
   {
     "id": "ch03-s27",
@@ -269,7 +266,7 @@ const ALL_QUESTIONS = [
       "duplexed and non-duplexed"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 27) records option B: \"guided and wireless (radiated)\" as the correct answer.",
+    "explanation": "Transmission media are divided into two fundamental categories: guided media (physical cables like twisted pair, coax, fiber) and wireless/radiated media (radio waves, microwaves, infrared).",
     "choices": [
       "statistical and frequency",
       "guided and wireless (radiated)",
@@ -277,7 +274,7 @@ const ALL_QUESTIONS = [
       "attenuator and Gaussian",
       "duplexed and non-duplexed"
     ],
-    "why": "Source slide (ch03 Physical layer-1.pptx, slide 27) records option B: \"guided and wireless (radiated)\" as the correct answer."
+    "why": "Transmission media are divided into two fundamental categories: guided media (physical cables like twisted pair, coax, fiber) and wireless/radiated media (radio waves, microwaves, infrared)."
   },
   {
     "id": "ch03-s28",
@@ -296,7 +293,7 @@ const ALL_QUESTIONS = [
       "fiber optics"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 28) records option D: \"microwave\" as the correct answer.",
+    "explanation": "Microwave transmits high-frequency electromagnetic radio signals through the air without physical conductors, making it a wireless (radiated) medium.",
     "choices": [
       "unshielded twisted pair",
       "shielded twisted pair",
@@ -304,7 +301,7 @@ const ALL_QUESTIONS = [
       "microwave",
       "fiber optics"
     ],
-    "why": "Source slide (ch03 Physical layer-1.pptx, slide 28) records option D: \"microwave\" as the correct answer."
+    "why": "Microwave transmits high-frequency electromagnetic radio signals through the air without physical conductors, making it a wireless (radiated) medium."
   },
   {
     "id": "ch03-s29",
@@ -323,7 +320,7 @@ const ALL_QUESTIONS = [
       "fiber optic cable"
     ],
     "answer": 4,
-    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 29) records option E: \"fiber optic cable\" as the correct answer.",
+    "explanation": "Fiber optic cables transmit light pulses through glass or plastic cores, making them completely immune to electrical noise, electromagnetic interference (EMI), and harsh environmental weather.",
     "choices": [
       "shielded twisted pair",
       "unshielded twisted pair",
@@ -331,7 +328,7 @@ const ALL_QUESTIONS = [
       "coaxial cable",
       "fiber optic cable"
     ],
-    "why": "Source slide (ch03 Physical layer-1.pptx, slide 29) records option E: \"fiber optic cable\" as the correct answer."
+    "why": "Fiber optic cables transmit light pulses through glass or plastic cores, making them completely immune to electrical noise, electromagnetic interference (EMI), and harsh environmental weather."
   },
   {
     "id": "ch04-s15",
@@ -350,7 +347,7 @@ const ALL_QUESTIONS = [
       "the physical and the network layers."
     ],
     "answer": 4,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 15) records option E: \"the physical and the network layers.\" as the correct answer.",
+    "explanation": "In the standard 5-layer Internet model (Physical, Data Link, Network, Transport, Application), the Data Link layer (Layer 2) sits directly between the Physical layer (Layer 1) and Network layer (Layer 3).",
     "choices": [
       "the physical and the application layers",
       "the network and the application layers",
@@ -358,7 +355,7 @@ const ALL_QUESTIONS = [
       "the physical and the application layers",
       "the physical and the network layers."
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 15) records option E: \"the physical and the network layers.\" as the correct answer."
+    "why": "In the standard 5-layer Internet model (Physical, Data Link, Network, Transport, Application), the Data Link layer (Layer 2) sits directly between the Physical layer (Layer 1) and Network layer (Layer 3)."
   },
   {
     "id": "ch04-s16",
@@ -377,7 +374,7 @@ const ALL_QUESTIONS = [
       "It organizes data from the physical layer and passes these coherent messages directly to the application layer."
     ],
     "answer": 2,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 16) records option C: \"It performs error detection.\" as the correct answer.",
+    "explanation": "A primary responsibility of the Data Link layer is error detection (using parity, checksum, or CRC) to ensure frames are received without transmission errors before passing them up.",
     "choices": [
       "It accepts streams of bits from the application layer.",
       "It is responsible for encoding the bit-stream as a series of electronic voltages.",
@@ -385,7 +382,7 @@ const ALL_QUESTIONS = [
       "It performs routing functions.",
       "It organizes data from the physical layer and passes these coherent messages directly to the application layer."
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 16) records option C: \"It performs error detection.\" as the correct answer."
+    "why": "A primary responsibility of the Data Link layer is error detection (using parity, checksum, or CRC) to ensure frames are received without transmission errors before passing them up."
   },
   {
     "id": "ch04-s17",
@@ -404,7 +401,7 @@ const ALL_QUESTIONS = [
       "Error control"
     ],
     "answer": 2,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 17) records option C: \"Amplitude shift keying\" as the correct answer.",
+    "explanation": "Amplitude Shift Keying (ASK) is a physical layer modulation technique that modulates carrier waves, not a data link layer protocol function.",
     "choices": [
       "Media access control",
       "Message delineation",
@@ -412,7 +409,7 @@ const ALL_QUESTIONS = [
       "Indicating when a message starts and stops",
       "Error control"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 17) records option C: \"Amplitude shift keying\" as the correct answer."
+    "why": "Amplitude Shift Keying (ASK) is a physical layer modulation technique that modulates carrier waves, not a data link layer protocol function."
   },
   {
     "id": "ch04-s18",
@@ -431,7 +428,7 @@ const ALL_QUESTIONS = [
       "have many collisions."
     ],
     "answer": 1,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 18) records option B: \"work better than contention approaches for large networks that have high usage.\" as the correct answer.",
+    "explanation": "Controlled access methods (like polling or token passing) avoid collisions completely, making them much more efficient than contention methods when network traffic and usage are high.",
     "choices": [
       "work better than contention approaches for small networks that have low usage.",
       "work better than contention approaches for large networks that have high usage.",
@@ -439,7 +436,7 @@ const ALL_QUESTIONS = [
       "do not require a host, server, or active monitor to assign media access control.",
       "have many collisions."
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 18) records option B: \"work better than contention approaches for large networks that have high usage.\" as the correct answer."
+    "why": "Controlled access methods (like polling or token passing) avoid collisions completely, making them much more efficient than contention methods when network traffic and usage are high."
   },
   {
     "id": "ch04-s19",
@@ -458,7 +455,7 @@ const ALL_QUESTIONS = [
       "transport sublayer"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 19) records option A: \"logical link control sublayer\" as the correct answer.",
+    "explanation": "The IEEE 802 LAN architecture divides the Data Link layer into two sublayers: the Logical Link Control (LLC) sublayer and the Media Access Control (MAC) sublayer.",
     "choices": [
       "logical link control sublayer",
       "network control sublayer",
@@ -466,7 +463,7 @@ const ALL_QUESTIONS = [
       "physical sublayer",
       "transport sublayer"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 19) records option A: \"logical link control sublayer\" as the correct answer."
+    "why": "The IEEE 802 LAN architecture divides the Data Link layer into two sublayers: the Logical Link Control (LLC) sublayer and the Media Access Control (MAC) sublayer."
   },
   {
     "id": "ch04-s27",
@@ -485,7 +482,7 @@ const ALL_QUESTIONS = [
       "shielded twisted pair"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 27) records option A: \"fiber optic cable\" as the correct answer.",
+    "explanation": "Fiber optic cables transmit pulses of light rather than electricity, making them completely immune to electromagnetic interference (EMI) and radio frequency noise.",
     "choices": [
       "fiber optic cable",
       "coaxial cable",
@@ -493,7 +490,7 @@ const ALL_QUESTIONS = [
       "unshielded twisted pair",
       "shielded twisted pair"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 27) records option A: \"fiber optic cable\" as the correct answer."
+    "why": "Fiber optic cables transmit pulses of light rather than electricity, making them completely immune to electromagnetic interference (EMI) and radio frequency noise."
   },
   {
     "id": "ch04-s28",
@@ -512,7 +509,7 @@ const ALL_QUESTIONS = [
       "cross-talk."
     ],
     "answer": 2,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 28) records option C: \"spikes.\" as the correct answer.",
+    "explanation": "Voltage spikes (sudden transient electrical pulses caused by lightning, power surges, or switching motors) are the primary source of impulse noise and bit errors in communications.",
     "choices": [
       "echoes.",
       "intermodulation noise.",
@@ -520,7 +517,7 @@ const ALL_QUESTIONS = [
       "attenuation.",
       "cross-talk."
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 28) records option C: \"spikes.\" as the correct answer."
+    "why": "Voltage spikes (sudden transient electrical pulses caused by lightning, power surges, or switching motors) are the primary source of impulse noise and bit errors in communications."
   },
   {
     "id": "ch04-s29",
@@ -539,7 +536,7 @@ const ALL_QUESTIONS = [
       "Gray noise"
     ],
     "answer": 2,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 29) records option C: \"Impulse noise\" as the correct answer.",
+    "explanation": "Impulse noise consists of sudden, high-voltage spikes that can wipe out a consecutive group of bits, causing burst errors rather than isolated single-bit errors.",
     "choices": [
       "Cross-talk",
       "Attenuation",
@@ -547,7 +544,7 @@ const ALL_QUESTIONS = [
       "Intermodulation noise",
       "Gray noise"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 29) records option C: \"Impulse noise\" as the correct answer."
+    "why": "Impulse noise consists of sudden, high-voltage spikes that can wipe out a consecutive group of bits, causing burst errors rather than isolated single-bit errors."
   },
   {
     "id": "ch04-s30",
@@ -566,7 +563,7 @@ const ALL_QUESTIONS = [
       "increases with lower frequency signals."
     ],
     "answer": 0,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 30) records option A: \"occurs when one circuit picks up signals in another.\" as the correct answer.",
+    "explanation": "Crosstalk occurs when electromagnetic signals radiating from one wire pair bleed over and are picked up by an adjacent wire pair.",
     "choices": [
       "occurs when one circuit picks up signals in another.",
       "is always bothersome because it has a high signal strength.",
@@ -574,7 +571,7 @@ const ALL_QUESTIONS = [
       "decreases during wet or damp weather.",
       "increases with lower frequency signals."
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 30) records option A: \"occurs when one circuit picks up signals in another.\" as the correct answer."
+    "why": "Crosstalk occurs when electromagnetic signals radiating from one wire pair bleed over and are picked up by an adjacent wire pair."
   },
   {
     "id": "ch04-s31",
@@ -593,7 +590,7 @@ const ALL_QUESTIONS = [
       "echo"
     ],
     "answer": 2,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 31) records option C: \"attenuation\" as the correct answer.",
+    "explanation": "Attenuation is the natural loss of signal power and amplitude as an electromagnetic signal travels through a medium over distance.",
     "choices": [
       "white noise",
       "spiking",
@@ -601,7 +598,7 @@ const ALL_QUESTIONS = [
       "intermodulation noise",
       "echo"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 31) records option C: \"attenuation\" as the correct answer."
+    "why": "Attenuation is the natural loss of signal power and amplitude as an electromagnetic signal travels through a medium over distance."
   },
   {
     "id": "ch04-s32",
@@ -620,7 +617,7 @@ const ALL_QUESTIONS = [
       "Shorting a circuit"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 32) records option A: \"Shielding wires\" as the correct answer.",
+    "explanation": "Shielding wires with metallic foil or braided shielding (like in STP or coaxial cable) blocks external electromagnetic fields, preventing impulse noise and crosstalk.",
     "choices": [
       "Shielding wires",
       "Adding fluorescent lights",
@@ -628,7 +625,7 @@ const ALL_QUESTIONS = [
       "Adding amplifiers to a circuit",
       "Shorting a circuit"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 32) records option A: \"Shielding wires\" as the correct answer."
+    "why": "Shielding wires with metallic foil or braided shielding (like in STP or coaxial cable) blocks external electromagnetic fields, preventing impulse noise and crosstalk."
   },
   {
     "id": "ch04-s33",
@@ -647,7 +644,7 @@ const ALL_QUESTIONS = [
       "Shorting a circuit"
     ],
     "answer": 2,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 33) records option C: \"Adding repeaters or amplifiers to a circuit\" as the correct answer.",
+    "explanation": "Repeaters and amplifiers boost and regenerate the weakened signal at regular intervals along the cable, overcoming the effects of signal attenuation.",
     "choices": [
       "Shielding wires",
       "Adding fluorescent lights",
@@ -655,7 +652,7 @@ const ALL_QUESTIONS = [
       "Changing multiplexing techniques",
       "Shorting a circuit"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 33) records option C: \"Adding repeaters or amplifiers to a circuit\" as the correct answer."
+    "why": "Repeaters and amplifiers boost and regenerate the weakened signal at regular intervals along the cable, overcoming the effects of signal attenuation."
   },
   {
     "id": "ch04-s49",
@@ -674,7 +671,7 @@ const ALL_QUESTIONS = [
       "each character is transmitted independently of all other characters"
     ],
     "answer": 4,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 49) records option E: \"each character is transmitted independently of all other characters\" as the correct answer.",
+    "explanation": "In asynchronous transmission, characters are transmitted independently one by one, with start and stop bits framing each character so the sender and receiver do not require synchronized clocks.",
     "choices": [
       "is used to transmit each character simultaneously with all other characters",
       "has a pre-determined, fixed time between sending characters",
@@ -682,7 +679,7 @@ const ALL_QUESTIONS = [
       "uses a continuous series of start bits as an idle signal",
       "each character is transmitted independently of all other characters"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 49) records option E: \"each character is transmitted independently of all other characters\" as the correct answer."
+    "why": "In asynchronous transmission, characters are transmitted independently one by one, with start and stop bits framing each character so the sender and receiver do not require synchronized clocks."
   },
   {
     "id": "ch04-s50",
@@ -701,7 +698,7 @@ const ALL_QUESTIONS = [
       "PPP"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 50) records option B: \"VT100\" as the correct answer.",
+    "explanation": "VT100 is an asynchronous terminal emulation protocol, whereas SDLC, HDLC, Ethernet, and PPP are all synchronous frame-based protocols.",
     "choices": [
       "SDLC",
       "VT100",
@@ -709,7 +706,7 @@ const ALL_QUESTIONS = [
       "Ethernet",
       "PPP"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 50) records option B: \"VT100\" as the correct answer."
+    "why": "VT100 is an asynchronous terminal emulation protocol, whereas SDLC, HDLC, Ethernet, and PPP are all synchronous frame-based protocols."
   },
   {
     "id": "ch04-s51",
@@ -728,7 +725,7 @@ const ALL_QUESTIONS = [
       "It does not have any error detection capabilities."
     ],
     "answer": 2,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 51) records option C: \"It uses a special bit pattern called a flag at the beginning and end of every frame (or packet).\" as the correct answer.",
+    "explanation": "SDLC (Synchronous Data Link Control) is a bit-oriented synchronous protocol that uses a unique 8-bit flag pattern (01111110) at the start and end of every frame to indicate frame boundaries.",
     "choices": [
       "It is a client-server protocol developed by Compaq in 1996.",
       "It transmits each character independently of one another and includes start and stop bits for each character sent.",
@@ -736,7 +733,7 @@ const ALL_QUESTIONS = [
       "It uses a contention media access control protocol and is used in most LANs today.",
       "It does not have any error detection capabilities."
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 51) records option C: \"It uses a special bit pattern called a flag at the beginning and end of every frame (or packet).\" as the correct answer."
+    "why": "SDLC (Synchronous Data Link Control) is a bit-oriented synchronous protocol that uses a unique 8-bit flag pattern (01111110) at the start and end of every frame to indicate frame boundaries."
   },
   {
     "id": "ch04-s52",
@@ -755,7 +752,7 @@ const ALL_QUESTIONS = [
       "It uses parity bits for error detection."
     ],
     "answer": 3,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 52) records option D: \"Newer version permits jumbo frames.\" as the correct answer.",
+    "explanation": "Modern Ethernet standards (Gigabit and 10-Gigabit Ethernet) support jumbo frames up to 9,000 bytes (compared to the standard 1,518-byte MTU) to improve throughput on high-speed networks.",
     "choices": [
       "It is not very popular.",
       "It is a bit-oriented protocol.",
@@ -763,7 +760,7 @@ const ALL_QUESTIONS = [
       "Newer version permits jumbo frames.",
       "It uses parity bits for error detection."
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 52) records option D: \"Newer version permits jumbo frames.\" as the correct answer."
+    "why": "Modern Ethernet standards (Gigabit and 10-Gigabit Ethernet) support jumbo frames up to 9,000 bytes (compared to the standard 1,518-byte MTU) to improve throughput on high-speed networks."
   },
   {
     "id": "ch04-s56",
@@ -782,7 +779,7 @@ const ALL_QUESTIONS = [
       "MAC address cheesing"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 56) records option A: \"MAC address spoofing\" as the correct answer.",
+    "explanation": "MAC address spoofing is a software technique where a network card alters its transmitted MAC address to impersonate an authorized device and bypass MAC filtering.",
     "choices": [
       "MAC address spoofing",
       "MAC address engaging",
@@ -790,7 +787,7 @@ const ALL_QUESTIONS = [
       "Address regeneration",
       "MAC address cheesing"
     ],
-    "why": "Source slide (ch04 Link layer-2.pptx, slide 56) records option A: \"MAC address spoofing\" as the correct answer."
+    "why": "MAC address spoofing is a software technique where a network card alters its transmitted MAC address to impersonate an authorized device and bypass MAC filtering."
   },
   {
     "id": "ch05-s5",
@@ -806,12 +803,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 5) records this statement as: False.",
+    "explanation": "In the 5-layer Internet model, the Transport layer sits between the Application and Network layers. The Network layer sits between Transport and Data Link.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 5) records this statement as: False."
+    "why": "In the 5-layer Internet model, the Transport layer sits between the Application and Network layers. The Network layer sits between Transport and Data Link."
   },
   {
     "id": "ch05-s6",
@@ -827,12 +824,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 6) records this statement as: False.",
+    "explanation": "TCP/IP is a protocol suite operating at the Transport (TCP) and Network (IP) layers, not at the Data Link layer.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 6) records this statement as: False."
+    "why": "TCP/IP is a protocol suite operating at the Transport (TCP) and Network (IP) layers, not at the Data Link layer."
   },
   {
     "id": "ch05-s7",
@@ -848,12 +845,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 7) records this statement as: False.",
+    "explanation": "The Network layer (IP) provides best-effort, connectionless packet routing. Guaranteed end-to-end delivery is handled above it by TCP at the Transport layer.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 7) records this statement as: False."
+    "why": "The Network layer (IP) provides best-effort, connectionless packet routing. Guaranteed end-to-end delivery is handled above it by TCP at the Transport layer."
   },
   {
     "id": "ch05-s17",
@@ -872,7 +869,7 @@ const ALL_QUESTIONS = [
       "data link"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 17) records option B: \"transport\" as the correct answer.",
+    "explanation": "The Transport layer (Layer 4) connects the application layer with the network layer, managing end-to-end communication, segmentation, and reliability.",
     "choices": [
       "physical",
       "transport",
@@ -880,7 +877,7 @@ const ALL_QUESTIONS = [
       "presentation",
       "data link"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 17) records option B: \"transport\" as the correct answer."
+    "why": "The Transport layer (Layer 4) connects the application layer with the network layer, managing end-to-end communication, segmentation, and reliability."
   },
   {
     "id": "ch05-s18",
@@ -899,7 +896,7 @@ const ALL_QUESTIONS = [
       "Interfacing with the network layer"
     ],
     "answer": 2,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 18) records option C: \"Routing\" as the correct answer.",
+    "explanation": "Routing (finding paths and forwarding packets between networks) is the core responsibility of the Network layer (Layer 3), not the Transport layer.",
     "choices": [
       "End-to-end delivery of the message",
       "Taking messages from the application layer",
@@ -907,7 +904,7 @@ const ALL_QUESTIONS = [
       "Breaking long messages into smaller segments",
       "Interfacing with the network layer"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 18) records option C: \"Routing\" as the correct answer."
+    "why": "Routing (finding paths and forwarding packets between networks) is the core responsibility of the Network layer (Layer 3), not the Transport layer."
   },
   {
     "id": "ch05-s19",
@@ -926,7 +923,7 @@ const ALL_QUESTIONS = [
       "Xerox"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 19) records option A: \"ARPANET\" as the correct answer.",
+    "explanation": "TCP/IP was originally funded and developed for ARPANET (Advanced Research Projects Agency Network) in 1974 by Vint Cerf and Bob Kahn.",
     "choices": [
       "ARPANET",
       "IBM",
@@ -934,7 +931,7 @@ const ALL_QUESTIONS = [
       "Kennesaw State University",
       "Xerox"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 19) records option A: \"ARPANET\" as the correct answer."
+    "why": "TCP/IP was originally funded and developed for ARPANET (Advanced Research Projects Agency Network) in 1974 by Vint Cerf and Bob Kahn."
   },
   {
     "id": "ch05-s20",
@@ -953,7 +950,7 @@ const ALL_QUESTIONS = [
       "32-byte"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 20) records option D: \"192-bit\" as the correct answer.",
+    "explanation": "A typical TCP header with standard options is 24 bytes (192 bits) of control information.",
     "choices": [
       "32-bit",
       "64-bit",
@@ -961,7 +958,7 @@ const ALL_QUESTIONS = [
       "192-bit",
       "32-byte"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 20) records option D: \"192-bit\" as the correct answer."
+    "why": "A typical TCP header with standard options is 24 bytes (192 bits) of control information."
   },
   {
     "id": "ch05-s31",
@@ -980,7 +977,7 @@ const ALL_QUESTIONS = [
       "full complex"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 31) records option D: \"half duplex\" as the correct answer.",
+    "explanation": "Stop-and-wait ARQ is half-duplex in nature because the sender must stop and wait for an acknowledgment (ACK) from the receiver before transmitting the next packet.",
     "choices": [
       "full simplex",
       "half complex",
@@ -988,7 +985,7 @@ const ALL_QUESTIONS = [
       "half duplex",
       "full complex"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 31) records option D: \"half duplex\" as the correct answer."
+    "why": "Stop-and-wait ARQ is half-duplex in nature because the sender must stop and wait for an acknowledgment (ACK) from the receiver before transmitting the next packet."
   },
   {
     "id": "ch05-s32",
@@ -1007,7 +1004,7 @@ const ALL_QUESTIONS = [
       "Stop-and-wait and selective"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 32) records option A: \"Stop-and-wait and continuous\" as the correct answer.",
+    "explanation": "The two primary classes of Automatic Repeat reQuest (ARQ) error-control protocols are Stop-and-wait ARQ (send one, wait) and Continuous ARQ (sliding window with Go-Back-N or Selective Repeat).",
     "choices": [
       "Stop-and-wait and continuous",
       "Half and full duplex",
@@ -1015,7 +1012,7 @@ const ALL_QUESTIONS = [
       "Selective and continuous",
       "Stop-and-wait and selective"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 32) records option A: \"Stop-and-wait and continuous\" as the correct answer."
+    "why": "The two primary classes of Automatic Repeat reQuest (ARQ) error-control protocols are Stop-and-wait ARQ (send one, wait) and Continuous ARQ (sliding window with Go-Back-N or Selective Repeat)."
   },
   {
     "id": "ch05-s34",
@@ -1031,12 +1028,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 34) records this statement as: False.",
+    "explanation": "The network layer (IP) provides only connectionless best-effort packet delivery; it does not guarantee delivery. Reliability and guarantees are provided by TCP at the transport layer.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 34) records this statement as: False."
+    "why": "The network layer (IP) provides only connectionless best-effort packet delivery; it does not guarantee delivery. Reliability and guarantees are provided by TCP at the transport layer."
   },
   {
     "id": "ch05-s35",
@@ -1052,12 +1049,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 35) records this statement as: False.",
+    "explanation": "A subnet mask of 255.255.255.0 means that all computers sharing the first THREE bytes (24 bits) in their IPv4 address belong to the same subnet.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 35) records this statement as: False."
+    "why": "A subnet mask of 255.255.255.0 means that all computers sharing the first THREE bytes (24 bits) in their IPv4 address belong to the same subnet."
   },
   {
     "id": "ch05-s36",
@@ -1073,12 +1070,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 36) records this statement as: True.",
+    "explanation": "In a 255.255.0.0 (/16) subnet mask, the first two bytes are all 1s (11111111.11111111), indicating that computers with the same first two bytes are on the same subnet.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 36) records this statement as: True."
+    "why": "In a 255.255.0.0 (/16) subnet mask, the first two bytes are all 1s (11111111.11111111), indicating that computers with the same first two bytes are on the same subnet."
   },
   {
     "id": "ch05-s37",
@@ -1097,7 +1094,7 @@ const ALL_QUESTIONS = [
       "DNS requests"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 37) records option D: \"HTTP requests\" as the correct answer.",
+    "explanation": "HTTP requests require reliable, in-order transmission to display web pages correctly, so HTTP relies on TCP, never UDP. UDP is used for DNS, DHCP, RIP, and SNMP.",
     "choices": [
       "network management control messages",
       "RIP messages",
@@ -1105,7 +1102,7 @@ const ALL_QUESTIONS = [
       "HTTP requests",
       "DNS requests"
     ],
-    "why": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 37) records option D: \"HTTP requests\" as the correct answer."
+    "why": "HTTP requests require reliable, in-order transmission to display web pages correctly, so HTTP relies on TCP, never UDP. UDP is used for DNS, DHCP, RIP, and SNMP."
   },
   {
     "id": "ch06-s14",
@@ -1121,12 +1118,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 14) records this statement as: False.",
+    "explanation": "The campus backbone (or core layer) connects different building networks across a campus. Providing end-user access is the role of the Access Layer.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 14) records this statement as: False."
+    "why": "The campus backbone (or core layer) connects different building networks across a campus. Providing end-user access is the role of the Access Layer."
   },
   {
     "id": "ch06-s15",
@@ -1142,12 +1139,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 15) records this statement as: True.",
+    "explanation": "Modern organizations use the building-block approach to design networks because technology changes rapidly, and modular standard building blocks reduce complexity and cost.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 15) records this statement as: True."
+    "why": "Modern organizations use the building-block approach to design networks because technology changes rapidly, and modular standard building blocks reduce complexity and cost."
   },
   {
     "id": "ch06-s16",
@@ -1166,7 +1163,7 @@ const ALL_QUESTIONS = [
       "guided network"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 16) records option A: \"building-block\" as the correct answer.",
+    "explanation": "The building-block approach simplifies network design by using standardized, reusable network architectures rather than custom, ground-up engineering cycles.",
     "choices": [
       "building-block",
       "frame definition",
@@ -1174,7 +1171,7 @@ const ALL_QUESTIONS = [
       "systems development life cycle",
       "guided network"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 16) records option A: \"building-block\" as the correct answer."
+    "why": "The building-block approach simplifies network design by using standardized, reusable network architectures rather than custom, ground-up engineering cycles."
   },
   {
     "id": "ch06-s24",
@@ -1193,7 +1190,7 @@ const ALL_QUESTIONS = [
       "The most expensive part of any network is the hardware"
     ],
     "answer": 4,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 24) records option E: \"The most expensive part of any network is the hardware\" as the correct answer.",
+    "explanation": "In modern network design, hardware equipment accounts for a relatively small portion (often under 20%) of the total network budget. The largest expense is ongoing operational and personnel costs.",
     "choices": [
       "The underlying technology of networking devices is changing very rapidly",
       "The underlying technology of client and server devices is changing very rapidly",
@@ -1201,7 +1198,7 @@ const ALL_QUESTIONS = [
       "Growth in network traffic is very high",
       "The most expensive part of any network is the hardware"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 24) records option E: \"The most expensive part of any network is the hardware\" as the correct answer."
+    "why": "In modern network design, hardware equipment accounts for a relatively small portion (often under 20%) of the total network budget. The largest expense is ongoing operational and personnel costs."
   },
   {
     "id": "ch06-s25",
@@ -1220,7 +1217,7 @@ const ALL_QUESTIONS = [
       "the rate of growth of network traffic is not an issue"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 25) records option B: \"the goal is to understand what users and applications the network will support\" as the correct answer.",
+    "explanation": "Needs analysis is the first phase of network design, where the designer identifies the fundamental requirements, types of users, and applications the new network must support.",
     "choices": [
       "the costs of different physical network design alternatives are assessed",
       "the goal is to understand what users and applications the network will support",
@@ -1228,7 +1225,7 @@ const ALL_QUESTIONS = [
       "a baseline of current operations is not important",
       "the rate of growth of network traffic is not an issue"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 25) records option B: \"the goal is to understand what users and applications the network will support\" as the correct answer."
+    "why": "Needs analysis is the first phase of network design, where the designer identifies the fundamental requirements, types of users, and applications the new network must support."
   },
   {
     "id": "ch06-s31",
@@ -1247,7 +1244,7 @@ const ALL_QUESTIONS = [
       "distribution layering"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 31) records option B: \"needs analysis\" as the correct answer.",
+    "explanation": "In needs analysis, the designer meets with stakeholders to establish current and future usage patterns, application traffic, and user requirements.",
     "choices": [
       "technology design",
       "needs analysis",
@@ -1255,7 +1252,7 @@ const ALL_QUESTIONS = [
       "cost assessment",
       "distribution layering"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 31) records option B: \"needs analysis\" as the correct answer."
+    "why": "In needs analysis, the designer meets with stakeholders to establish current and future usage patterns, application traffic, and user requirements."
   },
   {
     "id": "ch06-s32",
@@ -1274,7 +1271,7 @@ const ALL_QUESTIONS = [
       "distribution layering"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 32) records option A: \"technology design\" as the correct answer.",
+    "explanation": "Technology design is the second stage, where the designer evaluates available hardware, transmission media, and protocols to find the best match for the user requirements identified during needs analysis.",
     "choices": [
       "technology design",
       "needs analysis",
@@ -1282,7 +1279,7 @@ const ALL_QUESTIONS = [
       "cost assessment",
       "distribution layering"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 32) records option A: \"technology design\" as the correct answer."
+    "why": "Technology design is the second stage, where the designer evaluates available hardware, transmission media, and protocols to find the best match for the user requirements identified during needs analysis."
   },
   {
     "id": "ch06-s39",
@@ -1301,7 +1298,7 @@ const ALL_QUESTIONS = [
       "distribution layering"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch06 Network design-5.pptx, slide 39) records option D: \"cost assessment\" as the correct answer.",
+    "explanation": "Cost assessment is the third stage, where equipment, circuits, installation, and ongoing maintenance costs from competing vendors are compared against budget.",
     "choices": [
       "technology design",
       "needs analysis",
@@ -1309,7 +1306,7 @@ const ALL_QUESTIONS = [
       "cost assessment",
       "distribution layering"
     ],
-    "why": "Source slide (ch06 Network design-5.pptx, slide 39) records option D: \"cost assessment\" as the correct answer."
+    "why": "Cost assessment is the third stage, where equipment, circuits, installation, and ongoing maintenance costs from competing vendors are compared against budget."
   },
   {
     "id": "ch07-s11",
@@ -1325,12 +1322,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 11) records this statement as: True.",
+    "explanation": "A Network Interface Card (NIC) contains the physical hardware transceiver and unique MAC address that physically connects a computer to the transmission cable.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 11) records this statement as: True."
+    "why": "A Network Interface Card (NIC) contains the physical hardware transceiver and unique MAC address that physically connects a computer to the transmission cable."
   },
   {
     "id": "ch07-s12",
@@ -1346,12 +1343,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 12) records this statement as: True.",
+    "explanation": "Network switches and hubs incorporate electronic repeater circuits that reshape and amplify incoming digital signals to prevent attenuation over cable runs.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 12) records this statement as: True."
+    "why": "Network switches and hubs incorporate electronic repeater circuits that reshape and amplify incoming digital signals to prevent attenuation over cable runs."
   },
   {
     "id": "ch07-s18",
@@ -1367,12 +1364,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 18) records this statement as: False.",
+    "explanation": "Network Operating System (NOS) software primarily provides Application and Presentation layer services (like file sharing, directory services, and print sharing), not the lower physical layer.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 18) records this statement as: False."
+    "why": "Network Operating System (NOS) software primarily provides Application and Presentation layer services (like file sharing, directory services, and print sharing), not the lower physical layer."
   },
   {
     "id": "ch07-s19",
@@ -1388,12 +1385,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 19) records this statement as: True.",
+    "explanation": "A network profile defines user access permissions, group memberships, and which server storage or print resources are made available to specific users or devices.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 19) records this statement as: True."
+    "why": "A network profile defines user access permissions, group memberships, and which server storage or print resources are made available to specific users or devices."
   },
   {
     "id": "ch07-s27",
@@ -1409,12 +1406,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 27) records this statement as: False.",
+    "explanation": "A switch is a smart Layer 2 device that forwards frames only to the specific port where the destination MAC address resides; it does not broadcast every packet to all ports like a hub.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 27) records this statement as: False."
+    "why": "A switch is a smart Layer 2 device that forwards frames only to the specific port where the destination MAC address resides; it does not broadcast every packet to all ports like a hub."
   },
   {
     "id": "ch07-s28",
@@ -1430,12 +1427,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 28) records this statement as: True.",
+    "explanation": "A switch forwarding table (MAC table) maps hardware MAC addresses to specific physical switch ports so incoming frames can be forwarded directly to their destination.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 28) records this statement as: True."
+    "why": "A switch forwarding table (MAC table) maps hardware MAC addresses to specific physical switch ports so incoming frames can be forwarded directly to their destination."
   },
   {
     "id": "ch08-s22",
@@ -1451,12 +1448,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 22) records this statement as: True.",
+    "explanation": "A backbone network is a high-capacity, high-speed network infrastructure designed to interconnect various local area networks (LANs) across an organization.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch08 Backbone network-1-1.pptx, slide 22) records this statement as: True."
+    "why": "A backbone network is a high-capacity, high-speed network infrastructure designed to interconnect various local area networks (LANs) across an organization."
   },
   {
     "id": "ch08-s23",
@@ -1472,12 +1469,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 23) records this statement as: False.",
+    "explanation": "A backbone connecting multiple buildings at a single geographic site is a Campus Backbone, not an Internet backbone (which refers to Tier 1 global ISP backbones).",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch08 Backbone network-1-1.pptx, slide 23) records this statement as: False."
+    "why": "A backbone connecting multiple buildings at a single geographic site is a Campus Backbone, not an Internet backbone (which refers to Tier 1 global ISP backbones)."
   },
   {
     "id": "ch08-s24",
@@ -1493,12 +1490,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 24) records this statement as: True.",
+    "explanation": "Every backbone network requires network connectivity hardware (such as Layer 3 switches or routers) to link individual department LANs to the high-speed backbone core.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch08 Backbone network-1-1.pptx, slide 24) records this statement as: True."
+    "why": "Every backbone network requires network connectivity hardware (such as Layer 3 switches or routers) to link individual department LANs to the high-speed backbone core."
   },
   {
     "id": "ch08-s25",
@@ -1514,12 +1511,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 25) records this statement as: True.",
+    "explanation": "Routers operate at the Network layer (Layer 3) and use logical IP addresses to inspect routing tables and forward packets between different network segments.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch08 Backbone network-1-1.pptx, slide 25) records this statement as: True."
+    "why": "Routers operate at the Network layer (Layer 3) and use logical IP addresses to inspect routing tables and forward packets between different network segments."
   },
   {
     "id": "ch08-s26",
@@ -1535,12 +1532,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 26) records this statement as: False.",
+    "explanation": "Routed backbones move packets between subnets based on Network Layer (IP) addresses, not Layer 2 data link MAC addresses.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch08 Backbone network-1-1.pptx, slide 26) records this statement as: False."
+    "why": "Routed backbones move packets between subnets based on Network Layer (IP) addresses, not Layer 2 data link MAC addresses."
   },
   {
     "id": "ch08-s27",
@@ -1559,7 +1556,7 @@ const ALL_QUESTIONS = [
       "They can only switch messages based on their data link layer addresses."
     ],
     "answer": 4,
-    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 27) records option E: \"They can only switch messages based on their data link layer addresses.\" as the correct answer.",
+    "explanation": "Layer 3 switches inspect both data link MAC addresses and network layer IP addresses, enabling high-speed routing in hardware. Claiming they only switch on data link addresses is false.",
     "choices": [
       "They switch messages based on their IP address.",
       "They can be used in place of routers.",
@@ -1567,7 +1564,7 @@ const ALL_QUESTIONS = [
       "They have more simultaneously active ports than routers.",
       "They can only switch messages based on their data link layer addresses."
     ],
-    "why": "Source slide (ch08 Backbone network-1-1.pptx, slide 27) records option E: \"They can only switch messages based on their data link layer addresses.\" as the correct answer."
+    "why": "Layer 3 switches inspect both data link MAC addresses and network layer IP addresses, enabling high-speed routing in hardware. Claiming they only switch on data link addresses is false."
   },
   {
     "id": "ch10-s21",
@@ -1583,12 +1580,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch10 Internet-2.pptx, slide 21) records this statement as: False.",
+    "explanation": "The Internet is not flat; it is a hierarchical structure organized into three tiers of Internet Service Providers (Tier 1 national backbones, Tier 2 regional, Tier 3 local access).",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch10 Internet-2.pptx, slide 21) records this statement as: False."
+    "why": "The Internet is not flat; it is a hierarchical structure organized into three tiers of Internet Service Providers (Tier 1 national backbones, Tier 2 regional, Tier 3 local access)."
   },
   {
     "id": "ch10-s22",
@@ -1604,12 +1601,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch10 Internet-2.pptx, slide 22) records this statement as: True.",
+    "explanation": "Tier 1 national ISPs interconnect directly and exchange transit traffic without paying each other at Internet Exchange Points (IXPs) through settlement-free peering agreements.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch10 Internet-2.pptx, slide 22) records this statement as: True."
+    "why": "Tier 1 national ISPs interconnect directly and exchange transit traffic without paying each other at Internet Exchange Points (IXPs) through settlement-free peering agreements."
   },
   {
     "id": "ch10-s23",
@@ -1625,12 +1622,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch10 Internet-2.pptx, slide 23) records this statement as: True.",
+    "explanation": "A Point of Presence (POP) is the physical access location where an ISP places routers and switches to connect its network to local customers.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch10 Internet-2.pptx, slide 23) records this statement as: True."
+    "why": "A Point of Presence (POP) is the physical access location where an ISP places routers and switches to connect its network to local customers."
   },
   {
     "id": "ch10-s24",
@@ -1649,7 +1646,7 @@ const ALL_QUESTIONS = [
       "broadband"
     ],
     "answer": 4,
-    "explanation": "Source slide (ch10 Internet-2.pptx, slide 24) records option E: \"broadband\" as the correct answer.",
+    "explanation": "Broadband technologies (such as DSL, Cable modems, and Fiber) provide significantly higher bandwidth and simultaneous communication channels compared to traditional narrowband dial-up modems.",
     "choices": [
       "middleband",
       "narrowband",
@@ -1657,7 +1654,7 @@ const ALL_QUESTIONS = [
       "metalband",
       "broadband"
     ],
-    "why": "Source slide (ch10 Internet-2.pptx, slide 24) records option E: \"broadband\" as the correct answer."
+    "why": "Broadband technologies (such as DSL, Cable modems, and Fiber) provide significantly higher bandwidth and simultaneous communication channels compared to traditional narrowband dial-up modems."
   },
   {
     "id": "ch10-s25",
@@ -1676,7 +1673,7 @@ const ALL_QUESTIONS = [
       "X.25 PAD"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch10 Internet-2.pptx, slide 25) records option A: \"DSLAM\" as the correct answer.",
+    "explanation": "At the telephone company's central office, the DSLAM (DSL Access Multiplexer) splits the voice telephone calls from data and aggregates high-speed DSL data streams onto the digital ISP network.",
     "choices": [
       "DSLAM",
       "GrandSlam",
@@ -1684,7 +1681,7 @@ const ALL_QUESTIONS = [
       "line splitter",
       "X.25 PAD"
     ],
-    "why": "Source slide (ch10 Internet-2.pptx, slide 25) records option A: \"DSLAM\" as the correct answer."
+    "why": "At the telephone company's central office, the DSLAM (DSL Access Multiplexer) splits the voice telephone calls from data and aggregates high-speed DSL data streams onto the digital ISP network."
   },
   {
     "id": "ch10-s26",
@@ -1703,7 +1700,7 @@ const ALL_QUESTIONS = [
       "all of the above."
     ],
     "answer": 1,
-    "explanation": "Source slide (ch10 Internet-2.pptx, slide 26) records option B: \"wavelength division multiplexing\" as the correct answer.",
+    "explanation": "Fiber to the Home (FTTH) networks use Wavelength Division Multiplexing (WDM) to transmit multiple channels of data simultaneously over single optical fibers using different light wavelengths.",
     "choices": [
       "frequency division multiplexing",
       "wavelength division multiplexing",
@@ -1711,7 +1708,7 @@ const ALL_QUESTIONS = [
       "statistical time division multiplexing",
       "all of the above."
     ],
-    "why": "Source slide (ch10 Internet-2.pptx, slide 26) records option B: \"wavelength division multiplexing\" as the correct answer."
+    "why": "Fiber to the Home (FTTH) networks use Wavelength Division Multiplexing (WDM) to transmit multiple channels of data simultaneously over single optical fibers using different light wavelengths."
   },
   {
     "id": "ch10-s31",
@@ -1727,12 +1724,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch10 Internet-2.pptx, slide 31) records this statement as: False.",
+    "explanation": "The Internet Society (ISOC) and Internet Architecture Board (IAB) provide strategic architectural oversight for the Internet, whereas the IESG handles operational standards.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch10 Internet-2.pptx, slide 31) records this statement as: False."
+    "why": "The Internet Society (ISOC) and Internet Architecture Board (IAB) provide strategic architectural oversight for the Internet, whereas the IESG handles operational standards."
   },
   {
     "id": "ch11-s8",
@@ -1748,12 +1745,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch11 Network security-1.pptx, slide 8) records this statement as: True.",
+    "explanation": "Network security encompasses both confidentiality/integrity (preventing hacking and unauthorized access) and availability/business continuity (recovering from outages and disasters).",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch11 Network security-1.pptx, slide 8) records this statement as: True."
+    "why": "Network security encompasses both confidentiality/integrity (preventing hacking and unauthorized access) and availability/business continuity (recovering from outages and disasters)."
   },
   {
     "id": "ch11-s9",
@@ -1769,12 +1766,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch11 Network security-1.pptx, slide 9) records this statement as: True.",
+    "explanation": "Connecting private internal enterprise systems to the global public Internet exponentially expands the attack surface and exposes organizational assets to worldwide threats.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch11 Network security-1.pptx, slide 9) records this statement as: True."
+    "why": "Connecting private internal enterprise systems to the global public Internet exponentially expands the attack surface and exposes organizational assets to worldwide threats."
   },
   {
     "id": "ch11-s10",
@@ -1790,12 +1787,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 1,
-    "explanation": "Source slide (ch11 Network security-1.pptx, slide 10) records this statement as: False.",
+    "explanation": "Data integrity (ensuring information is not altered, tampered with, or destroyed by unauthorized parties) is one of the three core pillars of the CIA security triad (Confidentiality, Integrity, Availability).",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch11 Network security-1.pptx, slide 10) records this statement as: False."
+    "why": "Data integrity (ensuring information is not altered, tampered with, or destroyed by unauthorized parties) is one of the three core pillars of the CIA security triad (Confidentiality, Integrity, Availability)."
   },
   {
     "id": "ch11-s11",
@@ -1811,12 +1808,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch11 Network security-1.pptx, slide 11) records this statement as: True.",
+    "explanation": "Business continuity planning focuses primarily on ensuring continuous system availability and fast disaster recovery, along with preserving critical data integrity.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch11 Network security-1.pptx, slide 11) records this statement as: True."
+    "why": "Business continuity planning focuses primarily on ensuring continuous system availability and fast disaster recovery, along with preserving critical data integrity."
   },
   {
     "id": "ch11-s12",
@@ -1835,7 +1832,7 @@ const ALL_QUESTIONS = [
       "disaster"
     ],
     "answer": 2,
-    "explanation": "Source slide (ch11 Network security-1.pptx, slide 12) records option C: \"controlled chaos\" as the correct answer.",
+    "explanation": "The three recognized categories of network security threats are Disruption (loss of network service), Destruction (loss of data/hardware), and Intrusion (unauthorized access). 'Controlled chaos' is not a security category.",
     "choices": [
       "disruption",
       "destruction",
@@ -1843,7 +1840,7 @@ const ALL_QUESTIONS = [
       "intrusion",
       "disaster"
     ],
-    "why": "Source slide (ch11 Network security-1.pptx, slide 12) records option C: \"controlled chaos\" as the correct answer."
+    "why": "The three recognized categories of network security threats are Disruption (loss of network service), Destruction (loss of data/hardware), and Intrusion (unauthorized access). 'Controlled chaos' is not a security category."
   },
   {
     "id": "ch11-s30",
@@ -1861,14 +1858,14 @@ const ALL_QUESTIONS = [
       "anti-virus software"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch11 Network security-1.pptx, slide 30) records option A: \"redundancy\" as the correct answer.",
+    "explanation": "Redundancy (duplicate power supplies, backup circuits, mirrored RAID drives, and redundant routers) is the fundamental architectural defense against single points of failure, disruptions, and disasters.",
     "choices": [
       "redundancy",
       "control spreadsheet",
       "prevention controls",
       "anti-virus software"
     ],
-    "why": "Source slide (ch11 Network security-1.pptx, slide 30) records option A: \"redundancy\" as the correct answer."
+    "why": "Redundancy (duplicate power supplies, backup circuits, mirrored RAID drives, and redundant routers) is the fundamental architectural defense against single points of failure, disruptions, and disasters."
   },
   {
     "id": "ch11-s31",
@@ -1887,7 +1884,7 @@ const ALL_QUESTIONS = [
       "disaster"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch11 Network security-1.pptx, slide 31) records option D: \"intrusion\" as the correct answer.",
+    "explanation": "An intrusion threat involves an unauthorized user or hacker gaining illicit access to internal data, confidential records, or system configuration resources.",
     "choices": [
       "disruptive",
       "controlled chaos",
@@ -1895,7 +1892,7 @@ const ALL_QUESTIONS = [
       "intrusion",
       "disaster"
     ],
-    "why": "Source slide (ch11 Network security-1.pptx, slide 31) records option D: \"intrusion\" as the correct answer."
+    "why": "An intrusion threat involves an unauthorized user or hacker gaining illicit access to internal data, confidential records, or system configuration resources."
   },
   {
     "id": "ch12-s14",
@@ -1911,12 +1908,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch12 Network management-1.pptx, slide 14) records this statement as: True.",
+    "explanation": "Network management encompasses the continuous operational supervision, monitoring, performance tracking, and troubleshooting required to keep a network operating efficiently.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch12 Network management-1.pptx, slide 14) records this statement as: True."
+    "why": "Network management encompasses the continuous operational supervision, monitoring, performance tracking, and troubleshooting required to keep a network operating efficiently."
   },
   {
     "id": "ch12-s15",
@@ -1932,12 +1929,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch12 Network management-1.pptx, slide 15) records this statement as: True.",
+    "explanation": "Configuration management includes deploying operating system updates, software patches, and standard configuration images across client computers.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch12 Network management-1.pptx, slide 15) records this statement as: True."
+    "why": "Configuration management includes deploying operating system updates, software patches, and standard configuration images across client computers."
   },
   {
     "id": "ch12-s16",
@@ -1953,12 +1950,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch12 Network management-1.pptx, slide 16) records this statement as: True.",
+    "explanation": "Management reports compile historical uptime, downtime, and packet loss metrics, which administrators use to verify Service Level Agreements (SLAs) and availability statistics.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch12 Network management-1.pptx, slide 16) records this statement as: True."
+    "why": "Management reports compile historical uptime, downtime, and packet loss metrics, which administrators use to verify Service Level Agreements (SLAs) and availability statistics."
   },
   {
     "id": "ch12-s17",
@@ -1977,7 +1974,7 @@ const ALL_QUESTIONS = [
       "end user support"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch12 Network management-1.pptx, slide 17) records option A: \"Web surfing to shop on eBay\" as the correct answer.",
+    "explanation": "A network manager is responsible for network operations, performance, cost, configuration, and user support; personal web surfing on shopping websites is not a network management duty.",
     "choices": [
       "Web surfing to shop on eBay",
       "cost management",
@@ -1985,7 +1982,7 @@ const ALL_QUESTIONS = [
       "configuration management",
       "end user support"
     ],
-    "why": "Source slide (ch12 Network management-1.pptx, slide 17) records option A: \"Web surfing to shop on eBay\" as the correct answer."
+    "why": "A network manager is responsible for network operations, performance, cost, configuration, and user support; personal web surfing on shopping websites is not a network management duty."
   },
   {
     "id": "ch12-s32",
@@ -2001,12 +1998,12 @@ const ALL_QUESTIONS = [
       "False"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch12 Network management-1.pptx, slide 32) records this statement as: True.",
+    "explanation": "Performance management involves proactively monitoring bandwidth utilization, response times, and throughput to ensure the network delivers acceptable speed and efficiency to users.",
     "choices": [
       "True",
       "False"
     ],
-    "why": "Source slide (ch12 Network management-1.pptx, slide 32) records this statement as: True."
+    "why": "Performance management involves proactively monitoring bandwidth utilization, response times, and throughput to ensure the network delivers acceptable speed and efficiency to users."
   },
   {
     "id": "ch12-s33",
@@ -2025,7 +2022,7 @@ const ALL_QUESTIONS = [
       "Implementation"
     ],
     "answer": 3,
-    "explanation": "Source slide (ch12 Network management-1.pptx, slide 33) records option D: \"Configuration management\" as the correct answer.",
+    "explanation": "Configuration management is the process of documenting, tracking, and updating network hardware, firmware versions, cabling maps, and client software installations.",
     "choices": [
       "Visioning",
       "Troubleshooting",
@@ -2033,7 +2030,7 @@ const ALL_QUESTIONS = [
       "Configuration management",
       "Implementation"
     ],
-    "why": "Source slide (ch12 Network management-1.pptx, slide 33) records option D: \"Configuration management\" as the correct answer."
+    "why": "Configuration management is the process of documenting, tracking, and updating network hardware, firmware versions, cabling maps, and client software installations."
   },
   {
     "id": "ch12-s34",
@@ -2052,7 +2049,7 @@ const ALL_QUESTIONS = [
       "NICs"
     ],
     "answer": 0,
-    "explanation": "Source slide (ch12 Network management-1.pptx, slide 34) records option A: \"Network management software packages\" as the correct answer.",
+    "explanation": "Organizations use Network Management Software (NMS) packages (like SolarWinds, PRTG, or Nagios) using SNMP to discover devices, track link status, and generate alerts when faults occur.",
     "choices": [
       "Network management software packages",
       "Firefighter packages",
@@ -2060,7 +2057,7 @@ const ALL_QUESTIONS = [
       "Fault toleraters",
       "NICs"
     ],
-    "why": "Source slide (ch12 Network management-1.pptx, slide 34) records option A: \"Network management software packages\" as the correct answer."
+    "why": "Organizations use Network Management Software (NMS) packages (like SolarWinds, PRTG, or Nagios) using SNMP to discover devices, track link status, and generate alerts when faults occur."
   },
   {
     "id": "rev-ch01-s06-1",
@@ -2078,14 +2075,14 @@ const ALL_QUESTIONS = [
       "OSI has 7 layers; TCP/IP model has 4 layers only"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 6: Understand the two key models of data communication: OSI model (7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application) and Internet model / TCP/IP model (5 layers: Physical, Data Link, Network, Transport, Application).",
+    "explanation": "Understand the two key models of data communication: OSI model (7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application) and Internet model / TCP/IP model (5 layers: Physical, Data Link, Network, Transport, Application).",
     "choices": [
       "OSI has 5 layers; TCP/IP model has 7 layers",
       "OSI has 7 layers; TCP/IP model has 5 layers",
       "Both models define exactly 7 layers",
       "OSI has 7 layers; TCP/IP model has 4 layers only"
     ],
-    "why": "From Final Exam Revision Slide 6: Understand the two key models of data communication: OSI model (7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application) and Internet model / TCP/IP model (5 layers: Physical, Data Link, Network, Transport, Application)."
+    "why": "Understand the two key models of data communication: OSI model (7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application) and Internet model / TCP/IP model (5 layers: Physical, Data Link, Network, Transport, Application)."
   },
   {
     "id": "rev-ch01-s06-2",
@@ -2103,14 +2100,14 @@ const ALL_QUESTIONS = [
       "Segments"
     ],
     "answer": 2,
-    "explanation": "From Final Exam Revision Slide 6: Physical Layer transmits raw bits; Data Link Layer groups bits into 'frames'; Network Layer organizes frames into 'packets'; Transport Layer creates segments.",
+    "explanation": "Physical Layer transmits raw bits; Data Link Layer groups bits into 'frames'; Network Layer organizes frames into 'packets'; Transport Layer creates segments.",
     "choices": [
       "Bits",
       "Packets",
       "Frames",
       "Segments"
     ],
-    "why": "From Final Exam Revision Slide 6: Physical Layer transmits raw bits; Data Link Layer groups bits into 'frames'; Network Layer organizes frames into 'packets'; Transport Layer creates segments."
+    "why": "Physical Layer transmits raw bits; Data Link Layer groups bits into 'frames'; Network Layer organizes frames into 'packets'; Transport Layer creates segments."
   },
   {
     "id": "rev-ch01-s06-3",
@@ -2128,14 +2125,14 @@ const ALL_QUESTIONS = [
       "Physical Layer"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 6: Network Layer: 'Organizes frames into packets and route them from the sender to the receiver.'",
+    "explanation": "Network Layer: 'Organizes frames into packets and route them from the sender to the receiver.'",
     "choices": [
       "Data Link Layer",
       "Network Layer",
       "Transport Layer",
       "Physical Layer"
     ],
-    "why": "From Final Exam Revision Slide 6: Network Layer: 'Organizes frames into packets and route them from the sender to the receiver.'"
+    "why": "Network Layer: 'Organizes frames into packets and route them from the sender to the receiver.'"
   },
   {
     "id": "rev-ch01-s06-4",
@@ -2153,14 +2150,14 @@ const ALL_QUESTIONS = [
       "HTTP: Application; SMTP & TCP: Transport; IP: Physical"
     ],
     "answer": 0,
-    "explanation": "From Final Exam Revision Slide 6: Common protocols: Application Layer uses HTTP, SMTP, FTP, DNS; Transport Layer uses TCP, UDP; Network Layer uses IP, ICMP.",
+    "explanation": "Common protocols: Application Layer uses HTTP, SMTP, FTP, DNS; Transport Layer uses TCP, UDP; Network Layer uses IP, ICMP.",
     "choices": [
       "HTTP & SMTP: Application; TCP: Transport; IP: Network",
       "HTTP: Transport; SMTP: Application; TCP: Network; IP: Data Link",
       "HTTP & TCP: Transport; SMTP & IP: Network",
       "HTTP: Application; SMTP & TCP: Transport; IP: Physical"
     ],
-    "why": "From Final Exam Revision Slide 6: Common protocols: Application Layer uses HTTP, SMTP, FTP, DNS; Transport Layer uses TCP, UDP; Network Layer uses IP, ICMP."
+    "why": "Common protocols: Application Layer uses HTTP, SMTP, FTP, DNS; Transport Layer uses TCP, UDP; Network Layer uses IP, ICMP."
   },
   {
     "id": "rev-ch03-s07-1",
@@ -2178,14 +2175,14 @@ const ALL_QUESTIONS = [
       "Switched ring circuit"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 7: 'Multipoint Circuit: In this configuration, many computers are connected to the same circuit. Also called a shared circuit.'",
+    "explanation": "'Multipoint Circuit: In this configuration, many computers are connected to the same circuit. Also called a shared circuit.'",
     "choices": [
       "Point-to-point circuit",
       "Multipoint (shared) circuit",
       "Simplex dedicated circuit",
       "Switched ring circuit"
     ],
-    "why": "From Final Exam Revision Slide 7: 'Multipoint Circuit: In this configuration, many computers are connected to the same circuit. Also called a shared circuit.'"
+    "why": "'Multipoint Circuit: In this configuration, many computers are connected to the same circuit. Also called a shared circuit.'"
   },
   {
     "id": "rev-ch03-s07-2",
@@ -2203,14 +2200,14 @@ const ALL_QUESTIONS = [
       "Multiplex transmission"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 7: 'Half-duplex transmission is a two-way transmission, but you can transmit in only one direction at a time, such as a walkie-talkie.' (Simplex is one-way like TV/radio; Full-duplex is simultaneous two-way).",
+    "explanation": "'Half-duplex transmission is a two-way transmission, but you can transmit in only one direction at a time, such as a walkie-talkie.' (Simplex is one-way like TV/radio; Full-duplex is simultaneous two-way).",
     "choices": [
       "Simplex transmission",
       "Half-duplex transmission",
       "Full-duplex transmission",
       "Multiplex transmission"
     ],
-    "why": "From Final Exam Revision Slide 7: 'Half-duplex transmission is a two-way transmission, but you can transmit in only one direction at a time, such as a walkie-talkie.' (Simplex is one-way like TV/radio; Full-duplex is simultaneous two-way)."
+    "why": "'Half-duplex transmission is a two-way transmission, but you can transmit in only one direction at a time, such as a walkie-talkie.' (Simplex is one-way like TV/radio; Full-duplex is simultaneous two-way)."
   },
   {
     "id": "rev-ch03-s07-3",
@@ -2228,14 +2225,14 @@ const ALL_QUESTIONS = [
       "Intermodulation noise"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 7: 'Signal Weakening: The weakening of a signal over distance is called attenuation.'",
+    "explanation": "'Signal Weakening: The weakening of a signal over distance is called attenuation.'",
     "choices": [
       "Dispersion",
       "Attenuation",
       "Crosstalk",
       "Intermodulation noise"
     ],
-    "why": "From Final Exam Revision Slide 7: 'Signal Weakening: The weakening of a signal over distance is called attenuation.'"
+    "why": "'Signal Weakening: The weakening of a signal over distance is called attenuation.'"
   },
   {
     "id": "rev-ch04-s08-1",
@@ -2253,14 +2250,14 @@ const ALL_QUESTIONS = [
       "Specifying the electrical voltage levels, radio frequencies, and light pulses passing through the wire"
     ],
     "answer": 3,
-    "explanation": "From Final Exam Revision Slide 8: 'The data link layer does not specify the type of connection and the electrical signals, radio waves, or light pulses that pass through it' (that is the job of Layer 1 Physical).",
+    "explanation": "'The data link layer does not specify the type of connection and the electrical signals, radio waves, or light pulses that pass through it' (that is the job of Layer 1 Physical).",
     "choices": [
       "Controlling communications between end-device network interface cards (NICs)",
       "Encapsulating Layer 3 packets into Layer 2 frames",
       "Performing error detection and rejecting corrupted frames",
       "Specifying the electrical voltage levels, radio frequencies, and light pulses passing through the wire"
     ],
-    "why": "From Final Exam Revision Slide 8: 'The data link layer does not specify the type of connection and the electrical signals, radio waves, or light pulses that pass through it' (that is the job of Layer 1 Physical)."
+    "why": "'The data link layer does not specify the type of connection and the electrical signals, radio waves, or light pulses that pass through it' (that is the job of Layer 1 Physical)."
   },
   {
     "id": "rev-ch04-s09-1",
@@ -2278,14 +2275,14 @@ const ALL_QUESTIONS = [
       "A 16-bit CRC checksum is attached to each packet header"
     ],
     "answer": 0,
-    "explanation": "From Final Exam Revision Slide 9: 'Parity checking: With this technique, one additional bit is added to each byte in the message. The value of this additional parity bit is based on the number of 1s in each byte transmitted.' Limitation: if an even number of bits flip (e.g. 2 bits), parity remains unchanged and the error goes undetected (~50% detection rate).",
+    "explanation": "'Parity checking: With this technique, one additional bit is added to each byte in the message. The value of this additional parity bit is based on the number of 1s in each byte transmitted.' Limitation: if an even number of bits flip (e.g. 2 bits), parity remains unchanged and the error goes undetected (~50% detection rate).",
     "choices": [
       "One bit is added per byte based on the count of 1s; it only detects errors if an odd number of bits flip",
       "One byte is added per frame by dividing characters by 255; it detects 100% of errors",
       "The message is treated as a binary number and divided by a polynomial divisor",
       "A 16-bit CRC checksum is attached to each packet header"
     ],
-    "why": "From Final Exam Revision Slide 9: 'Parity checking: With this technique, one additional bit is added to each byte in the message. The value of this additional parity bit is based on the number of 1s in each byte transmitted.' Limitation: if an even number of bits flip (e.g. 2 bits), parity remains unchanged and the error goes undetected (~50% detection rate)."
+    "why": "'Parity checking: With this technique, one additional bit is added to each byte in the message. The value of this additional parity bit is based on the number of 1s in each byte transmitted.' Limitation: if an even number of bits flip (e.g. 2 bits), parity remains unchanged and the error goes undetected (~50% detection rate)."
   },
   {
     "id": "rev-ch04-s09-2",
@@ -2303,14 +2300,14 @@ const ALL_QUESTIONS = [
       "By using an MD5 hash function over the payload"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 9: 'Checksum: With the checksum technique, a checksum (typically 1 byte) is added to the end of the message. The checksum is calculated by adding the decimal value of each character in the message, dividing the sum by 255, and using the remainder as the checksum.' (Detects ~95% of errors).",
+    "explanation": "'Checksum: With the checksum technique, a checksum (typically 1 byte) is added to the end of the message. The checksum is calculated by adding the decimal value of each character in the message, dividing the sum by 255, and using the remainder as the checksum.' (Detects ~95% of errors).",
     "choices": [
       "By adding an extra bit to every individual byte transmitted",
       "By adding the decimal values of all characters in the message, dividing the sum by 255, and using the remainder as the checksum",
       "By performing exclusive OR (XOR) polynomial long division on the entire bit stream",
       "By using an MD5 hash function over the payload"
     ],
-    "why": "From Final Exam Revision Slide 9: 'Checksum: With the checksum technique, a checksum (typically 1 byte) is added to the end of the message. The checksum is calculated by adding the decimal value of each character in the message, dividing the sum by 255, and using the remainder as the checksum.' (Detects ~95% of errors)."
+    "why": "'Checksum: With the checksum technique, a checksum (typically 1 byte) is added to the end of the message. The checksum is calculated by adding the decimal value of each character in the message, dividing the sum by 255, and using the remainder as the checksum.' (Detects ~95% of errors)."
   },
   {
     "id": "rev-ch04-s09-3",
@@ -2328,14 +2325,14 @@ const ALL_QUESTIONS = [
       "Hamming Code Forward Error Correction"
     ],
     "answer": 2,
-    "explanation": "From Final Exam Revision Slide 9: 'Cyclic redundancy check (CRC): With CRC, a message is treated as one long binary number, which is divided by a preset number, and the remainder is used as the CRC code. E.g. CRC-16; CRC-32.' It provides over 99.99% detection rate and detects 100% of burst errors up to the CRC bit length.",
+    "explanation": "'Cyclic redundancy check (CRC): With CRC, a message is treated as one long binary number, which is divided by a preset number, and the remainder is used as the CRC code. E.g. CRC-16; CRC-32.' It provides over 99.99% detection rate and detects 100% of burst errors up to the CRC bit length.",
     "choices": [
       "Parity Checking",
       "Checksum",
       "Cyclic Redundancy Check (CRC)",
       "Hamming Code Forward Error Correction"
     ],
-    "why": "From Final Exam Revision Slide 9: 'Cyclic redundancy check (CRC): With CRC, a message is treated as one long binary number, which is divided by a preset number, and the remainder is used as the CRC code. E.g. CRC-16; CRC-32.' It provides over 99.99% detection rate and detects 100% of burst errors up to the CRC bit length."
+    "why": "'Cyclic redundancy check (CRC): With CRC, a message is treated as one long binary number, which is divided by a preset number, and the remainder is used as the CRC code. E.g. CRC-16; CRC-32.' It provides over 99.99% detection rate and detects 100% of burst errors up to the CRC bit length."
   },
   {
     "id": "rev-ch04-s09-4",
@@ -2378,14 +2375,14 @@ const ALL_QUESTIONS = [
       "64 bits; approximately 18 billion addresses"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 10: 'IPv4 uses 32 bits (4 bytes) to define an address. Therefore, the number of available addresses is 2^32 = 4,294,967,296 or approximately 4.3 billion.'",
+    "explanation": "'IPv4 uses 32 bits (4 bytes) to define an address. Therefore, the number of available addresses is 2^32 = 4,294,967,296 or approximately 4.3 billion.'",
     "choices": [
       "128 bits; approximately 3.4 x 10^38 addresses",
       "32 bits (4 bytes); exactly 2^32 = 4,294,967,296 (approx. 4.3 billion) addresses",
       "48 bits (6 bytes); approximately 281 trillion addresses",
       "64 bits; approximately 18 billion addresses"
     ],
-    "why": "From Final Exam Revision Slide 10: 'IPv4 uses 32 bits (4 bytes) to define an address. Therefore, the number of available addresses is 2^32 = 4,294,967,296 or approximately 4.3 billion.'"
+    "why": "'IPv4 uses 32 bits (4 bytes) to define an address. Therefore, the number of available addresses is 2^32 = 4,294,967,296 or approximately 4.3 billion.'"
   },
   {
     "id": "rev-ch05-s10-2",
@@ -2403,14 +2400,14 @@ const ALL_QUESTIONS = [
       "User Datagram Protocol (UDP)"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 10: 'As we use Ping command to test connectivity after configuration with the required IP addresses, the command uses the most basic interior routing protocol on the Internet which is Internet Control Message Protocol (ICMP).'",
+    "explanation": "'As we use Ping command to test connectivity after configuration with the required IP addresses, the command uses the most basic interior routing protocol on the Internet which is Internet Control Message Protocol (ICMP).'",
     "choices": [
       "Address Resolution Protocol (ARP)",
       "Internet Control Message Protocol (ICMP)",
       "Transmission Control Protocol (TCP)",
       "User Datagram Protocol (UDP)"
     ],
-    "why": "From Final Exam Revision Slide 10: 'As we use Ping command to test connectivity after configuration with the required IP addresses, the command uses the most basic interior routing protocol on the Internet which is Internet Control Message Protocol (ICMP).'"
+    "why": "'As we use Ping command to test connectivity after configuration with the required IP addresses, the command uses the most basic interior routing protocol on the Internet which is Internet Control Message Protocol (ICMP).'"
   },
   {
     "id": "rev-ch05-s11-1",
@@ -2428,14 +2425,14 @@ const ALL_QUESTIONS = [
       "The first 24 bits are always the MAC address and the last 8 bits are the IP"
     ],
     "answer": 0,
-    "explanation": "From Final Exam Revision Slide 11: Addressing hierarchy: 'The first part of the address defines the network. The second part defines a particular computer or host on the network.'",
+    "explanation": "Addressing hierarchy: 'The first part of the address defines the network. The second part defines a particular computer or host on the network.'",
     "choices": [
       "The first part defines the network/subnet, and the second part defines the specific computer/host",
       "The first part defines the host, and the second part defines the organization",
       "The entire 32 bits are randomly assigned with no hierarchy",
       "The first 24 bits are always the MAC address and the last 8 bits are the IP"
     ],
-    "why": "From Final Exam Revision Slide 11: Addressing hierarchy: 'The first part of the address defines the network. The second part defines a particular computer or host on the network.'"
+    "why": "Addressing hierarchy: 'The first part of the address defines the network. The second part defines a particular computer or host on the network.'"
   },
   {
     "id": "rev-ch05-s11-2",
@@ -2453,14 +2450,14 @@ const ALL_QUESTIONS = [
       "Only the last byte defines the subnet"
     ],
     "answer": 2,
-    "explanation": "From Final Exam Revision Slide 11: 'A subnet mask of 255.255.255.128 (11111111.11111111.11111111.10000000): 1st 3-byte plus the first bit in the fourth byte indicate the subnet.' This creates two subnets (/25) of 128 addresses each.",
+    "explanation": "'A subnet mask of 255.255.255.128 (11111111.11111111.11111111.10000000): 1st 3-byte plus the first bit in the fourth byte indicate the subnet.' This creates two subnets (/25) of 128 addresses each.",
     "choices": [
       "All computers with the same first 2 bytes are on the same subnet",
       "All computers with the same first 3 bytes are on the same subnet",
       "The first 3 bytes PLUS the first bit in the fourth byte (11111111.11111111.11111111.10000000) designate the subnet",
       "Only the last byte defines the subnet"
     ],
-    "why": "From Final Exam Revision Slide 11: 'A subnet mask of 255.255.255.128 (11111111.11111111.11111111.10000000): 1st 3-byte plus the first bit in the fourth byte indicate the subnet.' This creates two subnets (/25) of 128 addresses each."
+    "why": "'A subnet mask of 255.255.255.128 (11111111.11111111.11111111.10000000): 1st 3-byte plus the first bit in the fourth byte indicate the subnet.' This creates two subnets (/25) of 128 addresses each."
   },
   {
     "id": "rev-ch05-s11-3",
@@ -2478,14 +2475,14 @@ const ALL_QUESTIONS = [
       "Only hosts on a Class C private network can communicate"
     ],
     "answer": 0,
-    "explanation": "From Final Exam Revision Slide 11: 'A subnet mask of 255.0.0.0 means that all computers with only the same first byte in their IP address are on the same subnet.'",
+    "explanation": "'A subnet mask of 255.0.0.0 means that all computers with only the same first byte in their IP address are on the same subnet.'",
     "choices": [
       "All computers with only the same first byte in their IP address are on the same subnet",
       "All computers with the same first two bytes are on the same subnet",
       "It is an invalid subnet mask in IPv4",
       "Only hosts on a Class C private network can communicate"
     ],
-    "why": "From Final Exam Revision Slide 11: 'A subnet mask of 255.0.0.0 means that all computers with only the same first byte in their IP address are on the same subnet.'"
+    "why": "'A subnet mask of 255.0.0.0 means that all computers with only the same first byte in their IP address are on the same subnet.'"
   },
   {
     "id": "rev-ch05-s12-1",
@@ -2503,14 +2500,14 @@ const ALL_QUESTIONS = [
       "Both TCP and UDP require connection establishment before sending messages"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 12: 'UDP: Connectionless (no setup, no sequence numbers, no ACKs), fast but unreliable for real-time apps. TCP: Connection-oriented (uses a 3-way handshake, ACKs, sequence numbers for reliable delivery), ideal for web traffic.'",
+    "explanation": "'UDP: Connectionless (no setup, no sequence numbers, no ACKs), fast but unreliable for real-time apps. TCP: Connection-oriented (uses a 3-way handshake, ACKs, sequence numbers for reliable delivery), ideal for web traffic.'",
     "choices": [
       "TCP is connectionless and fast; UDP is connection-oriented and reliable",
       "TCP uses a three-way handshake, ACKs, and sequence numbers for reliable delivery; UDP is connectionless with no ACKs or sequencing",
       "UDP uses sequence numbers to guarantee packets arrive in order",
       "Both TCP and UDP require connection establishment before sending messages"
     ],
-    "why": "From Final Exam Revision Slide 12: 'UDP: Connectionless (no setup, no sequence numbers, no ACKs), fast but unreliable for real-time apps. TCP: Connection-oriented (uses a 3-way handshake, ACKs, sequence numbers for reliable delivery), ideal for web traffic.'"
+    "why": "'UDP: Connectionless (no setup, no sequence numbers, no ACKs), fast but unreliable for real-time apps. TCP: Connection-oriented (uses a 3-way handshake, ACKs, sequence numbers for reliable delivery), ideal for web traffic.'"
   },
   {
     "id": "rev-ch05-s12-2",
@@ -2528,14 +2525,14 @@ const ALL_QUESTIONS = [
       "It routes packets across Autonomous Systems using BGP"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 12: 'Review DNS protocol'. DNS (Domain Name System) operates at the application layer to translate user-friendly host names (URLs) into IP addresses that the network layer uses for routing.",
+    "explanation": "'Review DNS protocol'. DNS (Domain Name System) operates at the application layer to translate user-friendly host names (URLs) into IP addresses that the network layer uses for routing.",
     "choices": [
       "It assigns dynamic IP configuration parameters to client workstations automatically",
       "It translates human-friendly domain names (e.g., www.aut.ac.nz) into numeric IP addresses that routers can route",
       "It establishes end-to-end encrypted tunnels across the public Internet",
       "It routes packets across Autonomous Systems using BGP"
     ],
-    "why": "From Final Exam Revision Slide 12: 'Review DNS protocol'. DNS (Domain Name System) operates at the application layer to translate user-friendly host names (URLs) into IP addresses that the network layer uses for routing."
+    "why": "'Review DNS protocol'. DNS (Domain Name System) operates at the application layer to translate user-friendly host names (URLs) into IP addresses that the network layer uses for routing."
   },
   {
     "id": "rev-ch05-s12-3",
@@ -2603,14 +2600,14 @@ const ALL_QUESTIONS = [
       "In specialized network switches"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 13: 'In a client-based network, all data on the server must travel to the client for processing.'",
+    "explanation": "'In a client-based network, all data on the server must travel to the client for processing.'",
     "choices": [
       "On the server computer exclusively",
       "On the client computer, requiring all data on the server to travel to the client for processing",
       "Equally balanced across a distributed cluster of database servers",
       "In specialized network switches"
     ],
-    "why": "From Final Exam Revision Slide 13: 'In a client-based network, all data on the server must travel to the client for processing.'"
+    "why": "'In a client-based network, all data on the server must travel to the client for processing.'"
   },
   {
     "id": "rev-ch02-s13-2",
@@ -2628,14 +2625,14 @@ const ALL_QUESTIONS = [
       "Firmware inside the network interface card"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 13: 'Middleware: is software that sits between the application software on the client and the server. It enhances the functionality of a client-server application by facilitating communication and data management.'",
+    "explanation": "'Middleware: is software that sits between the application software on the client and the server. It enhances the functionality of a client-server application by facilitating communication and data management.'",
     "choices": [
       "Hardware switches that connect clients to servers in a LAN",
       "Software that sits between application software on the client and server to facilitate communication and data management",
       "A physical cable connecting two tiers of servers",
       "Firmware inside the network interface card"
     ],
-    "why": "From Final Exam Revision Slide 13: 'Middleware: is software that sits between the application software on the client and the server. It enhances the functionality of a client-server application by facilitating communication and data management.'"
+    "why": "'Middleware: is software that sits between the application software on the client and the server. It enhances the functionality of a client-server application by facilitating communication and data management.'"
   },
   {
     "id": "rev-ch02-s13-3",
@@ -2653,14 +2650,14 @@ const ALL_QUESTIONS = [
       "Client: Application logic; Application server: Data storage; Database server: Presentation logic"
     ],
     "answer": 0,
-    "explanation": "From Final Exam Revision Slide 13: 'In three-tier architecture, the client handles presentation logic, the application server handles application logic, and the database server handles data access logic and storage.'",
+    "explanation": "'In three-tier architecture, the client handles presentation logic, the application server handles application logic, and the database server handles data access logic and storage.'",
     "choices": [
       "Client: Presentation logic; Application server: Application logic; Database server: Data access logic and data storage",
       "Client: All logic; Server: Backup only",
       "Client: Data storage; Application server: Presentation logic; Database server: Application logic",
       "Client: Application logic; Application server: Data storage; Database server: Presentation logic"
     ],
-    "why": "From Final Exam Revision Slide 13: 'In three-tier architecture, the client handles presentation logic, the application server handles application logic, and the database server handles data access logic and storage.'"
+    "why": "'In three-tier architecture, the client handles presentation logic, the application server handles application logic, and the database server handles data access logic and storage.'"
   },
   {
     "id": "rev-ch02-s14-1",
@@ -2678,14 +2675,14 @@ const ALL_QUESTIONS = [
       "Peer-to-peer cloud architecture"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 14: 'Thick Client Architecture: it places all or almost all of the application logic on the client.'",
+    "explanation": "'Thick Client Architecture: it places all or almost all of the application logic on the client.'",
     "choices": [
       "Thin client architecture",
       "Thick client architecture",
       "Host-based terminal architecture",
       "Peer-to-peer cloud architecture"
     ],
-    "why": "From Final Exam Revision Slide 14: 'Thick Client Architecture: it places all or almost all of the application logic on the client.'"
+    "why": "'Thick Client Architecture: it places all or almost all of the application logic on the client.'"
   },
   {
     "id": "rev-ch02-s14-browser",
@@ -2703,14 +2700,14 @@ const ALL_QUESTIONS = [
       "A local SQL database instance"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 14: 'Web Browser Requirement: To use the Web, each client computer requires a Web browser' which functions as the presentation tier in the client-server architecture.",
+    "explanation": "'Web Browser Requirement: To use the Web, each client computer requires a Web browser' which functions as the presentation tier in the client-server architecture.",
     "choices": [
       "A dedicated FTP client terminal",
       "A Web browser software package to issue HTTP requests and format HTML presentation logic",
       "A Telnet connection to port 23",
       "A local SQL database instance"
     ],
-    "why": "From Final Exam Revision Slide 14: 'Web Browser Requirement: To use the Web, each client computer requires a Web browser' which functions as the presentation tier in the client-server architecture."
+    "why": "'Web Browser Requirement: To use the Web, each client computer requires a Web browser' which functions as the presentation tier in the client-server architecture."
   },
   {
     "id": "rev-ch02-s14-2",
@@ -2728,14 +2725,14 @@ const ALL_QUESTIONS = [
       "Simple Mail Protocol Router"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 14: 'With a two-tier thick client–server architecture, each client computer runs an application layer software package called a mail user agent (MUA, e.g. Outlook or Apple Mail).'",
+    "explanation": "'With a two-tier thick client–server architecture, each client computer runs an application layer software package called a mail user agent (MUA, e.g. Outlook or Apple Mail).'",
     "choices": [
       "Mail Transfer Agent (MTA)",
       "Mail User Agent (MUA)",
       "Web Server Engine",
       "Simple Mail Protocol Router"
     ],
-    "why": "From Final Exam Revision Slide 14: 'With a two-tier thick client–server architecture, each client computer runs an application layer software package called a mail user agent (MUA, e.g. Outlook or Apple Mail).'"
+    "why": "'With a two-tier thick client–server architecture, each client computer runs an application layer software package called a mail user agent (MUA, e.g. Outlook or Apple Mail).'"
   },
   {
     "id": "rev-ch02-s14-telnet",
@@ -2753,14 +2750,14 @@ const ALL_QUESTIONS = [
       "Telnet does not require any software on the server"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 14: 'Telnet: It requires an application layer program on both the client and server computers.' Major drawback: Telnet transmits everything across the network in plaintext without encryption, making it vulnerable to eavesdropping (which is why SSH replaced it).",
+    "explanation": "'Telnet: It requires an application layer program on both the client and server computers.' Major drawback: Telnet transmits everything across the network in plaintext without encryption, making it vulnerable to eavesdropping (which is why SSH replaced it).",
     "choices": [
       "Telnet encrypts all commands and passwords by default using RSA keys",
       "Telnet requires an application layer program on both the client and server computers, but transmits all data (including passwords) in unencrypted plaintext",
       "Telnet runs at the transport layer directly above IP",
       "Telnet does not require any software on the server"
     ],
-    "why": "From Final Exam Revision Slide 14: 'Telnet: It requires an application layer program on both the client and server computers.' Major drawback: Telnet transmits everything across the network in plaintext without encryption, making it vulnerable to eavesdropping (which is why SSH replaced it)."
+    "why": "'Telnet: It requires an application layer program on both the client and server computers.' Major drawback: Telnet transmits everything across the network in plaintext without encryption, making it vulnerable to eavesdropping (which is why SSH replaced it)."
   },
   {
     "id": "rev-ch02-s14-3",
@@ -2778,14 +2775,14 @@ const ALL_QUESTIONS = [
       "A peer-to-peer file-sharing cluster"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 14: 'Server Farm: is a group of computers linked together to act as one computer.'",
+    "explanation": "'Server Farm: is a group of computers linked together to act as one computer.'",
     "choices": [
       "A physical building that houses Internet Service Provider fiber trunks",
       "A group of computers linked together to act as one computer",
       "An open-source database management tool",
       "A peer-to-peer file-sharing cluster"
     ],
-    "why": "From Final Exam Revision Slide 14: 'Server Farm: is a group of computers linked together to act as one computer.'"
+    "why": "'Server Farm: is a group of computers linked together to act as one computer.'"
   },
   {
     "id": "rev-ch07-s15-1",
@@ -2803,14 +2800,14 @@ const ALL_QUESTIONS = [
       "CSMA/CD eliminates all network collisions entirely"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 15: 'CSMA/CD (Carrier Sense Multiple Access with Collision Detection) is not used in token ring protocol LANs. It is a contention-based media access control technique used in Ethernet networks.'",
+    "explanation": "'CSMA/CD (Carrier Sense Multiple Access with Collision Detection) is not used in token ring protocol LANs. It is a contention-based media access control technique used in Ethernet networks.'",
     "choices": [
       "CSMA/CD is the primary access method used in Token Ring LANs",
       "CSMA/CD is a contention-based media access control technique used in Ethernet networks, but is NOT used in Token Ring protocol LANs",
       "CSMA/CD is used exclusively in 802.11 Wi-Fi networks",
       "CSMA/CD eliminates all network collisions entirely"
     ],
-    "why": "From Final Exam Revision Slide 15: 'CSMA/CD (Carrier Sense Multiple Access with Collision Detection) is not used in token ring protocol LANs. It is a contention-based media access control technique used in Ethernet networks.'"
+    "why": "'CSMA/CD (Carrier Sense Multiple Access with Collision Detection) is not used in token ring protocol LANs. It is a contention-based media access control technique used in Ethernet networks.'"
   },
   {
     "id": "rev-ch07-s15-2",
@@ -2828,14 +2825,14 @@ const ALL_QUESTIONS = [
       "Because CSMA/CA was designed specifically for optical fiber cables"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 15: 'CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) is a network protocol that helps prevent collisions in wireless networks.' Wireless stations cannot detect collisions while transmitting because their own signal drowns out all others, so they avoid collisions via IFS timers and optional RTS/CTS.",
+    "explanation": "'CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) is a network protocol that helps prevent collisions in wireless networks.' Wireless stations cannot detect collisions while transmitting because their own signal drowns out all others, so they avoid collisions via IFS timers and optional RTS/CTS.",
     "choices": [
       "Because CSMA/CD is too slow for wireless frequencies",
       "Because wireless transceivers cannot easily transmit and listen for collisions simultaneously on the same channel",
       "Because wireless networks do not use media access control",
       "Because CSMA/CA was designed specifically for optical fiber cables"
     ],
-    "why": "From Final Exam Revision Slide 15: 'CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) is a network protocol that helps prevent collisions in wireless networks.' Wireless stations cannot detect collisions while transmitting because their own signal drowns out all others, so they avoid collisions via IFS timers and optional RTS/CTS."
+    "why": "'CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) is a network protocol that helps prevent collisions in wireless networks.' Wireless stations cannot detect collisions while transmitting because their own signal drowns out all others, so they avoid collisions via IFS timers and optional RTS/CTS."
   },
   {
     "id": "rev-ch07-s15-3",
@@ -2853,14 +2850,14 @@ const ALL_QUESTIONS = [
       "Fast-forward switching"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 15: Focus on Switch Modes. Store-and-forward switching reads the entire frame and validates the FCS/CRC before forwarding (highest reliability, slightly higher latency). Cut-through forwards as soon as the destination MAC is read; Fragment-free checks the first 64 bytes.",
+    "explanation": "Focus on Switch Modes. Store-and-forward switching reads the entire frame and validates the FCS/CRC before forwarding (highest reliability, slightly higher latency). Cut-through forwards as soon as the destination MAC is read; Fragment-free checks the first 64 bytes.",
     "choices": [
       "Cut-through switching",
       "Store-and-forward switching",
       "Fragment-free switching",
       "Fast-forward switching"
     ],
-    "why": "From Final Exam Revision Slide 15: Focus on Switch Modes. Store-and-forward switching reads the entire frame and validates the FCS/CRC before forwarding (highest reliability, slightly higher latency). Cut-through forwards as soon as the destination MAC is read; Fragment-free checks the first 64 bytes."
+    "why": "Focus on Switch Modes. Store-and-forward switching reads the entire frame and validates the FCS/CRC before forwarding (highest reliability, slightly higher latency). Cut-through forwards as soon as the destination MAC is read; Fragment-free checks the first 64 bytes."
   },
   {
     "id": "rev-ch07-s15-cutthrough",
@@ -2928,14 +2925,14 @@ const ALL_QUESTIONS = [
       "It converts IPv4 packets into IPv6 frames"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 15: Focus on Domain Controller. In enterprise LANs (e.g. Windows Active Directory), the Domain Controller is the central server responsible for authenticating users, managing user rights, and applying group security policies.",
+    "explanation": "Focus on Domain Controller. In enterprise LANs (e.g. Windows Active Directory), the Domain Controller is the central server responsible for authenticating users, managing user rights, and applying group security policies.",
     "choices": [
       "It modulates analog signals into digital pulses over coaxial cable",
       "It acts as a centralized server that authenticates user credentials, controls domain access, and enforces security policies",
       "It physically terminates fiber-optic cables entering a building",
       "It converts IPv4 packets into IPv6 frames"
     ],
-    "why": "From Final Exam Revision Slide 15: Focus on Domain Controller. In enterprise LANs (e.g. Windows Active Directory), the Domain Controller is the central server responsible for authenticating users, managing user rights, and applying group security policies."
+    "why": "Focus on Domain Controller. In enterprise LANs (e.g. Windows Active Directory), the Domain Controller is the central server responsible for authenticating users, managing user rights, and applying group security policies."
   },
   {
     "id": "rev-ch07-s15-ap",
@@ -2953,14 +2950,14 @@ const ALL_QUESTIONS = [
       "To assign public IPv4 addresses using NAT"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 15: Focus on access point and LAN components. A wireless Access Point (AP) acts as a bridge that connects wireless client stations (using 802.11 radio signals) to the wired switch-based Ethernet infrastructure.",
+    "explanation": "Focus on access point and LAN components. A wireless Access Point (AP) acts as a bridge that connects wireless client stations (using 802.11 radio signals) to the wired switch-based Ethernet infrastructure.",
     "choices": [
       "To route packets between different autonomous systems across the WAN",
       "To bridge wireless client devices (using radio frequencies) onto the wired Ethernet backbone switch network",
       "To store email messages permanently on a local hard drive",
       "To assign public IPv4 addresses using NAT"
     ],
-    "why": "From Final Exam Revision Slide 15: Focus on access point and LAN components. A wireless Access Point (AP) acts as a bridge that connects wireless client stations (using 802.11 radio signals) to the wired switch-based Ethernet infrastructure."
+    "why": "Focus on access point and LAN components. A wireless Access Point (AP) acts as a bridge that connects wireless client stations (using 802.11 radio signals) to the wired switch-based Ethernet infrastructure."
   },
   {
     "id": "rev-ch07-s15-cables",
@@ -2978,14 +2975,14 @@ const ALL_QUESTIONS = [
       "RS-232 serial cable"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 15: Focus on cables. Unshielded Twisted Pair (UTP, typically Category 5e, 6, or 6a) using RJ-45 connectors is the universal standard for connecting end-user computers to Ethernet LAN switches up to 100 meters.",
+    "explanation": "Focus on cables. Unshielded Twisted Pair (UTP, typically Category 5e, 6, or 6a) using RJ-45 connectors is the universal standard for connecting end-user computers to Ethernet LAN switches up to 100 meters.",
     "choices": [
       "Coaxial cable (10Base2)",
       "Unshielded Twisted Pair (UTP Cat 5e / Cat 6)",
       "Single-mode fiber optic cable",
       "RS-232 serial cable"
     ],
-    "why": "From Final Exam Revision Slide 15: Focus on cables. Unshielded Twisted Pair (UTP, typically Category 5e, 6, or 6a) using RJ-45 connectors is the universal standard for connecting end-user computers to Ethernet LAN switches up to 100 meters."
+    "why": "Focus on cables. Unshielded Twisted Pair (UTP, typically Category 5e, 6, or 6a) using RJ-45 connectors is the universal standard for connecting end-user computers to Ethernet LAN switches up to 100 meters."
   },
   {
     "id": "rev-ch07-s15-6",
@@ -3003,14 +3000,14 @@ const ALL_QUESTIONS = [
       "802.11n"
     ],
     "answer": 3,
-    "explanation": "From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11n was the first standard to introduce MIMO (multiple spatial antennas) and operate in both 2.4 GHz and 5 GHz frequency bands, achieving theoretical speeds up to 600 Mbps.",
+    "explanation": "Focus on WLAN standards. 802.11n was the first standard to introduce MIMO (multiple spatial antennas) and operate in both 2.4 GHz and 5 GHz frequency bands, achieving theoretical speeds up to 600 Mbps.",
     "choices": [
       "802.11b",
       "802.11a",
       "802.11g",
       "802.11n"
     ],
-    "why": "From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11n was the first standard to introduce MIMO (multiple spatial antennas) and operate in both 2.4 GHz and 5 GHz frequency bands, achieving theoretical speeds up to 600 Mbps."
+    "why": "Focus on WLAN standards. 802.11n was the first standard to introduce MIMO (multiple spatial antennas) and operate in both 2.4 GHz and 5 GHz frequency bands, achieving theoretical speeds up to 600 Mbps."
   },
   {
     "id": "rev-ch07-s15-wlan-comp",
@@ -3028,14 +3025,14 @@ const ALL_QUESTIONS = [
       "Both operate at 5 GHz up to 100 Mbps"
     ],
     "answer": 0,
-    "explanation": "From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz.",
+    "explanation": "Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz.",
     "choices": [
       "802.11b: 2.4 GHz (up to 11 Mbps); 802.11a: 5 GHz (up to 54 Mbps)",
       "802.11b: 5 GHz (up to 54 Mbps); 802.11a: 2.4 GHz (up to 11 Mbps)",
       "Both operate at 2.4 GHz up to 54 Mbps",
       "Both operate at 5 GHz up to 100 Mbps"
     ],
-    "why": "From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz."
+    "why": "Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz."
   },
   {
     "id": "rev-ch11-s17-1",
@@ -3053,14 +3050,14 @@ const ALL_QUESTIONS = [
       "Biometric authentication"
     ],
     "answer": 1,
-    "explanation": "From Final Exam Revision Slide 17 & Chapter 11 Slide 30: 'The key principle in preventing disruption, destruction and disaster is redundancy' (e.g., redundant circuits, RAID disks, backup power, redundant routers).",
+    "explanation": "& Chapter 11 Slide 30: 'The key principle in preventing disruption, destruction and disaster is redundancy' (e.g., redundant circuits, RAID disks, backup power, redundant routers).",
     "choices": [
       "Antivirus software updates",
       "Redundancy",
       "Password expiration rules",
       "Biometric authentication"
     ],
-    "why": "From Final Exam Revision Slide 17 & Chapter 11 Slide 30: 'The key principle in preventing disruption, destruction and disaster is redundancy' (e.g., redundant circuits, RAID disks, backup power, redundant routers)."
+    "why": "& Chapter 11 Slide 30: 'The key principle in preventing disruption, destruction and disaster is redundancy' (e.g., redundant circuits, RAID disks, backup power, redundant routers)."
   },
   {
     "id": "rev-ch12-s17-2",
@@ -3078,14 +3075,14 @@ const ALL_QUESTIONS = [
       "Software license fees for server operating systems"
     ],
     "answer": 2,
-    "explanation": "In network management (Chapter 12), the largest share of Total Cost of Ownership (TCO) is not initial hardware purchases (which usually account for less than 20%), but ongoing personnel costs, staff salaries, network operations, maintenance, and end-user troubleshooting support.",
+    "explanation": "the largest share of Total Cost of Ownership (TCO) is not initial hardware purchases (which usually account for less than 20%), but ongoing personnel costs, staff salaries, network operations, maintenance, and end-user troubleshooting support.",
     "choices": [
       "Initial purchase cost of network routers and switches",
       "Fiber optic cabling installation",
       "Personnel costs for ongoing network management, technical staff, and end-user support",
       "Software license fees for server operating systems"
     ],
-    "why": "In network management (Chapter 12), the largest share of Total Cost of Ownership (TCO) is not initial hardware purchases (which usually account for less than 20%), but ongoing personnel costs, staff salaries, network operations, maintenance, and end-user troubleshooting support."
+    "why": "the largest share of Total Cost of Ownership (TCO) is not initial hardware purchases (which usually account for less than 20%), but ongoing personnel costs, staff salaries, network operations, maintenance, and end-user troubleshooting support."
   },
   {
     "id": "lab-pr-hostname-banner",
