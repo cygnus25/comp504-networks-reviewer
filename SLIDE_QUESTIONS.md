@@ -1027,3 +1027,430 @@ Found **85 questions** across 11 chapter decks. Chapters 1 and 9 have no numbere
 
 <details><summary>Show answer printed on slide</summary>
 <p>a. Network management software packages</p></details>
+
+
+---
+
+## Part 2 — Final Exam Revision Slide Focus Topics (35 High-Yield Questions)
+
+These questions are created directly from the instructor's bullet points in [`2026 COMP504 _FINAL EXAM Revision.pptx`](<../course-materials/sources/exam/2026 COMP504 _FINAL EXAM Revision.pptx>). They cover concepts explicitly flagged as exam focus topics that did not have numbered quiz slides in the weekly chapter decks (e.g., the 3 Error Detection techniques, DNS protocol, IPv4 address space, Ping/ICMP, Subnetting, TCP vs UDP, CSMA/CD vs CSMA/CA, Switch modes, and Domain Controllers).
+
+### Q86: Chapter 1 — Introduction & Network Models · Slide 6
+
+> **How many layers are defined in the OSI reference model and the Internet (TCP/IP) model respectively?**
+>
+> - **a.** OSI has 5 layers; TCP/IP model has 7 layers
+> - **b.** OSI has 7 layers; TCP/IP model has 5 layers
+> - **c.** Both models define exactly 7 layers
+> - **d.** OSI has 7 layers; TCP/IP model has 4 layers only
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. OSI has 7 layers; TCP/IP model has 5 layers</strong><br><br>From Final Exam Revision Slide 6: Understand the two key models of data communication: OSI model (7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application) and Internet model / TCP/IP model (5 layers: Physical, Data Link, Network, Transport, Application).</p></details>
+
+### Q87: Chapter 1 — Introduction & Network Models · Slide 6
+
+> **What is the primary protocol data unit (PDU) created and handled by the Data Link Layer?**
+>
+> - **a.** Bits
+> - **b.** Packets
+> - **c.** Frames
+> - **d.** Segments
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: c. Frames</strong><br><br>From Final Exam Revision Slide 6: Physical Layer transmits raw bits; Data Link Layer groups bits into 'frames'; Network Layer organizes frames into 'packets'; Transport Layer creates segments.</p></details>
+
+### Q88: Chapter 1 — Introduction & Network Models · Slide 6
+
+> **Which layer is responsible for organizing data into packets and routing them end-to-end from sender to receiver across different networks?**
+>
+> - **a.** Data Link Layer
+> - **b.** Network Layer
+> - **c.** Transport Layer
+> - **d.** Physical Layer
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Network Layer</strong><br><br>From Final Exam Revision Slide 6: Network Layer: 'Organizes frames into packets and route them from the sender to the receiver.'</p></details>
+
+### Q89: Chapter 1 — Introduction & Network Models · Slide 6
+
+> **Which of the following correctly classifies HTTP, SMTP, TCP, and IP into their respective layers?**
+>
+> - **a.** HTTP & SMTP: Application; TCP: Transport; IP: Network
+> - **b.** HTTP: Transport; SMTP: Application; TCP: Network; IP: Data Link
+> - **c.** HTTP & TCP: Transport; SMTP & IP: Network
+> - **d.** HTTP: Application; SMTP & TCP: Transport; IP: Physical
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: a. HTTP & SMTP: Application; TCP: Transport; IP: Network</strong><br><br>From Final Exam Revision Slide 6: Common protocols: Application Layer uses HTTP, SMTP, FTP, DNS; Transport Layer uses TCP, UDP; Network Layer uses IP, ICMP.</p></details>
+
+### Q90: Chapter 3 — Physical Layer · Slide 7
+
+> **A circuit configuration where multiple computers are connected to the very same physical circuit is known as a:**
+>
+> - **a.** Point-to-point circuit
+> - **b.** Multipoint (shared) circuit
+> - **c.** Simplex dedicated circuit
+> - **d.** Switched ring circuit
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Multipoint (shared) circuit</strong><br><br>From Final Exam Revision Slide 7: 'Multipoint Circuit: In this configuration, many computers are connected to the same circuit. Also called a shared circuit.'</p></details>
+
+### Q91: Chapter 3 — Physical Layer · Slide 7
+
+> **A walkie-talkie where two users can communicate back and forth, but only one person can speak at any given time, is an example of which transmission mode?**
+>
+> - **a.** Simplex transmission
+> - **b.** Half-duplex transmission
+> - **c.** Full-duplex transmission
+> - **d.** Multiplex transmission
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Half-duplex transmission</strong><br><br>From Final Exam Revision Slide 7: 'Half-duplex transmission is a two-way transmission, but you can transmit in only one direction at a time, such as a walkie-talkie.' (Simplex is one-way like TV/radio; Full-duplex is simultaneous two-way).</p></details>
+
+### Q92: Chapter 3 — Physical Layer · Slide 7
+
+> **What is the technical term for the gradual loss of signal strength and weakening of a signal as it travels over a distance through a medium?**
+>
+> - **a.** Dispersion
+> - **b.** Attenuation
+> - **c.** Crosstalk
+> - **d.** Intermodulation noise
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Attenuation</strong><br><br>From Final Exam Revision Slide 7: 'Signal Weakening: The weakening of a signal over distance is called attenuation.'</p></details>
+
+### Q93: Chapter 4 — Data Link Layer · Slide 8
+
+> **Which of the following functions is explicitly NOT specified or performed by the Data Link Layer?**
+>
+> - **a.** Controlling communications between end-device network interface cards (NICs)
+> - **b.** Encapsulating Layer 3 packets into Layer 2 frames
+> - **c.** Performing error detection and rejecting corrupted frames
+> - **d.** Specifying the electrical voltage levels, radio frequencies, and light pulses passing through the wire
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: d. Specifying the electrical voltage levels, radio frequencies, and light pulses passing through the wire</strong><br><br>From Final Exam Revision Slide 8: 'The data link layer does not specify the type of connection and the electrical signals, radio waves, or light pulses that pass through it' (that is the job of Layer 1 Physical).</p></details>
+
+### Q94: Chapter 4 — 3 Error Detection Techniques · Slide 9
+
+> **In parity checking error detection, how is the extra parity bit determined and what is its main limitation?**
+>
+> - **a.** One bit is added per byte based on the count of 1s; it only detects errors if an odd number of bits flip
+> - **b.** One byte is added per frame by dividing characters by 255; it detects 100% of errors
+> - **c.** The message is treated as a binary number and divided by a polynomial divisor
+> - **d.** A 16-bit CRC checksum is attached to each packet header
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: a. One bit is added per byte based on the count of 1s; it only detects errors if an odd number of bits flip</strong><br><br>From Final Exam Revision Slide 9: 'Parity checking: With this technique, one additional bit is added to each byte in the message. The value of this additional parity bit is based on the number of 1s in each byte transmitted.' Limitation: if an even number of bits flip (e.g. 2 bits), parity remains unchanged and the error goes undetected (~50% detection rate).</p></details>
+
+### Q95: Chapter 4 — 3 Error Detection Techniques · Slide 9
+
+> **How is a Checksum calculated in data link communication according to the COMP504 lecture materials?**
+>
+> - **a.** By adding an extra bit to every individual byte transmitted
+> - **b.** By adding the decimal values of all characters in the message, dividing the sum by 255, and using the remainder as the checksum
+> - **c.** By performing exclusive OR (XOR) polynomial long division on the entire bit stream
+> - **d.** By using an MD5 hash function over the payload
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. By adding the decimal values of all characters in the message, dividing the sum by 255, and using the remainder as the checksum</strong><br><br>From Final Exam Revision Slide 9: 'Checksum: With the checksum technique, a checksum (typically 1 byte) is added to the end of the message. The checksum is calculated by adding the decimal value of each character in the message, dividing the sum by 255, and using the remainder as the checksum.' (Detects ~95% of errors).</p></details>
+
+### Q96: Chapter 4 — 3 Error Detection Techniques · Slide 9
+
+> **Which error detection technique treats the entire message as one long binary number, divides it by a preset preset polynomial number, and attaches the remainder as the check code?**
+>
+> - **a.** Parity Checking
+> - **b.** Checksum
+> - **c.** Cyclic Redundancy Check (CRC)
+> - **d.** Hamming Code Forward Error Correction
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: c. Cyclic Redundancy Check (CRC)</strong><br><br>From Final Exam Revision Slide 9: 'Cyclic redundancy check (CRC): With CRC, a message is treated as one long binary number, which is divided by a preset number, and the remainder is used as the CRC code. E.g. CRC-16; CRC-32.' It provides over 99.99% detection rate and detects 100% of burst errors up to the CRC bit length.</p></details>
+
+### Q97: Chapter 4 — 3 Error Detection Techniques · Slide 9
+
+> **Rank the three error detection techniques (Parity Checking, Checksum, CRC) from lowest to highest error detection capability:**
+>
+> - **a.** CRC < Checksum < Parity Checking
+> - **b.** Parity Checking (~50%) < Checksum (~95%) < CRC (>99.99%)
+> - **c.** Checksum < Parity Checking < CRC
+> - **d.** Parity Checking < CRC < Checksum
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Parity Checking (~50%) < Checksum (~95%) < CRC (>99.99%)</strong><br><br>Parity checking is the simplest and weakest (~50% detection of burst errors); Checksum is intermediate (~95%); CRC (e.g. CRC-16, CRC-32) is the most robust and widely used standard in Ethernet (>99.99%).</p></details>
+
+### Q98: Chapter 5 — IPv4 Address Space · Slide 10
+
+> **How many total possible IP addresses exist in the IPv4 public address space, and how many bits define an IPv4 address?**
+>
+> - **a.** 128 bits; approximately 3.4 x 10^38 addresses
+> - **b.** 32 bits (4 bytes); exactly 2^32 = 4,294,967,296 (approx. 4.3 billion) addresses
+> - **c.** 48 bits (6 bytes); approximately 281 trillion addresses
+> - **d.** 64 bits; approximately 18 billion addresses
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. 32 bits (4 bytes); exactly 2^32 = 4,294,967,296 (approx. 4.3 billion) addresses</strong><br><br>From Final Exam Revision Slide 10: 'IPv4 uses 32 bits (4 bytes) to define an address. Therefore, the number of available addresses is 2^32 = 4,294,967,296 or approximately 4.3 billion.'</p></details>
+
+### Q99: Chapter 5 — ICMP & Ping · Slide 10
+
+> **When you execute the 'ping' command to test network connectivity to a host or gateway, which underlying protocol does it use?**
+>
+> - **a.** Address Resolution Protocol (ARP)
+> - **b.** Internet Control Message Protocol (ICMP)
+> - **c.** Transmission Control Protocol (TCP)
+> - **d.** User Datagram Protocol (UDP)
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Internet Control Message Protocol (ICMP)</strong><br><br>From Final Exam Revision Slide 10: 'As we use Ping command to test connectivity after configuration with the required IP addresses, the command uses the most basic interior routing protocol on the Internet which is Internet Control Message Protocol (ICMP).'</p></details>
+
+### Q100: Chapter 5 — Subnetting & Addressing Hierarchy · Slide 11
+
+> **In IP addressing hierarchy, how is an IP address divided to identify devices on a network?**
+>
+> - **a.** The first part defines the network/subnet, and the second part defines the specific computer/host
+> - **b.** The first part defines the host, and the second part defines the organization
+> - **c.** The entire 32 bits are randomly assigned with no hierarchy
+> - **d.** The first 24 bits are always the MAC address and the last 8 bits are the IP
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: a. The first part defines the network/subnet, and the second part defines the specific computer/host</strong><br><br>From Final Exam Revision Slide 11: Addressing hierarchy: 'The first part of the address defines the network. The second part defines a particular computer or host on the network.'</p></details>
+
+### Q101: Chapter 5 — Subnetting & Addressing Hierarchy · Slide 11
+
+> **A subnet mask of 255.255.255.128 indicates that:**
+>
+> - **a.** All computers with the same first 2 bytes are on the same subnet
+> - **b.** All computers with the same first 3 bytes are on the same subnet
+> - **c.** The first 3 bytes PLUS the first bit in the fourth byte (11111111.11111111.11111111.10000000) designate the subnet
+> - **d.** Only the last byte defines the subnet
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: c. The first 3 bytes PLUS the first bit in the fourth byte (11111111.11111111.11111111.10000000) designate the subnet</strong><br><br>From Final Exam Revision Slide 11: 'A subnet mask of 255.255.255.128 (11111111.11111111.11111111.10000000): 1st 3-byte plus the first bit in the fourth byte indicate the subnet.' This creates two subnets (/25) of 128 addresses each.</p></details>
+
+### Q102: Chapter 5 — Subnetting & Addressing Hierarchy · Slide 11
+
+> **What does a subnet mask of 255.0.0.0 signify?**
+>
+> - **a.** All computers with only the same first byte in their IP address are on the same subnet
+> - **b.** All computers with the same first two bytes are on the same subnet
+> - **c.** It is an invalid subnet mask in IPv4
+> - **d.** Only hosts on a Class C private network can communicate
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: a. All computers with only the same first byte in their IP address are on the same subnet</strong><br><br>From Final Exam Revision Slide 11: 'A subnet mask of 255.0.0.0 means that all computers with only the same first byte in their IP address are on the same subnet.'</p></details>
+
+### Q103: Chapter 5 — Transport Layer: TCP vs UDP · Slide 12
+
+> **Which of the following statements accurately contrasts TCP and UDP?**
+>
+> - **a.** TCP is connectionless and fast; UDP is connection-oriented and reliable
+> - **b.** TCP uses a three-way handshake, ACKs, and sequence numbers for reliable delivery; UDP is connectionless with no ACKs or sequencing
+> - **c.** UDP uses sequence numbers to guarantee packets arrive in order
+> - **d.** Both TCP and UDP require connection establishment before sending messages
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. TCP uses a three-way handshake, ACKs, and sequence numbers for reliable delivery; UDP is connectionless with no ACKs or sequencing</strong><br><br>From Final Exam Revision Slide 12: 'UDP: Connectionless (no setup, no sequence numbers, no ACKs), fast but unreliable for real-time apps. TCP: Connection-oriented (uses a 3-way handshake, ACKs, sequence numbers for reliable delivery), ideal for web traffic.'</p></details>
+
+### Q104: Chapter 5 — DNS Protocol · Slide 12
+
+> **What is the primary role of the Domain Name System (DNS) protocol in computer networking?**
+>
+> - **a.** It assigns dynamic IP configuration parameters to client workstations automatically
+> - **b.** It translates human-friendly domain names (e.g., www.aut.ac.nz) into numeric IP addresses that routers can route
+> - **c.** It establishes end-to-end encrypted tunnels across the public Internet
+> - **d.** It routes packets across Autonomous Systems using BGP
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. It translates human-friendly domain names (e.g., www.aut.ac.nz) into numeric IP addresses that routers can route</strong><br><br>From Final Exam Revision Slide 12: 'Review DNS protocol'. DNS (Domain Name System) operates at the application layer to translate user-friendly host names (URLs) into IP addresses that the network layer uses for routing.</p></details>
+
+### Q105: Chapter 5 — DNS Protocol · Slide 12
+
+> **Which transport layer protocol and well-known port number does DNS primarily use for standard name resolution queries?**
+>
+> - **a.** TCP port 80
+> - **b.** UDP port 53
+> - **c.** TCP port 25
+> - **d.** UDP port 67
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. UDP port 53</strong><br><br>DNS primarily uses UDP port 53 for standard name lookup queries because UDP is fast and stateless with low overhead. However, DNS falls back to TCP port 53 for zone transfers between name servers or when response messages exceed 512 bytes.</p></details>
+
+### Q106: Chapter 5 — DNS Protocol · Slide 12
+
+> **In the hierarchical DNS architecture, which servers are at the very top of the hierarchy, just above Top-Level Domain (TLD) servers?**
+>
+> - **a.** Authoritative name servers
+> - **b.** Root name servers
+> - **c.** Local caching resolvers
+> - **d.** Secondary zone servers
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Root name servers</strong><br><br>DNS is structured as an inverted tree: at the root are the 13 Root Name Server clusters (represented by a dot '.'), below them are TLD servers (.com, .org, .nz), followed by second-level authoritative servers for organizations.</p></details>
+
+### Q107: Chapter 2 — Application Architecture · Slide 13
+
+> **In a client-based network architecture, where does the processing of data take place?**
+>
+> - **a.** On the server computer exclusively
+> - **b.** On the client computer, requiring all data on the server to travel to the client for processing
+> - **c.** Equally balanced across a distributed cluster of database servers
+> - **d.** In specialized network switches
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. On the client computer, requiring all data on the server to travel to the client for processing</strong><br><br>From Final Exam Revision Slide 13: 'In a client-based network, all data on the server must travel to the client for processing.'</p></details>
+
+### Q108: Chapter 2 — Middleware · Slide 13
+
+> **What is 'Middleware' in a client-server network architecture?**
+>
+> - **a.** Hardware switches that connect clients to servers in a LAN
+> - **b.** Software that sits between application software on the client and server to facilitate communication and data management
+> - **c.** A physical cable connecting two tiers of servers
+> - **d.** Firmware inside the network interface card
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Software that sits between application software on the client and server to facilitate communication and data management</strong><br><br>From Final Exam Revision Slide 13: 'Middleware: is software that sits between the application software on the client and the server. It enhances the functionality of a client-server application by facilitating communication and data management.'</p></details>
+
+### Q109: Chapter 2 — Multi-Tier Architecture · Slide 13
+
+> **In a classic Three-Tier client-server architecture, how are the four application logic components distributed?**
+>
+> - **a.** Client: Presentation logic; Application server: Application logic; Database server: Data access logic and data storage
+> - **b.** Client: All logic; Server: Backup only
+> - **c.** Client: Data storage; Application server: Presentation logic; Database server: Application logic
+> - **d.** Client: Application logic; Application server: Data storage; Database server: Presentation logic
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: a. Client: Presentation logic; Application server: Application logic; Database server: Data access logic and data storage</strong><br><br>From Final Exam Revision Slide 13: 'In three-tier architecture, the client handles presentation logic, the application server handles application logic, and the database server handles data access logic and storage.'</p></details>
+
+### Q110: Chapter 2 — Client Architectures & Email · Slide 14
+
+> **Which architecture places all or almost all of the application logic on the client computer?**
+>
+> - **a.** Thin client architecture
+> - **b.** Thick client architecture
+> - **c.** Host-based terminal architecture
+> - **d.** Peer-to-peer cloud architecture
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Thick client architecture</strong><br><br>From Final Exam Revision Slide 14: 'Thick Client Architecture: it places all or almost all of the application logic on the client.'</p></details>
+
+### Q111: Chapter 2 — Email Architecture & Telnet · Slide 14
+
+> **In standard SMTP email implemented as a two-tier thick client-server application, what software package runs on each client computer?**
+>
+> - **a.** Mail Transfer Agent (MTA)
+> - **b.** Mail User Agent (MUA)
+> - **c.** Web Server Engine
+> - **d.** Simple Mail Protocol Router
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Mail User Agent (MUA)</strong><br><br>From Final Exam Revision Slide 14: 'With a two-tier thick client–server architecture, each client computer runs an application layer software package called a mail user agent (MUA, e.g. Outlook or Apple Mail).'</p></details>
+
+### Q112: Chapter 2 — Server Farm Definition · Slide 14
+
+> **What is a 'Server Farm' according to COMP504 course materials?**
+>
+> - **a.** A physical building that houses Internet Service Provider fiber trunks
+> - **b.** A group of computers linked together to act as one computer
+> - **c.** An open-source database management tool
+> - **d.** A peer-to-peer file-sharing cluster
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. A group of computers linked together to act as one computer</strong><br><br>From Final Exam Revision Slide 14: 'Server Farm: is a group of computers linked together to act as one computer.'</p></details>
+
+### Q113: Chapter 7 — Wired and Wireless LANs · Slide 15
+
+> **Which statement regarding CSMA/CD is TRUE according to the revision slides?**
+>
+> - **a.** CSMA/CD is the primary access method used in Token Ring LANs
+> - **b.** CSMA/CD is a contention-based media access control technique used in Ethernet networks, but is NOT used in Token Ring protocol LANs
+> - **c.** CSMA/CD is used exclusively in 802.11 Wi-Fi networks
+> - **d.** CSMA/CD eliminates all network collisions entirely
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. CSMA/CD is a contention-based media access control technique used in Ethernet networks, but is NOT used in Token Ring protocol LANs</strong><br><br>From Final Exam Revision Slide 15: 'CSMA/CD (Carrier Sense Multiple Access with Collision Detection) is not used in token ring protocol LANs. It is a contention-based media access control technique used in Ethernet networks.'</p></details>
+
+### Q114: Chapter 7 — Wired and Wireless LANs · Slide 15
+
+> **Why do wireless local area networks (802.11 WLANs) utilize CSMA/CA (Collision Avoidance) rather than CSMA/CD?**
+>
+> - **a.** Because CSMA/CD is too slow for wireless frequencies
+> - **b.** Because wireless transceivers cannot easily transmit and listen for collisions simultaneously on the same channel
+> - **c.** Because wireless networks do not use media access control
+> - **d.** Because CSMA/CA was designed specifically for optical fiber cables
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Because wireless transceivers cannot easily transmit and listen for collisions simultaneously on the same channel</strong><br><br>From Final Exam Revision Slide 15: 'CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) is a network protocol that helps prevent collisions in wireless networks.' Wireless stations cannot detect collisions while transmitting because their own signal drowns out all others, so they avoid collisions via IFS timers and optional RTS/CTS.</p></details>
+
+### Q115: Chapter 7 — Switch Forwarding & Switch Modes · Slide 15
+
+> **Which Ethernet switch switching mode reads the ENTIRE frame into memory, verifies the Frame Check Sequence (FCS/CRC) for errors, and only forwards the frame if it is error-free?**
+>
+> - **a.** Cut-through switching
+> - **b.** Store-and-forward switching
+> - **c.** Fragment-free switching
+> - **d.** Fast-forward switching
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Store-and-forward switching</strong><br><br>From Final Exam Revision Slide 15: Focus on Switch Modes. Store-and-forward switching reads the entire frame and validates the FCS/CRC before forwarding (highest reliability, slightly higher latency). Cut-through forwards as soon as the destination MAC is read; Fragment-free checks the first 64 bytes.</p></details>
+
+### Q116: Chapter 7 — Switch Forwarding Table · Slide 15
+
+> **How does an Ethernet switch dynamically build and update its Switch Forwarding Table (MAC Address Table)?**
+>
+> - **a.** By broadcasting ARP requests to all connected ports every second
+> - **b.** By inspecting the SOURCE MAC address of incoming frames and recording the port it arrived on
+> - **c.** By inspecting the DESTINATION MAC address of incoming frames
+> - **d.** By querying the local DNS server
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. By inspecting the SOURCE MAC address of incoming frames and recording the port it arrived on</strong><br><br>An Ethernet switch learns dynamically: when a frame arrives on a port, the switch records the frame's SOURCE MAC address and ingress port in its forwarding table. It then uses the DESTINATION MAC address to decide whether to filter, forward, or flood the frame.</p></details>
+
+### Q117: Chapter 7 — Domain Controller · Slide 15
+
+> **What is the primary role of a Domain Controller in an enterprise local area network?**
+>
+> - **a.** It modulates analog signals into digital pulses over coaxial cable
+> - **b.** It acts as a centralized server that authenticates user credentials, controls domain access, and enforces security policies
+> - **c.** It physically terminates fiber-optic cables entering a building
+> - **d.** It converts IPv4 packets into IPv6 frames
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. It acts as a centralized server that authenticates user credentials, controls domain access, and enforces security policies</strong><br><br>From Final Exam Revision Slide 15: Focus on Domain Controller. In enterprise LANs (e.g. Windows Active Directory), the Domain Controller is the central server responsible for authenticating users, managing user rights, and applying group security policies.</p></details>
+
+### Q118: Chapter 7 — WLAN Standards · Slide 15
+
+> **Which IEEE 802.11 wireless standard introduced Multiple-Input Multiple-Output (MIMO) technology and can operate simultaneously across both 2.4 GHz and 5 GHz bands?**
+>
+> - **a.** 802.11b
+> - **b.** 802.11a
+> - **c.** 802.11g
+> - **d.** 802.11n
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: d. 802.11n</strong><br><br>From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11n was the first standard to introduce MIMO (multiple spatial antennas) and operate in both 2.4 GHz and 5 GHz frequency bands, achieving theoretical speeds up to 600 Mbps.</p></details>
+
+### Q119: Chapter 11 — Network Security Principles · Slide 17
+
+> **According to the course revision materials, what is the single most critical key principle in preventing disruption, destruction, and disaster in network systems?**
+>
+> - **a.** Antivirus software updates
+> - **b.** Redundancy
+> - **c.** Password expiration rules
+> - **d.** Biometric authentication
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Redundancy</strong><br><br>From Final Exam Revision Slide 17 & Chapter 11 Slide 30: 'The key principle in preventing disruption, destruction and disaster is redundancy' (e.g., redundant circuits, RAID disks, backup power, redundant routers).</p></details>
+
+### Q120: Chapter 12 — Network Management & TCO · Slide 17
+
+> **When calculating the Total Cost of Ownership (TCO) of enterprise computer networks, what typically represents the LARGEST category of expenditure over the network lifecycle?**
+>
+> - **a.** Initial purchase cost of network routers and switches
+> - **b.** Fiber optic cabling installation
+> - **c.** Personnel costs for ongoing network management, technical staff, and end-user support
+> - **d.** Software license fees for server operating systems
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: c. Personnel costs for ongoing network management, technical staff, and end-user support</strong><br><br>In network management (Chapter 12), the largest share of Total Cost of Ownership (TCO) is not initial hardware purchases (which usually account for less than 20%), but ongoing personnel costs, staff salaries, network operations, maintenance, and end-user troubleshooting support.</p></details>
