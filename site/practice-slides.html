@@ -2054,7 +2054,7 @@
     "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
     "slide": 9,
     "quiz": "FINAL REVISION FOCUS",
-    "question": "Which error detection technique treats the entire message as one long binary number, divides it by a preset preset polynomial number, and attaches the remainder as the check code?",
+    "question": "Which error detection technique treats the entire message as one long binary number, divides it by a preset polynomial divisor, and attaches the remainder as the check code?",
     "options": [
       "Parity Checking",
       "Checksum",
@@ -2317,6 +2317,24 @@
     "explanation": "From Final Exam Revision Slide 14: 'Thick Client Architecture: it places all or almost all of the application logic on the client.'"
   },
   {
+    "id": "rev-ch02-s14-browser",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 2 — Web Browser Requirement",
+    "week": "Week 10",
+    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
+    "slide": 14,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "What is the universal requirement on each client computer in order to access and interact with the World Wide Web?",
+    "options": [
+      "A dedicated FTP client terminal",
+      "A Web browser software package to issue HTTP requests and format HTML presentation logic",
+      "A Telnet connection to port 23",
+      "A local SQL database instance"
+    ],
+    "answer": 1,
+    "explanation": "From Final Exam Revision Slide 14: 'Web Browser Requirement: To use the Web, each client computer requires a Web browser' which functions as the presentation tier in the client-server architecture."
+  },
+  {
     "id": "rev-ch02-s14-2",
     "part": "Part 2: Final Revision Focus",
     "topic": "Chapter 2 — Email Architecture & Telnet",
@@ -2333,6 +2351,24 @@
     ],
     "answer": 1,
     "explanation": "From Final Exam Revision Slide 14: 'With a two-tier thick client–server architecture, each client computer runs an application layer software package called a mail user agent (MUA, e.g. Outlook or Apple Mail).'"
+  },
+  {
+    "id": "rev-ch02-s14-telnet",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 2 — Telnet Architecture & Security",
+    "week": "Week 10",
+    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
+    "slide": 14,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "Which statement correctly describes Telnet operation and its security implications?",
+    "options": [
+      "Telnet encrypts all commands and passwords by default using RSA keys",
+      "Telnet requires an application layer program on both the client and server computers, but transmits all data (including passwords) in unencrypted plaintext",
+      "Telnet runs at the transport layer directly above IP",
+      "Telnet does not require any software on the server"
+    ],
+    "answer": 1,
+    "explanation": "From Final Exam Revision Slide 14: 'Telnet: It requires an application layer program on both the client and server computers.' Major drawback: Telnet transmits everything across the network in plaintext without encryption, making it vulnerable to eavesdropping (which is why SSH replaced it)."
   },
   {
     "id": "rev-ch02-s14-3",
@@ -2407,6 +2443,24 @@
     "explanation": "From Final Exam Revision Slide 15: Focus on Switch Modes. Store-and-forward switching reads the entire frame and validates the FCS/CRC before forwarding (highest reliability, slightly higher latency). Cut-through forwards as soon as the destination MAC is read; Fragment-free checks the first 64 bytes."
   },
   {
+    "id": "rev-ch07-s15-cutthrough",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — Switch Modes: Cut-Through vs Fragment-Free",
+    "week": "Week 6",
+    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
+    "slide": 15,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "Which switch mode forwards a frame immediately after reading just the first 64 bytes (the minimum collision window in Ethernet), providing a compromise between speed and error filtering?",
+    "options": [
+      "Cut-through switching",
+      "Store-and-forward switching",
+      "Fragment-free switching",
+      "Adaptive buffer switching"
+    ],
+    "answer": 2,
+    "explanation": "Fragment-free switching reads the first 64 bytes of the Ethernet frame before forwarding. Since most network collisions occur during the transmission of the first 64 bytes, this mode filters out collision fragments while maintaining low latency."
+  },
+  {
     "id": "rev-ch07-s15-4",
     "part": "Part 2: Final Revision Focus",
     "topic": "Chapter 7 — Switch Forwarding Table",
@@ -2443,6 +2497,42 @@
     "explanation": "From Final Exam Revision Slide 15: Focus on Domain Controller. In enterprise LANs (e.g. Windows Active Directory), the Domain Controller is the central server responsible for authenticating users, managing user rights, and applying group security policies."
   },
   {
+    "id": "rev-ch07-s15-ap",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — LAN Components & Access Points",
+    "week": "Week 6",
+    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
+    "slide": 15,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "What is the primary function of a Wireless Access Point (AP) in a Local Area Network?",
+    "options": [
+      "To route packets between different autonomous systems across the WAN",
+      "To bridge wireless client devices (using radio frequencies) onto the wired Ethernet backbone switch network",
+      "To store email messages permanently on a local hard drive",
+      "To assign public IPv4 addresses using NAT"
+    ],
+    "answer": 1,
+    "explanation": "From Final Exam Revision Slide 15: Focus on access point and LAN components. A wireless Access Point (AP) acts as a bridge that connects wireless client stations (using 802.11 radio signals) to the wired switch-based Ethernet infrastructure."
+  },
+  {
+    "id": "rev-ch07-s15-cables",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — LAN Cables & Media",
+    "week": "Week 6",
+    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
+    "slide": 15,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "Which type of network cable consists of 4 twisted pairs of copper wire and is the most common standard used to connect desktop PCs to workgroup switches in modern LANs?",
+    "options": [
+      "Coaxial cable (10Base2)",
+      "Unshielded Twisted Pair (UTP Cat 5e / Cat 6)",
+      "Single-mode fiber optic cable",
+      "RS-232 serial cable"
+    ],
+    "answer": 1,
+    "explanation": "From Final Exam Revision Slide 15: Focus on cables. Unshielded Twisted Pair (UTP, typically Category 5e, 6, or 6a) using RJ-45 connectors is the universal standard for connecting end-user computers to Ethernet LAN switches up to 100 meters."
+  },
+  {
     "id": "rev-ch07-s15-6",
     "part": "Part 2: Final Revision Focus",
     "topic": "Chapter 7 — WLAN Standards",
@@ -2459,6 +2549,24 @@
     ],
     "answer": 3,
     "explanation": "From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11n was the first standard to introduce MIMO (multiple spatial antennas) and operate in both 2.4 GHz and 5 GHz frequency bands, achieving theoretical speeds up to 600 Mbps."
+  },
+  {
+    "id": "rev-ch07-s15-wlan-comp",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — WLAN Standards Comparison",
+    "week": "Week 6",
+    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
+    "slide": 15,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "Compare the legacy WLAN standards: What are the operating frequencies and maximum data rates of 802.11b and 802.11a respectively?",
+    "options": [
+      "802.11b: 2.4 GHz (up to 11 Mbps); 802.11a: 5 GHz (up to 54 Mbps)",
+      "802.11b: 5 GHz (up to 54 Mbps); 802.11a: 2.4 GHz (up to 11 Mbps)",
+      "Both operate at 2.4 GHz up to 54 Mbps",
+      "Both operate at 5 GHz up to 100 Mbps"
+    ],
+    "answer": 0,
+    "explanation": "From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz."
   },
   {
     "id": "rev-ch11-s17-1",

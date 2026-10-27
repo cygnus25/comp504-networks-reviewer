@@ -1031,9 +1031,11 @@ Found **85 questions** across 11 chapter decks. Chapters 1 and 9 have no numbere
 
 ---
 
-## Part 2 — Final Exam Revision Slide Focus Topics (35 High-Yield Questions)
+---
 
-These questions are created directly from the instructor's bullet points in [`2026 COMP504 _FINAL EXAM Revision.pptx`](<../course-materials/sources/exam/2026 COMP504 _FINAL EXAM Revision.pptx>). They cover concepts explicitly flagged as exam focus topics that did not have numbered quiz slides in the weekly chapter decks (e.g., the 3 Error Detection techniques, DNS protocol, IPv4 address space, Ping/ICMP, Subnetting, TCP vs UDP, CSMA/CD vs CSMA/CA, Switch modes, and Domain Controllers).
+## Part 2 — Final Exam Revision Slide Focus Topics (41 High-Yield Questions)
+
+These questions are created directly from every bullet point in [`2026 COMP504 _FINAL EXAM Revision.pptx`](<../course-materials/sources/exam/2026 COMP504 _FINAL EXAM Revision.pptx>). They cover concepts explicitly flagged as exam focus topics that did not have numbered quiz slides in the weekly chapter decks (e.g., the 3 Error Detection techniques, DNS protocol, IPv4 address space, Ping/ICMP, Subnetting, TCP vs UDP, CSMA/CD vs CSMA/CA, Switch modes, and Domain Controllers).
 
 ### Q86: Chapter 1 — Introduction & Network Models · Slide 6
 
@@ -1157,7 +1159,7 @@ These questions are created directly from the instructor's bullet points in [`20
 
 ### Q96: Chapter 4 — 3 Error Detection Techniques · Slide 9
 
-> **Which error detection technique treats the entire message as one long binary number, divides it by a preset preset polynomial number, and attaches the remainder as the check code?**
+> **Which error detection technique treats the entire message as one long binary number, divides it by a preset polynomial divisor, and attaches the remainder as the check code?**
 >
 > - **a.** Parity Checking
 > - **b.** Checksum
@@ -1335,7 +1337,19 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. Thick client architecture</strong><br><br>From Final Exam Revision Slide 14: 'Thick Client Architecture: it places all or almost all of the application logic on the client.'</p></details>
 
-### Q111: Chapter 2 — Email Architecture & Telnet · Slide 14
+### Q111: Chapter 2 — Web Browser Requirement · Slide 14
+
+> **What is the universal requirement on each client computer in order to access and interact with the World Wide Web?**
+>
+> - **a.** A dedicated FTP client terminal
+> - **b.** A Web browser software package to issue HTTP requests and format HTML presentation logic
+> - **c.** A Telnet connection to port 23
+> - **d.** A local SQL database instance
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. A Web browser software package to issue HTTP requests and format HTML presentation logic</strong><br><br>From Final Exam Revision Slide 14: 'Web Browser Requirement: To use the Web, each client computer requires a Web browser' which functions as the presentation tier in the client-server architecture.</p></details>
+
+### Q112: Chapter 2 — Email Architecture & Telnet · Slide 14
 
 > **In standard SMTP email implemented as a two-tier thick client-server application, what software package runs on each client computer?**
 >
@@ -1347,7 +1361,19 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. Mail User Agent (MUA)</strong><br><br>From Final Exam Revision Slide 14: 'With a two-tier thick client–server architecture, each client computer runs an application layer software package called a mail user agent (MUA, e.g. Outlook or Apple Mail).'</p></details>
 
-### Q112: Chapter 2 — Server Farm Definition · Slide 14
+### Q113: Chapter 2 — Telnet Architecture & Security · Slide 14
+
+> **Which statement correctly describes Telnet operation and its security implications?**
+>
+> - **a.** Telnet encrypts all commands and passwords by default using RSA keys
+> - **b.** Telnet requires an application layer program on both the client and server computers, but transmits all data (including passwords) in unencrypted plaintext
+> - **c.** Telnet runs at the transport layer directly above IP
+> - **d.** Telnet does not require any software on the server
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Telnet requires an application layer program on both the client and server computers, but transmits all data (including passwords) in unencrypted plaintext</strong><br><br>From Final Exam Revision Slide 14: 'Telnet: It requires an application layer program on both the client and server computers.' Major drawback: Telnet transmits everything across the network in plaintext without encryption, making it vulnerable to eavesdropping (which is why SSH replaced it).</p></details>
+
+### Q114: Chapter 2 — Server Farm Definition · Slide 14
 
 > **What is a 'Server Farm' according to COMP504 course materials?**
 >
@@ -1359,7 +1385,7 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. A group of computers linked together to act as one computer</strong><br><br>From Final Exam Revision Slide 14: 'Server Farm: is a group of computers linked together to act as one computer.'</p></details>
 
-### Q113: Chapter 7 — Wired and Wireless LANs · Slide 15
+### Q115: Chapter 7 — Wired and Wireless LANs · Slide 15
 
 > **Which statement regarding CSMA/CD is TRUE according to the revision slides?**
 >
@@ -1371,7 +1397,7 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. CSMA/CD is a contention-based media access control technique used in Ethernet networks, but is NOT used in Token Ring protocol LANs</strong><br><br>From Final Exam Revision Slide 15: 'CSMA/CD (Carrier Sense Multiple Access with Collision Detection) is not used in token ring protocol LANs. It is a contention-based media access control technique used in Ethernet networks.'</p></details>
 
-### Q114: Chapter 7 — Wired and Wireless LANs · Slide 15
+### Q116: Chapter 7 — Wired and Wireless LANs · Slide 15
 
 > **Why do wireless local area networks (802.11 WLANs) utilize CSMA/CA (Collision Avoidance) rather than CSMA/CD?**
 >
@@ -1383,7 +1409,7 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. Because wireless transceivers cannot easily transmit and listen for collisions simultaneously on the same channel</strong><br><br>From Final Exam Revision Slide 15: 'CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) is a network protocol that helps prevent collisions in wireless networks.' Wireless stations cannot detect collisions while transmitting because their own signal drowns out all others, so they avoid collisions via IFS timers and optional RTS/CTS.</p></details>
 
-### Q115: Chapter 7 — Switch Forwarding & Switch Modes · Slide 15
+### Q117: Chapter 7 — Switch Forwarding & Switch Modes · Slide 15
 
 > **Which Ethernet switch switching mode reads the ENTIRE frame into memory, verifies the Frame Check Sequence (FCS/CRC) for errors, and only forwards the frame if it is error-free?**
 >
@@ -1395,7 +1421,19 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. Store-and-forward switching</strong><br><br>From Final Exam Revision Slide 15: Focus on Switch Modes. Store-and-forward switching reads the entire frame and validates the FCS/CRC before forwarding (highest reliability, slightly higher latency). Cut-through forwards as soon as the destination MAC is read; Fragment-free checks the first 64 bytes.</p></details>
 
-### Q116: Chapter 7 — Switch Forwarding Table · Slide 15
+### Q118: Chapter 7 — Switch Modes: Cut-Through vs Fragment-Free · Slide 15
+
+> **Which switch mode forwards a frame immediately after reading just the first 64 bytes (the minimum collision window in Ethernet), providing a compromise between speed and error filtering?**
+>
+> - **a.** Cut-through switching
+> - **b.** Store-and-forward switching
+> - **c.** Fragment-free switching
+> - **d.** Adaptive buffer switching
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: c. Fragment-free switching</strong><br><br>Fragment-free switching reads the first 64 bytes of the Ethernet frame before forwarding. Since most network collisions occur during the transmission of the first 64 bytes, this mode filters out collision fragments while maintaining low latency.</p></details>
+
+### Q119: Chapter 7 — Switch Forwarding Table · Slide 15
 
 > **How does an Ethernet switch dynamically build and update its Switch Forwarding Table (MAC Address Table)?**
 >
@@ -1407,7 +1445,7 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. By inspecting the SOURCE MAC address of incoming frames and recording the port it arrived on</strong><br><br>An Ethernet switch learns dynamically: when a frame arrives on a port, the switch records the frame's SOURCE MAC address and ingress port in its forwarding table. It then uses the DESTINATION MAC address to decide whether to filter, forward, or flood the frame.</p></details>
 
-### Q117: Chapter 7 — Domain Controller · Slide 15
+### Q120: Chapter 7 — Domain Controller · Slide 15
 
 > **What is the primary role of a Domain Controller in an enterprise local area network?**
 >
@@ -1419,7 +1457,31 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. It acts as a centralized server that authenticates user credentials, controls domain access, and enforces security policies</strong><br><br>From Final Exam Revision Slide 15: Focus on Domain Controller. In enterprise LANs (e.g. Windows Active Directory), the Domain Controller is the central server responsible for authenticating users, managing user rights, and applying group security policies.</p></details>
 
-### Q118: Chapter 7 — WLAN Standards · Slide 15
+### Q121: Chapter 7 — LAN Components & Access Points · Slide 15
+
+> **What is the primary function of a Wireless Access Point (AP) in a Local Area Network?**
+>
+> - **a.** To route packets between different autonomous systems across the WAN
+> - **b.** To bridge wireless client devices (using radio frequencies) onto the wired Ethernet backbone switch network
+> - **c.** To store email messages permanently on a local hard drive
+> - **d.** To assign public IPv4 addresses using NAT
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. To bridge wireless client devices (using radio frequencies) onto the wired Ethernet backbone switch network</strong><br><br>From Final Exam Revision Slide 15: Focus on access point and LAN components. A wireless Access Point (AP) acts as a bridge that connects wireless client stations (using 802.11 radio signals) to the wired switch-based Ethernet infrastructure.</p></details>
+
+### Q122: Chapter 7 — LAN Cables & Media · Slide 15
+
+> **Which type of network cable consists of 4 twisted pairs of copper wire and is the most common standard used to connect desktop PCs to workgroup switches in modern LANs?**
+>
+> - **a.** Coaxial cable (10Base2)
+> - **b.** Unshielded Twisted Pair (UTP Cat 5e / Cat 6)
+> - **c.** Single-mode fiber optic cable
+> - **d.** RS-232 serial cable
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: b. Unshielded Twisted Pair (UTP Cat 5e / Cat 6)</strong><br><br>From Final Exam Revision Slide 15: Focus on cables. Unshielded Twisted Pair (UTP, typically Category 5e, 6, or 6a) using RJ-45 connectors is the universal standard for connecting end-user computers to Ethernet LAN switches up to 100 meters.</p></details>
+
+### Q123: Chapter 7 — WLAN Standards · Slide 15
 
 > **Which IEEE 802.11 wireless standard introduced Multiple-Input Multiple-Output (MIMO) technology and can operate simultaneously across both 2.4 GHz and 5 GHz bands?**
 >
@@ -1431,7 +1493,19 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: d. 802.11n</strong><br><br>From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11n was the first standard to introduce MIMO (multiple spatial antennas) and operate in both 2.4 GHz and 5 GHz frequency bands, achieving theoretical speeds up to 600 Mbps.</p></details>
 
-### Q119: Chapter 11 — Network Security Principles · Slide 17
+### Q124: Chapter 7 — WLAN Standards Comparison · Slide 15
+
+> **Compare the legacy WLAN standards: What are the operating frequencies and maximum data rates of 802.11b and 802.11a respectively?**
+>
+> - **a.** 802.11b: 2.4 GHz (up to 11 Mbps); 802.11a: 5 GHz (up to 54 Mbps)
+> - **b.** 802.11b: 5 GHz (up to 54 Mbps); 802.11a: 2.4 GHz (up to 11 Mbps)
+> - **c.** Both operate at 2.4 GHz up to 54 Mbps
+> - **d.** Both operate at 5 GHz up to 100 Mbps
+
+<details><summary>Show answer and revision notes</summary>
+<p><strong>Answer: a. 802.11b: 2.4 GHz (up to 11 Mbps); 802.11a: 5 GHz (up to 54 Mbps)</strong><br><br>From Final Exam Revision Slide 15: Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz.</p></details>
+
+### Q125: Chapter 11 — Network Security Principles · Slide 17
 
 > **According to the course revision materials, what is the single most critical key principle in preventing disruption, destruction, and disaster in network systems?**
 >
@@ -1443,7 +1517,7 @@ These questions are created directly from the instructor's bullet points in [`20
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: b. Redundancy</strong><br><br>From Final Exam Revision Slide 17 & Chapter 11 Slide 30: 'The key principle in preventing disruption, destruction and disaster is redundancy' (e.g., redundant circuits, RAID disks, backup power, redundant routers).</p></details>
 
-### Q120: Chapter 12 — Network Management & TCO · Slide 17
+### Q126: Chapter 12 — Network Management & TCO · Slide 17
 
 > **When calculating the Total Cost of Ownership (TCO) of enterprise computer networks, what typically represents the LARGEST category of expenditure over the network lifecycle?**
 >
