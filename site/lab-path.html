@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3b">
+  <title>Hands-on Packet Tracer Path — COMP504 Study Kit</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .article-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+      line-height: 1.65;
+    }
+    .article-wrap h1 { font-size: 2.2rem; color: var(--accent); margin-bottom: 8px; }
+    .article-wrap h2 { font-size: 1.5rem; margin-top: 36px; margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 8px; color: var(--ink); }
+    .article-wrap h3 { font-size: 1.15rem; margin-top: 24px; margin-bottom: 10px; color: var(--accent); }
+    .article-wrap p { margin-bottom: 14px; color: var(--ink); }
+    .article-wrap ul, .article-wrap ol { margin: 0 0 16px 24px; }
+    .article-wrap li { margin-bottom: 6px; }
+    .article-wrap blockquote {
+      background: var(--surface-2);
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      color: var(--muted);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 20px 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+    }
+    .article-wrap table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .article-wrap th, .article-wrap td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .article-wrap th { background: var(--surface-2); color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }
+    .article-wrap code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+    .article-wrap pre { background: var(--code-bg); padding: 16px; border-radius: 6px; overflow-x: auto; margin-bottom: 16px; border: 1px solid var(--line); }
+    .article-wrap hr { border: 0; height: 1px; background: var(--line); margin: 36px 0; }
+  </style>
+</head>
+<body class="utility-page" data-page="labs">
+  <div class="read-progress" id="read-progress" aria-hidden="true"></div>
+  <div class="site-shell">
+    <aside class="sidebar" aria-label="Study navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">N<span>↗</span></span>
+        <span>Networks<br><small>and Internet</small></span>
+      </a>
+      <div class="sidebar-intro">COMP504 · OFFLINE STUDY KIT</div>
+      <nav class="tool-nav">
+        <a href="index.html">01 · Beginner lessons</a>
+        <a href="practice.html">02 · Practice</a>
+        <a href="exam-deck.html">02b · Exam Deck ↗</a>
+        <a href="slide-questions.html">03 · Lecture slide questions</a>
+        <a href="labs.html" class="active">04 · Hands-on labs</a>
+        <a href="compact-review.html" >04b · Compact review</a>
+        <a href="plan.html">05 · Study plan & backup</a>
+        <a href="glossary.html">06 · Glossary</a>
+        <a href="coverage.html">07 · Coverage & sources</a>
+      </nav>
+      <p class="sidebar-note">Your answers stay on this device. Export a backup on the Study Plan page before moving browsers.</p>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <span>COMP504 REVISION RESOURCE</span>
+        <a href="index.html">Back to lessons ↗</a>
+      </header>
+      <div class="utility-hero">
+        <div class="eyebrow">04 / HANDS-ON LABS</div>
+        <h1>Hands-on Packet Tracer Path</h1>
+      </div>
+      <div class="content-wrap utility-content">
+        <article class="article-wrap">
+          <h1 id="hands-on-packet-tracer-path">Hands-on Packet Tracer path</h1>
+<p>Use a <strong>copy</strong> of each <code>.pka</code> so you can reset and repeat. Originals are under <code>../course-materials/sources/</code>; the <a href="../course-materials/README.md">course-materials catalogue</a> links to every activity and instruction file. Read the matching <code>.docx</code> before starting. Record <code>prediction → observation → explanation</code> for each test. Packet Tracer scoring is helpful, but your explanation matters more than a completion percentage.</p>
+<h2 id="lab-1-see-a-network-and-its-layers-30-45-min">Lab 1 — See a network and its layers (30–45 min)</h2>
+<p>Open <a href="<../course-materials/sources/labs/packet-tracer-files/1.5.7 Packet Tracer - Network Representation.pka>"><code>1.5.7 Packet Tracer - Network Representation.pka</code></a> with its matching <code>.docx</code>. Identify one end device, switch, router, AP, server, LAN, and WAN link. Draw a path from a PC to a remote server and annotate each device's layer/job. Then use <a href="<../course-materials/sources/labs/instructions/Packet Tracer-Investigating the TCP-IP and OSI Models-1.docx>"><code>Packet Tracer-Investigating the TCP-IP and OSI Models-1.docx</code></a> as a guide for a Simulation Mode PDU: click the event and list the data, transport, IP, and Ethernet information you see.</p>
+<h2 id="lab-2-watch-mac-and-ip-addresses-change-30-45-min">Lab 2 — Watch MAC and IP addresses change (30–45 min)</h2>
+<p>Open <a href="<../course-materials/sources/labs/packet-tracer-files/5.3.1.3 Packet Tracer - Identify MAC and IP Addresses.pka>"><code>5.3.1.3 Packet Tracer - Identify MAC and IP Addresses.pka</code></a> with the matching <code>.docx</code>. In Simulation Mode, ping <code>10.10.10.3</code> from <code>172.16.31.2</code>. At the source LAN, router ingress, router egress, and destination LAN, record source/destination IP and source/destination MAC. Note any ARP exchange before ICMP.</p>
+<h2 id="lab-3-navigate-ios-and-save-a-router-config-45-60-min">Lab 3 — Navigate IOS and save a router config (45–60 min)</h2>
+<p>Start with <a href="<../course-materials/sources/labs/packet-tracer-files/2.3.7 Packet Tracer - Navigate the IOS.pka>"><code>2.3.7 Packet Tracer - Navigate the IOS.pka</code></a> and its <code>.docx</code>; then do <a href="<../course-materials/sources/labs/packet-tracer-files/10.1.4 Packet Tracer - Configure Initial Router Settings.pka>"><code>10.1.4 Packet Tracer - Configure Initial Router Settings.pka</code></a> and <code>.docx</code>. Connect a console cable, observe the prompt changes, use <code>?</code> for context help, inspect <code>show running-config</code> and <code>show startup-config</code>, set hostname and passwords as the instructions require, add the MOTD banner, and save with <code>copy running-config startup-config</code>.</p>
+<h2 id="lab-4-diagnose-a-gateway-failure-45-60-min">Lab 4 — Diagnose a gateway failure (45–60 min)</h2>
+<p>Open <a href="<../course-materials/sources/labs/packet-tracer-files/10.3.5 Packet Tracer - Troubleshoot Default Gateway Issues.pka>"><code>10.3.5 Packet Tracer - Troubleshoot Default Gateway Issues.pka</code></a> and its <code>.docx</code>. Before editing, complete the addressing table: PCs 1–2 and S1 should use <code>192.168.10.1</code>; PCs 3–4 and S2 should use <code>192.168.11.1</code>. Test same-LAN first, then local router interface, then remote-LAN. The activity says PC1's IP is incorrect; verify with <code>ipconfig</code> instead of assuming it is the only fault.</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Test</th>
+<th>What a failure narrows down</th>
+</tr></thead><tbody>
+<tr>
+<td>PC1 → PC2</td>
+<td>local link, address, mask, VLAN</td>
+</tr>
+<tr>
+<td>PC1 → <code>192.168.10.1</code></td>
+<td>local gateway link or interface</td>
+</tr>
+<tr>
+<td>PC1 → <code>192.168.11.1</code></td>
+<td>router forwarding/interface</td>
+</tr>
+<tr>
+<td>PC1 → PC4</td>
+<td>remote LAN plus PC4's address/gateway</td>
+</tr>
+</tbody></table></div>
+<p>Fix one fault at a time and retest the exact failed ping. Save a one-line fault log: <code>symptom | evidence | change | result</code>.</p>
+<h2 id="lab-5-design-vlsm-before-configuring-60-90-min">Lab 5 — Design VLSM before configuring (60–90 min)</h2>
+<p>First, solve <a href="<../course-materials/sources/labs/vlsm/Example-Design and Implement a VLSM Addressing Scheme.docx>"><code>Example-Design and Implement a VLSM Addressing Scheme.docx</code></a> on paper. Then do <a href="<../course-materials/sources/labs/packet-tracer-files/Packet Tracer - IPv4 VLSM Design and Implementation.pka>"><code>Packet Tracer - IPv4 VLSM Design and Implementation.pka</code></a> with its matching <code>.docx</code>. For each requirement, choose the smallest subnet, allocate largest first, and build a device table before opening device configuration. Assign first usable addresses to routers, second usable to switch management interfaces, and last usable to hosts as the activity specifies. Configure each host's local gateway. Check <code>show ip interface brief</code>, <code>show ip route</code>, and end-to-end pings.</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Need</th>
+<th>Subnet</th>
+<th>Usable range</th>
+<th>Broadcast</th>
+</tr></thead><tbody>
+<tr>
+<td>47 hosts</td>
+<td><code>10.1.1.0/26</code></td>
+<td><code>.1–.62</code></td>
+<td><code>.63</code></td>
+</tr>
+<tr>
+<td>28 hosts</td>
+<td><code>10.1.1.64/27</code></td>
+<td><code>.65–.94</code></td>
+<td><code>.95</code></td>
+</tr>
+<tr>
+<td>11 hosts</td>
+<td><code>10.1.1.96/28</code></td>
+<td><code>.97–.110</code></td>
+<td><code>.111</code></td>
+</tr>
+<tr>
+<td>5 hosts</td>
+<td><code>10.1.1.112/29</code></td>
+<td><code>.113–.118</code></td>
+<td><code>.119</code></td>
+</tr>
+<tr>
+<td>2-host WAN</td>
+<td><code>10.1.1.120/30</code></td>
+<td><code>.121–.122</code></td>
+<td><code>.123</code></td>
+</tr>
+</tbody></table></div>
+<pre><code>enable
+configure terminal
+interface gigabitEthernet0/0
+description LAN-Sales
+ip address 49.50.10.1 255.255.255.128
+no shutdown
+exit
+end
+show ip interface brief
+copy running-config startup-config</code></pre>
+<p>On a switch, management uses <code>interface vlan 1</code>, <code>ip address ...</code>, <code>no shutdown</code>, and a global <code>ip default-gateway <local-router-IP></code>. The SVI may stay down if no active switch port is in that VLAN. For two routers, confirm they have routes to the opposite LANs; interface addressing alone does not create routes to remote networks.</p>
+<h2 id="lab-6-timed-practice-final-90-120-min">Lab 6 — Timed practice final (90–120 min)</h2>
+<p>Use <a href="<../course-materials/sources/labs/final-practice/Packet Tracer Final Lab.pka>"><code>Packet Tracer Final Lab.pka</code></a> and <a href="<../course-materials/sources/labs/final-practice/Packet Tracer Final Lab-1.docx>"><code>Packet Tracer Final Lab-1.docx</code></a>. Attempt it <strong>closed book first</strong>. The sheet gives <code>49.50.10.0/24</code> and host needs 70, 56, 26, and 2. Build the VLSM table, fill the device addressing table, configure the router, switch SVIs, and PCs, then ping across LANs. Follow the sheet's specific hostname, banner, login, SSH, and interface-description requirements. Save both the Packet Tracer file and a fault log.</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Need</th>
+<th>Network</th>
+<th>Usable range</th>
+<th>Broadcast</th>
+</tr></thead><tbody>
+<tr>
+<td>Sales 70</td>
+<td><code>49.50.10.0/25</code></td>
+<td><code>.1–.126</code></td>
+<td><code>.127</code></td>
+</tr>
+<tr>
+<td>Design 56</td>
+<td><code>49.50.10.128/26</code></td>
+<td><code>.129–.190</code></td>
+<td><code>.191</code></td>
+</tr>
+<tr>
+<td>Admin 26</td>
+<td><code>49.50.10.192/27</code></td>
+<td><code>.193–.222</code></td>
+<td><code>.223</code></td>
+</tr>
+<tr>
+<td>WAN 2</td>
+<td><code>49.50.10.224/30</code></td>
+<td><code>.225–.226</code></td>
+<td><code>.227</code></td>
+</tr>
+</tbody></table></div>
+<p>The practice sheet says the WAN and Internet-side devices are already configured and need no changes. Match your router's actual interface names and topology before assigning the first, second, and subsequent usable addresses. If a ping fails, inspect the source mask/gateway, <code>show ip interface brief</code>, router routes, and the target gateway in that order.</p>
+<h2 id="optional-extensions">Optional extensions</h2>
+<ul>
+<li>Use <a href="<../course-materials/sources/labs/packet-tracer-files/4.2.4.4 Packet Tracer - Connecting a Wired and Wireless LAN.pka>"><code>4.2.4.4 Packet Tracer - Connecting a Wired and Wireless LAN.pka</code></a> with <a href="<../course-materials/sources/labs/instructions/4.6.5 Packet Tracer - Connect a Wired and Wireless LAN (2"><code>4.6.5 Packet Tracer - Connect a Wired and Wireless LAN (2).docx</code></a>.docx>): identify AP versus router roles, compare a wired and Wi-Fi host's gateway, and test both paths.</li>
+<li>In a fresh Packet Tracer topology, create two VLANs on a switch. Place one PC in each. Verify they cannot ping across VLANs without routing, then add a Layer 3 path. Show <code>show vlan brief</code> and <code>show interfaces trunk</code> if using two switches.</li>
+<li>For a management exercise, deliberately change one host's mask, gateway, or DNS server, ask yourself which tests still work, then write a short fault report with evidence and fix.</li>
+</ul>
+        </article>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
