@@ -1,0 +1,1999 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Canvas Exam Practice — Slide Bank — Canvas Exam Simulator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap">
+  <style>
+    :root {
+      --bg: #0E1318; --surface: #161D24; --surface-2: #1C252E;
+      --ink: #E7EDF3; --muted: #9BABB9; --faint: #73838F; --line: #27323C;
+      --accent: #48B5BF; --accent-soft: rgba(72, 181, 191, 0.15);
+      --canvas-blue: #0374B5; --canvas-hover: #025a8c;
+      --correct: #2ea44f; --correct-soft: rgba(46, 164, 79, 0.15);
+      --incorrect: #cf222e; --incorrect-soft: rgba(207, 34, 46, 0.15);
+      --unanswered: #e09a4e; --unanswered-soft: rgba(224, 154, 78, 0.15);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: 'Source Sans 3', sans-serif; line-height: 1.5;
+      padding: 16px;
+    }
+    .wrap { max-width: 1040px; margin: 0 auto; }
+
+    /* Canvas Exam Header Bar */
+    header.canvas-topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+      padding: 14px 20px; margin-bottom: 16px;
+    }
+    header h1 { font-family: 'Archivo', sans-serif; font-size: 1.25rem; color: var(--ink); }
+    .exam-tag {
+      background: var(--accent-soft); color: var(--accent);
+      padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; margin-left: 8px;
+    }
+    .nav-links a {
+      color: var(--accent); text-decoration: none; font-size: 0.88rem; font-weight: 600;
+      margin-left: 12px;
+    }
+    .nav-links a:hover { text-decoration: underline; }
+
+    /* Mode & Reset Control Bar */
+    .mode-banner {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+      padding: 12px 18px; margin-bottom: 16px; display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center; gap: 14px;
+    }
+    .mode-left {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .mode-right {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    }
+    .mode-pills {
+      display: inline-flex; background: var(--surface-2); padding: 3px; border-radius: 6px;
+      border: 1px solid var(--line);
+    }
+    .mode-pill {
+      background: transparent; color: var(--muted); border: none; padding: 6px 14px;
+      border-radius: 4px; font-weight: 600; font-size: 0.86rem; cursor: pointer;
+      font-family: inherit; transition: all 0.15s;
+    }
+    .mode-pill.active {
+      background: var(--accent); color: #0E1318;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 8px 16px; border-radius: 6px; font-weight: 600; font-family: inherit;
+      font-size: 0.88rem; cursor: pointer; border: 1px solid var(--line);
+      background: var(--surface-2); color: var(--ink); transition: all 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-reset {
+      background: rgba(207, 34, 46, 0.12); color: #ff7b72; border-color: rgba(207, 34, 46, 0.4);
+    }
+    .btn-reset:hover {
+      background: rgba(207, 34, 46, 0.25); border-color: #ff7b72; color: #fff;
+    }
+    .btn-shuffle {
+      background: var(--accent-soft); color: var(--accent); border-color: var(--accent);
+    }
+    .btn-shuffle:hover {
+      background: var(--accent); color: #0E1318;
+    }
+    .btn-next {
+      background: var(--canvas-blue); color: #fff; border-color: var(--canvas-blue);
+    }
+    .btn-next:hover:not(:disabled) { background: var(--canvas-hover); color: #fff; }
+    .btn-finish-quiz {
+      background: #2ea44f; color: #fff; border-color: #2ea44f;
+    }
+    .btn-finish-quiz:hover { background: #38b75c; }
+
+    /* Main Canvas Exam Layout */
+    .exam-grid {
+      display: grid; grid-template-columns: 1fr 280px; gap: 20px;
+    }
+    @media (max-width: 820px) {
+      .exam-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Comprehensive Results View (Replaces question when finished) */
+    .results-viewport {
+      display: none; background: var(--surface); border: 2px solid var(--accent);
+      border-radius: 8px; padding: 32px 24px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+    .results-viewport.visible { display: block; }
+    .results-header-tag {
+      font-family: 'Archivo', sans-serif; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+    .results-big-score {
+      font-family: 'Archivo', sans-serif; font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 12px;
+    }
+    .results-percentage {
+      font-size: 1.3rem; font-weight: 600; color: var(--accent); margin-bottom: 24px;
+    }
+    .score-breakdown-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px; max-width: 650px; margin: 0 auto 28px;
+    }
+    .score-stat-box {
+      background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+      padding: 14px 12px;
+    }
+    .stat-label {
+      font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--faint); font-weight: 700; margin-bottom: 4px;
+    }
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 800;
+    }
+    .stat-val.correct-val { color: #7ee787; }
+    .stat-val.incorrect-val { color: #ff7b72; }
+    .stat-val.unanswered-val { color: #e09a4e; }
+    .stat-val.total-val { color: var(--accent); }
+
+    .results-message {
+      color: var(--muted); font-size: 1.05rem; max-width: 620px;
+      margin: 0 auto 24px; line-height: 1.5;
+    }
+
+    /* Single Question Container (Canvas Style) */
+    .question-viewport {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+      padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); min-height: 480px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .q-header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 2px solid var(--line); padding-bottom: 14px; margin-bottom: 18px;
+    }
+    .q-number-title {
+      font-family: 'Archivo', sans-serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--accent);
+    }
+    .q-pts {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--faint);
+    }
+    .q-topic-badge {
+      display: inline-block; background: var(--surface-2); color: var(--muted);
+      padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; text-transform: uppercase;
+      margin-bottom: 12px; font-family: 'Archivo', sans-serif;
+    }
+    .q-text {
+      font-size: 1.15rem; font-weight: 500; line-height: 1.55; margin-bottom: 24px;
+      color: var(--ink);
+    }
+
+    /* Canvas Radio Option Cards */
+    .options-group { display: grid; gap: 10px; margin-bottom: 20px; }
+    .opt-card {
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px;
+      background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px;
+      cursor: pointer; transition: all 0.15s; font-size: 1rem; user-select: none;
+    }
+    .opt-card:hover { border-color: var(--accent); }
+    .opt-card input[type="radio"] { margin-top: 4px; accent-color: var(--accent); }
+    .opt-card.selected {
+      border-color: var(--accent); background: rgba(72, 181, 191, 0.12);
+    }
+    .opt-card.correct {
+      background: var(--correct-soft) !important; border-color: var(--correct) !important;
+      color: #7ee787 !important; font-weight: 600;
+    }
+    .opt-card.incorrect {
+      background: var(--incorrect-soft) !important; border-color: var(--incorrect) !important;
+      color: #ff7b72 !important;
+    }
+    .opt-card.disabled { cursor: default; pointer-events: none; }
+
+    /* Instant Feedback Box */
+    .instant-feedback {
+      display: none; padding: 14px 18px; margin-bottom: 20px;
+      border-radius: 6px; font-size: 0.94rem; line-height: 1.5;
+    }
+    .instant-feedback.show-correct {
+      display: block; background: var(--correct-soft); border-left: 4px solid var(--correct);
+    }
+    .instant-feedback.show-incorrect {
+      display: block; background: var(--incorrect-soft); border-left: 4px solid var(--incorrect);
+    }
+    .instant-feedback strong { color: var(--accent); }
+
+    /* Canvas Navigation Buttons at bottom */
+    .nav-actions {
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--line); padding-top: 18px; margin-top: auto;
+    }
+
+    /* Canvas Question Palette Sidebar */
+    .palette-sidebar {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+      padding: 18px; height: fit-content;
+    }
+    .palette-title {
+      font-family: 'Archivo', sans-serif; font-size: 0.9rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+      margin-bottom: 12px; display: flex; justify-content: space-between;
+    }
+    .q-matrix {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+      max-height: 380px; overflow-y: auto; padding-right: 4px;
+    }
+    .matrix-btn {
+      padding: 7px 0; text-align: center; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;
+      font-weight: 600; border-radius: 4px; border: 1px solid var(--line);
+      background: var(--surface-2); color: var(--muted); cursor: pointer;
+      transition: all 0.15s;
+    }
+    .matrix-btn:hover { border-color: var(--accent); color: var(--ink); }
+    .matrix-btn.current {
+      border-color: var(--accent); outline: 2px solid var(--accent); color: var(--accent); font-weight: 700;
+    }
+    .matrix-btn.answered {
+      background: rgba(72, 181, 191, 0.25); color: var(--ink); border-color: var(--accent);
+    }
+    .matrix-btn.scored-correct {
+      background: var(--correct); color: #fff; border-color: var(--correct);
+    }
+    .matrix-btn.scored-incorrect {
+      background: var(--incorrect); color: #fff; border-color: var(--incorrect);
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="canvas-topbar">
+    <div>
+      <h1>Canvas Exam Practice — Slide Bank <span class="exam-tag">Canvas Mode</span></h1>
+    </div>
+    <nav class="nav-links">
+      <a href="practice-set-1.html">Slide Bank</a>
+      <a href="practice-set-2.html">Set 2</a>
+      <a href="practice-set-3.html">Set 3</a>
+      <a href="index.html">Reviewer Home</a>
+    </nav>
+  </header>
+
+  <!-- Feedback Mode Selector & Controls -->
+  <div class="mode-banner">
+    <div class="mode-left">
+      <div style="font-weight:700; font-size:0.92rem;">Feedback Style:</div>
+      <div style="color:var(--muted); font-size:0.86rem;" id="mode-desc">Instant mode: See answer and explanation immediately after choosing.</div>
+    </div>
+    <div class="mode-right">
+      <div class="mode-pills">
+        <button class="mode-pill active" id="pill-instant" onclick="switchMode('instant')">⚡ Instant</button>
+        <button class="mode-pill" id="pill-exam" onclick="switchMode('exam')">📝 Exam (Grade at End)</button>
+      </div>
+      <button class="btn btn-reset" onclick="resetAnswers()">🔄 Reset Answers</button>
+      <button class="btn btn-shuffle" onclick="restartQuiz()">🔀 Reshuffle</button>
+    </div>
+  </div>
+
+  <!-- Main Canvas Test Layout -->
+  <div class="exam-grid">
+    <!-- Center Column: Either Single Question OR Results Card -->
+    <div>
+      <!-- End of Quiz / Exam Results Card -->
+      <div class="results-viewport" id="results-screen">
+        <div class="results-header-tag">Assessment Finished</div>
+        <div class="results-big-score" id="res-score-number">88 / 100</div>
+        <div class="results-percentage" id="res-percentage">88% Final Score</div>
+
+        <div class="score-breakdown-grid">
+          <div class="score-stat-box">
+            <div class="stat-label">Correct</div>
+            <div class="stat-val correct-val" id="res-stat-correct">0</div>
+          </div>
+          <div class="score-stat-box">
+            <div class="stat-label">Incorrect</div>
+            <div class="stat-val incorrect-val" id="res-stat-incorrect">0</div>
+          </div>
+          <div class="score-stat-box">
+            <div class="stat-label">Unanswered</div>
+            <div class="stat-val unanswered-val" id="res-stat-unanswered">0</div>
+          </div>
+          <div class="score-stat-box">
+            <div class="stat-label">Total Qs</div>
+            <div class="stat-val total-val" id="res-stat-total">100</div>
+          </div>
+        </div>
+
+        <p class="results-message" id="res-commentary">
+          Great job! Review any missed questions by clicking the numbered buttons in the Questions palette on the right.
+        </p>
+
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <button class="btn btn-next" onclick="reviewFromQuestion(0)">🔎 Review Answers from Q1</button>
+          <button class="btn btn-reset" onclick="resetAnswers()">🔄 Retake Same 100 Qs</button>
+          <button class="btn btn-shuffle" onclick="restartQuiz()">🔀 Reshuffle New 100 Qs</button>
+        </div>
+      </div>
+
+      <!-- Single Question Container -->
+      <div class="question-viewport" id="question-card">
+        <div>
+          <div class="q-header">
+            <div class="q-number-title" id="q-header-title">Question 1</div>
+            <div class="q-pts">1 pt</div>
+          </div>
+
+          <div class="q-topic-badge" id="q-topic">Topic</div>
+          <div class="q-text" id="q-text">Loading question...</div>
+
+          <div class="options-group" id="options-container"></div>
+
+          <div class="instant-feedback" id="feedback-box">
+            <div id="feedback-status" style="font-weight:700; font-size:1.05rem; margin-bottom:4px;"></div>
+            <div id="feedback-why"></div>
+          </div>
+        </div>
+
+        <!-- Canvas Navigation Bar -->
+        <div class="nav-actions">
+          <button class="btn" id="btn-prev" onclick="navigate(-1)">← Previous</button>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.88rem; color:var(--muted);" id="q-indicator">1 of 100</span>
+          <div style="display:flex; gap:10px;">
+            <button class="btn btn-finish-quiz" id="btn-finish" onclick="finishAndShowResults()">Check Results 🏁</button>
+            <button class="btn btn-next" id="btn-next" onclick="navigate(1)">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canvas Question Palette (Jump to question) -->
+    <aside class="palette-sidebar">
+      <div class="palette-title">
+        <span>Questions</span>
+        <span id="answered-counter">0/100</span>
+      </div>
+      <div class="q-matrix" id="question-matrix"></div>
+      <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:12px; display:flex; flex-direction:column; gap:8px;">
+        <button class="btn btn-finish-quiz" style="width:100%; justify-content:center;" onclick="finishAndShowResults()">Check Results 🏁</button>
+        <button class="btn btn-reset" style="width:100%; justify-content:center;" onclick="resetAnswers()">🔄 Reset Answers</button>
+        <button class="btn btn-shuffle" style="width:100%; justify-content:center;" onclick="restartQuiz()">🔀 Reshuffle 100 Qs</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+  const ALL_QUESTIONS = [
+  {
+    "id": "ch02-s24",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 24,
+    "quiz": "QUIZ 1",
+    "question": "An application architecture is the way in which the functions of the application layer are performed solely by the clients in the network.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 24) records this statement as: False."
+  },
+  {
+    "id": "ch02-s25",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 25,
+    "quiz": "QUIZ 2",
+    "question": "Host-based and client-based networks are similar in that the client computer performs most of the work.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 25) records this statement as: False."
+  },
+  {
+    "id": "ch02-s26",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 26,
+    "quiz": "QUIZ 3",
+    "question": "Your typical web browsing scenario where a person using a web browser accesses a web page from a server on the Internet is a good example of a client-server application architecture.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 26) records this statement as: True."
+  },
+  {
+    "id": "ch02-s27",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 27,
+    "quiz": "QUIZ 4",
+    "question": "Middleware is the software that sits between the application software on the client and the application software on the server.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 27) records this statement as: True."
+  },
+  {
+    "id": "ch02-s28",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 28,
+    "quiz": "QUIZ 5",
+    "question": "In the three-tier architecture, the software on the client computer is responsible for the presentation logic, an application server is responsible for the application logic and a separate database server is responsible for the data access logic and data storage.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 28) records this statement as: True."
+  },
+  {
+    "id": "ch02-s29",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 29,
+    "quiz": "QUIZ 6",
+    "question": "An n-tier architecture:",
+    "options": [
+      "is generally more “scalable” than a three-tiered architecture.",
+      "is generally less “scalable” than a three-tiered architecture.",
+      "uses only two sets of computers in which the clients are responsible for the application and presentation logic, and the servers are responsible for the data.",
+      "uses exactly three sets of computers in which the client is responsible for presentation, one set of servers is responsible for data access logic and data storage, and application logic is spread across two or more different sets of servers.",
+      "puts less load on a network than a two-tiered architecture because there tends to be less communication among the servers."
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 29) records option A: \"is generally more “scalable” than a three-tiered architecture.\" as the correct answer."
+  },
+  {
+    "id": "ch02-s37",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 37,
+    "quiz": "QUIZ 7",
+    "question": "The standard protocol for communication between a Web browser and a Web server is the web protocol.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 37) records this statement as: False."
+  },
+  {
+    "id": "ch02-s38",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 38,
+    "quiz": "QUIZ 8",
+    "question": "A request header for an HTTP request starts with a command, such as GET, and ends with the HTTP version number that the browser understands.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 38) records this statement as: False."
+  },
+  {
+    "id": "ch02-s39",
+    "topic": "Chapter 2 — Application Layer",
+    "week": "Week 10",
+    "source": "ch02 Application layer-2.pptx",
+    "slide": 39,
+    "quiz": "QUIZ 9",
+    "question": "All three parts (request line, request header, request body) of an HTTP request from a web browser to a web server are required when a request is made.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch02 Application layer-2.pptx, slide 39) records this statement as: False."
+  },
+  {
+    "id": "ch03-s7",
+    "topic": "Chapter 3 — Physical Layer",
+    "week": "Week 2",
+    "source": "ch03 Physical layer-1.pptx",
+    "slide": 7,
+    "quiz": "QUIZ 1",
+    "question": "Data is physically transmitted from one computer or terminal to another in the ________ layer.",
+    "options": [
+      "physical",
+      "transport",
+      "application",
+      "terminal",
+      "data link"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 7) records option A: \"physical\" as the correct answer."
+  },
+  {
+    "id": "ch03-s16",
+    "topic": "Chapter 3 — Physical Layer",
+    "week": "Week 2",
+    "source": "ch03 Physical layer-1.pptx",
+    "slide": 16,
+    "quiz": "QUIZ 2",
+    "question": "A(n) __________ circuit is another name for a multipoint configuration.",
+    "options": [
+      "analog",
+      "dedicated",
+      "point-to-point",
+      "shared",
+      "simplex"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 16) records option D: \"shared\" as the correct answer."
+  },
+  {
+    "id": "ch03-s27",
+    "topic": "Chapter 3 — Physical Layer",
+    "week": "Week 2",
+    "source": "ch03 Physical layer-1.pptx",
+    "slide": 27,
+    "quiz": "QUIZ 3",
+    "question": "The two basic types of media are:",
+    "options": [
+      "statistical and frequency",
+      "guided and wireless (radiated)",
+      "local and wide area",
+      "attenuator and Gaussian",
+      "duplexed and non-duplexed"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 27) records option B: \"guided and wireless (radiated)\" as the correct answer."
+  },
+  {
+    "id": "ch03-s28",
+    "topic": "Chapter 3 — Physical Layer",
+    "week": "Week 2",
+    "source": "ch03 Physical layer-1.pptx",
+    "slide": 28,
+    "quiz": "QUIZ 4",
+    "question": "Which of the following would be considered a type of wireless media?",
+    "options": [
+      "unshielded twisted pair",
+      "shielded twisted pair",
+      "coaxial cable",
+      "microwave",
+      "fiber optics"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 28) records option D: \"microwave\" as the correct answer."
+  },
+  {
+    "id": "ch03-s29",
+    "topic": "Chapter 3 — Physical Layer",
+    "week": "Week 2",
+    "source": "ch03 Physical layer-1.pptx",
+    "slide": 29,
+    "quiz": "QUIZ 5",
+    "question": "Which of the following media can best withstand harsh environmental conditions?",
+    "options": [
+      "shielded twisted pair",
+      "unshielded twisted pair",
+      "Cat 5 twisted pair",
+      "coaxial cable",
+      "fiber optic cable"
+    ],
+    "answer": 4,
+    "explanation": "Source slide (ch03 Physical layer-1.pptx, slide 29) records option E: \"fiber optic cable\" as the correct answer."
+  },
+  {
+    "id": "ch04-s15",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 15,
+    "quiz": "QUIZ 1",
+    "question": "As part of the five-layer network model used in this textbook, the data link layer sits directly between:",
+    "options": [
+      "the physical and the application layers",
+      "the network and the application layers",
+      "the network and transport layers",
+      "the physical and the application layers",
+      "the physical and the network layers."
+    ],
+    "answer": 4,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 15) records option E: \"the physical and the network layers.\" as the correct answer."
+  },
+  {
+    "id": "ch04-s16",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 16,
+    "quiz": "QUIZ 2",
+    "question": "Which of the following is true with respect to the data link layer?",
+    "options": [
+      "It accepts streams of bits from the application layer.",
+      "It is responsible for encoding the bit-stream as a series of electronic voltages.",
+      "It performs error detection.",
+      "It performs routing functions.",
+      "It organizes data from the physical layer and passes these coherent messages directly to the application layer."
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 16) records option C: \"It performs error detection.\" as the correct answer."
+  },
+  {
+    "id": "ch04-s17",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 17,
+    "quiz": "QUIZ 3",
+    "question": "____________ is not a function of a data link protocol.",
+    "options": [
+      "Media access control",
+      "Message delineation",
+      "Amplitude shift keying",
+      "Indicating when a message starts and stops",
+      "Error control"
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 17) records option C: \"Amplitude shift keying\" as the correct answer."
+  },
+  {
+    "id": "ch04-s18",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 18,
+    "quiz": "QUIZ 4",
+    "question": "In general, controlled approaches:",
+    "options": [
+      "work better than contention approaches for small networks that have low usage.",
+      "work better than contention approaches for large networks that have high usage.",
+      "work better than contention approaches for all sizes of networks.",
+      "do not require a host, server, or active monitor to assign media access control.",
+      "have many collisions."
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 18) records option B: \"work better than contention approaches for large networks that have high usage.\" as the correct answer."
+  },
+  {
+    "id": "ch04-s19",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 19,
+    "quiz": "QUIZ 5",
+    "question": "The two sublayers of the data link layer consist of the media access control sublayer and the________.",
+    "options": [
+      "logical link control sublayer",
+      "network control sublayer",
+      "session sublayer",
+      "physical sublayer",
+      "transport sublayer"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 19) records option A: \"logical link control sublayer\" as the correct answer."
+  },
+  {
+    "id": "ch04-s27",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 27,
+    "quiz": "QUIZ 6",
+    "question": "Which of the following media is least susceptible to noise?",
+    "options": [
+      "fiber optic cable",
+      "coaxial cable",
+      "twisted pair",
+      "unshielded twisted pair",
+      "shielded twisted pair"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 27) records option A: \"fiber optic cable\" as the correct answer."
+  },
+  {
+    "id": "ch04-s28",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 28,
+    "quiz": "QUIZ 7",
+    "question": "The primary source of error in data communications is:",
+    "options": [
+      "echoes.",
+      "intermodulation noise.",
+      "spikes.",
+      "attenuation.",
+      "cross-talk."
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 28) records option C: \"spikes.\" as the correct answer."
+  },
+  {
+    "id": "ch04-s29",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 29,
+    "quiz": "QUIZ 8",
+    "question": "__________can obliterate a group of bits, causing a burst error.",
+    "options": [
+      "Cross-talk",
+      "Attenuation",
+      "Impulse noise",
+      "Intermodulation noise",
+      "Gray noise"
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 29) records option C: \"Impulse noise\" as the correct answer."
+  },
+  {
+    "id": "ch04-s30",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 30,
+    "quiz": "QUIZ 9",
+    "question": "Cross-talk:",
+    "options": [
+      "occurs when one circuit picks up signals in another.",
+      "is always bothersome because it has a high signal strength.",
+      "decreases with increased proximity of two wires.",
+      "decreases during wet or damp weather.",
+      "increases with lower frequency signals."
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 30) records option A: \"occurs when one circuit picks up signals in another.\" as the correct answer."
+  },
+  {
+    "id": "ch04-s31",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 31,
+    "quiz": "QUIZ 10",
+    "question": "The loss of power a signal suffers as it travels from the transmitting computer to a receiving computer is _____.",
+    "options": [
+      "white noise",
+      "spiking",
+      "attenuation",
+      "intermodulation noise",
+      "echo"
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 31) records option C: \"attenuation\" as the correct answer."
+  },
+  {
+    "id": "ch04-s32",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 32,
+    "quiz": "QUIZ 11",
+    "question": "_____________ is an effective way to prevent impulse noise, cross talk, and intermodulation noise.",
+    "options": [
+      "Shielding wires",
+      "Adding fluorescent lights",
+      "Adding repeaters to a circuit",
+      "Adding amplifiers to a circuit",
+      "Shorting a circuit"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 32) records option A: \"Shielding wires\" as the correct answer."
+  },
+  {
+    "id": "ch04-s33",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 33,
+    "quiz": "QUIZ 12",
+    "question": "_____________ is an effective way to prevent attenuation.",
+    "options": [
+      "Shielding wires",
+      "Adding fluorescent lights",
+      "Adding repeaters or amplifiers to a circuit",
+      "Changing multiplexing techniques",
+      "Shorting a circuit"
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 33) records option C: \"Adding repeaters or amplifiers to a circuit\" as the correct answer."
+  },
+  {
+    "id": "ch04-s49",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 49,
+    "quiz": "QUIZ 13",
+    "question": "Asynchronous transmission:",
+    "options": [
+      "is used to transmit each character simultaneously with all other characters",
+      "has a pre-determined, fixed time between sending characters",
+      "is typically used on multipoint half duplex circuits",
+      "uses a continuous series of start bits as an idle signal",
+      "each character is transmitted independently of all other characters"
+    ],
+    "answer": 4,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 49) records option E: \"each character is transmitted independently of all other characters\" as the correct answer."
+  },
+  {
+    "id": "ch04-s50",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 50,
+    "quiz": "QUIZ 14",
+    "question": "Which of the following is not a type of synchronous protocol?",
+    "options": [
+      "SDLC",
+      "VT100",
+      "HDLC",
+      "Ethernet",
+      "PPP"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 50) records option B: \"VT100\" as the correct answer."
+  },
+  {
+    "id": "ch04-s51",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 51,
+    "quiz": "QUIZ 15",
+    "question": "Which of the following is true about the data link protocol, SDLC:",
+    "options": [
+      "It is a client-server protocol developed by Compaq in 1996.",
+      "It transmits each character independently of one another and includes start and stop bits for each character sent.",
+      "It uses a special bit pattern called a flag at the beginning and end of every frame (or packet).",
+      "It uses a contention media access control protocol and is used in most LANs today.",
+      "It does not have any error detection capabilities."
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 51) records option C: \"It uses a special bit pattern called a flag at the beginning and end of every frame (or packet).\" as the correct answer."
+  },
+  {
+    "id": "ch04-s52",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 52,
+    "quiz": "QUIZ 16",
+    "question": "Which of the following is true about the data link protocol, Ethernet (IEEE 802.3)?",
+    "options": [
+      "It is not very popular.",
+      "It is a bit-oriented protocol.",
+      "it uses block check characters for error detection.",
+      "Newer version permits jumbo frames.",
+      "It uses parity bits for error detection."
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 52) records option D: \"Newer version permits jumbo frames.\" as the correct answer."
+  },
+  {
+    "id": "ch04-s56",
+    "topic": "Chapter 4 — Data Link Layer",
+    "week": "Week 3",
+    "source": "ch04 Link layer-2.pptx",
+    "slide": 56,
+    "quiz": "QUIZ 17",
+    "question": "__________ is a software-enabled technique that can change the hardcoded MAC address to any MAC address and thus overcome MAC address filtering.",
+    "options": [
+      "MAC address spoofing",
+      "MAC address engaging",
+      "Ethernet address regeneration",
+      "Address regeneration",
+      "MAC address cheesing"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch04 Link layer-2.pptx, slide 56) records option A: \"MAC address spoofing\" as the correct answer."
+  },
+  {
+    "id": "ch05-s5",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 5,
+    "quiz": "QUIZ 1",
+    "question": "The network layer sits directly between the application layer and the data link layer in the Internet five-layer network model.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 5) records this statement as: False."
+  },
+  {
+    "id": "ch05-s6",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 6,
+    "quiz": "QUIZ 2",
+    "question": "TCP/IP is a data link protocol that is used on the Internet.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 6) records this statement as: False."
+  },
+  {
+    "id": "ch05-s7",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 7,
+    "quiz": "QUIZ 3",
+    "question": "The network layer provides guaranteed end-to-end delivery of the message .",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 7) records this statement as: False."
+  },
+  {
+    "id": "ch05-s17",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 17,
+    "quiz": "QUIZ 4",
+    "question": "The ____________ layer links the application layer with the network layer is responsible for end-to-end delivery of messages.",
+    "options": [
+      "physical",
+      "transport",
+      "session",
+      "presentation",
+      "data link"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 17) records option B: \"transport\" as the correct answer."
+  },
+  {
+    "id": "ch05-s18",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 18,
+    "quiz": "QUIZ 5",
+    "question": "__________ is not an important function of the transport layer.",
+    "options": [
+      "End-to-end delivery of the message",
+      "Taking messages from the application layer",
+      "Routing",
+      "Breaking long messages into smaller segments",
+      "Interfacing with the network layer"
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 18) records option C: \"Routing\" as the correct answer."
+  },
+  {
+    "id": "ch05-s19",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 19,
+    "quiz": "QUIZ 6",
+    "question": "Transmission Control Protocol/Internet Protocol was developed for ________ in 1974.",
+    "options": [
+      "ARPANET",
+      "IBM",
+      "Hewlett-Packard",
+      "Kennesaw State University",
+      "Xerox"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 19) records option A: \"ARPANET\" as the correct answer."
+  },
+  {
+    "id": "ch05-s20",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 20,
+    "quiz": "QUIZ 7",
+    "question": "A typical TCP segment has a _______ header of control information.",
+    "options": [
+      "32-bit",
+      "64-bit",
+      "120-byte",
+      "192-bit",
+      "32-byte"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 20) records option D: \"192-bit\" as the correct answer."
+  },
+  {
+    "id": "ch05-s31",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 31,
+    "quiz": "QUIZ 8",
+    "question": "Stop-and-wait ARQ uses ___________ type of data flow.",
+    "options": [
+      "full simplex",
+      "half complex",
+      "full duplex",
+      "half duplex",
+      "full complex"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 31) records option D: \"half duplex\" as the correct answer."
+  },
+  {
+    "id": "ch05-s32",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 1-2-1.pptx",
+    "slide": 32,
+    "quiz": "QUIZ 9",
+    "question": "What are the two types of ARQ?",
+    "options": [
+      "Stop-and-wait and continuous",
+      "Half and full duplex",
+      "Continuous and intermittent",
+      "Selective and continuous",
+      "Stop-and-wait and selective"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch05 Transport-Network Part 1-2-1.pptx, slide 32) records option A: \"Stop-and-wait and continuous\" as the correct answer."
+  },
+  {
+    "id": "ch05-s34",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 2-4-1 (1).pptx",
+    "slide": 34,
+    "quiz": "QUIZ 1",
+    "question": "The network layer provides guaranteed end-to-end delivery of the message.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 34) records this statement as: False."
+  },
+  {
+    "id": "ch05-s35",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 2-4-1 (1).pptx",
+    "slide": 35,
+    "quiz": "QUIZ 2",
+    "question": "A subnet mask of 255.255.255.0 means that all computers with only the same first two bytes in their IPv4 addresses are on the same subnet",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 35) records this statement as: False."
+  },
+  {
+    "id": "ch05-s36",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 2-4-1 (1).pptx",
+    "slide": 36,
+    "quiz": "QUIZ 3",
+    "question": "A subnet mask of 255.255.0.0, the first two bytes indicate the same subnet.(TRUE/FALSE)",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 36) records this statement as: True."
+  },
+  {
+    "id": "ch05-s37",
+    "topic": "Chapter 5 — Network & Transport Layers",
+    "week": "Weeks 4–5",
+    "source": "ch05 Transport-Network Part 2-4-1 (1).pptx",
+    "slide": 37,
+    "quiz": "QUIZ 4",
+    "question": "UDP is not commonly used for:",
+    "options": [
+      "network management control messages",
+      "RIP messages",
+      "DHCP addressing messages",
+      "HTTP requests",
+      "DNS requests"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch05 Transport-Network Part 2-4-1 (1).pptx, slide 37) records option D: \"HTTP requests\" as the correct answer."
+  },
+  {
+    "id": "ch06-s14",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 14,
+    "quiz": "QUIZ 1",
+    "question": "The campus backbone (or core layer) is the network architecture component responsible for providing end user access to the network.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 14) records this statement as: False."
+  },
+  {
+    "id": "ch06-s15",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 15,
+    "quiz": "QUIZ 2",
+    "question": "Today, many organizations design networks using the building-block approach",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 15) records this statement as: True."
+  },
+  {
+    "id": "ch06-s16",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 16,
+    "quiz": "QUIZ 3",
+    "question": "Nowadays, most organizations use a simpler approach to network design called the ___________ approach.",
+    "options": [
+      "building-block",
+      "frame definition",
+      "prototype",
+      "systems development life cycle",
+      "guided network"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 16) records option A: \"building-block\" as the correct answer."
+  },
+  {
+    "id": "ch06-s24",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 24,
+    "quiz": "QUIZ 4",
+    "question": "Which of the following is not a current trend that is making the traditional design approach less appropriate for today’s networks?",
+    "options": [
+      "The underlying technology of networking devices is changing very rapidly",
+      "The underlying technology of client and server devices is changing very rapidly",
+      "The underlying technology of circuits is changing very rapidly",
+      "Growth in network traffic is very high",
+      "The most expensive part of any network is the hardware"
+    ],
+    "answer": 4,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 24) records option E: \"The most expensive part of any network is the hardware\" as the correct answer."
+  },
+  {
+    "id": "ch06-s25",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 25,
+    "quiz": "QUIZ 5",
+    "question": "In needs analysis:",
+    "options": [
+      "the costs of different physical network design alternatives are assessed",
+      "the goal is to understand what users and applications the network will support",
+      "the geographic scope is not an important consideration",
+      "a baseline of current operations is not important",
+      "the rate of growth of network traffic is not an issue"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 25) records option B: \"the goal is to understand what users and applications the network will support\" as the correct answer."
+  },
+  {
+    "id": "ch06-s31",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 31,
+    "quiz": "QUIZ 6",
+    "question": "In the __________ step of the building-block process to network design, the network designer attempts to understand the fundamental current and future network needs of the various users, departments, and applications.",
+    "options": [
+      "technology design",
+      "needs analysis",
+      "narrow and deep analysis",
+      "cost assessment",
+      "distribution layering"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 31) records option B: \"needs analysis\" as the correct answer."
+  },
+  {
+    "id": "ch06-s32",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 32,
+    "quiz": "QUIZ 7",
+    "question": "In the __________ step of the building-block process to network design, the network designer examines the available technologies and assesses which options will meet the users’ needs.",
+    "options": [
+      "technology design",
+      "needs analysis",
+      "narrow and deep analysis",
+      "cost assessment",
+      "distribution layering"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 32) records option A: \"technology design\" as the correct answer."
+  },
+  {
+    "id": "ch06-s39",
+    "topic": "Chapter 6 — Network Design",
+    "week": "Week 7",
+    "source": "ch06 Network design-5.pptx",
+    "slide": 39,
+    "quiz": "QUIZ 8",
+    "question": "In the __________ step of the building-block process to network design, the network designer considers the relative cost of the technologies.",
+    "options": [
+      "technology design",
+      "needs analysis",
+      "narrow and deep analysis",
+      "cost assessment",
+      "distribution layering"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch06 Network design-5.pptx, slide 39) records option D: \"cost assessment\" as the correct answer."
+  },
+  {
+    "id": "ch07-s11",
+    "topic": "Chapter 7 — Wired and Wireless LANs",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 11,
+    "quiz": "QUIZ 1",
+    "question": "The Network Interface Card (NIC) permits a computer to be physically connected to a network’s cable. .",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 11) records this statement as: True."
+  },
+  {
+    "id": "ch07-s12",
+    "topic": "Chapter 7 — Wired and Wireless LANs",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 12,
+    "quiz": "QUIZ 2",
+    "question": "Many network hubs and switches incorporate repeaters to regenerate signals so that attenuation of the signal does not occur.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 12) records this statement as: True."
+  },
+  {
+    "id": "ch07-s18",
+    "topic": "Chapter 7 — Wired and Wireless LANs",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 18,
+    "quiz": "QUIZ 3",
+    "question": "The NOS software for the server computer provides the physical, data link, and network layer functions. .",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 18) records this statement as: False."
+  },
+  {
+    "id": "ch07-s19",
+    "topic": "Chapter 7 — Wired and Wireless LANs",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 19,
+    "quiz": "QUIZ 4",
+    "question": "Network profile refers to what resources on each server are available on the network for use by other computers and which devices or people are allowed access on the network.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 19) records this statement as: True."
+  },
+  {
+    "id": "ch07-s27",
+    "topic": "Chapter 7 — Wired and Wireless LANs",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 27,
+    "quiz": "QUIZ 5",
+    "question": "A switch always broadcasts all the packets it receives to all the computers that are connected to the switch. .",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 27) records this statement as: False."
+  },
+  {
+    "id": "ch07-s28",
+    "topic": "Chapter 7 — Wired and Wireless LANs",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 28,
+    "quiz": "QUIZ 6",
+    "question": "A forwarding table tells a switch which port it should send out a packet to get to the destination computer.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch07 Wired and Wireless LANs-1-1.pptx, slide 28) records this statement as: True."
+  },
+  {
+    "id": "ch08-s22",
+    "topic": "Chapter 8 — Backbone Networks",
+    "week": "Week 7",
+    "source": "ch08 Backbone network-1-1.pptx",
+    "slide": 22,
+    "quiz": "QUIZ 1",
+    "question": "A backbone network is a high-speed network that connects many networks.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 22) records this statement as: True."
+  },
+  {
+    "id": "ch08-s23",
+    "topic": "Chapter 8 — Backbone Networks",
+    "week": "Week 7",
+    "source": "ch08 Backbone network-1-1.pptx",
+    "slide": 23,
+    "quiz": "QUIZ 2",
+    "question": "A backbone network that connects many backbone networks spanning several buildings at a single location is often called an Internet backbone.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 23) records this statement as: False."
+  },
+  {
+    "id": "ch08-s24",
+    "topic": "Chapter 8 — Backbone Networks",
+    "week": "Week 7",
+    "source": "ch08 Backbone network-1-1.pptx",
+    "slide": 24,
+    "quiz": "QUIZ 3",
+    "question": "One basic component of a backbone network is the hardware device that connects other networks to the backbone.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 24) records this statement as: True."
+  },
+  {
+    "id": "ch08-s25",
+    "topic": "Chapter 8 — Backbone Networks",
+    "week": "Week 7",
+    "source": "ch08 Backbone network-1-1.pptx",
+    "slide": 25,
+    "quiz": "QUIZ 4",
+    "question": "Routers use network layer address to forward packets between network segments.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 25) records this statement as: True."
+  },
+  {
+    "id": "ch08-s26",
+    "topic": "Chapter 8 — Backbone Networks",
+    "week": "Week 7",
+    "source": "ch08 Backbone network-1-1.pptx",
+    "slide": 26,
+    "quiz": "QUIZ 5",
+    "question": "Routed backbones use switches that move packets based on data link layer addresses.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 26) records this statement as: False."
+  },
+  {
+    "id": "ch08-s27",
+    "topic": "Chapter 8 — Backbone Networks",
+    "week": "Week 7",
+    "source": "ch08 Backbone network-1-1.pptx",
+    "slide": 27,
+    "quiz": "QUIZ 6",
+    "question": "Which of the following is not true about Layer-3 switches?",
+    "options": [
+      "They switch messages based on their IP address.",
+      "They can be used in place of routers.",
+      "They function faster than routers.",
+      "They have more simultaneously active ports than routers.",
+      "They can only switch messages based on their data link layer addresses."
+    ],
+    "answer": 4,
+    "explanation": "Source slide (ch08 Backbone network-1-1.pptx, slide 27) records option E: \"They can only switch messages based on their data link layer addresses.\" as the correct answer."
+  },
+  {
+    "id": "ch10-s21",
+    "topic": "Chapter 10 — Internet Architecture & ISPs",
+    "week": "Week 8",
+    "source": "ch10 Internet-2.pptx",
+    "slide": 21,
+    "quiz": "QUIZ 1",
+    "question": "The Internet is flat in structure.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch10 Internet-2.pptx, slide 21) records this statement as: False."
+  },
+  {
+    "id": "ch10-s22",
+    "topic": "Chapter 10 — Internet Architecture & ISPs",
+    "week": "Week 8",
+    "source": "ch10 Internet-2.pptx",
+    "slide": 22,
+    "quiz": "QUIZ 2",
+    "question": "Tier 1 service providers connect together and exchange data at IXPs..",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch10 Internet-2.pptx, slide 22) records this statement as: True."
+  },
+  {
+    "id": "ch10-s23",
+    "topic": "Chapter 10 — Internet Architecture & ISPs",
+    "week": "Week 8",
+    "source": "ch10 Internet-2.pptx",
+    "slide": 23,
+    "quiz": "QUIZ 3",
+    "question": "A point of presence is the place at which the ISP provides services to its customers.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch10 Internet-2.pptx, slide 23) records this statement as: True."
+  },
+  {
+    "id": "ch10-s24",
+    "topic": "Chapter 10 — Internet Architecture & ISPs",
+    "week": "Week 8",
+    "source": "ch10 Internet-2.pptx",
+    "slide": 24,
+    "quiz": "QUIZ 4",
+    "question": "Technologies that provide higher-speed communications than traditional modems (e.g., DSL) are known as ______________ technologies.",
+    "options": [
+      "middleband",
+      "narrowband",
+      "rubberband",
+      "metalband",
+      "broadband"
+    ],
+    "answer": 4,
+    "explanation": "Source slide (ch10 Internet-2.pptx, slide 24) records option E: \"broadband\" as the correct answer."
+  },
+  {
+    "id": "ch10-s25",
+    "topic": "Chapter 10 — Internet Architecture & ISPs",
+    "week": "Week 8",
+    "source": "ch10 Internet-2.pptx",
+    "slide": 25,
+    "quiz": "QUIZ 5",
+    "question": "At the DSL local carrier’s office, the __________ demultiplexes the data streams and converts them into digital data.",
+    "options": [
+      "DSLAM",
+      "GrandSlam",
+      "WAP",
+      "line splitter",
+      "X.25 PAD"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch10 Internet-2.pptx, slide 25) records option A: \"DSLAM\" as the correct answer."
+  },
+  {
+    "id": "ch10-s26",
+    "topic": "Chapter 10 — Internet Architecture & ISPs",
+    "week": "Week 8",
+    "source": "ch10 Internet-2.pptx",
+    "slide": 26,
+    "quiz": "QUIZ 6",
+    "question": "Fiber to the Home uses _____.",
+    "options": [
+      "frequency division multiplexing",
+      "wavelength division multiplexing",
+      "time division multiplexing",
+      "statistical time division multiplexing",
+      "all of the above."
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch10 Internet-2.pptx, slide 26) records option B: \"wavelength division multiplexing\" as the correct answer."
+  },
+  {
+    "id": "ch10-s31",
+    "topic": "Chapter 10 — Internet Architecture & ISPs",
+    "week": "Week 8",
+    "source": "ch10 Internet-2.pptx",
+    "slide": 31,
+    "quiz": "QUIZ 7",
+    "question": "The Internet Engineering Steering Group provides strategic architectural oversight for the Internet..",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch10 Internet-2.pptx, slide 31) records this statement as: False."
+  },
+  {
+    "id": "ch11-s8",
+    "topic": "Chapter 11 — Network Security",
+    "week": "Week 11",
+    "source": "ch11 Network security-1.pptx",
+    "slide": 8,
+    "quiz": "QUIZ 1",
+    "question": "Security on a network not only means being able to prevent a hacker from breaking into your computer but also includes being able to recover from temporary service problems or from natural disasters. TRUE/FALSE)?",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch11 Network security-1.pptx, slide 8) records this statement as: True."
+  },
+  {
+    "id": "ch11-s9",
+    "topic": "Chapter 11 — Network Security",
+    "week": "Week 11",
+    "source": "ch11 Network security-1.pptx",
+    "slide": 9,
+    "quiz": "QUIZ 2",
+    "question": "The rise of the Internet has increased significantly the potential vulnerability of an organization’s assets.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch11 Network security-1.pptx, slide 9) records this statement as: True."
+  },
+  {
+    "id": "ch11-s10",
+    "topic": "Chapter 11 — Network Security",
+    "week": "Week 11",
+    "source": "ch11 Network security-1.pptx",
+    "slide": 10,
+    "quiz": "QUIZ 3",
+    "question": "Maintaining data integrity is not a primary goal of security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 1,
+    "explanation": "Source slide (ch11 Network security-1.pptx, slide 10) records this statement as: False."
+  },
+  {
+    "id": "ch11-s11",
+    "topic": "Chapter 11 — Network Security",
+    "week": "Week 11",
+    "source": "ch11 Network security-1.pptx",
+    "slide": 11,
+    "quiz": "QUIZ 4",
+    "question": "Business continuity planning refers primarily to ensuring availability, with some aspects of data integrity.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch11 Network security-1.pptx, slide 11) records this statement as: True."
+  },
+  {
+    "id": "ch11-s12",
+    "topic": "Chapter 11 — Network Security",
+    "week": "Week 11",
+    "source": "ch11 Network security-1.pptx",
+    "slide": 12,
+    "quiz": "QUIZ 5",
+    "question": "Which of the following is not one of the major categories (or sub-categories) into which network security threats can be placed?",
+    "options": [
+      "disruption",
+      "destruction",
+      "controlled chaos",
+      "intrusion",
+      "disaster"
+    ],
+    "answer": 2,
+    "explanation": "Source slide (ch11 Network security-1.pptx, slide 12) records option C: \"controlled chaos\" as the correct answer."
+  },
+  {
+    "id": "ch11-s30",
+    "topic": "Chapter 11 — Network Security",
+    "week": "Week 11",
+    "source": "ch11 Network security-1.pptx",
+    "slide": 30,
+    "quiz": "QUIZ 6",
+    "question": "The key principle in preventing disruption, destruction and disaster is ___________.",
+    "options": [
+      "redundancy",
+      "control spreadsheet",
+      "prevention controls",
+      "anti-virus software"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch11 Network security-1.pptx, slide 30) records option A: \"redundancy\" as the correct answer."
+  },
+  {
+    "id": "ch11-s31",
+    "topic": "Chapter 11 — Network Security",
+    "week": "Week 11",
+    "source": "ch11 Network security-1.pptx",
+    "slide": 31,
+    "quiz": "QUIZ 7",
+    "question": "A hacker gaining access to organizational data files and resources is an example of a(n) ____________ threat.",
+    "options": [
+      "disruptive",
+      "controlled chaos",
+      "destruction",
+      "intrusion",
+      "disaster"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch11 Network security-1.pptx, slide 31) records option D: \"intrusion\" as the correct answer."
+  },
+  {
+    "id": "ch12-s14",
+    "topic": "Chapter 12 — Network Management",
+    "week": "Week 8",
+    "source": "ch12 Network management-1.pptx",
+    "slide": 14,
+    "quiz": "QUIZ 1",
+    "question": "Network management is the process of operating, monitoring, and controlling the network to ensure it works as intended and provides value to its users.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch12 Network management-1.pptx, slide 14) records this statement as: True."
+  },
+  {
+    "id": "ch12-s15",
+    "topic": "Chapter 12 — Network Management",
+    "week": "Week 8",
+    "source": "ch12 Network management-1.pptx",
+    "slide": 15,
+    "quiz": "QUIZ 2",
+    "question": "One common configuration activity is updating the software on the client computers in the network.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch12 Network management-1.pptx, slide 15) records this statement as: True."
+  },
+  {
+    "id": "ch12-s16",
+    "topic": "Chapter 12 — Network Management",
+    "week": "Week 8",
+    "source": "ch12 Network management-1.pptx",
+    "slide": 16,
+    "quiz": "QUIZ 3",
+    "question": "Management reports can be helpful in determining network availability statistics.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch12 Network management-1.pptx, slide 16) records this statement as: True."
+  },
+  {
+    "id": "ch12-s17",
+    "topic": "Chapter 12 — Network Management",
+    "week": "Week 8",
+    "source": "ch12 Network management-1.pptx",
+    "slide": 17,
+    "quiz": "QUIZ 4",
+    "question": "Which of the following is not a basic function of a network manager?",
+    "options": [
+      "Web surfing to shop on eBay",
+      "cost management",
+      "performance and fault management",
+      "configuration management",
+      "end user support"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch12 Network management-1.pptx, slide 17) records option A: \"Web surfing to shop on eBay\" as the correct answer."
+  },
+  {
+    "id": "ch12-s32",
+    "topic": "Chapter 12 — Network Management",
+    "week": "Week 8",
+    "source": "ch12 Network management-1.pptx",
+    "slide": 32,
+    "quiz": "QUIZ 5",
+    "question": "Performance management means ensuring the network is operating as efficiently as possible. TRUE/FALSE)?",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch12 Network management-1.pptx, slide 32) records this statement as: True."
+  },
+  {
+    "id": "ch12-s33",
+    "topic": "Chapter 12 — Network Management",
+    "week": "Week 8",
+    "source": "ch12 Network management-1.pptx",
+    "slide": 33,
+    "quiz": "QUIZ 6",
+    "question": "___________ refers to managing and documenting the network’s hardware and software configuration.",
+    "options": [
+      "Visioning",
+      "Troubleshooting",
+      "Firefighting",
+      "Configuration management",
+      "Implementation"
+    ],
+    "answer": 3,
+    "explanation": "Source slide (ch12 Network management-1.pptx, slide 33) records option D: \"Configuration management\" as the correct answer."
+  },
+  {
+    "id": "ch12-s34",
+    "topic": "Chapter 12 — Network Management",
+    "week": "Week 8",
+    "source": "ch12 Network management-1.pptx",
+    "slide": 34,
+    "quiz": "QUIZ 7",
+    "question": "_____________ are used by many large and small organizations to monitor and control their networks today.",
+    "options": [
+      "Network management software packages",
+      "Firefighter packages",
+      "Fault creating packages",
+      "Fault toleraters",
+      "NICs"
+    ],
+    "answer": 0,
+    "explanation": "Source slide (ch12 Network management-1.pptx, slide 34) records option A: \"Network management software packages\" as the correct answer."
+  }
+];
+
+  let currentQuestions = [];
+  let currentIndex = 0;
+  let userAnswers = {};
+  let feedbackMode = 'instant'; // 'instant' or 'exam'
+  let isFinished = false;
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function switchMode(mode) {
+    feedbackMode = mode;
+    document.getElementById('pill-instant').classList.toggle('active', mode === 'instant');
+    document.getElementById('pill-exam').classList.toggle('active', mode === 'exam');
+    document.getElementById('mode-desc').textContent = mode === 'instant' 
+      ? 'Instant mode: See answer and explanation immediately after choosing.'
+      : 'Exam mode: Answer questions with Next, then see your final score at the end.';
+    resetAnswers();
+  }
+
+  function resetAnswers() {
+    userAnswers = {};
+    currentIndex = 0;
+    isFinished = false;
+    document.getElementById('results-screen').classList.remove('visible');
+    document.getElementById('question-card').style.display = 'flex';
+    renderMatrix();
+    renderCurrentQuestion();
+  }
+
+  function restartQuiz() {
+    currentQuestions = shuffle(ALL_QUESTIONS).slice(0, 100);
+    resetAnswers();
+  }
+
+  function renderMatrix() {
+    const matrix = document.getElementById('question-matrix');
+    matrix.innerHTML = '';
+    currentQuestions.forEach((_, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'matrix-btn' + (idx === currentIndex ? ' current' : '');
+      btn.id = 'matrix-btn-' + idx;
+      btn.textContent = idx + 1;
+      btn.onclick = () => jumpTo(idx);
+      matrix.appendChild(btn);
+    });
+    updateMatrixStatus();
+  }
+
+  function updateMatrixStatus() {
+    let answeredCount = 0;
+    currentQuestions.forEach((q, idx) => {
+      const btn = document.getElementById('matrix-btn-' + idx);
+      if (!btn) return;
+      btn.className = 'matrix-btn';
+      if (idx === currentIndex) btn.classList.add('current');
+
+      const selected = userAnswers[q.id];
+      if (selected !== undefined) {
+        answeredCount++;
+        if (isFinished || feedbackMode === 'instant') {
+          btn.classList.add(selected === q.answer ? 'scored-correct' : 'scored-incorrect');
+        } else {
+          btn.classList.add('answered');
+        }
+      }
+    });
+    document.getElementById('answered-counter').textContent = `${answeredCount}/${currentQuestions.length}`;
+  }
+
+  function renderCurrentQuestion() {
+    const q = currentQuestions[currentIndex];
+    document.getElementById('q-header-title').textContent = `Question ${currentIndex + 1}`;
+    document.getElementById('q-topic').textContent = q.topic;
+    document.getElementById('q-text').textContent = q.question;
+    document.getElementById('q-indicator').textContent = `${currentIndex + 1} of ${currentQuestions.length}`;
+
+    // Navigation buttons
+    document.getElementById('btn-prev').disabled = currentIndex === 0;
+    const isLast = currentIndex === currentQuestions.length - 1;
+    document.getElementById('btn-next').textContent = isLast ? 'Finish 🏁' : 'Next →';
+
+    // Render options
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+
+    const selectedChoice = userAnswers[q.id];
+    const isAnswered = selectedChoice !== undefined;
+    const showFeedback = (feedbackMode === 'instant' && isAnswered) || isFinished;
+
+    q.choices.forEach((choice, cIdx) => {
+      const letter = String.fromCharCode(65 + cIdx);
+      const opt = document.createElement('label');
+      opt.className = 'opt-card';
+      if (selectedChoice === cIdx) opt.classList.add('selected');
+
+      if (showFeedback) {
+        opt.classList.add('disabled');
+        if (cIdx === q.answer) {
+          opt.classList.add('correct');
+        } else if (selectedChoice === cIdx && selectedChoice !== q.answer) {
+          opt.classList.add('incorrect');
+        }
+      }
+
+      opt.innerHTML = `
+        <input type="radio" name="current_q" value="${cIdx}" ${selectedChoice === cIdx ? 'checked' : ''} ${showFeedback ? 'disabled' : ''}>
+        <span><strong>${letter}.</strong> ${escapeHtml(choice)}</span>
+      `;
+      opt.onclick = (e) => {
+        if (!showFeedback) {
+          chooseOption(q.id, cIdx);
+        }
+      };
+      container.appendChild(opt);
+    });
+
+    // Feedback box
+    const feedbackBox = document.getElementById('feedback-box');
+    if (showFeedback) {
+      const isCorrect = selectedChoice === q.answer;
+      feedbackBox.className = 'instant-feedback ' + (isCorrect ? 'show-correct' : 'show-incorrect');
+      document.getElementById('feedback-status').innerHTML = isCorrect ? '✓ Correct!' : (selectedChoice === undefined ? '✕ Unanswered' : '✕ Incorrect');
+      document.getElementById('feedback-why').innerHTML = `<strong>Official Rule:</strong> ${escapeHtml(q.why)}`;
+    } else {
+      feedbackBox.className = 'instant-feedback';
+    }
+
+    updateMatrixStatus();
+  }
+
+  function chooseOption(qid, choiceIdx) {
+    userAnswers[qid] = choiceIdx;
+    renderCurrentQuestion();
+  }
+
+  function navigate(delta) {
+    if (currentIndex + delta >= 0 && currentIndex + delta < currentQuestions.length) {
+      currentIndex += delta;
+      document.getElementById('results-screen').classList.remove('visible');
+      document.getElementById('question-card').style.display = 'flex';
+      renderCurrentQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (currentIndex + delta >= currentQuestions.length) {
+      finishAndShowResults();
+    }
+  }
+
+  function jumpTo(idx) {
+    currentIndex = idx;
+    document.getElementById('results-screen').classList.remove('visible');
+    document.getElementById('question-card').style.display = 'flex';
+    renderCurrentQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function reviewFromQuestion(idx) {
+    jumpTo(idx);
+  }
+
+  // Calculates and displays the end score screen
+  function finishAndShowResults() {
+    isFinished = true;
+    let correct = 0;
+    let answered = 0;
+    const total = currentQuestions.length;
+
+    currentQuestions.forEach(q => {
+      const sel = userAnswers[q.id];
+      if (sel !== undefined) answered++;
+      if (sel === q.answer) correct++;
+    });
+
+    const incorrect = answered - correct;
+    const unanswered = total - answered;
+    const pct = Math.round((correct / total) * 100);
+
+    // Update results screen numbers
+    document.getElementById('res-score-number').textContent = `${correct} / ${total}`;
+    document.getElementById('res-percentage').textContent = `${pct}% Final Score (${correct} Points)`;
+    document.getElementById('res-stat-correct').textContent = correct;
+    document.getElementById('res-stat-incorrect').textContent = incorrect;
+    document.getElementById('res-stat-unanswered').textContent = unanswered;
+    document.getElementById('res-stat-total').textContent = total;
+
+    let commentary = '';
+    if (pct >= 80) {
+      commentary = '🌟 Outstanding! You have solid mastery of these networking concepts. Ready for the exam!';
+    } else if (pct >= 60) {
+      commentary = '👍 Good effort! Review your missed questions below to cement your understanding.';
+    } else {
+      commentary = '📚 Keep practicing! Focus on the red-marked questions to master the key rules before exam day.';
+    }
+    document.getElementById('res-commentary').textContent = commentary;
+
+    // Show results screen and hide question card
+    document.getElementById('question-card').style.display = 'none';
+    document.getElementById('results-screen').classList.add('visible');
+    updateMatrixStatus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  restartQuiz();
+</script>
+</body>
+</html>
