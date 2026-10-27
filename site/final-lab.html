@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3b">
+  <title>COMP504 Final Lab — Complete Cisco IOS Commands & Walkthrough</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .lab-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 24px 100px;
+      line-height: 1.65;
+    }
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-primary { background: rgba(72, 181, 191, 0.15); color: #48b5bf; border: 1px solid rgba(72, 181, 191, 0.3); }
+    .badge-warning { background: rgba(224, 154, 78, 0.15); color: #e09a4e; border: 1px solid rgba(224, 154, 78, 0.3); }
+    .badge-success { background: rgba(46, 204, 113, 0.15); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.3); }
+
+    .lab-title {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin: 0 0 10px;
+      line-height: 1.25;
+    }
+    .lab-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin: 0 0 30px;
+    }
+
+    .callout {
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-left: 4px solid;
+    }
+    .callout-warning {
+      background: rgba(224, 154, 78, 0.08);
+      border-color: #e09a4e;
+      color: var(--ink);
+    }
+    .callout-info {
+      background: rgba(72, 181, 191, 0.08);
+      border-color: #48b5bf;
+      color: var(--ink);
+    }
+    .callout h4 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .table-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0 30px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+    th {
+      background: var(--surface-2);
+      color: var(--accent);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .code-block-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #17212b;
+      padding: 10px 16px;
+      border-radius: 8px 8px 0 0;
+      border: 1px solid var(--line);
+      border-bottom: none;
+      margin-top: 24px;
+    }
+    .code-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .copy-btn {
+      background: rgba(72, 181, 191, 0.15);
+      color: #48b5bf;
+      border: 1px solid rgba(72, 181, 191, 0.4);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover {
+      background: #48b5bf;
+      color: #0c151c;
+    }
+
+    pre.code-block {
+      background: #0d151c;
+      color: #e2e8f0;
+      padding: 16px;
+      margin: 0 0 24px;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid var(--line);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+
+    .step-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 24px;
+      margin: 28px 0;
+    }
+    .step-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .step-num {
+      background: var(--accent);
+      color: #0c151c;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+      padding: 14px;
+      background: var(--surface-2);
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .nav-pills a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      transition: all 0.15s;
+    }
+    .nav-pills a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body class="utility-page" data-page="labs">
+  <div class="read-progress" id="read-progress" aria-hidden="true"></div>
+  <div class="site-shell">
+    <aside class="sidebar" aria-label="Study navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">N<span>⚡</span></span>
+        <span>Networks<br><small>and Internet</small></span>
+      </a>
+      <div class="sidebar-intro">COMP504 • OFFLINE STUDY KIT</div>
+      <nav class="tool-nav">
+        <a href="index.html">01 • Beginner lessons</a>
+        <a href="practice.html">02 • Practice</a>
+        <a href="exam-deck.html">02b • Exam Deck ⚡</a>
+        <a href="slide-questions.html">03 • Lecture slide questions</a>
+        <a href="labs.html">04 • Hands-on labs</a>
+        <a href="lab-path.html">04b • Lab walkthrough path</a>
+        <a href="final-lab.html" class="active" style="color:#2ecc71; font-weight:bold;">04c • Final Lab CLI Cheat Sheet 🏆</a>
+        <a href="compact-review.html">04d • Compact review</a>
+        <a href="practice-set-1.html">05a • Practice Set 1 (100 Qs)</a>
+        <a href="practice-set-2.html">05b • Practice Set 2 (100 Qs)</a>
+        <a href="practice-set-3.html">05c • Practice Set 3 (100 Qs)</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <span>FINAL PRACTICAL EXAM CLI CHEAT SHEET</span>
+        <a href="lab-path.html">Full Lab Path &rarr;</a>
+      </header>
+
+      <div class="lab-container">
+        <div class="badge-bar">
+          <span class="badge badge-success">✓ 100% Tested & Verified</span>
+          <span class="badge badge-primary">Packet Tracer Final Lab</span>
+          <span class="badge badge-warning">Network: 49.50.10.0/24</span>
+        </div>
+
+        <h1 class="lab-title">Packet Tracer Final Lab — CLI Configuration Cheat Sheet</h1>
+        <p class="lab-subtitle">Exact Cisco IOS commands, VLSM addressing, interface configs, SSH/security settings, and verification tests.</p>
+
+        <nav class="nav-pills" aria-label="Quick jump">
+          <a href="#vlsm-design">📊 1. VLSM Tables</a>
+          <a href="#router-pr">🔒 2. Router PR (All Settings)</a>
+          <a href="#switch-configs">⚡ 3. Switch SVIs (PD-1/2/3)</a>
+          <a href="#pc-configs">💻 4. Host PCs (IP & GW)</a>
+          <a href="#testing">🧪 5. Testing & Verification</a>
+          <a href="#exam-traps">⚠️ 6. Common Exam Traps</a>
+        </nav>
+
+        <!-- SECTION 1 -->
+        <section id="vlsm-design">
+          <h2>1. VLSM Design & Allocation (Base: 49.50.10.0/24)</h2>
+          <p>Allocated starting with the largest host requirement downwards in contiguous blocks with no gaps:</p>
+
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>LAN / Link</th>
+                  <th>Hosts Needed</th>
+                  <th>Allocated Network</th>
+                  <th>Subnet Mask</th>
+                  <th>CIDR</th>
+                  <th>Usable Host Range</th>
+                  <th>Broadcast</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>LAN-Sales</strong></td>
+                  <td>70</td>
+                  <td><code>49.50.10.0</code></td>
+                  <td><code>255.255.255.128</code></td>
+                  <td><code>/25</code></td>
+                  <td><code>49.50.10.1</code> – <code>49.50.10.126</code></td>
+                  <td><code>49.50.10.127</code></td>
+                </tr>
+                <tr>
+                  <td><strong>LAN-Design</strong></td>
+                  <td>56</td>
+                  <td><code>49.50.10.128</code></td>
+                  <td><code>255.255.255.192</code></td>
+                  <td><code>/26</code></td>
+                  <td><code>49.50.10.129</code> – <code>49.50.10.190</code></td>
+                  <td><code>49.50.10.191</code></td>
+                </tr>
+                <tr>
+                  <td><strong>LAN-Admin</strong></td>
+                  <td>26</td>
+                  <td><code>49.50.10.192</code></td>
+                  <td><code>255.255.255.224</code></td>
+                  <td><code>/27</code></td>
+                  <td><code>49.50.10.193</code> – <code>49.50.10.222</code></td>
+                  <td><code>49.50.10.223</code></td>
+                </tr>
+                <tr>
+                  <td><strong>WAN Link</strong></td>
+                  <td>2</td>
+                  <td><code>49.50.10.224</code></td>
+                  <td><code>255.255.255.252</code></td>
+                  <td><code>/30</code></td>
+                  <td><code>49.50.10.225</code> – <code>49.50.10.226</code></td>
+                  <td><code>49.50.10.227</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Complete Device Addressing Table</h3>
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Device</th>
+                  <th>Interface</th>
+                  <th>IP Address</th>
+                  <th>Subnet Mask</th>
+                  <th>Default Gateway</th>
+                  <th>Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>PR (Router)</strong></td>
+                  <td>Fa0/0</td>
+                  <td><code>49.50.10.1</code></td>
+                  <td><code>255.255.255.128</code></td>
+                  <td><em>N/A</em></td>
+                  <td>LAN-Sales Gateway (Description: <code>SALES</code>)</td>
+                </tr>
+                <tr>
+                  <td><strong>PR (Router)</strong></td>
+                  <td>Fa0/1</td>
+                  <td><code>49.50.10.129</code></td>
+                  <td><code>255.255.255.192</code></td>
+                  <td><em>N/A</em></td>
+                  <td>LAN-Design Gateway (Description: <code>DESIGN</code>)</td>
+                </tr>
+                <tr>
+                  <td><strong>PR (Router)</strong></td>
+                  <td>E0/0/0</td>
+                  <td><code>49.50.10.193</code></td>
+                  <td><code>255.255.255.224</code></td>
+                  <td><em>N/A</em></td>
+                  <td>LAN-Admin Gateway (Description: <code>ADMIN</code>)</td>
+                </tr>
+                <tr>
+                  <td><strong>PD-1 (Switch)</strong></td>
+                  <td>VLAN 1</td>
+                  <td><code>49.50.10.2</code></td>
+                  <td><code>255.255.255.128</code></td>
+                  <td><code>49.50.10.1</code></td>
+                  <td>Sales Switch SVI Management</td>
+                </tr>
+                <tr>
+                  <td><strong>PD-2 (Switch)</strong></td>
+                  <td>VLAN 1</td>
+                  <td><code>49.50.10.194</code></td>
+                  <td><code>255.255.255.224</code></td>
+                  <td><code>49.50.10.193</code></td>
+                  <td>Admin Switch SVI Management</td>
+                </tr>
+                <tr>
+                  <td><strong>PD-3 (Switch)</strong></td>
+                  <td>VLAN 1</td>
+                  <td><code>49.50.10.130</code></td>
+                  <td><code>255.255.255.192</code></td>
+                  <td><code>49.50.10.129</code></td>
+                  <td>Design Switch SVI Management</td>
+                </tr>
+                <tr>
+                  <td><strong>PD-1-23 (PC)</strong></td>
+                  <td>NIC</td>
+                  <td><code>49.50.10.3</code></td>
+                  <td><code>255.255.255.128</code></td>
+                  <td><code>49.50.10.1</code></td>
+                  <td>Sales Host PC</td>
+                </tr>
+                <tr>
+                  <td><strong>PD-2-12 (PC)</strong></td>
+                  <td>NIC</td>
+                  <td><code>49.50.10.195</code></td>
+                  <td><code>255.255.255.224</code></td>
+                  <td><code>49.50.10.193</code></td>
+                  <td>Admin Host PC</td>
+                </tr>
+                <tr>
+                  <td><strong>PD-3-11 (PC)</strong></td>
+                  <td>NIC</td>
+                  <td><code>49.50.10.131</code></td>
+                  <td><code>255.255.255.192</code></td>
+                  <td><code>49.50.10.129</code></td>
+                  <td>Design Host PC</td>
+                </tr>
+                <tr>
+                  <td><strong>Web Server</strong></td>
+                  <td>NIC</td>
+                  <td><code>156.62.140.254</code></td>
+                  <td><code>255.255.255.0</code></td>
+                  <td><code>156.62.140.1</code></td>
+                  <td>Pre-configured Remote WAN Server</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="router-pr" class="step-card">
+          <h3><span class="step-num">2</span> Router PR Configuration (Full Script)</h3>
+          <p>Connect a <strong>Console Cable</strong> from <code>PD-1-23</code> (RS-232) to <code>Police</code> (Console). Click PC &rarr; Desktop &rarr; Terminal (9600-8-N-1):</p>
+
+          <div class="code-block-header">
+            <span class="code-title">📋 Router PR Complete Configuration (Copy & Paste)</span>
+            <button class="copy-btn" onclick="copyCode('code-router-pr')">Copy Commands</button>
+          </div>
+          <pre class="code-block" id="code-router-pr"><code>enable
+configure terminal
+
+! 1. Set Hostname
+hostname PR
+
+! 2. Disable DNS lookup to avoid typos hanging the CLI
+no ip domain-lookup
+
+! 3. Configure MOTD Banner
+banner motd #No Unauthorized Access#
+
+! 4. Configure IP Domain Name
+ip domain-name CCNA.net
+
+! 5. Create Admin user with privilege 15 (Do this BEFORE password min-length!)
+username Admin privilege 15 secret Adminpa55
+
+! 6. Set Password Minimum Length to 10
+security passwords min-length 10
+
+! 7. Set Encrypted Enable Secret Password
+enable secret Ciscoenpa55
+
+! 8. Enable Plaintext Password Encryption
+service password-encryption
+
+! 9. Configure Console Line Security with 10-minute timeout
+line console 0
+ password Ciscoconpa55
+ login
+ exec-timeout 10 0
+ exit
+
+! 10. Configure VTY Lines for SSH, local authentication, and 10-minute timeout
+line vty 0 4
+ transport input ssh
+ login local
+ exec-timeout 10 0
+ exit
+
+! 11. Generate RSA 1024-bit Crypto Key for SSH
+crypto key generate rsa
+1024
+
+! 12. Configure Login Banner
+banner login #No Unauthorised Access#
+
+! 13. Block Login for 3 mins (180s) after 4 failed attempts within 30s
+login block-for 180 attempts 4 within 30
+
+! 14. Configure Interface Fa0/0 (LAN-Sales)
+interface FastEthernet0/0
+ description SALES
+ ip address 49.50.10.1 255.255.255.128
+ no shutdown
+ exit
+
+! 15. Configure Interface Fa0/1 (LAN-Design)
+interface FastEthernet0/1
+ description DESIGN
+ ip address 49.50.10.129 255.255.255.192
+ no shutdown
+ exit
+
+! 16. Configure Interface E0/0/0 (LAN-Admin)
+interface Ethernet0/0/0
+ description ADMIN
+ ip address 49.50.10.193 255.255.255.224
+ no shutdown
+ exit
+
+! 17. Save Configuration to NVRAM
+end
+copy running-config startup-config</code></pre>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="switch-configs">
+          <h2>3. Switch Configurations (SVIs & Default Gateways)</h2>
+          <p>Access each switch directly via its <strong>CLI tab</strong> in Packet Tracer:</p>
+
+          <div class="step-card">
+            <h3><span class="step-num">3A</span> Switch PD-1 (Sales LAN)</h3>
+            <div class="code-block-header">
+              <span class="code-title">📋 Switch PD-1 CLI Commands</span>
+              <button class="copy-btn" onclick="copyCode('code-sw1')">Copy Commands</button>
+            </div>
+            <pre class="code-block" id="code-sw1"><code>enable
+configure terminal
+interface vlan 1
+ ip address 49.50.10.2 255.255.255.128
+ no shutdown
+ exit
+ip default-gateway 49.50.10.1
+end
+copy running-config startup-config</code></pre>
+          </div>
+
+          <div class="step-card">
+            <h3><span class="step-num">3B</span> Switch PD-2 (Admin LAN)</h3>
+            <div class="code-block-header">
+              <span class="code-title">📋 Switch PD-2 CLI Commands</span>
+              <button class="copy-btn" onclick="copyCode('code-sw2')">Copy Commands</button>
+            </div>
+            <pre class="code-block" id="code-sw2"><code>enable
+configure terminal
+interface vlan 1
+ ip address 49.50.10.194 255.255.255.224
+ no shutdown
+ exit
+ip default-gateway 49.50.10.193
+end
+copy running-config startup-config</code></pre>
+          </div>
+
+          <div class="step-card">
+            <h3><span class="step-num">3C</span> Switch PD-3 (Design LAN)</h3>
+            <div class="code-block-header">
+              <span class="code-title">📋 Switch PD-3 CLI Commands</span>
+              <button class="copy-btn" onclick="copyCode('code-sw3')">Copy Commands</button>
+            </div>
+            <pre class="code-block" id="code-sw3"><code>enable
+configure terminal
+interface vlan 1
+ ip address 49.50.10.130 255.255.255.192
+ no shutdown
+ exit
+ip default-gateway 49.50.10.129
+end
+copy running-config startup-config</code></pre>
+          </div>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section id="pc-configs" class="step-card">
+          <h3><span class="step-num">4</span> Host PC IP Configurations</h3>
+          <p>Click on each PC &rarr; <strong>Desktop</strong> &rarr; <strong>IP Configuration</strong>:</p>
+
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Host PC</th>
+                  <th>IP Address</th>
+                  <th>Subnet Mask</th>
+                  <th>Default Gateway</th>
+                  <th>DNS Server</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>PD-1-23</strong></td>
+                  <td><code>49.50.10.3</code></td>
+                  <td><code>255.255.255.128</code></td>
+                  <td><code>49.50.10.1</code></td>
+                  <td><em>Leave blank / pre-set</em></td>
+                </tr>
+                <tr>
+                  <td><strong>PD-2-12</strong></td>
+                  <td><code>49.50.10.195</code></td>
+                  <td><code>255.255.255.224</code></td>
+                  <td><code>49.50.10.193</code></td>
+                  <td><em>Leave blank / pre-set</em></td>
+                </tr>
+                <tr>
+                  <td><strong>PD-3-11</strong></td>
+                  <td><code>49.50.10.131</code></td>
+                  <td><code>255.255.255.192</code></td>
+                  <td><code>49.50.10.129</code></td>
+                  <td><em>Leave blank / pre-set</em></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="testing" class="step-card">
+          <h3><span class="step-num">5</span> Testing & Verification</h3>
+
+          <h4>A. Verification from PC PD-1-23 Command Prompt</h4>
+          <div class="code-block-header">
+            <span class="code-title">💻 Command Prompt Ping Tests</span>
+            <button class="copy-btn" onclick="copyCode('code-pings')">Copy Tests</button>
+          </div>
+          <pre class="code-block" id="code-pings"><code>REM 1. Ping Local Gateway (Router PR Fa0/0)
+ping 49.50.10.1
+
+REM 2. Ping Local Switch PD-1 SVI
+ping 49.50.10.2
+
+REM 3. Ping Remote Switch PD-3 SVI
+ping 49.50.10.130
+
+REM 4. Ping Remote PC PD-3-11 (Design LAN)
+ping 49.50.10.131
+
+REM 5. Ping Remote PC PD-2-12 (Admin LAN)
+ping 49.50.10.195
+
+REM 6. Ping Web Server across WAN
+ping 156.62.140.254
+
+REM 7. Test SSH Access to Router PR
+ssh -l Admin 49.50.10.1
+REM (Password when prompted: Adminpa55)</code></pre>
+
+          <h4>B. Verification from Router PR Privileged EXEC</h4>
+          <pre class="code-block"><code>PR# show ip interface brief
+PR# show ip route
+PR# show running-config</code></pre>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="exam-traps">
+          <h2>6. Critical Exam Traps & Gotchas</h2>
+
+          <div class="callout callout-warning">
+            <h4>⚠️ Trap 1: Password Minimum Length vs "Adminpa55"</h4>
+            <p>The requirement specifies a minimum password length of <strong>10</strong> characters, but also asks to configure user <code>Admin</code> with password <code>Adminpa55</code> (which is only <strong>9</strong> characters). If you set <code>security passwords min-length 10</code> first, IOS will reject <code>username Admin ... secret Adminpa55</code>!
+            <br><strong>Solution:</strong> Configure the username <em>first</em>, then configure <code>security passwords min-length 10</code>.</p>
+          </div>
+
+          <div class="callout callout-warning">
+            <h4>⚠️ Trap 2: Login Block Seconds vs Minutes</h4>
+            <p>The prompt says: <em>"Configure block for 3 mins after 4 failed attempts within 30 seconds"</em>.
+            <br>Cisco IOS takes block time in <strong>seconds</strong>, not minutes!
+            <br><strong>Correct command:</strong> <code>login block-for 180 attempts 4 within 30</code> (3 × 60 = 180 seconds).</p>
+          </div>
+
+          <div class="callout callout-info">
+            <h4>💡 Trap 3: Default Gateway Placement on Switches</h4>
+            <p><code>ip default-gateway &lt;IP&gt;</code> is a <strong>global configuration</strong> command. If you type it inside <code>interface vlan 1</code>, it will be rejected as invalid syntax.</p>
+          </div>
+
+          <div class="callout callout-info">
+            <h4>💡 Trap 4: First Ping Times Out (ARP Resolution)</h4>
+            <p>In Packet Tracer, the very first packet of an ICMP ping to a new IP often shows <code>Request timed out</code> due to ARP address resolution. The next 3 packets will reply with <code>Reply from ...</code>. Re-running the ping gives 100% success.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function copyCode(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const text = el.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const orig = btn.innerText;
+        btn.innerText = "✓ Copied!";
+        setTimeout(() => { btn.innerText = orig; }, 2000);
+      }).catch(err => {
+        alert("Failed to copy. Please select manually.");
+      });
+    }
+  </script>
+</body>
+</html>

@@ -66,20 +66,228 @@ On a switch, management uses `interface vlan 1`, `ip address ...`, `no shutdown`
 
 ## Lab 6 — Timed practice final (90–120 min)
 
-Use [`Packet Tracer Final Lab.pka`](<../course-materials/sources/labs/final-practice/Packet Tracer Final Lab.pka>) and [`Packet Tracer Final Lab-1.docx`](<../course-materials/sources/labs/final-practice/Packet Tracer Final Lab-1.docx>). Attempt it **closed book first**. The sheet gives `49.50.10.0/24` and host needs 70, 56, 26, and 2. Build the VLSM table, fill the device addressing table, configure the router, switch SVIs, and PCs, then ping across LANs. Follow the sheet's specific hostname, banner, login, SSH, and interface-description requirements. Save both the Packet Tracer file and a fault log.
+Use [`Packet Tracer Final Lab.pka`](<../course-materials/sources/labs/final-practice/Packet Tracer Final Lab.pka>) and [`Packet Tracer Final Lab-1.docx`](<../course-materials/sources/labs/final-practice/Packet Tracer Final Lab-1.docx>). Attempt it **closed book first**.
 
-**Address allocation self-check** (after your attempt):
+### 1. VLSM Design & Allocation Table (Given: `49.50.10.0/24`)
 
-| Need | Network | Usable range | Broadcast |
-| --- | --- | --- | --- |
-| Sales 70 | `49.50.10.0/25` | `.1–.126` | `.127` |
-| Design 56 | `49.50.10.128/26` | `.129–.190` | `.191` |
-| Admin 26 | `49.50.10.192/27` | `.193–.222` | `.223` |
-| WAN 2 | `49.50.10.224/30` | `.225–.226` | `.227` |
+Assign largest subnets first, in descending order:
 
-The practice sheet says the WAN and Internet-side devices are already configured and need no changes. Match your router's actual interface names and topology before assigning the first, second, and subsequent usable addresses. If a ping fails, inspect the source mask/gateway, `show ip interface brief`, router routes, and the target gateway in that order.
+| Subnet / LAN | Needed | Allocated Subnet | Mask | CIDR | Usable Host Range | Broadcast Address |
+| :--- | :---: | :--- | :--- | :---: | :--- | :--- |
+| **LAN-Sales** | 70 | `49.50.10.0` | `255.255.255.128` | `/25` | `49.50.10.1` – `49.50.10.126` | `49.50.10.127` |
+| **LAN-Design** | 56 | `49.50.10.128` | `255.255.255.192` | `/26` | `49.50.10.129` – `49.50.10.190` | `49.50.10.191` |
+| **LAN-Admin** | 26 | `49.50.10.192` | `255.255.255.224` | `/27` | `49.50.10.193` – `49.50.10.222` | `49.50.10.223` |
+| **WAN Link** | 2 | `49.50.10.224` | `255.255.255.252` | `/30` | `49.50.10.225` – `49.50.10.226` | `49.50.10.227` |
 
-**Course-lab caveat:** The practice sheet combines a 10-character minimum password rule with the nine-character example `Adminpa55`; configure that supplied user before enforcing the minimum if Packet Tracer rejects it, then follow the activity checker. Its 1024-bit RSA requirement is for this course exercise and is not a recommendation for a real deployment.
+### 2. Device Addressing Table
+
+- **Router**: 1st usable IP
+- **Switch SVI**: 2nd usable IP
+- **Host PC**: 3rd usable IP
+
+| Device | Interface | IP Address | Subnet Mask | Default Gateway | Purpose |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **PR (Router)** | Fa0/0 | `49.50.10.1` | `255.255.255.128` | *N/A* | Gateway for LAN-Sales |
+| **PR (Router)** | Fa0/1 | `49.50.10.129` | `255.255.255.192` | *N/A* | Gateway for LAN-Design |
+| **PR (Router)** | E0/0/0 | `49.50.10.193` | `255.255.255.224` | *N/A* | Gateway for LAN-Admin |
+| **PD-1 (Switch)** | VLAN 1 | `49.50.10.2` | `255.255.255.128` | `49.50.10.1` | Sales Switch Management |
+| **PD-2 (Switch)** | VLAN 1 | `49.50.10.194` | `255.255.255.224` | `49.50.10.193` | Admin Switch Management |
+| **PD-3 (Switch)** | VLAN 1 | `49.50.10.130` | `255.255.255.192` | `49.50.10.129` | Design Switch Management |
+| **PD-1-23 (PC)** | NIC | `49.50.10.3` | `255.255.255.128` | `49.50.10.1` | Sales Host |
+| **PD-2-12 (PC)** | NIC | `49.50.10.195` | `255.255.255.224` | `49.50.10.193` | Admin Host |
+| **PD-3-11 (PC)** | NIC | `49.50.10.131` | `255.255.255.192` | `49.50.10.129` | Design Host |
+| **Web Server** | NIC | `156.62.140.254` | `255.255.255.0` | `156.62.140.1` | *Pre-configured WAN device* |
+
+---
+
+### 3. Complete Cisco CLI Commands
+
+#### Step 1: Router PR Configuration (via Console Cable from PD-1-23)
+Connect the blue Console cable from PC `PD-1-23` (RS-232) to Router `Police` (Console port). Open Terminal (9600, 8, N, 1).
+
+```cisco
+enable
+configure terminal
+
+! 1. Hostname
+hostname PR
+
+! 2. Disable DNS lookup
+no ip domain-lookup
+
+! 3. MOTD Banner
+banner motd #No Unauthorized Access#
+
+! 4. Domain Name for SSH
+ip domain-name CCNA.net
+
+! 5. User Account (Privilege 15) - Configure BEFORE min-length since Adminpa55 is 9 characters
+username Admin privilege 15 secret Adminpa55
+
+! 6. Enforce Minimum Password Length
+security passwords min-length 10
+
+! 7. Secure Enable Secret Password
+enable secret Ciscoenpa55
+
+! 8. Encrypt Plaintext Passwords
+service password-encryption
+
+! 9. Console Line Security & 10-Minute Timeout
+line console 0
+ password Ciscoconpa55
+ login
+ exec-timeout 10 0
+ exit
+
+! 10. VTY Lines SSH Configuration & 10-Minute Timeout
+line vty 0 4
+ transport input ssh
+ login local
+ exec-timeout 10 0
+ exit
+
+! 11. Generate 1024-bit RSA Keys for SSH
+crypto key generate rsa
+1024
+
+! 12. Login Banner
+banner login #No Unauthorised Access#
+
+! 13. Block Login after 4 failed attempts within 30s for 3 mins (180s)
+login block-for 180 attempts 4 within 30
+
+! 14. Configure Router Interfaces with IP, Description, and Enable
+interface FastEthernet0/0
+ description SALES
+ ip address 49.50.10.1 255.255.255.128
+ no shutdown
+ exit
+
+interface FastEthernet0/1
+ description DESIGN
+ ip address 49.50.10.129 255.255.255.192
+ no shutdown
+ exit
+
+interface Ethernet0/0/0
+ description ADMIN
+ ip address 49.50.10.193 255.255.255.224
+ no shutdown
+ exit
+
+! 15. Save Configuration to NVRAM
+end
+copy running-config startup-config
+```
+
+---
+
+#### Step 2: Switch PD-1 Configuration (Sales Switch)
+Open Switch `PD-1` CLI tab:
+
+```cisco
+enable
+configure terminal
+interface vlan 1
+ ip address 49.50.10.2 255.255.255.128
+ no shutdown
+ exit
+ip default-gateway 49.50.10.1
+end
+copy running-config startup-config
+```
+
+---
+
+#### Step 3: Switch PD-2 Configuration (Admin Switch)
+Open Switch `PD-2` CLI tab:
+
+```cisco
+enable
+configure terminal
+interface vlan 1
+ ip address 49.50.10.194 255.255.255.224
+ no shutdown
+ exit
+ip default-gateway 49.50.10.193
+end
+copy running-config startup-config
+```
+
+---
+
+#### Step 4: Switch PD-3 Configuration (Design Switch)
+Open Switch `PD-3` CLI tab:
+
+```cisco
+enable
+configure terminal
+interface vlan 1
+ ip address 49.50.10.130 255.255.255.192
+ no shutdown
+ exit
+ip default-gateway 49.50.10.129
+end
+copy running-config startup-config
+```
+
+---
+
+#### Step 5: Host PC IP Settings (Desktop -> IP Configuration)
+
+- **PD-1-23**:
+  - IP: `49.50.10.3`
+  - Subnet Mask: `255.255.255.128`
+  - Default Gateway: `49.50.10.1`
+- **PD-2-12**:
+  - IP: `49.50.10.195`
+  - Subnet Mask: `255.255.255.224`
+  - Default Gateway: `49.50.10.193`
+- **PD-3-11**:
+  - IP: `49.50.10.131`
+  - Subnet Mask: `255.255.255.192`
+  - Default Gateway: `49.50.10.129`
+
+---
+
+#### Step 6: Connectivity & Verification Commands
+
+From **PD-1-23 Command Prompt**:
+```shell
+# 1. Ping Local Gateway
+ping 49.50.10.1
+
+# 2. Ping Remote Switch PD-2
+ping 49.50.10.194
+
+# 3. Ping Remote PC PD-2-12
+ping 49.50.10.195
+
+# 4. Ping Remote PC PD-3-11
+ping 49.50.10.131
+
+# 5. Ping Remote Web Server (across WAN)
+ping 156.62.140.254
+
+# 6. Test SSH to Router
+ssh -l Admin 49.50.10.1
+# When prompted for password, enter: Adminpa55
+```
+
+From **Router PR EXEC Mode**:
+```cisco
+show ip interface brief
+show ip route
+show running-config
+```
+
+> [!IMPORTANT]
+> **Key Exam Traps to Avoid:**
+> 1. **Password Length vs Adminpa55**: `security passwords min-length 10` will reject `Adminpa55` because it has 9 characters. Create the `username Admin privilege 15 secret Adminpa55` **first**, before running `security passwords min-length 10`.
+> 2. **Login Block-For Units**: The prompt specifies "3 mins after 4 failed attempts within 30 seconds". Cisco IOS takes seconds: `login block-for 180 attempts 4 within 30` (3 mins = 180 seconds).
+> 3. **Banner Spacing**: Keep delimiter characters `#` on both ends, e.g. `banner motd #No Unauthorized Access#` and `banner login #No Unauthorised Access#`.
+> 4. **Default Gateway on Switches**: Don't configure `ip default-gateway` inside `interface vlan 1`; it is a **global configuration mode** command.
 
 ## Optional extensions
 
