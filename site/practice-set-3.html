@@ -40,11 +40,17 @@
     }
     .nav-links a:hover { text-decoration: underline; }
 
-    /* Mode Selection Banner */
+    /* Mode & Reset Control Bar */
     .mode-banner {
       background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
       padding: 12px 18px; margin-bottom: 16px; display: flex; flex-wrap: wrap;
-      justify-content: space-between; align-items: center; gap: 12px;
+      justify-content: space-between; align-items: center; gap: 14px;
+    }
+    .mode-left {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .mode-right {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
     }
     .mode-pills {
       display: inline-flex; background: var(--surface-2); padding: 3px; border-radius: 6px;
@@ -59,7 +65,37 @@
       background: var(--accent); color: #0E1318;
     }
 
-    /* Main Canvas Exam Layout (Question on Left, Question Palette on Right) */
+    /* Buttons */
+    .btn {
+      padding: 8px 16px; border-radius: 6px; font-weight: 600; font-family: inherit;
+      font-size: 0.88rem; cursor: pointer; border: 1px solid var(--line);
+      background: var(--surface-2); color: var(--ink); transition: all 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-reset {
+      background: rgba(207, 34, 46, 0.12); color: #ff7b72; border-color: rgba(207, 34, 46, 0.4);
+    }
+    .btn-reset:hover {
+      background: rgba(207, 34, 46, 0.25); border-color: #ff7b72; color: #fff;
+    }
+    .btn-shuffle {
+      background: var(--accent-soft); color: var(--accent); border-color: var(--accent);
+    }
+    .btn-shuffle:hover {
+      background: var(--accent); color: #0E1318;
+    }
+    .btn-next {
+      background: var(--canvas-blue); color: #fff; border-color: var(--canvas-blue);
+    }
+    .btn-next:hover:not(:disabled) { background: var(--canvas-hover); color: #fff; }
+    .btn-submit-exam {
+      background: #2ea44f; color: #fff; border-color: #2ea44f;
+    }
+    .btn-submit-exam:hover { background: #38b75c; }
+
+    /* Main Canvas Exam Layout */
     .exam-grid {
       display: grid; grid-template-columns: 1fr 280px; gap: 20px;
     }
@@ -134,21 +170,6 @@
       display: flex; justify-content: space-between; align-items: center;
       border-top: 1px solid var(--line); padding-top: 18px; margin-top: auto;
     }
-    .btn {
-      padding: 9px 18px; border-radius: 6px; font-weight: 600; font-family: inherit;
-      font-size: 0.92rem; cursor: pointer; border: 1px solid var(--line);
-      background: var(--surface-2); color: var(--ink); transition: all 0.15s;
-    }
-    .btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-    .btn-next {
-      background: var(--canvas-blue); color: #fff; border-color: var(--canvas-blue);
-    }
-    .btn-next:hover:not(:disabled) { background: var(--canvas-hover); color: #fff; }
-    .btn-submit-exam {
-      background: #2ea44f; color: #fff; border-color: #2ea44f;
-    }
-    .btn-submit-exam:hover { background: #38b75c; }
 
     /* Canvas Question Palette Sidebar */
     .palette-sidebar {
@@ -213,15 +234,19 @@
     </nav>
   </header>
 
-  <!-- Feedback Mode Selector -->
+  <!-- Feedback Mode Selector & Reset Controls -->
   <div class="mode-banner">
-    <div>
-      <span style="font-weight:700; font-size:0.92rem;">Feedback Style:</span>
-      <span style="color:var(--muted); font-size:0.86rem; margin-left:6px;" id="mode-desc">Instant mode: See answer immediately after choosing.</span>
+    <div class="mode-left">
+      <div style="font-weight:700; font-size:0.92rem;">Feedback Style:</div>
+      <div style="color:var(--muted); font-size:0.86rem;" id="mode-desc">Instant mode: See answer and explanation immediately after choosing.</div>
     </div>
-    <div class="mode-pills">
-      <button class="mode-pill active" id="pill-instant" onclick="switchMode('instant')">⚡ Instant (Explain Per Question)</button>
-      <button class="mode-pill" id="pill-exam" onclick="switchMode('exam')">📝 Exam Mode (Grade at End)</button>
+    <div class="mode-right">
+      <div class="mode-pills">
+        <button class="mode-pill active" id="pill-instant" onclick="switchMode('instant')">⚡ Instant</button>
+        <button class="mode-pill" id="pill-exam" onclick="switchMode('exam')">📝 Exam (Grade at End)</button>
+      </div>
+      <button class="btn btn-reset" onclick="resetAnswers()" title="Clear all answers and start over with the current 100 questions">🔄 Reset Answers</button>
+      <button class="btn btn-shuffle" onclick="restartQuiz()" title="Reshuffle and load a new 100 questions set">🔀 Reshuffle</button>
     </div>
   </div>
 
@@ -234,7 +259,8 @@
     </p>
     <div class="review-action-row">
       <button class="btn btn-next" onclick="jumpTo(0)">Review Questions from Q1</button>
-      <button class="btn" onclick="restartQuiz()">🔀 Reshuffle New 100 Qs</button>
+      <button class="btn btn-reset" onclick="resetAnswers()">🔄 Retake Same Questions</button>
+      <button class="btn btn-shuffle" onclick="restartQuiz()">🔀 Reshuffle New 100 Qs</button>
     </div>
   </div>
 
@@ -277,8 +303,9 @@
         <span id="answered-counter">0/100</span>
       </div>
       <div class="q-matrix" id="question-matrix"></div>
-      <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:12px;">
-        <button class="btn" style="width:100%; font-size:0.85rem;" onclick="restartQuiz()">🔀 Reshuffle 100 Qs</button>
+      <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:12px; display:flex; flex-direction:column; gap:8px;">
+        <button class="btn btn-reset" style="width:100%; justify-content:center;" onclick="resetAnswers()">🔄 Reset Answers</button>
+        <button class="btn btn-shuffle" style="width:100%; justify-content:center;" onclick="restartQuiz()">🔀 Reshuffle 100 Qs</button>
       </div>
     </aside>
   </div>
@@ -308,17 +335,23 @@
     document.getElementById('mode-desc').textContent = mode === 'instant' 
       ? 'Instant mode: See answer and explanation immediately after choosing.'
       : 'Exam mode: Answer all questions with Next, then click Submit at the end to check everything.';
-    restartQuiz();
+    resetAnswers();
   }
 
-  function restartQuiz() {
+  // Clears user answers without reshuffling the question order
+  function resetAnswers() {
     userAnswers = {};
     currentIndex = 0;
     isSubmitted = false;
     document.getElementById('summary-card').classList.remove('visible');
-    currentQuestions = shuffle(ALL_QUESTIONS).slice(0, 100);
     renderMatrix();
     renderCurrentQuestion();
+  }
+
+  // Reshuffles a fresh 100 questions
+  function restartQuiz() {
+    currentQuestions = shuffle(ALL_QUESTIONS).slice(0, 100);
+    resetAnswers();
   }
 
   function renderMatrix() {
