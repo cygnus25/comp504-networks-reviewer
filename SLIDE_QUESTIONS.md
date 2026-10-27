@@ -1528,3 +1528,178 @@ These questions are created directly from every bullet point in [`2026 COMP504 _
 
 <details><summary>Show answer and revision notes</summary>
 <p><strong>Answer: c. Personnel costs for ongoing network management, technical staff, and end-user support</strong><br><br>In network management (Chapter 12), the largest share of Total Cost of Ownership (TCO) is not initial hardware purchases (which usually account for less than 20%), but ongoing personnel costs, staff salaries, network operations, maintenance, and end-user troubleshooting support.</p></details>
+
+
+---
+
+## Part 3 — Final Practical Lab Cisco CLI Commands (14 Questions)
+
+These questions cover the exact configuration commands, syntax rules, security traps, and verification commands required in the **Packet Tracer Final Lab** (`49.50.10.0/24`).
+
+### Q127: Final Lab — Router Basic Configuration · Router PR
+
+> **In Cisco IOS, how do you set the router hostname to 'PR' and configure a Message-of-the-Day (MOTD) banner saying 'No Unauthorized Access'?**
+>
+> - **a.** hostname PR and banner motd #No Unauthorized Access#
+> - **b.** set name PR and motd banner 'No Unauthorized Access'
+> - **c.** router-id PR and banner login #No Unauthorized Access#
+> - **d.** hostname PR and banner exec No Unauthorized Access
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: a. hostname PR and banner motd #No Unauthorized Access#</strong><br><br>In global configuration mode, 'hostname PR' sets the device name, and 'banner motd #<message>#' sets the MOTD banner with '#' as the delimiter.</p></details>
+
+### Q128: Final Lab — Password Security Trap · Router PR
+
+> **In the Final Lab, you must configure user 'Admin' with password 'Adminpa55' and set minimum password length to 10. Why must you create the username BEFORE executing 'security passwords min-length 10'?**
+>
+> - **a.** Because Cisco IOS requires users to be created in ROMMON mode
+> - **b.** Because 'Adminpa55' has only 9 characters, so IOS will reject it if a 10-character minimum is enforced first
+> - **c.** Because minimum password length only applies to the console line, not user accounts
+> - **d.** Because privilege 15 accounts bypass all password restrictions automatically
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. Because 'Adminpa55' has only 9 characters, so IOS will reject it if a 10-character minimum is enforced first</strong><br><br>'Adminpa55' contains only 9 characters. If 'security passwords min-length 10' is active, IOS rejects creating the user with error: 'Password too short'. Creating the user first bypasses this check.</p></details>
+
+### Q129: Final Lab — Password Encryption · Router PR
+
+> **Which global configuration command ensures that plaintext passwords in the running configuration (like console or line passwords) are obscured using Cisco Type 7 encryption?**
+>
+> - **a.** enable secret
+> - **b.** service password-encryption
+> - **c.** crypto key encrypt all
+> - **d.** password encryption on
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. service password-encryption</strong><br><br>'service password-encryption' enables software encryption of all current and future plaintext passwords stored in the configuration file.</p></details>
+
+### Q130: Final Lab — Privileged EXEC Security · Router PR
+
+> **What command is used to set the privileged EXEC mode password to 'Ciscoenpa55' using an MD5 hash instead of plaintext?**
+>
+> - **a.** enable password Ciscoenpa55
+> - **b.** enable secret Ciscoenpa55
+> - **c.** password secret Ciscoenpa55
+> - **d.** service enable-secret Ciscoenpa55
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. enable secret Ciscoenpa55</strong><br><br>'enable secret <password>' sets a strongly hashed (MD5) password for privileged EXEC mode, overriding the weaker 'enable password' command.</p></details>
+
+### Q131: Final Lab — Console Port Line Security · Router PR
+
+> **Which commands correctly configure the console port line with password 'Ciscoconpa55' and set it to automatically log out after 10 minutes of inactivity?**
+>
+> - **a.** line console 0 -> password Ciscoconpa55 -> login -> exec-timeout 10 0
+> - **b.** line con 1 -> secret Ciscoconpa55 -> timeout 600
+> - **c.** interface console 0 -> password Ciscoconpa55 -> login local
+> - **d.** line console 0 -> password Ciscoconpa55 -> logout 10
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: a. line console 0 -> password Ciscoconpa55 -> login -> exec-timeout 10 0</strong><br><br>Under 'line console 0', set 'password <pwd>', activate it with 'login', and set inactivity logout using 'exec-timeout 10 0' (10 minutes, 0 seconds).</p></details>
+
+### Q132: Final Lab — VTY Lines & SSH · Router PR
+
+> **To secure remote access on the router's VTY lines (0 to 4) so that ONLY incoming SSH connections are allowed and users authenticate against the local user database, which commands are required?**
+>
+> - **a.** line vty 0 4 -> transport input telnet -> login
+> - **b.** line vty 0 4 -> transport input ssh -> login local -> exec-timeout 10 0
+> - **c.** line vty 0 4 -> ssh enable -> login database
+> - **d.** line vty 0 15 -> transport input all -> no login
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. line vty 0 4 -> transport input ssh -> login local -> exec-timeout 10 0</strong><br><br>'transport input ssh' disallows unencrypted Telnet and allows only SSH; 'login local' checks incoming connections against local usernames created with 'username <user> ...'.</p></details>
+
+### Q133: Final Lab — SSH Crypto RSA Key Generation · Router PR
+
+> **Before the SSH server can accept connections on a Cisco router, what command must be executed to generate the required cryptographic RSA key pair?**
+>
+> - **a.** ssh-keygen -t rsa -b 1024
+> - **b.** crypto key generate rsa (and specify 1024 bits when prompted)
+> - **c.** ip ssh rsa-key 1024
+> - **d.** generate ssh key 1024
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. crypto key generate rsa (and specify 1024 bits when prompted)</strong><br><br>'crypto key generate rsa' generates the RSA public/private keys needed by SSH. The lab prompt specifies a 1024-bit modulus.</p></details>
+
+### Q134: Final Lab — Login Lockout Syntax · Router PR
+
+> **The final lab instructions require: 'Configure block for 3 mins after 4 failed attempts within 30 seconds'. What is the exact Cisco IOS command?**
+>
+> - **a.** login block-for 3 attempts 4 within 30
+> - **b.** login block-for 180 attempts 4 within 30
+> - **c.** login lockout 3m 4tries 30s
+> - **d.** security block attempts 4 window 30 delay 180
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. login block-for 180 attempts 4 within 30</strong><br><br>Cisco IOS measures duration in SECONDS. 3 minutes = 180 seconds. The command syntax is 'login block-for 180 attempts 4 within 30'.</p></details>
+
+### Q135: Final Lab — Router Interface Configuration · Router PR
+
+> **How do you configure interface FastEthernet0/0 on Router PR with description 'SALES', IP address '49.50.10.1', subnet mask '255.255.255.128', and activate it?**
+>
+> - **a.** interface FastEthernet0/0 -> description SALES -> ip address 49.50.10.1 255.255.255.128 -> no shutdown
+> - **b.** interface Fa0/0 -> name SALES -> ip 49.50.10.1/25 -> enable
+> - **c.** configure interface Fa0/0 -> ip address 49.50.10.1/255.255.255.128 -> up
+> - **d.** interface FastEthernet0/0 -> ip address 49.50.10.1 255.255.255.128 -> shutdown
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: a. interface FastEthernet0/0 -> description SALES -> ip address 49.50.10.1 255.255.255.128 -> no shutdown</strong><br><br>Enter interface submode, apply description using 'description <text>', assign IP with 'ip address <ip> <mask>', and bring up the port with 'no shutdown'.</p></details>
+
+### Q136: Final Lab — Switch Default Gateway Command Mode · Switches PD-1, 2, 3
+
+> **Why does typing 'ip default-gateway 49.50.10.1' inside '(config-if)#' submode on a switch fail with a syntax error?**
+>
+> - **a.** Because switches cannot have a default gateway
+> - **b.** Because 'ip default-gateway' is a global configuration mode command, not an interface submode command
+> - **c.** Because the default gateway must be an IPv6 address
+> - **d.** Because you must configure RIP routing first
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. Because 'ip default-gateway' is a global configuration mode command, not an interface submode command</strong><br><br>'ip default-gateway <ip>' is executed in global configuration mode ('Switch(config)#'), not within the SVI ('Switch(config-if)#'). It allows Layer 2 switches to respond to management traffic from remote networks.</p></details>
+
+### Q137: Final Lab — Switch SVI Management Interface · Switch PD-1
+
+> **Which set of commands assigns management IP '49.50.10.2 255.255.255.128' to Switch PD-1 and ensures the management interface is administratively active?**
+>
+> - **a.** interface FastEthernet0/1 -> ip address 49.50.10.2 255.255.255.128
+> - **b.** interface vlan 1 -> ip address 49.50.10.2 255.255.255.128 -> no shutdown
+> - **c.** ip management 49.50.10.2 255.255.255.128
+> - **d.** interface loopback 0 -> ip address 49.50.10.2 255.255.255.128
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. interface vlan 1 -> ip address 49.50.10.2 255.255.255.128 -> no shutdown</strong><br><br>On a Layer 2 switch, remote management is configured on the Switch Virtual Interface (SVI) using 'interface vlan 1', assigning the IP and mask, and entering 'no shutdown'.</p></details>
+
+### Q138: Final Lab — Saving Configurations to NVRAM · All Cisco Devices
+
+> **Which command permanently saves the active running configuration from RAM into NVRAM so changes survive a device reboot?**
+>
+> - **a.** save running-config
+> - **b.** copy running-config startup-config (or write memory)
+> - **c.** write erase
+> - **d.** backup nvram ram
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. copy running-config startup-config (or write memory)</strong><br><br>'copy running-config startup-config' copies the volatile configuration from RAM into non-volatile storage (NVRAM).</p></details>
+
+### Q139: Final Lab — PC SSH Verification · PC PD-1-23
+
+> **What command is executed in the Command Prompt of PC PD-1-23 to verify SSH remote login to Router PR as user Admin?**
+>
+> - **a.** telnet 49.50.10.1 22
+> - **b.** ssh -l Admin 49.50.10.1
+> - **c.** connect ssh://Admin@49.50.10.1
+> - **d.** ssh Admin:49.50.10.1
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. ssh -l Admin 49.50.10.1</strong><br><br>The Packet Tracer PC Command Prompt syntax for SSH is 'ssh -l <username> <target-ip>'. Enter password 'Adminpa55' when prompted.</p></details>
+
+### Q140: Final Lab — ARP Resolution & Ping Timeout · PC Verification
+
+> **When pinging a remote host for the first time in Packet Tracer, the first ICMP echo request often shows 'Request timed out'. Why does this happen?**
+>
+> - **a.** The router dropped the packet because of access-list blocking
+> - **b.** The switch or host had to perform Address Resolution Protocol (ARP) to map the IP address to a MAC address before sending the packet
+> - **c.** ICMP is disabled by default on Cisco routers
+> - **d.** The cable is faulty and reconnecting
+
+<details><summary>Show answer and CLI notes</summary>
+<p><strong>Answer: b. The switch or host had to perform Address Resolution Protocol (ARP) to map the IP address to a MAC address before sending the packet</strong><br><br>Address Resolution Protocol (ARP) must discover the MAC address of the default gateway or destination host before the first frame can be transmitted. The delay while waiting for the ARP reply causes the first ICMP packet to time out.</p></details>
