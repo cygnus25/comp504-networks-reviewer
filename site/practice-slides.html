@@ -345,7 +345,7 @@
         <!-- Canvas Navigation Bar -->
         <div class="nav-actions">
           <button class="btn" id="btn-prev" onclick="navigate(-1)">← Previous</button>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.88rem; color:var(--muted);" id="q-indicator">1 of 100</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.88rem; color:var(--muted);" id="q-indicator">1 of 141</span>
           <div style="display:flex; gap:10px;">
             <button class="btn btn-finish-quiz" id="btn-finish" onclick="finishAndShowResults()">Check Results 🏁</button>
             <button class="btn btn-next" id="btn-next" onclick="navigate(1)">Next →</button>
@@ -364,7 +364,7 @@
       <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:12px; display:flex; flex-direction:column; gap:8px;">
         <button class="btn btn-finish-quiz" style="width:100%; justify-content:center;" onclick="finishAndShowResults()">Check Results 🏁</button>
         <button class="btn btn-reset" style="width:100%; justify-content:center;" onclick="resetAnswers()">🔄 Reset Answers</button>
-        <button class="btn btn-shuffle" style="width:100%; justify-content:center;" onclick="restartQuiz()">🔀 Reshuffle 100 Qs</button>
+        <button class="btn btn-shuffle" style="width:100%; justify-content:center;" onclick="restartQuiz()">🔀 Reshuffle All (141 Qs)</button>
       </div>
     </aside>
   </div>
@@ -3848,6 +3848,24 @@
     return a;
   }
 
+  function prepareQuestions(shouldShuffleQuestions, shouldShuffleChoices) {
+    let list = ALL_QUESTIONS.map(q => {
+      const copy = { ...q, choices: [...(q.choices || q.options || [])] };
+      // Only shuffle choices if more than 2 choices (keeps True/False standard)
+      if (shouldShuffleChoices && copy.choices.length > 2) {
+        const correctText = copy.choices[copy.answer];
+        copy.choices = shuffle(copy.choices);
+        copy.answer = copy.choices.indexOf(correctText);
+      }
+      return copy;
+    });
+    if (shouldShuffleQuestions) {
+      list = shuffle(list);
+    }
+    return list;
+  }
+
+
   function switchMode(mode) {
     feedbackMode = mode;
     document.getElementById('pill-instant').classList.toggle('active', mode === 'instant');
@@ -3865,7 +3883,7 @@
   }
 
   function reshuffleQuiz() {
-    currentQuestions = shuffle(ALL_QUESTIONS.slice());
+    currentQuestions = prepareQuestions(true, true);
     resetAnswers();
   }
 
