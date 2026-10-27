@@ -345,7 +345,7 @@
         <!-- Canvas Navigation Bar -->
         <div class="nav-actions">
           <button class="btn" id="btn-prev" onclick="navigate(-1)">← Previous</button>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.88rem; color:var(--muted);" id="q-indicator">1 of 141</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.88rem; color:var(--muted);" id="q-indicator">1 of 144</span>
           <div style="display:flex; gap:10px;">
             <button class="btn btn-finish-quiz" id="btn-finish" onclick="finishAndShowResults()">Check Results 🏁</button>
             <button class="btn btn-next" id="btn-next" onclick="navigate(1)">Next →</button>
@@ -364,7 +364,7 @@
       <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:12px; display:flex; flex-direction:column; gap:8px;">
         <button class="btn btn-finish-quiz" style="width:100%; justify-content:center;" onclick="finishAndShowResults()">Check Results 🏁</button>
         <button class="btn btn-reset" style="width:100%; justify-content:center;" onclick="resetAnswers()">🔄 Reset Answers</button>
-        <button class="btn btn-shuffle" style="width:100%; justify-content:center;" onclick="restartQuiz()">🔀 Reshuffle All (141 Qs)</button>
+        <button class="btn btn-shuffle" style="width:100%; justify-content:center;" onclick="restartQuiz()">🔀 Reshuffle All (144 Qs)</button>
       </div>
     </aside>
   </div>
@@ -2782,6 +2782,31 @@
     "why": "'As we use Ping command to test connectivity after configuration with the required IP addresses, the command uses the most basic interior routing protocol on the Internet which is Internet Control Message Protocol (ICMP).'"
   },
   {
+    "id": "rev-ch05-s11-def",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 5 — Subnet Definition (Slide 11)",
+    "week": "Weeks 4–5",
+    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
+    "slide": 11,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "What is the definition of a 'Subnet' in IP networking?",
+    "choices": [
+      "A group of computers that are logically grouped together by IP number",
+      "A physical router that connects LANs to the Internet",
+      "A network cable that connects switches together",
+      "A protocol that encrypts passwords on the local network"
+    ],
+    "options": [
+      "A group of computers that are logically grouped together by IP number",
+      "A physical router that connects LANs to the Internet",
+      "A network cable that connects switches together",
+      "A protocol that encrypts passwords on the local network"
+    ],
+    "answer": 0,
+    "why": "A subnet is a group of computers that are logically grouped together by IP number. Organizations assign IP addresses hierarchically where the network/subnet portion groups computers logically, independent of their physical room or floor.",
+    "explanation": "A subnet is a group of computers that are logically grouped together by IP number. Organizations assign IP addresses hierarchically where the network/subnet portion groups computers logically, independent of their physical room or floor."
+  },
+  {
     "id": "rev-ch05-s11-1",
     "part": "Part 2: Final Revision Focus",
     "topic": "Chapter 5 — Subnetting & Addressing Hierarchy",
@@ -3282,6 +3307,31 @@
     "why": "An Ethernet switch learns dynamically: when a frame arrives on a port, the switch records the frame's SOURCE MAC address and ingress port in its forwarding table. It then uses the DESTINATION MAC address to decide whether to filter, forward, or flood the frame."
   },
   {
+    "id": "rev-ch07-lan-components",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — LAN Components (Slide 4)",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 4,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "Which of the following correctly lists the 6 fundamental hardware and software components of a Local Area Network (LAN)?",
+    "choices": [
+      "Clients, servers, Network Interface Cards (NICs), network circuits, hubs/switches/access points, and the Network Operating System (NOS)",
+      "Mainframes, punch cards, modems, and coaxial taps only",
+      "Routers, autonomous systems, and BGP peering sessions only",
+      "Web browsers, HTML parsers, and DNS root servers only"
+    ],
+    "options": [
+      "Clients, servers, Network Interface Cards (NICs), network circuits, hubs/switches/access points, and the Network Operating System (NOS)",
+      "Mainframes, punch cards, modems, and coaxial taps only",
+      "Routers, autonomous systems, and BGP peering sessions only",
+      "Web browsers, HTML parsers, and DNS root servers only"
+    ],
+    "answer": 0,
+    "why": "A standard LAN consists of six essential components: client computers (workstations), servers (resource providers), Network Interface Cards/NICs (device connectivity), network circuits/cables (physical media), network devices (hubs, switches, access points), and the Network Operating System/NOS (resource and access management).",
+    "explanation": "A standard LAN consists of six essential components: client computers (workstations), servers (resource providers), Network Interface Cards/NICs (device connectivity), network circuits/cables (physical media), network devices (hubs, switches, access points), and the Network Operating System/NOS (resource and access management)."
+  },
+  {
     "id": "rev-ch07-s15-5",
     "part": "Part 2: Final Revision Focus",
     "topic": "Chapter 7 — Domain Controller",
@@ -3357,81 +3407,6 @@
     "why": "Focus on cables. Unshielded Twisted Pair (UTP, typically Category 5e, 6, or 6a) using RJ-45 connectors is the universal standard for connecting end-user computers to Ethernet LAN switches up to 100 meters."
   },
   {
-    "id": "rev-ch07-s15-6",
-    "part": "Part 2: Final Revision Focus",
-    "topic": "Chapter 7 — WLAN Standards",
-    "week": "Week 6",
-    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
-    "slide": 15,
-    "quiz": "FINAL REVISION FOCUS",
-    "question": "Which IEEE 802.11 standard was the FIRST to introduce Multiple-Input Multiple-Output (MIMO) technology and can operate simultaneously across BOTH 2.4 GHz and 5 GHz frequency bands?",
-    "options": [
-      "802.11b",
-      "802.11g",
-      "802.11n",
-      "802.11ac"
-    ],
-    "answer": 2,
-    "explanation": "802.11n (Wi-Fi 4) was the first standard to introduce MIMO technology and operate simultaneously across both 2.4 GHz and 5 GHz bands. Common Confusion: Why NOT 802.11ac? 802.11ac (Wi-Fi 5) operates ONLY in the 5 GHz band (not 2.4 GHz) and introduced Multi-User MIMO (MU-MIMO), whereas basic MIMO and dual-band operation were already introduced years earlier by 802.11n.",
-    "choices": [
-      "802.11b",
-      "802.11g",
-      "802.11n",
-      "802.11ac"
-    ],
-    "why": "802.11n (Wi-Fi 4) was the first standard to introduce MIMO technology and operate simultaneously across both 2.4 GHz and 5 GHz bands. Common Confusion: Why NOT 802.11ac? 802.11ac (Wi-Fi 5) operates ONLY in the 5 GHz band (not 2.4 GHz) and introduced Multi-User MIMO (MU-MIMO), whereas basic MIMO and dual-band operation were already introduced years earlier by 802.11n."
-  },
-  {
-    "id": "rev-ch07-s15-ac-focus",
-    "part": "Part 2: Final Revision Focus",
-    "topic": "Chapter 7 — WLAN Standards: 802.11ac",
-    "week": "Week 6",
-    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
-    "slide": 15,
-    "quiz": "FINAL REVISION FOCUS",
-    "question": "Which IEEE 802.11 standard operates exclusively in the 5 GHz band, achieves gigabit speeds, and transmits RTS/CTS control signals on a separate frequency so they do not interfere with data?",
-    "choices": [
-      "802.11b",
-      "802.11g",
-      "802.11n",
-      "802.11ac"
-    ],
-    "options": [
-      "802.11b",
-      "802.11g",
-      "802.11n",
-      "802.11ac"
-    ],
-    "answer": 3,
-    "why": "802.11ac (Wi-Fi 5) runs primarily in the 5 GHz spectrum to deliver gigabit speeds (up to several Gbps). A key innovation noted in the course slides is that RTS/CTS media access control is sent on a separate frequency range to prevent interference with data.",
-    "explanation": "802.11ac (Wi-Fi 5) runs primarily in the 5 GHz spectrum to deliver gigabit speeds (up to several Gbps). A key innovation noted in the course slides is that RTS/CTS media access control is sent on a separate frequency range to prevent interference with data."
-  },
-  {
-    "id": "rev-ch07-s15-wlan-comp",
-    "part": "Part 2: Final Revision Focus",
-    "topic": "Chapter 7 — WLAN Standards Comparison",
-    "week": "Week 6",
-    "source": "2026 COMP504 _FINAL EXAM Revision.pptx",
-    "slide": 15,
-    "quiz": "FINAL REVISION FOCUS",
-    "question": "Compare the legacy WLAN standards: What are the operating frequencies and maximum data rates of 802.11b and 802.11a respectively?",
-    "options": [
-      "802.11b: 2.4 GHz (up to 11 Mbps); 802.11a: 5 GHz (up to 54 Mbps)",
-      "802.11b: 5 GHz (up to 54 Mbps); 802.11a: 2.4 GHz (up to 11 Mbps)",
-      "Both operate at 2.4 GHz up to 54 Mbps",
-      "Both operate at 5 GHz up to 100 Mbps"
-    ],
-    "answer": 0,
-    "explanation": "Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz.",
-    "choices": [
-      "802.11b: 2.4 GHz (up to 11 Mbps); 802.11a: 5 GHz (up to 54 Mbps)",
-      "802.11b: 5 GHz (up to 54 Mbps); 802.11a: 2.4 GHz (up to 11 Mbps)",
-      "Both operate at 2.4 GHz up to 54 Mbps",
-      "Both operate at 5 GHz up to 100 Mbps"
-    ],
-    "why": "Focus on WLAN standards. 802.11b operates in the 2.4 GHz band up to 11 Mbps. 802.11a operates in the 5 GHz band up to 54 Mbps (less interference, but shorter range). 802.11g brought 54 Mbps to 2.4 GHz."
-  },
-  {
     "id": "rev-ch11-s17-1",
     "part": "Part 2: Final Revision Focus",
     "topic": "Chapter 11 — Network Security Principles",
@@ -3480,6 +3455,106 @@
       "Software license fees for server operating systems"
     ],
     "why": "the largest share of Total Cost of Ownership (TCO) is not initial hardware purchases (which usually account for less than 20%), but ongoing personnel costs, staff salaries, network operations, maintenance, and end-user troubleshooting support."
+  },
+  {
+    "id": "wlan-s36-status-table",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — WLAN Standards: Status (Slide 36)",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 36,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "What is the operational status and role of the 802.11n, 802.11ac, and 802.11ax wireless Ethernet standards?",
+    "choices": [
+      "802.11n: Obsolete, still used because cheap; 802.11ac: Current; 802.11ax: Newest — Wi-Fi 6",
+      "802.11n: Current; 802.11ac: Obsolete; 802.11ax: Experimental only",
+      "802.11n: Newest — Wi-Fi 6; 802.11ac: Current; 802.11ax: Obsolete",
+      "All three standards are obsolete legacy protocols replaced by Bluetooth"
+    ],
+    "options": [
+      "802.11n: Obsolete, still used because cheap; 802.11ac: Current; 802.11ax: Newest — Wi-Fi 6",
+      "802.11n: Current; 802.11ac: Obsolete; 802.11ax: Experimental only",
+      "802.11n: Newest — Wi-Fi 6; 802.11ac: Current; 802.11ax: Obsolete",
+      "All three standards are obsolete legacy protocols replaced by Bluetooth"
+    ],
+    "answer": 0,
+    "why": "802.11n is considered obsolete but persists because equipment is cheap; 802.11ac is the current widely deployed standard; and 802.11ax (Wi-Fi 6) is the newest standard running across multiple frequency spectrums.",
+    "explanation": "802.11n is considered obsolete but persists because equipment is cheap; 802.11ac is the current widely deployed standard; and 802.11ax (Wi-Fi 6) is the newest standard running across multiple frequency spectrums."
+  },
+  {
+    "id": "wlan-s36-80211n-details",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — WLAN Standards: 802.11n (Slide 36)",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 36,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "What data rate and maximum range does 802.11n provide under perfect conditions?",
+    "choices": [
+      "Three channels of 450 Mbps each with a maximum range of 100 meters",
+      "One channel of 54 Mbps with a maximum range of 20 meters",
+      "Gigabit speeds up to 10 Gbps with a maximum range of 500 meters",
+      "Two channels of 11 Mbps each with a maximum range of 30 meters"
+    ],
+    "options": [
+      "Three channels of 450 Mbps each with a maximum range of 100 meters",
+      "One channel of 54 Mbps with a maximum range of 20 meters",
+      "Gigabit speeds up to 10 Gbps with a maximum range of 500 meters",
+      "Two channels of 11 Mbps each with a maximum range of 30 meters"
+    ],
+    "answer": 0,
+    "why": "802.11n provides up to 3 channels of 450 Mbps each with a maximum reach of 100 meters under ideal conditions. Although obsolete today, it remains in use because it is cheap to deploy.",
+    "explanation": "802.11n provides up to 3 channels of 450 Mbps each with a maximum reach of 100 meters under ideal conditions. Although obsolete today, it remains in use because it is cheap to deploy."
+  },
+  {
+    "id": "wlan-s36-80211ac-rtscts",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — WLAN Standards: 802.11ac (Slide 36)",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 36,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "What important innovation regarding media access control was introduced with 802.11ac (the current version)?",
+    "choices": [
+      "RTS/CTS media access control is sent on a separate frequency range so it does not interfere with data transmission",
+      "It eliminated wireless contention and replaced CSMA/CA with token ring",
+      "It restricts all wireless transmission to infrared frequencies",
+      "It forces all clients to communicate only through wired serial cables"
+    ],
+    "options": [
+      "RTS/CTS media access control is sent on a separate frequency range so it does not interfere with data transmission",
+      "It eliminated wireless contention and replaced CSMA/CA with token ring",
+      "It restricts all wireless transmission to infrared frequencies",
+      "It forces all clients to communicate only through wired serial cables"
+    ],
+    "answer": 0,
+    "why": "In 802.11ac, RTS/CTS media access control frames are transmitted over a separate frequency range. This prevents channel contention and reservation control overhead from interfering with actual data packet transmission.",
+    "explanation": "In 802.11ac, RTS/CTS media access control frames are transmitted over a separate frequency range. This prevents channel contention and reservation control overhead from interfering with actual data packet transmission."
+  },
+  {
+    "id": "wlan-s36-80211ax-details",
+    "part": "Part 2: Final Revision Focus",
+    "topic": "Chapter 7 — WLAN Standards: 802.11ax (Slide 36)",
+    "week": "Week 6",
+    "source": "ch07 Wired and Wireless LANs-1-1.pptx",
+    "slide": 36,
+    "quiz": "FINAL REVISION FOCUS",
+    "question": "How is the newest wireless standard, 802.11ax (Wi-Fi 6), characterized?",
+    "choices": [
+      "It is called Wi-Fi 6 and runs in three different frequency spectrums to provide very high-speed data rates",
+      "It is an obsolete standard operating solely at 2.4 GHz",
+      "It is a point-to-point microwave circuit for transatlantic links",
+      "It is an unencrypted wireless standard that replaces WPA2 with WEP"
+    ],
+    "options": [
+      "It is called Wi-Fi 6 and runs in three different frequency spectrums to provide very high-speed data rates",
+      "It is an obsolete standard operating solely at 2.4 GHz",
+      "It is a point-to-point microwave circuit for transatlantic links",
+      "It is an unencrypted wireless standard that replaces WPA2 with WEP"
+    ],
+    "answer": 0,
+    "why": "802.11ax is commercially known as Wi-Fi 6. It operates across three frequency spectrums (2.4 GHz, 5 GHz, and 6 GHz) to provide very high-speed data rates and improved client capacity.",
+    "explanation": "802.11ax is commercially known as Wi-Fi 6. It operates across three frequency spectrums (2.4 GHz, 5 GHz, and 6 GHz) to provide very high-speed data rates and improved client capacity."
   },
   {
     "id": "lab-pr-hostname-banner",
